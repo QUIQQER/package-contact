@@ -6,8 +6,8 @@
     "license" : "",
 
     "authors" : [{
-        "name": "",
-        "email": "",
+        "name": "Henning Leutz",
+        "email": "support@pcsg.de",
         "homepage": "http://www.pcsg.de",
         "role": "Developer"
     }],
@@ -19,7 +19,8 @@
 
     "require": {
         "php" : ">=5.3",
-        "quiqqer/quiqqer" : "*@dev"
+        "quiqqer/quiqqer" : "*@dev",
+        "quiqqer/formbuilder" : "dev-dev"
     },
 
     "autoload": {

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+
+    <types>
+
+        <type type="types/contact">
+            <locale group="quiqqer/contact" var="admin.types.contact"/>
+            <desc>
+                <locale group="quiqqer/contact" var="admin.types.contact.desc"/>
+            </desc>
+
+            <!-- extra attributes -->
+            <attributes>
+                <attribute>quiqqer.contact.settings.receiver</attribute>
+                <attribute>quiqqer.contact.settings.form</attribute>
+            </attributes>
+
+            <!-- extend every panel -->
+            <window>
+                <tab name="quiqqer.contact">
+                    <text>
+                        <locale group="quiqqer/contact" var="admin.types.contact.desc"/>
+                    </text>
+                    <image>icon-list-alt</image>
+                    <onload require="package/quiqqer/contact/bin/SitePanel" />
+                </tab>
+            </window>
+        </type>
+
+    </types>
+
+</site>

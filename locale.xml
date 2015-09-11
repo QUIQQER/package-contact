@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locales>
+    <groups name="quiqqer/contact" datatype="js">
+
+    </groups>
+
+
+    <groups name="quiqqer/contact" datatype="php">
+
+    </groups>
+
+
+    <groups name="quiqqer/contact" datatype="php,js">
+
+    </groups>
+</locales>
