@@ -13,4 +13,12 @@
     {/if}
 </section>
 
-{$Form->create()}
+{if $Template->getAttribute('content-body') && $Site->getAttribute('content')}
+<div class="content-body grid-100 mobile-grid-100 grid-parent">
+    {$Site->getAttribute('content')}
+</div>
+{/if}
+
+<div class="content-body grid-100 mobile-grid-100 grid-parent">
+    {$Form->create()}
+</div>
