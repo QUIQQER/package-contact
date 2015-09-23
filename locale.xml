@@ -6,7 +6,14 @@
 
 
     <groups name="quiqqer/contact" datatype="php">
-
+        <locale name="admin.types.contact">
+            <de><![CDATA[Kontakt]]></de>
+            <en><![CDATA[Contact]]></en>
+        </locale>
+        <locale name="admin.types.contact.form">
+            <de><![CDATA[Kontaktformular]]></de>
+            <en><![CDATA[Contact form]]></en>
+        </locale>
     </groups>
 
 

@@ -20,5 +20,17 @@
 {/if}
 
 <div class="content-body grid-100 mobile-grid-100 grid-parent">
-    {$Form->create()}
+    {if isset($formError)}
+    <div class="content-message-error">
+        {$formError}
+    </div>
+    {/if}
+
+    {if isset($formMessage)}
+    <div class="content-message-success">
+        {$formMessage}
+    </div>
+    {/if}
+
+    {$form}
 </div>

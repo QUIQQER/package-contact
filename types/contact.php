@@ -8,7 +8,28 @@ if (!is_array($formData)) {
 
 $Form = new QUI\FormBuilder\Builder();
 $Form->load($formData);
+$Form->setAttribute('Template', $Template);
 
-$Engine->assign(array(
-    'Form' => $Form
-));
+try {
+    $Form->handleRequest();
+
+    if ($Form->isSuccess()) {
+
+        $Engine->assign(array(
+            'form' => 'Vielen Dank für ihre Anfrage.'
+        ));
+
+    } else {
+
+        $Engine->assign(array(
+            'form' => $Form->create()
+        ));
+    }
+
+} catch (QUI\Exception $Exception) {
+
+    $Engine->assign(array(
+        'formError' => $Exception->getMessage(),
+        'form'      => $Form->create()
+    ));
+}
