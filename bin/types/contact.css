@@ -1,0 +1,22 @@
+
+.qui-form legend {
+    background: #e8e8e8;
+    float: left;
+    padding: 5px 0 5px 5px;
+    width: 100%;
+}
+
+.qui-formfield-body {
+    clear: both;
+    float: left;
+    padding: 10px;
+    width: 100%;
+}
+
+.qui-form input[type="submit"] {
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 300px;
+}

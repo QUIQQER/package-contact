@@ -19,6 +19,8 @@ try {
             'form' => 'Vielen Dank für ihre Anfrage.'
         ));
 
+        // mail versand
+
     } else {
 
         $Engine->assign(array(
