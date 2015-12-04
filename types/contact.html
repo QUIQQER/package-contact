@@ -1,24 +1,4 @@
 
-<section class="content-header grid-100 mobile-grid-100 grid-parent">
-    <header>
-        <h1 itemprop="name">
-            {$Site->getAttribute('title')}
-        </h1>
-    </header>
-
-    {if $Site->getAttribute('short')}
-    <div class="content-short" itemprop="description">
-        {$Site->getAttribute('short')|nl2br}
-    </div>
-    {/if}
-</section>
-
-{if $Template->getAttribute('content-body') && $Site->getAttribute('content')}
-<div class="content-body grid-100 mobile-grid-100 grid-parent">
-    {$Site->getAttribute('content')}
-</div>
-{/if}
-
 <div class="content-body qui-contact grid-100 mobile-grid-100 grid-parent">
     {if isset($formError)}
     <div class="content-message-error">

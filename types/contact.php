@@ -26,7 +26,8 @@ try {
         $Mail->send();
 
         $Engine->assign(array(
-            'form' => 'Vielen Dank für ihre Anfrage.'
+            'formMessage' => 'Vielen Dank für Ihre Anfrage.',
+            'form' => ''
         ));
 
     } else {
