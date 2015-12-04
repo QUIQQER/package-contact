@@ -20,3 +20,8 @@
     max-width: 100%;
     width: 300px;
 }
+
+.qui-contact .content-message-error,
+.qui-contact .content-message-success {
+    margin-bottom: 20px;
+}

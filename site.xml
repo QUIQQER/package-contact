@@ -15,16 +15,13 @@
                 <attribute>quiqqer.contact.settings.form</attribute>
             </attributes>
 
-            <!-- extend every panel -->
-            <window>
-                <tab name="quiqqer.contact">
-                    <text>
-                        <locale group="quiqqer/contact" var="admin.types.contact.form"/>
-                    </text>
-                    <image>icon-list-alt</image>
-                    <onload require="package/quiqqer/contact/bin/SitePanel" />
-                </tab>
-            </window>
+            <tab name="quiqqer.contact">
+                <text>
+                    <locale group="quiqqer/contact" var="admin.types.contact.form"/>
+                </text>
+                <image>icon-list-alt</image>
+                <onload require="package/quiqqer/contact/bin/SitePanel" />
+            </tab>
         </type>
 
     </types>

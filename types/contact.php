@@ -14,24 +14,30 @@ try {
     $Form->handleRequest();
 
     if ($Form->isSuccess()) {
+        $Mail      = QUI::getMailManager()->getMailer();
+        $addresses = $Form->getAddresses();
+
+        foreach ($addresses as $addressData) {
+            $Mail->addRecipient($addressData['email'], $addressData['name']);
+        }
+
+        $Mail->setSubject($Site->getAttribute('title'));
+        $Mail->setBody($Form->getMailBody());
+        $Mail->send();
 
         $Engine->assign(array(
             'form' => 'Vielen Dank für ihre Anfrage.'
         ));
 
-        // mail versand
-
     } else {
-
         $Engine->assign(array(
             'form' => $Form->create()
         ));
     }
 
 } catch (QUI\Exception $Exception) {
-
     $Engine->assign(array(
         'formError' => $Exception->getMessage(),
-        'form'      => $Form->create()
+        'form' => $Form->create()
     ));
 }
