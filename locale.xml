@@ -6,10 +6,6 @@
 
 
     <groups name="quiqqer/contact" datatype="php">
-        <locale name="package.title">
-            <de><![CDATA[QUIQQER - Kontakt]]></de>
-            <en><![CDATA[QUIQQER - Contact]]></en>
-        </locale>
         <locale name="admin.types.contact">
             <de><![CDATA[Kontakt]]></de>
             <en><![CDATA[Contact]]></en>
@@ -22,6 +18,9 @@
 
 
     <groups name="quiqqer/contact" datatype="php,js">
-
+        <locale name="package.title">
+            <de><![CDATA[QUIQQER - Kontakt]]></de>
+            <en><![CDATA[QUIQQER - Contact]]></en>
+        </locale>
     </groups>
 </locales>
