@@ -1,21 +1,21 @@
-{if $Template->getAttribute('content-body') && $Site->getAttribute('content')}
-<section class="content-body grid-100 mobile-grid-100">
-    {$Site->getAttribute('content')}
-</section>
+{if isset($formMessage)}
+
+    {$formMessage}
+
+{else}
+    {if $Template->getAttribute('content-body') && $Site->getAttribute('content')}
+    <section class="content-body grid-100 mobile-grid-100">
+        {$Site->getAttribute('content')}
+    </section>
+    {/if}
+
+    <div class="content-body qui-contact grid-100 mobile-grid-100 grid-parent">
+        {if isset($formError)}
+        <div class="content-message-error">
+            {$formError}
+        </div>
+        {/if}
+
+        {$form}
+    </div>
 {/if}
-
-<div class="content-body qui-contact grid-100 mobile-grid-100 grid-parent">
-    {if isset($formError)}
-    <div class="content-message-error">
-        {$formError}
-    </div>
-    {/if}
-
-    {if isset($formMessage)}
-    <div class="content-message-success">
-        {$formMessage}
-    </div>
-    {/if}
-
-    {$form}
-</div>

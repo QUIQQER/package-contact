@@ -26,7 +26,7 @@ try {
         $Mail->send();
 
         $Engine->assign(array(
-            'formMessage' => 'Vielen Dank für Ihre Anfrage.',
+            'formMessage' => $Site->getAttribute('quiqqer.contact.success'),
             'form' => ''
         ));
 

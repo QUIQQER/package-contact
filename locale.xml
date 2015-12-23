@@ -4,7 +4,6 @@
 
     </groups>
 
-
     <groups name="quiqqer/contact" datatype="php">
         <locale name="admin.types.contact">
             <de><![CDATA[Kontakt]]></de>
@@ -14,8 +13,11 @@
             <de><![CDATA[Kontaktformular]]></de>
             <en><![CDATA[Contact form]]></en>
         </locale>
+        <locale name="admin.types.contact.success">
+            <de><![CDATA[Kontaktformular Erfolgsmeldung]]></de>
+            <en><![CDATA[Contact form success message]]></en>
+        </locale>
     </groups>
-
 
     <groups name="quiqqer/contact" datatype="php,js">
         <locale name="package.title">
