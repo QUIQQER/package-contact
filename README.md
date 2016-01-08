@@ -2,7 +2,7 @@
 QUIQQER Kontakt
 ========
 
-Packetname:
+Paketname:
 
     quiqqer/contact
 
