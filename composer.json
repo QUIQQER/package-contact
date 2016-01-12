@@ -2,7 +2,7 @@
     "name" : "quiqqer/contact",
     "type" : "quiqqer-module",
     "description" : "Kontaktformulare für QUIQQER",
-    "version" : "dev-dev",
+    "version" : "dev-master",
     "license" : "",
 
     "authors" : [{
