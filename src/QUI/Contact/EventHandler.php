@@ -17,7 +17,7 @@ class EventHandler
      */
     public static function onSiteInit($Site)
     {
-        if ($Site->getAttribute('type') == 'quiqqer/contact'
+        if ($Site->getAttribute('type') == 'quiqqer/contact:types/contact'
             && !empty($_POST)
         ) {
             $Site->setAttribute('nocache', 1);
