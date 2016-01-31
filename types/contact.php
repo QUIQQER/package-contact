@@ -21,6 +21,16 @@ try {
             $Mail->addRecipient($addressData['email'], $addressData['name']);
         }
 
+        /* @var $FormElement \QUI\FormBuilder\Field */
+        foreach ($Form->getElements() as $FormElement) {
+            if ($FormElement->getType() == 'QUI\FormBuilder\Fields\EMail') {
+                $data = $FormElement->getAttribute('data');
+                if (\QUI\Utils\Security\Orthos::checkMailSyntax($data)) {
+                    $Mail->setFrom($FormElement->getAttribute('data'));
+                }
+            }
+        }
+
         $Mail->setSubject($Site->getAttribute('title'));
         $Mail->setBody($Form->getMailBody());
         $Mail->send();
