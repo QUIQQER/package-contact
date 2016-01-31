@@ -26,7 +26,7 @@ try {
             if ($FormElement->getType() == 'QUI\FormBuilder\Fields\EMail') {
                 $data = $FormElement->getAttribute('data');
                 if (\QUI\Utils\Security\Orthos::checkMailSyntax($data)) {
-                    $Mail->setFrom($FormElement->getAttribute('data'));
+                    $Mail->addReplyTo($FormElement->getAttribute('data'));
                 }
             }
         }
