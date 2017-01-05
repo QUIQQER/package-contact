@@ -24,5 +24,31 @@
             <de><![CDATA[QUIQQER - Kontakt]]></de>
             <en><![CDATA[QUIQQER - Contact]]></en>
         </locale>
+        <locale name="package.description">
+            <de><![CDATA[
+            Erstellen Sie Formulare ganz nach Ihren Vorstellungen. Ein Formulareditor hilft Ihnen dabei.
+            ]]></de>
+            <en><![CDATA[
+            Create forms to your needs. A form editor will help you.
+            ]]></en>
+        </locale>
+        <locale name="quiqqer/contact:types/contact.title">
+            <de><![CDATA[QUIQQER - Kontakt]]></de>
+            <en><![CDATA[QUIQQER - Contact]]></en>
+        </locale>
+        <locale name="admin.types.contact">
+            <de><![CDATA[QUIQQER - Kontakt]]></de>
+            <en><![CDATA[QUIQQER - Contact]]></en>
+        </locale>
+        <locale name="quiqqer/contact:types/contact.description">
+            <de>
+                <![CDATA[Erstellen Sie Formulare ganz nach Ihren Vorstellungen. Ein Formulareditor hilft Ihnen dabei.]]></de>
+            <en><![CDATA[Create forms to your needs. A form editor will help you.]]></en>
+        </locale>
+        <locale name="admin.types.contact.desc">
+            <de>
+                <![CDATA[Erstellen Sie Formulare ganz nach Ihren Vorstellungen. Ein Formulareditor hilft Ihnen dabei.]]></de>
+            <en><![CDATA[Create forms to your needs. A form editor will help you.]]></en>
+        </locale>
     </groups>
 </locales>
