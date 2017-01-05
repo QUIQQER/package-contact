@@ -25,7 +25,7 @@ try {
         foreach ($Form->getElements() as $FormElement) {
             if ($FormElement->getType() == 'QUI\FormBuilder\Fields\EMail') {
                 $data = $FormElement->getAttribute('data');
-                if (\QUI\Utils\Security\Orthos::checkMailSyntax($data)) {
+                if (QUI\Utils\Security\Orthos::checkMailSyntax($data)) {
                     $Mail->addReplyTo($FormElement->getAttribute('data'));
                 }
             }
@@ -37,18 +37,16 @@ try {
 
         $Engine->assign(array(
             'formMessage' => $Site->getAttribute('quiqqer.contact.success'),
-            'form' => ''
+            'form'        => ''
         ));
-
     } else {
         $Engine->assign(array(
             'form' => $Form->create()
         ));
     }
-
 } catch (QUI\Exception $Exception) {
     $Engine->assign(array(
         'formError' => $Exception->getMessage(),
-        'form' => $Form->create()
+        'form'      => $Form->create()
     ));
 }
