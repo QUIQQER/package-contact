@@ -3,7 +3,7 @@
 
     <types>
 
-        <type type="types/contact">
+        <type type="types/contact" icon="fa fa-list-alt">
             <locale group="quiqqer/contact" var="admin.types.contact"/>
             <desc>
                 <locale group="quiqqer/contact" var="admin.types.contact.desc"/>
@@ -21,7 +21,7 @@
                     <locale group="quiqqer/contact" var="admin.types.contact.form"/>
                 </text>
                 <image>fa fa-list-alt</image>
-                <onload require="package/quiqqer/contact/bin/SitePanel" />
+                <onload require="package/quiqqer/contact/bin/SitePanel"/>
             </tab>
 
             <tab name="quiqqer.contact.success" type="wysiwyg">
