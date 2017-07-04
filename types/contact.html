@@ -16,6 +16,21 @@
         });
     </script>
 {else}
+    <script>
+        window.addEvent('domready', function() {
+            if (typeof window.QUIQQER_PIWIK !== 'undefined') {
+                require(['piwikTracker'], function(piwikTracker) {
+                    piwikTracker.then(function(PiwikTracker) {
+                        PiwikTracker.trackEvent(
+                            window.location.pathname,
+                            'view'
+                        );
+                    });
+                });
+            }
+        });
+    </script>
+
     {if $Template->getAttribute('content-body') && $Site->getAttribute('content')}
     <section class="content-body grid-100 mobile-grid-100 grid-parent">
         {$Site->getAttribute('content')}
@@ -30,5 +45,20 @@
         {/if}
 
         {$form}
+
+        <script>
+            window.addEvent('domready', function() {
+                if (typeof window.QUIQQER_PIWIK !== 'undefined') {
+                    require(['piwikTracker'], function(piwikTracker) {
+                        piwikTracker.then(function(PiwikTracker) {
+                            PiwikTracker.trackEvent(
+                                window.location.pathname,
+                                'error'
+                            );
+                        });
+                    });
+                }
+            });
+        </script>
     </div>
 {/if}
