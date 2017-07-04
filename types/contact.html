@@ -41,24 +41,24 @@
         {if isset($formError)}
         <div class="content-message-error">
             {$formError}
+
+            <script>
+                window.addEvent('domready', function() {
+                    if (typeof window.QUIQQER_PIWIK !== 'undefined') {
+                        require(['piwikTracker'], function(piwikTracker) {
+                            piwikTracker.then(function(PiwikTracker) {
+                                PiwikTracker.trackEvent(
+                                    window.location.pathname,
+                                    'error'
+                                );
+                            });
+                        });
+                    }
+                });
+            </script>
         </div>
         {/if}
 
         {$form}
-
-        <script>
-            window.addEvent('domready', function() {
-                if (typeof window.QUIQQER_PIWIK !== 'undefined') {
-                    require(['piwikTracker'], function(piwikTracker) {
-                        piwikTracker.then(function(PiwikTracker) {
-                            PiwikTracker.trackEvent(
-                                window.location.pathname,
-                                'error'
-                            );
-                        });
-                    });
-                }
-            });
-        </script>
     </div>
 {/if}
