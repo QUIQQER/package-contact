@@ -5,7 +5,7 @@
         window.addEvent('domready', function() {
             if (typeof window.QUIQQER_PIWIK !== 'undefined') {
                 require(['piwikTracker'], function(piwikTracker) {
-                    piwikTracker.then(function() {
+                    piwikTracker.then(function(PiwikTracker) {
                         PiwikTracker.trackEvent(
                             window.location.pathname,
                             'send'
