@@ -4,11 +4,13 @@
     <script>
         window.addEvent('domready', function() {
             if (typeof window.QUIQQER_PIWIK !== 'undefined') {
-                require(['PiwikTracker'], function(PiwikTracker) {
-                    PiwikTracker.trackEvent(
-                        window.location.pathname,
-                        'send'
-                    );
+                require(['piwikTracker'], function(piwikTracker) {
+                    piwikTracker.then(function() {
+                        PiwikTracker.trackEvent(
+                            window.location.pathname,
+                            'send'
+                        );
+                    });
                 });
             }
         });
