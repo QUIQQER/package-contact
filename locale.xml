@@ -26,10 +26,10 @@
         </locale>
         <locale name="package.description">
             <de><![CDATA[
-            Erstellen Sie Formulare ganz nach Ihren Vorstellungen. Ein Formulareditor hilft Ihnen dabei.
+            Integrieren Sie aufwändige Formulare in Ihre Webseite mit dem einfache Formular Editor. Aufwendiges entwickeln von Kontakt-, Angebots- und Anmeldeformulare gehören der Vergangenheit an.
             ]]></de>
             <en><![CDATA[
-            Create forms to your needs. A form editor will help you.
+            Integrate complex forms into your web page using the simple form editor. Complex development of contact, offer and registration forms are a thing of the past.
             ]]></en>
         </locale>
         <locale name="quiqqer/contact:types/contact.title">

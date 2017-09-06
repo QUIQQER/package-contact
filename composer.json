@@ -1,7 +1,7 @@
 {
     "name" : "quiqqer/contact",
     "type" : "quiqqer-module",
-    "description" : "Kontaktformulare für QUIQQER",
+    "description" : "Integrate complex forms into your web page using the simple form editor. Complex development of contact, offer and registration forms are a thing of the past.",
     "version" : "dev-dev",
     "license" : "",
 

@@ -1,0 +1,24 @@
+<quiqqer>
+    <package>
+        <title>
+            <locale group="quiqqer/contact" var="package.title"/>
+        </title>
+
+        <description>
+            <locale group="quiqqer/contact" var="package.description"/>
+        </description>
+
+        <support>
+            <email>support@pcsg.de</email>
+            <forum>https://community.quiqqer.com</forum>
+            <source>https://dev.quiqqer.com/quiqqer/package-contact</source>
+            <issues>https://dev.quiqqer.com/quiqqer/package-contact/issues</issues>
+            <wiki>https://dev.quiqqer.com/quiqqer/package-contact/wikis/home</wiki>
+        </support>
+
+        <copyright>
+            <name><![CDATA[PCSG - Computer & Internet Service OHG]]></name>
+            <license></license>
+        </copyright>
+    </package>
+</quiqqer>
