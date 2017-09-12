@@ -3,7 +3,7 @@
     "type" : "quiqqer-module",
     "description" : "Integrate complex forms into your web page using the simple form editor. Complex development of contact, offer and registration forms are a thing of the past.",
     "version" : "dev-dev",
-    "license" : "",
+    "license" : [" PCSG QL-1.0", "CC BY-NC-SA 4.0"],
 
     "authors" : [{
         "name": "Henning Leutz",
