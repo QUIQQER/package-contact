@@ -87,18 +87,24 @@ define('package/quiqqer/contact/bin/SitePanel', [
         },
 
         /**
-         * event : on destroy
-         * set the tags to the site
+         * If the Panel is unloaded -> save all FormBuilder data
          */
-        $onDestroy: function () {
-
-            this.$Panel.maximizeCategory();
-            this.$Panel.getContent().setStyle('padding', null);
-
+        unload: function() {
             this.$Site.setAttribute(
                 'quiqqer.contact.settings.form',
                 JSON.encode(this.$Form.save())
             );
+        },
+
+        /**
+         * event : on destroy
+         * set the tags to the site
+         */
+        $onDestroy: function () {
+            this.$Panel.maximizeCategory();
+            this.$Panel.getContent().setStyle('padding', null);
+
+            this.unload();
         }
     });
 });
