@@ -1,0 +1,38 @@
+.quiqqer-contact-requestlist {
+    float: left;
+    height: 100%;
+    width: 100%;
+}
+
+.quiqqer-contact-requestlist-table {
+    float: left;
+    height: 100% !important;
+    width: 100%;
+}
+
+.quiqqer-contact-requestlist-tbl-status-unused {
+    color: #bb252a;
+}
+
+.quiqqer-contact-requestlist-tbl-status-used {
+    color: #608a0e;
+}
+
+.quiqqer-contact-requestlist-tbl-status-invalid {
+    color: #454545;
+    font-style: italic;
+}
+
+.quiqqer-contact-requestlist-sendmail-resend {
+    float: right;
+    margin-top: 20px;
+}
+
+.quiqqer-contact-requestlist-sendmail-resend input {
+    float: left;
+}
+
+.quiqqer-contact-requestlist-tbl-user-not_exist {
+    color: #999;
+    font-style: italic;
+}

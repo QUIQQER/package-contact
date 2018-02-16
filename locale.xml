@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <locales>
     <groups name="quiqqer/contact" datatype="js">
-
+        
+        <!-- Control: backend/RequestList -->
+        <locale name="controls.backend.RequestList.formselect_placeholder">
+            <de><![CDATA[-- Kontakt-Formular wählen --]]></de>
+            <en><![CDATA[-- Choose contact form --]]></en>
+        </locale>
+        
     </groups>
 
     <groups name="quiqqer/contact" datatype="php">
@@ -17,9 +23,22 @@
             <de><![CDATA[Kontaktformular Erfolgsmeldung]]></de>
             <en><![CDATA[Contact form success message]]></en>
         </locale>
+
+        <!-- Ajax -->
+        <locale name="message.ajax.general_error">
+            <de><![CDATA[Beim Verarbeiten der Anfrage ist ein unerwarteter Fehler aufgetreten. Bitte prüfen Sie die Fehler-Logs oder kontaktieren Sie einen Administrator.]]></de>
+            <en><![CDATA[An unexpected error occurred while processing the request. Please check the error logs or contact an administrator.]]></en>
+        </locale>
     </groups>
 
     <groups name="quiqqer/contact" datatype="php,js">
+
+        <!-- Menu -->
+        <locale name="menu.extras.contactrequests.title">
+            <de><![CDATA[Kontakt-Anfragen]]></de>
+            <en><![CDATA[Contact requests]]></en>
+        </locale>
+
         <locale name="package.title">
             <de><![CDATA[QUIQQER - Kontakt]]></de>
             <en><![CDATA[QUIQQER - Contact]]></en>

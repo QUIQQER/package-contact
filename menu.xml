@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+    <item parent="/extras/"
+          name="contactrequests"
+          require="package/quiqqer/contact/bin/controls/backend/RequestList"
+          icon="fa fa-list-alt"
+    >
+        <locale group="quiqqer/contact" var="menu.extras.contactrequests.title"/>
+    </item>
+</menu>

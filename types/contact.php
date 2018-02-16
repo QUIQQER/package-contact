@@ -9,6 +9,7 @@ if (!is_array($formData)) {
 $Form = new QUI\FormBuilder\Builder();
 $Form->load($formData);
 $Form->setAttribute('Template', $Template);
+$Form->setSite($Site);
 
 try {
     $Form->handleRequest();
