@@ -1,9 +1,5 @@
 <?php
 
-/**
- * This file contains package_quiqqer_invitecode_ajax_getList
- */
-
 use QUI\Contact\RequestList;
 
 /**

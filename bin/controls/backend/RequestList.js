@@ -9,6 +9,9 @@ define('package/quiqqer/contact/bin/controls/backend/RequestList', [
     'qui/controls/desktop/Panel',
     'qui/controls/loader/Loader',
     'qui/controls/buttons/Select',
+    'qui/controls/buttons/Button',
+    'qui/controls/buttons/Separator',
+    'qui/controls/windows/Confirm',
 
     'controls/grid/Grid',
 
@@ -20,7 +23,8 @@ define('package/quiqqer/contact/bin/controls/backend/RequestList', [
     'text!package/quiqqer/contact/bin/controls/backend/RequestList.html',
     'css!package/quiqqer/contact/bin/controls/backend/RequestList.css'
 
-], function (QUIPanel, QUILoader, QUISelect, Grid, Requests, QUILocale, Mustache, template) {
+], function (QUIPanel, QUILoader, QUISelect, QUIButton, QUISeparator, QUIConfirm, Grid, Requests,
+             QUILocale, Mustache, template) {
     "use strict";
 
     var lg = 'quiqqer/contact';
@@ -38,13 +42,9 @@ define('package/quiqqer/contact/bin/controls/backend/RequestList', [
             '$load',
             '$setGridData',
             '$create',
-            '$toggleActiveStatus',
-            '$managePackages',
-            '$delete',
-            '$editBundle',
             'refresh',
-            '$openUserPanel',
-            '$sendMail'
+            '$showRequestDetails',
+            '$deleteRequests'
         ],
 
         options: {
@@ -61,6 +61,8 @@ define('package/quiqqer/contact/bin/controls/backend/RequestList', [
             this.$Panel         = null;
             this.$Forms         = {};
             this.$currentFormId = false;
+            this.$ViewBtn       = null;
+            this.$DeleteBtn     = null;
 
             this.addEvents({
                 onCreate : this.$onCreate,
@@ -76,9 +78,11 @@ define('package/quiqqer/contact/bin/controls/backend/RequestList', [
             var self = this;
 
             this.Loader.inject(this.$Elm);
+            this.$Elm.addClass('quiqqer-contact-requestlist');
 
             var FormSelect = new QUISelect({
-                placeholderText      : QUILocale.get(lg, 'controls.backend.RequestList.formselect_placeholder'),
+                'class'              : 'form-select',
+                placeholderText      : QUILocale.get(lg, 'controls.RequestList.formselect_placeholder'),
                 placeholderIcon      : false,
                 placeholderSelectable: false, // placeholder is standard selectable menu child
                 showIcons            : false,
@@ -90,6 +94,32 @@ define('package/quiqqer/contact/bin/controls/backend/RequestList', [
             });
 
             this.addButton(FormSelect);
+
+            this.addButton(new QUISeparator());
+
+            this.$ViewBtn = new QUIButton({
+                disabled : true,
+                text     : QUILocale.get(lg, 'controls.RequestList.btn.view_request'),
+                textimage: 'fa fa-eye',
+                events   : {
+                    onClick: function () {
+                        self.$showRequestDetails(self.$Grid.getSelectedData()[0]);
+                    }
+                }
+            });
+
+            this.addButton(this.$ViewBtn);
+
+            this.$DeleteBtn = new QUIButton({
+                disabled : true,
+                text     : QUILocale.get(lg, 'controls.RequestList.btn.delete_requests'),
+                textimage: 'fa fa-trash',
+                events   : {
+                    onClick: this.$deleteRequests
+                }
+            });
+
+            this.addButton(this.$DeleteBtn);
 
             this.Loader.show();
 
@@ -104,13 +134,21 @@ define('package/quiqqer/contact/bin/controls/backend/RequestList', [
                         Form.id
                     );
 
-                    self.$Forms[Form.id] = JSON.decode(Form.dataFields);
+                    self.$Forms[Form.id] = {
+                        fields: JSON.decode(Form.dataFields),
+                        title : Form.title
+                    };
                 }
 
-                console.log(self.$Forms);
-            });
+                var infoText = QUILocale.get(lg, 'controls.RequestList.select_info');
 
-            //this.$load();
+                if (!forms.length) {
+                    infoText = QUILocale.get(lg, 'controls.RequestList.no_forms_info');
+                    FormSelect.disable();
+                }
+
+                self.setContent('<div class="form-select-info">' + infoText + '</div>');
+            });
         },
 
         /**
@@ -118,6 +156,8 @@ define('package/quiqqer/contact/bin/controls/backend/RequestList', [
          */
         refresh: function () {
             if (this.$Grid) {
+                this.$ViewBtn.disable();
+                this.$DeleteBtn.disable();
                 this.$Grid.refresh();
             }
         },
@@ -142,14 +182,26 @@ define('package/quiqqer/contact/bin/controls/backend/RequestList', [
         $buildFormTable: function (id) {
             var self = this;
 
+            this.$ViewBtn.disable();
+            this.$DeleteBtn.disable();
+
             var columns = [{
+                header   : QUILocale.get('quiqqer/system', 'id'),
+                dataIndex: 'id',
+                dataType : 'number',
+                width    : 75,
+            }, {
                 header   : QUILocale.get(lg, 'controls.RequestList.tbl.header.submitDate'),
                 dataIndex: 'submitDate',
                 dataType : 'string',
-                width    : 150
+                width    : 200
+            }, {
+                dataIndex: 'formId',
+                dataType : 'number',
+                hidden   : true
             }];
 
-            var formFields = this.$Forms[id];
+            var formFields = this.$Forms[id].fields;
 
             for (var i = 0, len = formFields.length; i < len; i++) {
                 var Field = formFields[i];
@@ -172,37 +224,31 @@ define('package/quiqqer/contact/bin/controls/backend/RequestList', [
             this.$Grid = new Grid(this.$GridParent, {
                 columnModel      : columns,
                 pagination       : true,
-                serverSort       : true,
+                serverSort       : false,
                 selectable       : true,
-                multipleSelection: true
+                multipleSelection: true,
+                exportData       : true,
+                exportTypes      : {
+                    pdf : 'PDF',
+                    csv : 'CSV',
+                    json: 'JSON'
+                }
             });
 
             this.$Grid.addEvents({
                 onDblClick: function () {
-                    // @todo
-                    //self.$managePackages(
-                    //    self.$Grid.getSelectedData()[0].id
-                    //);
+                    self.$showRequestDetails(self.$Grid.getSelectedData()[0]);
                 },
-                onClick   : function (event) {
-                    //var selected = self.$Grid.getSelectedData();
-                    //
-                    //self.getButtons('delete').enable();
-                    //self.getButtons('sendmail').enable();
-                    //
-                    //if (!event.cell.hasClass('clickable')) {
-                    //    return;
-                    //}
-                    //
-                    //var Row = selected[0];
-                    //
-                    //if (Row.userId) {
-                    //    self.Loader.show();
-                    //
-                    //    self.$openUserPanel(Row.userId).then(function () {
-                    //        self.Loader.hide();
-                    //    });
-                    //}
+                onClick   : function () {
+                    var selected = self.$Grid.getSelectedData();
+
+                    if (selected.length === 1) {
+                        self.$ViewBtn.enable();
+                    } else {
+                        self.$ViewBtn.disable();
+                    }
+
+                    self.$DeleteBtn.enable();
                 },
                 onRefresh : this.$listRefresh
             });
@@ -256,15 +302,106 @@ define('package/quiqqer/contact/bin/controls/backend/RequestList', [
          * @param {Object} GridData
          */
         $setGridData: function (GridData) {
-            var textUnused       = QUILocale.get(lg, 'controls.RequestList.tbl.status.unused');
-            var textUnlimited    = QUILocale.get(lg, 'controls.RequestList.tbl.validUntil.unlimited');
-            var textInvalid      = QUILocale.get(lg, 'controls.RequestList.tbl.status.invalid');
-            var textUserNotExist = QUILocale.get(lg, 'controls.RequestList.tbl.user.not_exist');
-
-            //for (var i = 0, len = GridData.data.length; i < len; i++) {
-            //}
-
             this.$Grid.setData(GridData);
+        },
+
+        /**
+         * Show details of a specific form request in a Popup
+         *
+         * @param {Object} RequestData - The request data
+         */
+        $showRequestDetails: function (RequestData) {
+            var Form = this.$Forms[RequestData.formId];
+
+            var Popup = new QUIConfirm({
+                maxHeight: 800,
+
+                title: Form.title + ' - ' + RequestData.submitDate,
+                icon : 'fa fa-list-alt',
+
+                cancel_button: false,
+                ok_button    : {
+                    text     : 'OK',
+                    textimage: 'icon-ok fa fa-check'
+                },
+                events       : {
+                    onOpen: function () {
+                        var Content = Popup.getContent();
+
+                        Content.set('html', '');
+
+                        var List = new Element('ul').inject(Content);
+
+                        for (var i = 0, len = Form.fields.length; i < len; i++) {
+                            new Element('li', {
+                                'class': 'quiqqer-contact-requestlist-request-field',
+                                html   : '<span>' + Form.fields[i].label + '</span>' +
+                                '<p>' + RequestData[Form.fields[i].name] + '</p>'
+                            }).inject(List);
+                        }
+                    }
+                }
+
+            });
+
+            Popup.open();
+        },
+
+        /**
+         * Delete contact requests of the selected rows
+         */
+        $deleteRequests: function () {
+            var self      = this;
+            var deleteIds = [];
+            var rows      = this.$Grid.getSelectedData();
+            var Form      = this.$Forms[this.$currentFormId];
+
+            for (var i = 0, len = rows.length; i < len; i++) {
+                deleteIds.push(rows[i].id);
+            }
+
+            // open popup
+            var Popup = new QUIConfirm({
+                maxHeight: 300,
+                autoclose: false,
+
+                information: QUILocale.get(lg,
+                    'controls.RequestList.delete.info', {
+                        form      : Form.title,
+                        requestIds: '#' + deleteIds.join(', #')
+                    }
+                ),
+                title      : QUILocale.get(lg, 'controls.RequestList.delete.title'),
+                texticon   : 'fa fa-trash',
+                text       : QUILocale.get(lg, 'controls.RequestList.delete.title'),
+                icon       : 'fa fa-trash',
+
+                cancel_button: {
+                    text     : false,
+                    textimage: 'icon-remove fa fa-remove'
+                },
+                ok_button    : {
+                    text     : false,
+                    textimage: 'icon-ok fa fa-check'
+                },
+                events       : {
+                    onSubmit: function () {
+                        Popup.Loader.show();
+
+                        Requests.deleteRequests(deleteIds).then(function (success) {
+                            if (!success) {
+                                Popup.Loader.hide();
+                                return;
+                            }
+
+                            Popup.close();
+                            self.refresh();
+                        });
+                    }
+                }
+            });
+
+            Popup.open();
         }
     });
 });

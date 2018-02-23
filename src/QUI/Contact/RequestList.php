@@ -18,44 +18,35 @@ class RequestList
      * Save a form request to the database
      *
      * @param QUI\FormBuilder\Field[] $formFields - The form fields with submit data
-     * @param Site $FormSite (optional) - The Site the form was submitted from
+     * @param Site $FormSite - The Site the form was submitted from
      * @return void
+     *
+     * @throws QUI\Exception
      */
-    public static function saveFormRequest($formFields, $FormSite = null)
+    public static function saveFormRequest($formFields, $FormSite)
     {
-        $title = 'other';
-
-        if (!is_null($FormSite)) {
-            $title = $FormSite->getAttribute('title') . ' (' . $FormSite->getProject()->getLang() . ')';
-        }
-
-        $Now = new \DateTime();
-
-        $dataFields = array();
+        $Now        = new \DateTime();
         $submitData = array();
 
         foreach ($formFields as $FormField) {
-            $fieldName = $FormField->getName();
-
-            $dataFields[] = array(
-                'name'     => $fieldName,
-                'label'    => $FormField->getAttribute('label') ?: $fieldName,
-                'required' => $FormField->getAttribute('required') ? true : false
-            );
-
-            $submitData[$fieldName] = $FormField->getValueText();
+            $submitData[$FormField->getName()] = $FormField->getValueText();
         }
 
-        $dataFields = json_encode($dataFields);
+        $formId = self::getFormIdByIdentifier(self::getFormIdentifier($FormSite));
+
+        if (!$formId) {
+            throw new ContactException(array(
+                'quiqqer/contact',
+                'exception.RequestList.no_form_id'
+            ));
+        }
 
         QUI::getDataBase()->insert(
-            self::getTable(),
+            self::getRequestsTable(),
             array(
-                'title'      => $title,
+                'formId'     => $formId,
                 'submitDate' => $Now->format('Y-m-d H:i:s'),
                 'submitData' => json_encode($submitData),
-                'dataFields' => $dataFields,
-                'identifier' => hash('sha256', $title . $dataFields)
             )
         );
     }
@@ -69,11 +60,12 @@ class RequestList
     {
         $result = QUI::getDataBase()->fetch(array(
             'select' => array(
+                'id',
                 'identifier',
                 'title',
                 'dataFields'
             ),
-            'from'   => self::getTable()
+            'from'   => self::getFormsTable()
         ));
 
         $parsed       = array();
@@ -99,7 +91,6 @@ class RequestList
                 $title .= ' [' . ($parsedTitles[$titleHash] - 1) . ']';
             }
 
-            $row['id']    = $identifier;
             $row['title'] = $title;
             $forms[]      = $row;
         }
@@ -128,10 +119,10 @@ class RequestList
             $sql = "SELECT *";
         }
 
-        $sql .= " FROM `" . self::getTable() . "`";
+        $sql .= " FROM `" . self::getRequestsTable() . "`";
 
         if (!empty($searchParams['id'])) {
-            $where[] = '`identifier` = ' . (int)$searchParams['id'];
+            $where[] = '`formId` = ' . (int)$searchParams['id'];
         }
 
         if (!empty($searchParams['search'])) {
@@ -160,24 +151,8 @@ class RequestList
             $sql .= " WHERE " . implode(" AND ", $where);
         }
 
-        // ORDER
-        if (!empty($searchParams['sortOn'])
-        ) {
-            $sortOn = Orthos::clear($searchParams['sortOn']);
-            $order  = "ORDER BY " . $sortOn;
-
-            if (isset($searchParams['sortBy']) &&
-                !empty($searchParams['sortBy'])
-            ) {
-                $order .= " " . Orthos::clear($searchParams['sortBy']);
-            } else {
-                $order .= " ASC";
-            }
-
-            $sql .= " " . $order;
-        } else {
-            $sql .= " ORDER BY id DESC";
-        }
+        // ORDER BY
+        $sql .= " ORDER BY id DESC";
 
         // LIMIT
         if (!empty($gridParams['limit'])
@@ -216,11 +191,103 @@ class RequestList
     }
 
     /**
+     * Delete contact requests
+     *
+     * @param array $requestIds
+     * @return void
+     */
+    public static function deleteRequests($requestIds)
+    {
+        array_walk($requestIds, function (&$v) {
+            $v = (int)$v;
+        });
+
+        QUI::getDataBase()->delete(
+            self::getRequestsTable(),
+            array(
+                'id' => array(
+                    'type'  => 'IN',
+                    'value' => $requestIds
+                )
+            )
+        );
+    }
+
+    /**
+     * Get unique form identifier of a quiqqer/contact Site
+     *
+     * @param Site $Site
+     * @return string
+     *
+     * @throws QUI\Exception
+     */
+    public static function getFormIdentifier(Site $Site)
+    {
+        $Project  = $Site->getProject();
+        $formData = $Site->getAttribute('quiqqer.contact.settings.form');
+
+        if (empty($formData)) {
+            $formHash = '';
+        } else {
+            $formData = json_decode($formData, true);
+            $hashData = array();
+
+            foreach ($formData['elements'] as $element) {
+                $hashData[] = $element['type'];
+            }
+
+            $formHash = json_encode($hashData);
+        }
+
+        $identifierParts = array(
+            $Site->getId(),
+            $Project->getName(),
+            $Project->getLang(),
+            $formHash
+        );
+
+        return hash('sha256', implode('', $identifierParts));
+    }
+
+    /**
+     * Get contact form ID by identifier
+     *
+     * @param string $identifier
+     * @return int|false - ID if found; false if not found
+     */
+    public static function getFormIdByIdentifier($identifier)
+    {
+        $result = QUI::getDataBase()->fetch(array(
+            'select' => 'id',
+            'from'   => self::getFormsTable(),
+            'where'  => array(
+                'identifier' => $identifier
+            )
+        ));
+
+        if (empty($result)) {
+            return false;
+        }
+
+        return (int)$result[0]['id'];
+    }
+
+    /**
+     * Get table where forms are saved
+     *
+     * @return string
+     */
+    public static function getFormsTable()
+    {
+        return QUI::getDBTableName('quiqqer_contact_forms');
+    }
+
+    /**
      * Get table where requests are saved
      *
      * @return string
      */
-    public static function getTable()
+    public static function getRequestsTable()
     {
         return QUI::getDBTableName('quiqqer_contact_requests');
     }

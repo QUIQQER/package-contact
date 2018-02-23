@@ -1,9 +1,5 @@
 <?php
 
-/**
- * This file contains package_quiqqer_invitecode_ajax_getList
- */
-
 use QUI\Contact\RequestList;
 use QUI\Utils\Security\Orthos;
 use QUI\Utils\Grid;
@@ -20,17 +16,22 @@ QUI::$Ajax->registerFunction(
         $searchParams = Orthos::clearArray(json_decode($searchParams, true));
 
         try {
-            $Grid   = new Grid($searchParams);
-            $result = RequestList::getList($searchParams);
+            $Grid     = new Grid($searchParams);
+            $result   = RequestList::getList($searchParams);
+            $gridRows = array();
 
             foreach ($result as $k => $row) {
-                $result[$k]['submitData'] = json_decode($row['submitData'], true);
+                $rowData = json_decode($row['submitData'], true);
+
+                $rowData['submitDate'] = $row['submitDate'];
+                $rowData['id']         = $row['id'];
+                $rowData['formId']     = $row['formId'];
+
+                $gridRows[] = $rowData;
             }
 
-            \QUI\System\Log::writeRecursive($result);
-
             return $Grid->parseResult(
-                $result,
+                $gridRows,
                 RequestList::getList($searchParams, true)
             );
         } catch (\Exception $Exception) {

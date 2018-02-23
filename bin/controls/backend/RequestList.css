@@ -10,29 +10,20 @@
     width: 100%;
 }
 
-.quiqqer-contact-requestlist-tbl-status-unused {
-    color: #bb252a;
+.quiqqer-contact-requestlist .form-select {
+    min-width: 250px;
 }
 
-.quiqqer-contact-requestlist-tbl-status-used {
-    color: #608a0e;
+.quiqqer-contact-requestlist .form-select-info {
+    margin-top: 10%;
+    padding: 0 25%;
+    text-align: center;
 }
 
-.quiqqer-contact-requestlist-tbl-status-invalid {
-    color: #454545;
-    font-style: italic;
+.quiqqer-contact-requestlist-request-field:not(:last-of-type) {
+    margin-bottom: 10px;
 }
 
-.quiqqer-contact-requestlist-sendmail-resend {
-    float: right;
-    margin-top: 20px;
-}
-
-.quiqqer-contact-requestlist-sendmail-resend input {
-    float: left;
-}
-
-.quiqqer-contact-requestlist-tbl-user-not_exist {
-    color: #999;
-    font-style: italic;
+.quiqqer-contact-requestlist-request-field span {
+    font-weight: bold;
 }

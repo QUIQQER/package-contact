@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <events>
-    <event on="onSiteInit" fire="\QUI\Contact\EventHandler::onSiteInit" />
+    <event on="onSiteInit" fire="\QUI\Contact\EventHandler::onSiteInit"/>
+    <event on="onPackageSetup" fire="\QUI\Contact\EventHandler::onPackageSetup"/>
+    <event on="onSiteSave" fire="\QUI\Contact\EventHandler::onSiteSave"/>
 </events>

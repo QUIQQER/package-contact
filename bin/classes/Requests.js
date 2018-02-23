@@ -47,6 +47,22 @@ define('package/quiqqer/contact/bin/classes/Requests', [
                     onError  : reject
                 });
             });
+        },
+
+        /**
+         * Delete contact requests
+         *
+         * @param {Array} requestIds - The request IDs that are to be deleted
+         * @return {Promise}
+         */
+        deleteRequests: function (requestIds) {
+            return new Promise(function (resolve, reject) {
+                QUIAjax.get('package_quiqqer_contact_ajax_requests_deleteRequests', resolve, {
+                    'package' : pkg,
+                    requestIds: JSON.encode(requestIds),
+                    onError   : reject
+                });
+            });
         }
     });
 });

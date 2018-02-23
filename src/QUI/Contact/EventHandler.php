@@ -3,7 +3,11 @@
 /**
  * This file contains QUI\Contact\EventHandler
  */
+
 namespace QUI\Contact;
+
+use QUI;
+use QUI\Projects\Site;
 
 /**
  * Class EventHandler
@@ -22,5 +26,136 @@ class EventHandler
         ) {
             $Site->setAttribute('nocache', 1);
         }
+    }
+
+    /**
+     * quiqqer/quiqqer: onPackageSetup
+     *
+     * @param QUI\Package\Package $Package
+     * @return void
+     *
+     * @throws QUI\Exception
+     */
+    public static function onPackageSetup(QUI\Package\Package $Package)
+    {
+        if ($Package->getName() !== 'quiqqer/contact') {
+            return;
+        }
+
+        $Projects = QUI::getProjectManager();
+        $projects = $Projects->getProjects();
+
+        foreach ($projects as $project) {
+            $Project = $Projects->getProject($project);
+
+            foreach ($Project->getLanguages() as $lang) {
+                $Project = $Projects->getProject($project, $lang);
+
+                $contactSites = $Project->getSites(array(
+                    'where' => array(
+                        'active' => -1,
+                        'type'   => 'quiqqer/contact:types/contact'
+                    )
+                ));
+
+                foreach ($contactSites as $Site) {
+                    self::parseContactSiteIntoFormTable($Site);
+                }
+            }
+        }
+    }
+
+    /**
+     * quiqqer/quiqqer: onSiteSave
+     *
+     * @param Site $Site
+     * @return void
+     *
+     * @throws QUI\Exception
+     */
+    public static function onSiteSave(Site $Site)
+    {
+        if ($Site->getAttribute('type') === 'quiqqer/contact:types/contact') {
+            self::parseContactSiteIntoFormTable($Site);
+        }
+    }
+
+    /**
+     * Parses information from a quiqqer/contact:types/contact Site to the quiqqer_contact_forms table
+     *
+     * @param Site $Site
+     * @throws QUI\Exception
+     */
+    protected static function parseContactSiteIntoFormTable(Site $Site)
+    {
+        $formFields = $Site->getAttribute('quiqqer.contact.settings.form');
+
+        if (!$formFields) {
+            return;
+        }
+
+        $formFields = json_decode($formFields, true);
+
+        if (empty($formFields['elements'])) {
+            return;
+        }
+
+        $formFields     = $formFields['elements'];
+        $formIdentifier = RequestList::getFormIdentifier($Site);
+        $Project        = $Site->getProject();
+        $title          = $Project->getName() . ' (' . $Project->getLang() . '): ' . $Site->getAttribute('title');
+
+        $result = QUI::getDataBase()->fetch(array(
+            'count' => 1,
+            'from'  => RequestList::getFormsTable(),
+            'where' => array(
+                'identifier' => $formIdentifier
+            )
+        ));
+
+        $exists      = (int)current(current($result)) > 0;
+        $dataFields  = array();
+        $FormBuilder = new QUI\FormBuilder\Builder();
+
+        foreach ($formFields as $k => $field) {
+            $Field = $FormBuilder->getField($field);
+            $Field->setNameId($k);
+
+            $fieldName = $Field->getName();
+
+            $dataFields[] = array(
+                'name'     => $fieldName,
+                'label'    => $Field->getAttribute('label') ?: $fieldName,
+                'required' => $Field->getAttribute('required') ? true : false
+            );
+        }
+
+        $dataFields = json_encode($dataFields);
+
+        // if exists only update title
+        if ($exists) {
+            QUI::getDataBase()->update(
+                RequestList::getFormsTable(),
+                array(
+                    'title'      => $title,
+                    'dataFields' => $dataFields
+                ),
+                array(
+                    'identifier' => $formIdentifier
+                )
+            );
+
+            return;
+        }
+
+        // if not exists -> insert
+        QUI::getDataBase()->insert(
+            RequestList::getFormsTable(),
+            array(
+                'title'      => $title,
+                'dataFields' => $dataFields,
+                'identifier' => $formIdentifier
+            )
+        );
     }
 }
