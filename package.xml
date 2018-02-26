@@ -8,7 +8,14 @@
             <locale group="quiqqer/contact" var="package.description"/>
         </description>
 
-        <image src="URL_OPT_DIR/quiqqer/package-contact/bin/images/Logo.jpg"/>
+        <image src="URL_OPT_DIR/quiqqer/contact/bin/images/Logo.jpg"/>
+
+        <preview>
+            <image src="URL_OPT_DIR/quiqqer/contact/bin/images/preview/Backend_Contact_Requests.png"/>
+            <image src="URL_OPT_DIR/quiqqer/contact/bin/images/preview/Backend_Contact_Success.png"/>
+            <image src="URL_OPT_DIR/quiqqer/contact/bin/images/preview/Backend_Formbuilder.png"/>
+            <image src="URL_OPT_DIR/quiqqer/contact/bin/images/preview/Frontend_Form.png"/>
+        </preview>
 
         <support>
             <email><![CDATA[support@pcsg.de]]></email>
