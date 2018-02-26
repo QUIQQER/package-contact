@@ -1,0 +1,34 @@
+<quiqqer>
+    <package>
+        <title>
+            <locale group="quiqqer/contact" var="package.title"/>
+        </title>
+
+        <description>
+            <locale group="quiqqer/contact" var="package.description"/>
+        </description>
+
+        <image src="URL_OPT_DIR/quiqqer/contact/bin/images/Logo.jpg"/>
+
+        <preview>
+            <image src="URL_OPT_DIR/quiqqer/contact/bin/images/preview/Backend_Contact_Requests.png"/>
+            <image src="URL_OPT_DIR/quiqqer/contact/bin/images/preview/Backend_Contact_Success.png"/>
+            <image src="URL_OPT_DIR/quiqqer/contact/bin/images/preview/Backend_Formbuilder.png"/>
+            <image src="URL_OPT_DIR/quiqqer/contact/bin/images/preview/Frontend_Form.png"/>
+        </preview>
+
+        <support>
+            <email><![CDATA[support@pcsg.de]]></email>
+            <forum><![CDATA[https://community.quiqqer.com]]></forum>
+            <source><![CDATA[https://dev.quiqqer.com/quiqqer/package-contact]]></source>
+            <issues><![CDATA[https://dev.quiqqer.com/quiqqer/package-contact/issues]]></issues>
+            <wiki><![CDATA[https://dev.quiqqer.com/quiqqer/package-contact/wikis/home]]></wiki>
+        </support>
+
+        <copyright>
+            <name><![CDATA[PCSG - Computer & Internet Service OHG]]></name>
+            <license><![CDATA[PCSG QL-1.0]]></license>
+            <license><![CDATA[CC BY-NC-SA 4.0]]></license>
+        </copyright>
+    </package>
+</quiqqer>

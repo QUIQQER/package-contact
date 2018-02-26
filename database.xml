@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+
+    <global>
+        <table name="quiqqer_contact_forms">
+            <field type="BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY">id</field>
+            <field type="VARCHAR(255) NOT NULL">identifier</field>
+            <field type="VARCHAR(255) NOT NULL">title</field>
+            <field type="MEDIUMTEXT NOT NULL">dataFields</field>
+        </table>
+
+        <table name="quiqqer_contact_requests">
+            <field type="BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY">id</field>
+            <field type="BIGINT(20) NOT NULL">formId</field>
+            <field type="DATETIME NOT NULL">submitDate</field>
+            <field type="MEDIUMTEXT NOT NULL">submitData</field>
+        </table>
+    </global>
+
+</database>

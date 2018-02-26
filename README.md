@@ -1,41 +1,38 @@
+![QUIQQER Contact](bin/images/Readme.jpg)
 
-QUIQQER Kontakt
+QUIQQER Contact
 ========
 
-Paketname:
+With QUIQQER Contact you can create and manage contact forms with an easy to use drag & drop form editor.
+
+Package name:
 
     quiqqer/contact
 
-
 Features
 --------
-
-- Kontaktformulare erstellen
-
+* Create sites of type `quiqqer/contact` and build forms with the **form editor**
+* Set custom success messages for each form (WYSIWYG editor)
+* Send notifications of form requests via **e-mail** to quickly see when a user wants to contact you 
+* Use the **Contact Requests Viewer** to view all submitted contact requests and export them easily in different formats (CSV, JSON, PDF)
+* Optionally use a CAPTCHA to protect your forms from automated spam
+* Use special form fields like WYSIWYG-content, User select or Full Name input
 
 Installation
 ------------
+Package name: quiqqer/contact
 
-Der Paketname ist: quiqqer/contact
-
-
-Mitwirken
+Collaboration
 ----------
-
 - Issue Tracker: https://dev.quiqqer.com/quiqqer/package-contact/issues
-- Source Code: https://dev.quiqqer.com/quiqqer/package-contact/tree/master
-
+- Source Code: https://dev.quiqqer.com/quiqqer/package-contact
 
 Support
 -------
-
-Falls Sie ein Fehler gefunden haben oder Verbesserungen wünschen,
-Dann können Sie gerne an support@pcsg.de eine E-Mail schreiben.
-
+If you found any bugs or flaws, have any wishes or suggestions you can send an email
+to [support@pcsg.de](mailto:support@pcsg.de) to inform us about your concerns. 
+We will try to respond to your request and forward it to the responsible developer.
 
 License
 -------
-
-
-Entwickler
---------
+PCSG QL-1.0, CC BY-NC-SA 4.0

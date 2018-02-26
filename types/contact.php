@@ -1,5 +1,7 @@
 <?php
 
+use QUI\Contact\RequestList;
+
 $formData = json_decode($Site->getAttribute('quiqqer.contact.settings.form'), true);
 
 if (!is_array($formData)) {
@@ -9,31 +11,49 @@ if (!is_array($formData)) {
 $Form = new QUI\FormBuilder\Builder();
 $Form->load($formData);
 $Form->setAttribute('Template', $Template);
+$Form->setSite($Site);
 
 try {
     $Form->handleRequest();
 
     if ($Form->isSuccess()) {
+        // save form request in database
+        $saveForm = boolval($Form->getAttribute('save'));
+
+        if ($saveForm) {
+            RequestList::saveFormRequest($Form->getElements(), $Site);
+        }
+
+        // send form request via mail
         $Mail      = QUI::getMailManager()->getMailer();
         $addresses = $Form->getAddresses();
 
-        foreach ($addresses as $addressData) {
-            $Mail->addRecipient($addressData['email'], $addressData['name']);
+        if (!$saveForm && empty($addresses)) {
+            throw new \QUI\Contact\ContactException(array(
+                'quiqqer/contact',
+                'exception.types.contact.no_recipients'
+            ));
         }
 
-        /* @var $FormElement \QUI\FormBuilder\Field */
-        foreach ($Form->getElements() as $FormElement) {
-            if ($FormElement->getType() == 'QUI\FormBuilder\Fields\EMail') {
-                $data = $FormElement->getAttribute('data');
-                if (QUI\Utils\Security\Orthos::checkMailSyntax($data)) {
-                    $Mail->addReplyTo($FormElement->getAttribute('data'));
+        if (!empty($addresses)) {
+            foreach ($addresses as $addressData) {
+                $Mail->addRecipient($addressData['email'], $addressData['name']);
+            }
+
+            /* @var $FormElement \QUI\FormBuilder\Field */
+            foreach ($Form->getElements() as $FormElement) {
+                if ($FormElement->getType() == 'QUI\FormBuilder\Fields\EMail') {
+                    $data = $FormElement->getAttribute('data');
+                    if (QUI\Utils\Security\Orthos::checkMailSyntax($data)) {
+                        $Mail->addReplyTo($FormElement->getAttribute('data'));
+                    }
                 }
             }
-        }
 
-        $Mail->setSubject($Site->getAttribute('title'));
-        $Mail->setBody($Form->getMailBody());
-        $Mail->send();
+            $Mail->setSubject($Site->getAttribute('title'));
+            $Mail->setBody($Form->getMailBody());
+            $Mail->send();
+        }
 
         $Engine->assign(array(
             'formMessage' => $Site->getAttribute('quiqqer.contact.success'),

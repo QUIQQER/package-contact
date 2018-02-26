@@ -1,31 +1,37 @@
 {
-    "name" : "quiqqer/contact",
-    "type" : "quiqqer-module",
-    "description" : "Kontaktformulare für QUIQQER",
-    "version" : "dev-master",
-    "license" : "",
-
-    "authors" : [{
-        "name": "Henning Leutz",
-        "email": "support@pcsg.de",
-        "homepage": "http://www.pcsg.de",
-        "role": "Developer"
-    }],
-
-    "support" : {
-        "email": "support@pcsg.de",
-        "url": "http://www.pcsg.de"
+  "name": "quiqqer/contact",
+  "type": "quiqqer-module",
+  "description": "Integrate complex forms into your web page using the simple form editor. Complex development of contact, offer and other forms are a thing of the past.",
+  "version": "dev-master",
+  "license": [
+    "PCSG QL-1.0",
+    "CC BY-NC-SA 4.0"
+  ],
+  "authors": [
+    {
+      "name": "Henning Leutz",
+      "email": "support@pcsg.de",
+      "homepage": "http://www.pcsg.de",
+      "role": "Developer"
     },
-
-    "require": {
-        "php" : ">=5.3",
-        "quiqqer/quiqqer" : "*@dev",
-        "quiqqer/formbuilder" : "dev-dev"
-    },
-
-    "autoload": {
-        "psr-0" : {
-            "QUI" : "src/"
-        }
+    {
+      "name": "Patrick Müller",
+      "email": "support@pcsg.de",
+      "homepage": "http://www.pcsg.de",
+      "role": "Developer"
     }
+  ],
+  "support": {
+    "email": "support@pcsg.de",
+    "url": "http://www.pcsg.de"
+  },
+  "require": {
+    "quiqqer/quiqqer": ">=1.1|dev-master|dev-dev",
+    "quiqqer/formbuilder": ">=1.0|dev-master|dev-dev"
+  },
+  "autoload": {
+    "psr-0": {
+      "QUI": "src/"
+    }
+  }
 }

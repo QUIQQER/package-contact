@@ -2,6 +2,44 @@
 <locales>
     <groups name="quiqqer/contact" datatype="js">
 
+        <!-- Control: backend/RequestList -->
+        <locale name="controls.RequestList.title">
+            <de><![CDATA[Kontakt-Anfragen]]></de>
+            <en><![CDATA[Contact requests]]></en>
+        </locale>
+        <locale name="controls.RequestList.formselect_placeholder">
+            <de><![CDATA[-- Kontakt-Formular wählen --]]></de>
+            <en><![CDATA[-- Choose contact form --]]></en>
+        </locale>
+        <locale name="controls.RequestList.tbl.header.submitDate">
+            <de><![CDATA[Datum]]></de>
+            <en><![CDATA[Date]]></en>
+        </locale>
+        <locale name="controls.RequestList.select_info">
+            <de><![CDATA[Bitte wählen Sie ein Kontakt-Formular aus, dessen Daten angezeigt werden sollen.]]></de>
+            <en><![CDATA[Please select a contact form whose data you want to display.]]></en>
+        </locale>
+        <locale name="controls.RequestList.no_forms_info" html="true">
+            <de><![CDATA[Es existieren z.Z. noch keine Kontakt-Anfragen. Sobald Kontakt-Anfragen verfügbar sind, können Sie das entsprechende Kontakt-Formular oben auswählen. Sie können Kontakt-Formulare über eine Seite mit dem Typ <b>"QUIQQER - Kontakt"</b> erstellen.]]></de>
+            <en><![CDATA[Currently no contact requests exist yet. Once contact requests are available, you can select the appropriate contact form above. You can create contact forms with a Site of type <b>"QUIQQER - Contact"</b>.]]></en>
+        </locale>
+        <locale name="controls.RequestList.btn.view_request">
+            <de><![CDATA[Details anzeigen]]></de>
+            <en><![CDATA[Show details]]></en>
+        </locale>
+        <locale name="controls.RequestList.btn.delete_requests">
+            <de><![CDATA[Anfrage(n) löschen]]></de>
+            <en><![CDATA[Delete request(s)]]></en>
+        </locale>
+        <locale name="controls.RequestList.delete.info" html="true">
+            <de><![CDATA[Sind Sie sicher, dass Sie folgende Anfragen des Kontakt-Formulars <b>"[form]"</b> unwiderruflich löschen wollen?<br/><br/>[requestIds]]]></de>
+            <en><![CDATA[Are you sure you want to irrevocably delete the following requests for contact form <b>"[form]"</b>?<br/><br/>[requestIds]]]></en>
+        </locale>
+        <locale name="controls.RequestList.delete.title">
+            <de><![CDATA[Formular-Anfragen löschen]]></de>
+            <en><![CDATA[Delete form requests]]></en>
+        </locale>
+
     </groups>
 
     <groups name="quiqqer/contact" datatype="php">
@@ -17,19 +55,43 @@
             <de><![CDATA[Kontaktformular Erfolgsmeldung]]></de>
             <en><![CDATA[Contact form success message]]></en>
         </locale>
+
+        <!-- Ajax -->
+        <locale name="message.ajax.general_error">
+            <de><![CDATA[Beim Verarbeiten der Anfrage ist ein unerwarteter Fehler aufgetreten. Bitte prüfen Sie die Fehler-Logs oder kontaktieren Sie einen Administrator.]]></de>
+            <en><![CDATA[An unexpected error occurred while processing the request. Please check the error logs or contact an administrator.]]></en>
+        </locale>
+        <locale name="message.ajax.requests.deleteRequests.success">
+            <de><![CDATA[Die gewählten Kontakt-Anfragen wurden erfolgreich gelöscht.]]></de>
+            <en><![CDATA[The selected contact requests have been deleted successfully.]]></en>
+        </locale>
+
+        <!-- Site type: contact -->
+        <locale name="exception.types.contact.no_recipients">
+            <de><![CDATA[Das Formular kann leider nicht versendet werden, da keine Empfänger konfiguriert sind. Bitte wenden Sie sich an einen Administrator.]]></de>
+            <en><![CDATA[The form can not be sent because no recipients are configured. Please contact an administrator.]]></en>
+        </locale>
+
     </groups>
 
     <groups name="quiqqer/contact" datatype="php,js">
+
+        <!-- Menu -->
+        <locale name="menu.extras.contactrequests.title">
+            <de><![CDATA[Kontakt-Anfragen]]></de>
+            <en><![CDATA[Contact requests]]></en>
+        </locale>
+
         <locale name="package.title">
             <de><![CDATA[QUIQQER - Kontakt]]></de>
             <en><![CDATA[QUIQQER - Contact]]></en>
         </locale>
         <locale name="package.description">
             <de><![CDATA[
-            Erstellen Sie Formulare ganz nach Ihren Vorstellungen. Ein Formulareditor hilft Ihnen dabei.
+            Integrieren Sie aufwändige Formulare in Ihre Webseite mit dem einfache Formular Editor. Aufwendiges entwickeln von Kontakt-, Angebots- und Anmeldeformulare gehören der Vergangenheit an.
             ]]></de>
             <en><![CDATA[
-            Create forms to your needs. A form editor will help you.
+            Integrate complex forms into your web page using the simple form editor. Complex development of contact, offer and registration forms are a thing of the past.
             ]]></en>
         </locale>
         <locale name="quiqqer/contact:types/contact.title">

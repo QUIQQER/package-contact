@@ -1,0 +1,29 @@
+.quiqqer-contact-requestlist {
+    float: left;
+    height: 100%;
+    width: 100%;
+}
+
+.quiqqer-contact-requestlist-table {
+    float: left;
+    height: 100% !important;
+    width: 100%;
+}
+
+.quiqqer-contact-requestlist .form-select {
+    min-width: 250px;
+}
+
+.quiqqer-contact-requestlist .form-select-info {
+    margin-top: 10%;
+    padding: 0 25%;
+    text-align: center;
+}
+
+.quiqqer-contact-requestlist-request-field:not(:last-of-type) {
+    margin-bottom: 10px;
+}
+
+.quiqqer-contact-requestlist-request-field span {
+    font-weight: bold;
+}
