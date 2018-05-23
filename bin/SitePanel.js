@@ -3,21 +3,16 @@
  *
  * @module package/quiqqer/contact/bin/SitePanel
  * @author www.pcsg.de (Henning Leutz)
- *
- * @require qui/QUI
- * @require qui/controls/Control
- * @require package/quiqqer/formbuilder/bin/FormBuilder
+ * @author www.pcsg.de (Patrick Müller)
  */
 define('package/quiqqer/contact/bin/SitePanel', [
 
-    'qui/QUI',
     'qui/controls/Control',
-    'package/quiqqer/formbuilder/bin/FormBuilder'
+    'package/quiqqer/formbuilder/bin/FormBuilder',
+    'Ajax'
 
-], function (QUI, QUIControl, FormBuilder) {
+], function (QUIControl, FormBuilder, QUIAjax) {
     "use strict";
-
-    var lg = 'quiqqer/contact';
 
     return new Class({
 
@@ -53,7 +48,6 @@ define('package/quiqqer/contact/bin/SitePanel', [
          * @return {HTMLElement}
          */
         create: function () {
-
             this.$Elm = new Element('div', {
                 styles: {
                     'float': 'left',
@@ -62,8 +56,6 @@ define('package/quiqqer/contact/bin/SitePanel', [
                 }
             });
 
-            this.$Form.inject(this.$Elm);
-
             return this.$Elm;
         },
 
@@ -71,16 +63,25 @@ define('package/quiqqer/contact/bin/SitePanel', [
          * event : on inject
          */
         $onInject: function () {
-
+            var self     = this;
             var formData = this.$Site.getAttribute(
                 'quiqqer.contact.settings.form'
             );
 
             formData = JSON.decode(formData);
 
-            if (formData) {
-                this.$Form.load(formData);
-            }
+            this.$Panel.Loader.show();
+
+            this.$getSettings().then(function (Settings) {
+                self.$Panel.Loader.hide();
+
+                if (formData) {
+                    self.$Form.load(formData);
+                }
+
+                self.$Form.setAttributes(Settings.settings);
+                self.$Form.inject(self.$Elm);
+            });
 
             this.$Panel.minimizeCategory();
             this.$Panel.getContent().setStyle('padding', 0);
@@ -89,11 +90,25 @@ define('package/quiqqer/contact/bin/SitePanel', [
         /**
          * If the Panel is unloaded -> save all FormBuilder data
          */
-        unload: function() {
+        unload: function () {
             this.$Site.setAttribute(
                 'quiqqer.contact.settings.form',
                 JSON.encode(this.$Form.save())
             );
+        },
+
+        /**
+         * Get quiqqer/contact settings
+         *
+         * @return {Promise}
+         */
+        $getSettings: function () {
+            return new Promise(function (resolve, reject) {
+                QUIAjax.get('package_quiqqer_contact_ajax_getSettings', resolve, {
+                    'package': 'quiqqer/contact',
+                    onError  : reject
+                });
+            });
         },
 
         /**
