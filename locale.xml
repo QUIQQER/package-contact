@@ -94,12 +94,20 @@
             <de><![CDATA[Einstellungen]]></de>
             <en><![CDATA[Settings]]></en>
         </locale>
+        <locale name="settings.encryptContactRequests.title">
+            <de><![CDATA[Kontakt-Anfragen verschlüsselt speichern]]></de>
+            <en><![CDATA[Encrypt saved contact requests]]></en>
+        </locale>
+        <locale name="settings.encryptContactRequests.description">
+            <de><![CDATA[Alle Kontakt-Anfragen, die in der Datenbank gespeichert werden, sollen verschlüsselt werden]]></de>
+            <en><![CDATA[Every contact request that is saved in the database shall be encrypted]]></en>
+        </locale>
         <locale name="settings.globalPrivacyPolicyField.title">
             <de><![CDATA[Datenschutzbestimmungen-Checkbox für jedes Kontaktformular]]></de>
             <en><![CDATA[PrivacyPolicy checkbox for every contact form]]></en>
         </locale>
         <locale name="settings.globalPrivacyPolicyField.description" html="true">
-            <de><![CDATA[<p>In jedem Kontaktformular soll standardmäßig eine Checkbox zum Akzeptieren der Datenschutzbestimmungen eingefügt werden<p>
+            <de><![CDATA[<p>In jedem Kontaktformular soll standardmäßig eine Checkbox zum Akzeptieren der Datenschutzbestimmungen eingefügt werden</p>
 <ul>
 <li>Das Feld ist ein <b>Pflichtfeld</b></li>
 <li>Das Feld kann optional im Formular-Editor der jeweiligen Kontaktformular-Seite <b>deaktiviert</b> werden</li>
@@ -108,7 +116,15 @@
 <li>Es ist empfehlenswert, für diese Option eine Seite vom Seitentyp <b>"Datenschutz-Bestimmungen"</b> anzulegen, die Ihre jeweiligen Datenschutzbestimmungen als Inhalt hat</li>
 <li><b>WICHTIG:</b> Gilt nur für Kontaktformulare, die mit dem QUIQQER Form-Editor erstellt wurden!</li>
 </ul>]]></de>
-            <en><![CDATA[PrivacyPolicy checkbox for every contact form]]></en>
+            <en><![CDATA[<p>In each contact form, a checkbox for accepting the privacy policy should be inserted by default</p>
+<ul>
+<li>The field is a <b>required field</b></li>
+<li>The field can optionally be <b>deactivated</b> in the form editor of the respective contact form page</li>
+<li>The field will not be <b>added</b> if you have already created a field of type <b>"Privacy Policy checkbox"</b> for a contact form</li>
+<li>The text can be set using the language variable <b>[quqiqer / contact] global.PrivacyPolicy.label</b> under <b>Administration -> Translations</b></li>
+<li>It is recommended to create a page of type <b>"Privacy Policy</b> for this option, which has your privacy policy as the content</li>
+<li><b>IMPORTANT:</b> Only applies to contact forms created with the QUIQQER Form Editor!</li>
+</ul>]]></en>
         </locale>
 
         <!-- Menu -->
