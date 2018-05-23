@@ -5,6 +5,10 @@
         <config>
 
             <section name="settings">
+                <conf name="encryptContactRequests">
+                    <type><![CDATA[boolean]]></type>
+                    <defaultvalue>1</defaultvalue>
+                </conf>
                 <conf name="globalPrivacyPolicyField">
                     <type><![CDATA[boolean]]></type>
                     <defaultvalue>1</defaultvalue>
@@ -31,6 +35,15 @@
                         <title>
                             <locale group="quiqqer/contact" var="settings.title"/>
                         </title>
+
+                        <input conf="settings.encryptContactRequests" type="checkbox">
+                            <text>
+                                <locale group="quiqqer/contact" var="settings.encryptContactRequests.title"/>
+                            </text>
+                            <description>
+                                <locale group="quiqqer/contact" var="settings.encryptContactRequests.description"/>
+                            </description>
+                        </input>
 
                         <input conf="settings.globalPrivacyPolicyField" type="checkbox">
                             <text>
