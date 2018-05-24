@@ -21,7 +21,7 @@
   },
   "require": {
     "quiqqer/quiqqer": ">=1.1|dev-master|dev-dev",
-    "quiqqer/formbuilder": ">=1.1|dev-master|dev-dev"
+    "quiqqer/formbuilder": ">=1.1.1|dev-master|dev-dev"
   },
   "autoload": {
     "psr-0": {
