@@ -76,9 +76,13 @@
 
     <groups name="quiqqer/contact" datatype="php,js">
 
-        <locale name="global.PrivacyPolicy.label">
+        <locale name="global.PrivacyPolicy.checkbox_label">
             <de><![CDATA[Die [Datenschutzbestimmungen] habe ich zur Kenntnis genommen.]]></de>
             <en><![CDATA[I am aware of the [Privacy Policy].]]></en>
+        </locale>
+        <locale name="global.PrivacyPolicy.field_label">
+            <de><![CDATA[Datenschutzbestimmungen]]></de>
+            <en><![CDATA[Privacy Policy]]></en>
         </locale>
 
         <!-- Settings -->
