@@ -33,9 +33,13 @@ class Handler
             $customFields[] = [
                 'type'       => 'package/quiqqer/formbuilder/bin/fields/PrivacyPolicyCheckbox',
                 'attributes' => [
-                    'text' => QUI::getLocale()->get(
+                    'label'    => QUI::getLocale()->get(
                         'quiqqer/contact',
-                        'global.PrivacyPolicy.label'
+                        'global.PrivacyPolicy.field_label'
+                    ),
+                    'text'     => QUI::getLocale()->get(
+                        'quiqqer/contact',
+                        'global.PrivacyPolicy.checkbox_label'
                     ),
                     'required' => true
                 ]
