@@ -36,7 +36,8 @@ class Handler
                     'text' => QUI::getLocale()->get(
                         'quiqqer/contact',
                         'global.PrivacyPolicy.label'
-                    )
+                    ),
+                    'required' => true
                 ]
             ];
         }
