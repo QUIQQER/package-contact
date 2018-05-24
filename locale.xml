@@ -107,7 +107,7 @@
             <en><![CDATA[PrivacyPolicy checkbox for every contact form]]></en>
         </locale>
         <locale name="settings.globalPrivacyPolicyField.description" html="true">
-            <de><![CDATA[<p>In jedem Kontaktformular soll standardmäßig eine Checkbox zum Akzeptieren der Datenschutzbestimmungen eingefügt werden</p>
+            <de><![CDATA[In jedem Kontaktformular soll standardmäßig eine Checkbox zum Akzeptieren der Datenschutzbestimmungen eingefügt werden
 <ul>
 <li>Das Feld ist ein <b>Pflichtfeld</b></li>
 <li>Das Feld kann optional im Formular-Editor der jeweiligen Kontaktformular-Seite <b>deaktiviert</b> werden</li>
