@@ -111,7 +111,6 @@
 <ul>
 <li>Das Feld ist ein <b>Pflichtfeld</b></li>
 <li>Das Feld kann optional im Formular-Editor der jeweiligen Kontaktformular-Seite <b>deaktiviert</b> werden</li>
-<li>Das Feld wird <b>nicht hinzugefügt</b>, wenn sie für ein Kontaktformular bereits eigenständig ein Feld vom Typ <b>"Datenschutzbestimmungen-Checkbox"</b> angelegt haben</li>
 <li>Der Text kann über die Sprachvariable <b>[quqiqer/contact] global.PrivacyPolicy.label</b> unter <b>Verwaltung -> Sprachvariablen</b> festgelegt werden</li>
 <li>Es ist empfehlenswert, für diese Option eine Seite vom Seitentyp <b>"Datenschutz-Bestimmungen"</b> anzulegen, die Ihre jeweiligen Datenschutzbestimmungen als Inhalt hat</li>
 <li><b>WICHTIG:</b> Gilt nur für Kontaktformulare, die mit dem QUIQQER Form-Editor erstellt wurden!</li>
