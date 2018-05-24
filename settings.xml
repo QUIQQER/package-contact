@@ -11,7 +11,7 @@
                 </conf>
                 <conf name="globalPrivacyPolicyField">
                     <type><![CDATA[boolean]]></type>
-                    <defaultvalue>1</defaultvalue>
+                    <defaultvalue>0</defaultvalue>
                 </conf>
             </section>
 
