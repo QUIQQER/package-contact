@@ -1,15 +1,19 @@
 <?php
 
 use QUI\Contact\RequestList;
+use QUI\Contact\Handler;
 
 $formData = json_decode($Site->getAttribute('quiqqer.contact.settings.form'), true);
 
 if (!is_array($formData)) {
-    $formData = array();
+    $formData = [];
 }
 
 $Form = new QUI\FormBuilder\Builder();
 $Form->load($formData);
+
+Handler::addCustomFormFields($Form);
+
 $Form->setAttribute('Template', $Template);
 $Form->setSite($Site);
 
@@ -29,10 +33,10 @@ try {
         $addresses = $Form->getAddresses();
 
         if (!$saveForm && empty($addresses)) {
-            throw new \QUI\Contact\ContactException(array(
+            throw new \QUI\Contact\ContactException([
                 'quiqqer/contact',
                 'exception.types.contact.no_recipients'
-            ));
+            ]);
         }
 
         if (!empty($addresses)) {
@@ -55,18 +59,18 @@ try {
             $Mail->send();
         }
 
-        $Engine->assign(array(
+        $Engine->assign([
             'formMessage' => $Site->getAttribute('quiqqer.contact.success'),
             'form'        => ''
-        ));
+        ]);
     } else {
-        $Engine->assign(array(
+        $Engine->assign([
             'form' => $Form->create()
-        ));
+        ]);
     }
 } catch (QUI\Exception $Exception) {
-    $Engine->assign(array(
+    $Engine->assign([
         'formError' => $Exception->getMessage(),
         'form'      => $Form->create()
-    ));
+    ]);
 }

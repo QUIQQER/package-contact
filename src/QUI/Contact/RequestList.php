@@ -6,6 +6,7 @@ use QUI;
 use QUI\Projects\Site;
 use QUI\Utils\Security\Orthos;
 use QUI\Utils\Grid;
+use QUI\Security\Encryption;
 
 /**
  * Class RequestList
@@ -26,7 +27,9 @@ class RequestList
     public static function saveFormRequest($formFields, $FormSite)
     {
         $Now        = new \DateTime();
-        $submitData = array();
+        $submitData = [];
+        $Conf       = QUI::getPackage('quiqqer/contact')->getConfig();
+        $encrypt    = boolval($Conf->get('settings', 'encryptContactRequests'));
 
         foreach ($formFields as $FormField) {
             $submitData[$FormField->getName()] = $FormField->getValueText();
@@ -35,19 +38,25 @@ class RequestList
         $formId = self::getFormIdByIdentifier(self::getFormIdentifier($FormSite));
 
         if (!$formId) {
-            throw new ContactException(array(
+            throw new ContactException([
                 'quiqqer/contact',
                 'exception.RequestList.no_form_id'
-            ));
+            ]);
+        }
+
+        $submitData = json_encode($submitData);
+
+        if ($encrypt) {
+            $submitData = Encryption::encrypt($submitData);
         }
 
         QUI::getDataBase()->insert(
             self::getRequestsTable(),
-            array(
+            [
                 'formId'     => $formId,
                 'submitDate' => $Now->format('Y-m-d H:i:s'),
-                'submitData' => json_encode($submitData),
-            )
+                'submitData' => $submitData,
+            ]
         );
     }
 
@@ -58,19 +67,19 @@ class RequestList
      */
     public static function getForms()
     {
-        $result = QUI::getDataBase()->fetch(array(
-            'select' => array(
+        $result = QUI::getDataBase()->fetch([
+            'select' => [
                 'id',
                 'identifier',
                 'title',
                 'dataFields'
-            ),
+            ],
             'from'   => self::getFormsTable()
-        ));
+        ]);
 
-        $parsed       = array();
-        $parsedTitles = array();
-        $forms        = array();
+        $parsed       = [];
+        $parsedTitles = [];
+        $forms        = [];
 
         foreach ($result as $row) {
             $title      = $row['title'];
@@ -88,7 +97,7 @@ class RequestList
             $parsedTitles[$titleHash]++;
 
             if ($parsedTitles[$titleHash] > 1) {
-                $title .= ' [' . ($parsedTitles[$titleHash] - 1) . ']';
+                $title .= ' ['.($parsedTitles[$titleHash] - 1).']';
             }
 
             $row['title'] = $title;
@@ -104,14 +113,17 @@ class RequestList
      * @param $searchParams
      * @param bool $countOnly
      * @return array|int
+     * @throws QUI\Exception
      */
     public static function getList($searchParams, $countOnly = false)
     {
         $Grid       = new Grid($searchParams);
         $gridParams = $Grid->parseDBParams($searchParams);
+        $Conf       = QUI::getPackage('quiqqer/contact')->getConfig();
+        $encrypt    = boolval($Conf->get('settings', 'encryptContactRequests'));
 
-        $binds = array();
-        $where = array();
+        $binds = [];
+        $where = [];
 
         if ($countOnly) {
             $sql = "SELECT COUNT(*)";
@@ -119,36 +131,36 @@ class RequestList
             $sql = "SELECT *";
         }
 
-        $sql .= " FROM `" . self::getRequestsTable() . "`";
+        $sql .= " FROM `".self::getRequestsTable()."`";
 
         if (!empty($searchParams['id'])) {
-            $where[] = '`formId` = ' . (int)$searchParams['id'];
+            $where[] = '`formId` = '.(int)$searchParams['id'];
         }
 
         if (!empty($searchParams['search'])) {
-            $searchColumns = array(
+            $searchColumns = [
                 'submitData'
-            );
+            ];
 
-            $whereOr = array();
+            $whereOr = [];
 
             foreach ($searchColumns as $searchColumn) {
-                $whereOr[] = '`' . $searchColumn . '` LIKE :search';
+                $whereOr[] = '`'.$searchColumn.'` LIKE :search';
             }
 
             if (!empty($whereOr)) {
-                $where[] = '(' . implode(' OR ', $whereOr) . ')';
+                $where[] = '('.implode(' OR ', $whereOr).')';
 
-                $binds['search'] = array(
-                    'value' => '%' . $searchParams['search'] . '%',
+                $binds['search'] = [
+                    'value' => '%'.$searchParams['search'].'%',
                     'type'  => \PDO::PARAM_STR
-                );
+                ];
             }
         }
 
         // build WHERE query string
         if (!empty($where)) {
-            $sql .= " WHERE " . implode(" AND ", $where);
+            $sql .= " WHERE ".implode(" AND ", $where);
         }
 
         // ORDER BY
@@ -158,10 +170,10 @@ class RequestList
         if (!empty($gridParams['limit'])
             && !$countOnly
         ) {
-            $sql .= " LIMIT " . $gridParams['limit'];
+            $sql .= " LIMIT ".$gridParams['limit'];
         } else {
             if (!$countOnly) {
-                $sql .= " LIMIT " . (int)20;
+                $sql .= " LIMIT ".(int)20;
             }
         }
 
@@ -169,7 +181,7 @@ class RequestList
 
         // bind search values
         foreach ($binds as $var => $bind) {
-            $Stmt->bindValue(':' . $var, $bind['value'], $bind['type']);
+            $Stmt->bindValue(':'.$var, $bind['value'], $bind['type']);
         }
 
         try {
@@ -177,17 +189,37 @@ class RequestList
             $result = $Stmt->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\Exception $Exception) {
             QUI\System\Log::addError(
-                self::class . ' :: search() -> ' . $Exception->getMessage()
+                self::class.' :: search() -> '.$Exception->getMessage()
             );
 
-            return array();
+            return [];
         }
 
         if ($countOnly) {
             return (int)current(current($result));
         }
 
+        if ($encrypt) {
+            foreach ($result as $k => $row) {
+                if (!self::isJSON($row['submitData'])) {
+                    $result[$k]['submitData'] = Encryption::decrypt($row['submitData']);
+                }
+            }
+        }
+
         return $result;
+    }
+
+    /**
+     * Check if a string is in JSON format
+     *
+     * @param string $str
+     * @return bool
+     */
+    protected static function isJSON($str)
+    {
+        $str = json_decode($str, true);
+        return json_last_error() === JSON_ERROR_NONE && is_array($str);
     }
 
     /**
@@ -204,12 +236,12 @@ class RequestList
 
         QUI::getDataBase()->delete(
             self::getRequestsTable(),
-            array(
-                'id' => array(
+            [
+                'id' => [
                     'type'  => 'IN',
                     'value' => $requestIds
-                )
-            )
+                ]
+            ]
         );
     }
 
@@ -230,7 +262,7 @@ class RequestList
             $formHash = '';
         } else {
             $formData = json_decode($formData, true);
-            $hashData = array();
+            $hashData = [];
 
             foreach ($formData['elements'] as $element) {
                 $hashData[] = $element['type'];
@@ -239,12 +271,12 @@ class RequestList
             $formHash = json_encode($hashData);
         }
 
-        $identifierParts = array(
+        $identifierParts = [
             $Site->getId(),
             $Project->getName(),
             $Project->getLang(),
             $formHash
-        );
+        ];
 
         return hash('sha256', implode('', $identifierParts));
     }
@@ -257,13 +289,13 @@ class RequestList
      */
     public static function getFormIdByIdentifier($identifier)
     {
-        $result = QUI::getDataBase()->fetch(array(
+        $result = QUI::getDataBase()->fetch([
             'select' => 'id',
             'from'   => self::getFormsTable(),
-            'where'  => array(
+            'where'  => [
                 'identifier' => $identifier
-            )
-        ));
+            ]
+        ]);
 
         if (empty($result)) {
             return false;
