@@ -15,6 +15,23 @@
                 </conf>
             </section>
 
+            <section name="blacklist">
+                <conf name="ipAddresses">
+                    <type><![CDATA[string]]></type>
+                </conf>
+                <conf name="emailAddresses">
+                    <type><![CDATA[string]]></type>
+                </conf>
+                <conf name="DNSBLProviders">
+                    <type><![CDATA[string]]></type>
+                    <defaultvalue><![CDATA[["dnsbl.sorbs.net","zen.spamhaus.org","bl.spamcop.net","sbl.spamhaus.org","xbl.spamhaus.org"]]]></defaultvalue>
+                </conf>
+                <conf name="useDNSBL">
+                    <type><![CDATA[boolean]]></type>
+                    <defaultvalue>0</defaultvalue>
+                </conf>
+            </section>
+
         </config>
 
         <window>
@@ -31,6 +48,8 @@
                     <title>
                         <locale group="quiqqer/contact" var="settings.category.title"/>
                     </title>
+                    <icon>fa fa-cogs</icon>
+
                     <settings title="settings" name="settings">
                         <title>
                             <locale group="quiqqer/contact" var="settings.title"/>
@@ -53,6 +72,56 @@
                                 <locale group="quiqqer/contact" var="settings.globalPrivacyPolicyField.description"/>
                             </description>
                         </input>
+
+                    </settings>
+                </category>
+
+                <category name="blacklist">
+                    <title>
+                        <locale group="quiqqer/contact" var="settings.blacklist.title"/>
+                    </title>
+                    <icon>fa fa-ban</icon>
+
+                    <settings title="blacklist" name="blacklist">
+                        <title>
+                            <locale group="quiqqer/contact" var="settings.blacklist.title"/>
+                        </title>
+
+                        <textarea conf="blacklist.emailAddresses" rows="15" data-qui="package/quiqqer/quiqqer/bin/QUI/controls/settings/Textarea">
+                            <text>
+                                <locale group="quiqqer/contact" var="settings.blacklist.emailAddresses.title"/>
+                            </text>
+                            <description>
+                                <locale group="quiqqer/contact" var="settings.blacklist.emailAddresses.description"/>
+                            </description>
+                        </textarea>
+
+                        <textarea conf="blacklist.ipAddresses" rows="15" data-qui="package/quiqqer/quiqqer/bin/QUI/controls/settings/Textarea">
+                            <text>
+                                <locale group="quiqqer/contact" var="settings.blacklist.ipAddresses.title"/>
+                            </text>
+                            <description>
+                                <locale group="quiqqer/contact" var="settings.blacklist.ipAddresses.description"/>
+                            </description>
+                        </textarea>
+
+                        <input conf="blacklist.useDNSBL" type="checkbox">
+                            <text>
+                                <locale group="quiqqer/contact" var="settings.blacklist.useDNSBL.title"/>
+                            </text>
+                            <description>
+                                <locale group="quiqqer/contact" var="settings.blacklist.useDNSBL.description"/>
+                            </description>
+                        </input>
+
+                        <textarea conf="blacklist.DNSBLProviders" rows="15" data-qui="package/quiqqer/quiqqer/bin/QUI/controls/settings/Textarea">
+                            <text>
+                                <locale group="quiqqer/contact" var="settings.blacklist.DNSBLProviders.title"/>
+                            </text>
+                            <description>
+                                <locale group="quiqqer/contact" var="settings.blacklist.DNSBLProviders.description"/>
+                            </description>
+                        </textarea>
 
                     </settings>
                 </category>
