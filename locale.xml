@@ -73,11 +73,11 @@
         </locale>
         <locale name="exception.types.contact.blacklisted">
             <de><![CDATA[Ihre Kontakt-Anfrage konnte leider nicht gesendet werden, da ihre E-Mail-Adresse oder ihre IP-Adresse vom System geblockt ist.]]></de>
-            <en><![CDATA[]]></en>
+            <en><![CDATA[Your contact request could not be processed because your e-mail address or your IP address are blocked by the system.]]></en>
         </locale>
         <locale name="exception.types.contact.blacklisted_host" html="true">
             <de><![CDATA[Ihre Kontakt-Anfrage konnte leider nicht gesendet werden, da ihre IP-Adresse sich auf der Sperrliste von <b>[blacklistHost]</b> befindet.]]></de>
-            <en><![CDATA[]]></en>
+            <en><![CDATA[Your contact request could not be processed because your IP address is on the blacklist of <b>[blacklistHost]</b>.]]></en>
         </locale>
 
     </groups>
@@ -152,7 +152,12 @@
 <li>IP-Adress-Bereiche: <b>XXX.XXX.XXX.XXX-XXX.XXX.XXX.XXX</b></li>
 </ul>
 <p>IP-Adressen und/oder IP-Adress-Bereiche müssen <b>untereinander</b> geschrieben werden.</p>]]></de>
-            <en><![CDATA[]]></en>
+            <en><![CDATA[<p>Here you can filter contact requests by single IP addresses or IP address ranges. The following specifications can be made:</p>
+<ul>
+<li>Single IP address: <b>XXX.XXX.XXX.XXX</b></li>
+<li>IP address range: <b>XXX.XXX.XXX.XXX-XXX.XXX.XXX.XXX</b></li>
+</ul>
+<p>IP addresses and IP address ranges have to be written <b>line by line</b>.</p>]]></en>
         </locale>
         <locale name="settings.blacklist.emailAddresses.title">
             <de><![CDATA[E-Mail-Adressen]]></de>
@@ -166,7 +171,13 @@
 <li>E-Mail-Adresse(n) mit Wildcard: <b>*@*.ru</b> (blockt alle E-Mail-Adressen mit .ru am Ende)</li>
 </ul>
 <p>E-Mail-Adressen <b>untereinander</b> geschrieben werden.</p><p>Gilt nur für Formulare, die <b>mindesten 1</b> Feld vom Typ <b>"E-Mail-Adresse"</b> haben! Bei einem Formularen mit mehreren Feldern vom Typ "E-Mail-Adresse" wird der Filter auf alle E-Mail-Adressen angewandt und bei Übereinstimmung das Kontakt-Formular nicht abgesendet!</p>]]></de>
-            <en><![CDATA[]]></en>
+            <en><![CDATA[<p>Here you can filter contact requests by e-mail address. The following specifications can be made:</p>
+<ul>
+<li>Simple e-mail address: <b>mail@xyz.de</b></li>
+<li>E-Mail address with wildcard: <b>*@mail.ru</b> (blocks all e-mail addresses of provider mail.ru)</li>
+<li>E-Mail address with wildcard: <b>*@*.ru</b> (blocks all e-mail addresses with .ru at the end)</li>
+</ul>
+<p>E-Mail addresses have to be written <b>line by line</b>.</p><p>Only valid for forms that include <b>at least one</b> field of type "E-Mail address". In forms with multiple "E-Mail address" fields, every e-mail address is checked.</p>]]></en>
         </locale>
         <locale name="settings.blacklist.useDNSBL.title">
             <de><![CDATA[Kontakt-Anfragen mittels Blacklists filtern]]></de>
