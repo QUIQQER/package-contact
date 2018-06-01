@@ -71,6 +71,14 @@
             <de><![CDATA[Das Formular kann leider nicht versendet werden, da keine Empfänger konfiguriert sind. Bitte wenden Sie sich an einen Administrator.]]></de>
             <en><![CDATA[The form can not be sent because no recipients are configured. Please contact an administrator.]]></en>
         </locale>
+        <locale name="exception.types.contact.blacklisted">
+            <de><![CDATA[Ihre Kontakt-Anfrage konnte leider nicht gesendet werden, da ihre E-Mail-Adresse oder ihre IP-Adresse vom System geblockt ist.]]></de>
+            <en><![CDATA[]]></en>
+        </locale>
+        <locale name="exception.types.contact.blacklisted_host" html="true">
+            <de><![CDATA[Ihre Kontakt-Anfrage konnte leider nicht gesendet werden, da ihre IP-Adresse sich auf der Sperrliste von <b>[blacklistHost]</b> befindet.]]></de>
+            <en><![CDATA[]]></en>
+        </locale>
 
     </groups>
 
@@ -128,6 +136,53 @@
 <li>It is recommended to create a page of type <b>"Privacy Policy</b> for this option, which has your privacy policy as the content</li>
 <li><b>IMPORTANT:</b> Only applies to contact forms created with the QUIQQER Form Editor!</li>
 </ul>]]></en>
+        </locale>
+        <locale name="settings.blacklist.title">
+            <de><![CDATA[Blacklist]]></de>
+            <en><![CDATA[Blacklist]]></en>
+        </locale>
+        <locale name="settings.blacklist.ipAddresses.title">
+            <de><![CDATA[IP-Adressen]]></de>
+            <en><![CDATA[IP addresses]]></en>
+        </locale>
+        <locale name="settings.blacklist.ipAddresses.description" html="true">
+            <de><![CDATA[<p>Hier lassen sich Kontakt-Anfragen von einzelnen IP-Adressen oder IP-Adress-Bereichen sperren. Folgende Angaben sind möglich:</p>
+<ul>
+<li>Einfache IP-Adresse: <b>XXX.XXX.XXX.XXX</b></li>
+<li>IP-Adress-Bereiche: <b>XXX.XXX.XXX.XXX-XXX.XXX.XXX.XXX</b></li>
+</ul>
+<p>IP-Adressen und/oder IP-Adress-Bereiche müssen <b>untereinander</b> geschrieben werden.</p>]]></de>
+            <en><![CDATA[]]></en>
+        </locale>
+        <locale name="settings.blacklist.emailAddresses.title">
+            <de><![CDATA[E-Mail-Adressen]]></de>
+            <en><![CDATA[E-Mail addresses]]></en>
+        </locale>
+        <locale name="settings.blacklist.emailAddresses.description" html="true">
+            <de><![CDATA[<p>Hier lassen sich Kontakt-Anfragen von einzelnen Absender-Email-Adressen sperren. Folgende Angaben sind möglich:</p>
+<ul>
+<li>Einfach E-Mail-Adresse: <b>mail@xyz.de</b></li>
+<li>E-Mail-Adresse(n) mit Wildcard: <b>*@mail.ru</b> (blockt alle E-Mail-Adressen des Providers mail.ru)</li>
+<li>E-Mail-Adresse(n) mit Wildcard: <b>*@*.ru</b> (blockt alle E-Mail-Adressen mit .ru am Ende)</li>
+</ul>
+<p>E-Mail-Adressen <b>untereinander</b> geschrieben werden.</p><p>Gilt nur für Formulare, die <b>mindesten 1</b> Feld vom Typ <b>"E-Mail-Adresse"</b> haben! Bei einem Formularen mit mehreren Feldern vom Typ "E-Mail-Adresse" wird der Filter auf alle E-Mail-Adressen angewandt und bei Übereinstimmung das Kontakt-Formular nicht abgesendet!</p>]]></de>
+            <en><![CDATA[]]></en>
+        </locale>
+        <locale name="settings.blacklist.useDNSBL.title">
+            <de><![CDATA[Kontakt-Anfragen mittels Blacklists filtern]]></de>
+            <en><![CDATA[Filter contact requests via blacklists]]></en>
+        </locale>
+        <locale name="settings.blacklist.useDNSBL.description">
+            <de><![CDATA[Bei den unter "Blacklist-Provider" festgelegten Blacklists wird die IP des Formular-Absenders abgefragt. Befindet sich die IP auf einer der angegebenen Blacklists, wird die Kontakt-Anfrage gefiltert.]]></de>
+            <en><![CDATA[The IP of the contact request sender is queries with the providers configured in "Blacklist providers". If the IP is on one of the specified blacklists, the contact request is filtered.]]></en>
+        </locale>
+        <locale name="settings.blacklist.DNSBLProviders.title">
+            <de><![CDATA[Blacklist-Provider]]></de>
+            <en><![CDATA[Blacklist providers]]></en>
+        </locale>
+        <locale name="settings.blacklist.DNSBLProviders.description">
+            <de><![CDATA[Angabe der URLs einzelner Blacklist Provider. Müssen <b>untereinander</b> geschrieben werden.]]></de>
+            <en><![CDATA[List of blacklist providers. <b>One provider URL per line</b>.]]></en>
         </locale>
 
         <!-- Menu -->
