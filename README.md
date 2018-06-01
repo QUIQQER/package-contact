@@ -17,6 +17,7 @@ Features
 * Use the **Contact Requests Viewer** to view all submitted contact requests and export them easily in different formats (CSV, JSON, PDF)
 * Optionally use a CAPTCHA to protect your forms from automated spam
 * Use special form fields like WYSIWYG-content, User select or Full Name input
+* Filter contact requests with blacklists (IP addresses/ranges, e-mail filter, DNSBL filter)
 
 Installation
 ------------
