@@ -202,7 +202,7 @@ class Blacklist
 
             // Check if nslookup is available and can be executed.
             // If not - use checkdnsrr (disadvantage: has no timeout parameter)
-            $nslookupExecutable = `which nslookup`;
+            $nslookupExecutable = trim(`which nslookup`);
 
             if (!$nslookupExecutable || !is_executable($nslookupExecutable)) {
                 if (checkdnsrr($reverse_ip.".".$host.".", "A")) {
@@ -213,7 +213,8 @@ class Blacklist
             }
 
             // Use nslookup if available
-            $cmd = sprintf('nslookup -type=A -timeout=%d %s 2>&1', 3, escapeshellarg($host));
+            $cmd      = sprintf('nslookup -type=A -timeout=%d %s 2>&1', 3, escapeshellarg($host));
+            $response = [];
 
             @exec($cmd, $response);
 
