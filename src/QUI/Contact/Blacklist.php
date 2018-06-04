@@ -199,11 +199,25 @@ class Blacklist
 
         foreach ($providers as $host) {
             $host = $reverse_ip.".".$host.".";
+
+            // Check if nslookup is available and can be executed.
+            // If not - use checkdnsrr (disadvantage: has no timeout parameter)
+            $nslookupExecutable = `which nslookup`;
+
+            if (!$nslookupExecutable || !is_executable($nslookupExecutable)) {
+                if (checkdnsrr($reverse_ip.".".$host.".", "A")) {
+                    return $returnBlockingList ? $host : true;
+                }
+
+                continue;
+            }
+
+            // Use nslookup if available
             $cmd = sprintf('nslookup -type=A -timeout=%d %s 2>&1', 3, escapeshellarg($host));
 
             @exec($cmd, $response);
 
-            for ($i=3; $i<count($response); $i++) {
+            for ($i = 3; $i < count($response); $i++) {
                 if (mb_strpos(trim($response[$i]), 'Name:') === 0) {
                     return $returnBlockingList ? $host : true;
                 }
