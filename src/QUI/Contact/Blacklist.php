@@ -60,6 +60,10 @@ class Blacklist
         $ipList = json_decode($conf['ipAddresses'], true);
         $longIp = ip2long($ip);
 
+        if (empty($ipList) || !is_array($ipList)) {
+            $ipList = [];
+        }
+
         foreach ($ipList as $entry) {
             // single IP
             if (mb_strpos($entry, "-") === false) {
@@ -137,6 +141,10 @@ class Blacklist
         $conf                  = self::getBlacklistConf();
         $blockedEmailAddresses = json_decode($conf['emailAddresses'], true);
 
+        if (empty($blockedEmailAddresses) || !is_array($blockedEmailAddresses)) {
+            $blockedEmailAddresses = [];
+        }
+
         foreach ($blockedEmailAddresses as $blockedEmail) {
             if (mb_strpos($blockedEmail, '*') === false) {
                 if ($email === $blockedEmail) {
@@ -196,6 +204,10 @@ class Blacklist
 
         $providers  = json_decode($conf['DNSBLProviders'], true);
         $reverse_ip = implode(".", array_reverse(explode(".", $ip)));
+
+        if (empty($providers) || !is_array($providers)) {
+            $providers = [];
+        }
 
         foreach ($providers as $host) {
             $host = $reverse_ip.".".$host.".";
