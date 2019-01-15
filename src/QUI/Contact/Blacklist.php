@@ -209,14 +209,34 @@ class Blacklist
             $providers = [];
         }
 
+        // check if nslookup is available and executable
+        // If not - use checkdnsrr (disadvantage: has no timeout parameter)
+        $isNslookupExecutable = false;
+        $nslookupExecutable   = trim(`which nslookup`);
+
+        if ($nslookupExecutable) {
+            $openBaseDir = ini_get('open_basedir');
+
+            if (empty($openBaseDir)) {
+                $isNslookupExecutable = is_executable($nslookupExecutable);
+            } else {
+                $nslookupPath     = pathinfo($nslookupExecutable);
+                $nslookupPath     = $nslookupPath['dirname'];
+                $openBaseDirPaths = explode(':', $openBaseDir);
+
+                foreach ($openBaseDirPaths as $path) {
+                    if (mb_strpos($nslookupPath, $path) === 0) {
+                        $isNslookupExecutable = true;
+                        break;
+                    }
+                }
+            }
+        }
+
         foreach ($providers as $host) {
             $host = $reverse_ip.".".$host.".";
 
-            // Check if nslookup is available and can be executed.
-            // If not - use checkdnsrr (disadvantage: has no timeout parameter)
-            $nslookupExecutable = trim(`which nslookup`);
-
-            if (!$nslookupExecutable || !is_executable($nslookupExecutable)) {
+            if (!$isNslookupExecutable) {
                 if (checkdnsrr($reverse_ip.".".$host.".", "A")) {
                     return $returnBlockingList ? $host : true;
                 }
