@@ -1,8 +1,20 @@
+<script>
+    var isLoaded = function() {
+        if (typeof whenQuiLoaded === 'function') {
+            return whenQuiLoaded();
+        }
+        
+        return new Promise(function (resolve) {
+            window.addEvent('domready', resolve);
+        });
+    }
+</script>
+
 {if isset($formMessage)}
     {$formMessage}
 
     <script>
-        window.addEvent('domready', function() {
+        isLoaded().then(function() {
             if (typeof window.QUIQQER_PIWIK !== 'undefined') {
                 require(['piwikTracker'], function(piwikTracker) {
                     piwikTracker.then(function(PiwikTracker) {
@@ -17,7 +29,7 @@
     </script>
 {else}
     <script>
-        window.addEvent('domready', function() {
+        isLoaded().then(function() {
             if (typeof window.QUIQQER_PIWIK !== 'undefined') {
                 require(['piwikTracker'], function(piwikTracker) {
                     piwikTracker.then(function(PiwikTracker) {
@@ -43,7 +55,7 @@
             {$formError}
 
             <script>
-                window.addEvent('domready', function() {
+                isLoaded().then(function() {
                     if (typeof window.QUIQQER_PIWIK !== 'undefined') {
                         require(['piwikTracker'], function(piwikTracker) {
                             piwikTracker.then(function(PiwikTracker) {
