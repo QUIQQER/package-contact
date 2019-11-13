@@ -65,6 +65,10 @@ class Blacklist
         }
 
         foreach ($ipList as $entry) {
+            if (empty($entry)) {
+                continue;
+            }
+
             // single IP
             if (mb_strpos($entry, "-") === false) {
                 $longIpCheck = ip2long($entry);
