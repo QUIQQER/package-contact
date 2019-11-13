@@ -4,6 +4,7 @@ use QUI\Contact\RequestList;
 use QUI\Contact\Handler;
 use QUI\Contact\Blacklist;
 use QUI\FormBuilder\Fields\EMail as FormBuilderEmailType;
+use QUI\Contact\ContactException;
 
 $formData = json_decode($Site->getAttribute('quiqqer.contact.settings.form'), true);
 
@@ -24,38 +25,38 @@ try {
 
     $ip = $_SERVER['REMOTE_ADDR'];
 
-    /** @var QUI\FormBuilder\Field $FormElement */
-    foreach ($Form->getElements() as $FormElement) {
-        if ($FormElement->getType() === FormBuilderEmailType::class) {
-            if (Blacklist::isEmailAddressBlacklisted($FormElement->getValueText())) {
-                throw new \QUI\Contact\ContactException([
-                    'quiqqer/contact',
-                    'exception.types.contact.blacklisted'
-                ]);
-            };
-        }
-    }
-
-    if (Blacklist::isIpBlacklistedByIpList($ip)) {
-        throw new \QUI\Contact\ContactException([
-            'quiqqer/contact',
-            'exception.types.contact.blacklisted'
-        ]);
-    }
-
-    $blacklistHost = Blacklist::isIpBlacklistedByDNSBL($ip, true);
-
-    if ($blacklistHost) {
-        throw new \QUI\Contact\ContactException([
-            'quiqqer/contact',
-            'exception.types.contact.blacklisted_host',
-            [
-                'blacklistHost' => $blacklistHost
-            ]
-        ]);
-    }
-
     if ($Form->isSuccess()) {
+        /** @var QUI\FormBuilder\Field $FormElement */
+        foreach ($Form->getElements() as $FormElement) {
+            if ($FormElement->getType() === FormBuilderEmailType::class) {
+                if (Blacklist::isEmailAddressBlacklisted($FormElement->getValueText())) {
+                    throw new ContactException([
+                        'quiqqer/contact',
+                        'exception.types.contact.blacklisted'
+                    ]);
+                };
+            }
+        }
+
+        if (Blacklist::isIpBlacklistedByIpList($ip)) {
+            throw new ContactException([
+                'quiqqer/contact',
+                'exception.types.contact.blacklisted'
+            ]);
+        }
+
+        $blacklistHost = Blacklist::isIpBlacklistedByDNSBL($ip, true);
+
+        if ($blacklistHost) {
+            throw new ContactException([
+                'quiqqer/contact',
+                'exception.types.contact.blacklisted_host',
+                [
+                    'blacklistHost' => $blacklistHost
+                ]
+            ]);
+        }
+
         // save form request in database
         $saveForm = boolval($Form->getAttribute('save'));
 
