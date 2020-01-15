@@ -51,12 +51,12 @@ class EventHandler
             foreach ($Project->getLanguages() as $lang) {
                 $Project = $Projects->getProject($project, $lang);
 
-                $contactSites = $Project->getSites(array(
-                    'where' => array(
+                $contactSites = $Project->getSites([
+                    'where' => [
                         'active' => -1,
                         'type'   => 'quiqqer/contact:types/contact'
-                    )
-                ));
+                    ]
+                ]);
 
                 foreach ($contactSites as $Site) {
                     self::parseContactSiteIntoFormTable($Site);
@@ -77,6 +77,19 @@ class EventHandler
     {
         if ($Site->getAttribute('type') === 'quiqqer/contact:types/contact') {
             self::parseContactSiteIntoFormTable($Site);
+
+            $successMessage = $Site->getAttribute('quiqqer.contact.success');
+
+            if (empty($successMessage)) {
+                $SiteEdit = $Site->getEdit();
+                
+                $SiteEdit->setAttribute(
+                    'quiqqer.contact.success',
+                    QUI::getLocale()->get('quiqqer/contact', 'contact.default.success_msg')
+                );
+
+                $SiteEdit->save(QUI::getUsers()->getSystemUser());
+            }
         }
     }
 
@@ -103,18 +116,18 @@ class EventHandler
         $formFields     = $formFields['elements'];
         $formIdentifier = RequestList::getFormIdentifier($Site);
         $Project        = $Site->getProject();
-        $title          = $Project->getName() . ' (' . $Project->getLang() . '): ' . $Site->getAttribute('title');
+        $title          = $Project->getName().' ('.$Project->getLang().'): '.$Site->getAttribute('title');
 
-        $result = QUI::getDataBase()->fetch(array(
+        $result = QUI::getDataBase()->fetch([
             'count' => 1,
             'from'  => RequestList::getFormsTable(),
-            'where' => array(
+            'where' => [
                 'identifier' => $formIdentifier
-            )
-        ));
+            ]
+        ]);
 
         $exists      = (int)current(current($result)) > 0;
-        $dataFields  = array();
+        $dataFields  = [];
         $FormBuilder = new QUI\FormBuilder\Builder();
 
         foreach ($formFields as $k => $field) {
@@ -123,11 +136,11 @@ class EventHandler
 
             $fieldName = $Field->getName();
 
-            $dataFields[] = array(
+            $dataFields[] = [
                 'name'     => $fieldName,
                 'label'    => $Field->getAttribute('label') ?: $fieldName,
                 'required' => $Field->getAttribute('required') ? true : false
-            );
+            ];
         }
 
         $dataFields = json_encode($dataFields);
@@ -136,13 +149,13 @@ class EventHandler
         if ($exists) {
             QUI::getDataBase()->update(
                 RequestList::getFormsTable(),
-                array(
+                [
                     'title'      => $title,
                     'dataFields' => $dataFields
-                ),
-                array(
+                ],
+                [
                     'identifier' => $formIdentifier
-                )
+                ]
             );
 
             return;
@@ -151,11 +164,11 @@ class EventHandler
         // if not exists -> insert
         QUI::getDataBase()->insert(
             RequestList::getFormsTable(),
-            array(
+            [
                 'title'      => $title,
                 'dataFields' => $dataFields,
                 'identifier' => $formIdentifier
-            )
+            ]
         );
     }
 }
