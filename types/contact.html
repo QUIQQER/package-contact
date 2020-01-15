@@ -3,7 +3,7 @@
         if (typeof whenQuiLoaded === 'function') {
             return whenQuiLoaded();
         }
-        
+
         return new Promise(function (resolve) {
             window.addEvent('domready', resolve);
         });
@@ -11,7 +11,9 @@
 </script>
 
 {if isset($formMessage)}
-    {$formMessage}
+    <div class="quiqqer-contact-success" id="quiqqer-contact-form">
+        {$formMessage}
+    </div>
 
     <script>
         isLoaded().then(function() {
@@ -49,7 +51,7 @@
     </section>
     {/if}
 
-    <div class="content-body qui-contact grid-100 mobile-grid-100 grid-parent">
+    <div class="content-body qui-contact grid-100 mobile-grid-100 grid-parent" id="quiqqer-contact-form">
         {if isset($formError)}
         <div class="content-message-error">
             {$formError}
