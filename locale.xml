@@ -80,6 +80,11 @@
             <en><![CDATA[Your contact request could not be processed because your IP address is on the blacklist of <b>[blacklistHost]</b>.]]></en>
         </locale>
 
+        <locale name="contact.default.success_msg" html="true">
+            <de><![CDATA[<div class="content-message-success">Vielen Dank für Ihre Kontaktanfrage! Wir werden uns schnellstmöglich um Ihr Anliegen kümmern und Ihnen eine Antwort senden.</div>]]></de>
+            <en><![CDATA[<div class="content-message-success">Many thanks for your contact request! We will deal with your request as soon as possible and send you an answer.</div>]]></en>
+        </locale>
+        
     </groups>
 
     <groups name="quiqqer/contact" datatype="php,js">
