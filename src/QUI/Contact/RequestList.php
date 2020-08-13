@@ -234,6 +234,49 @@ class RequestList
             $v = (int)$v;
         });
 
+        foreach ($requestIds as $requestId) {
+            try {
+                $resultFormIdentifier = QUI::getDataBase()->fetch([
+                    'select' => ['formId', 'submitData'],
+                    'from'   => self::getRequestsTable(),
+                    'where'  => [
+                        'id' => $requestId
+                    ]
+                ]);
+
+                $requestData = $resultFormIdentifier[0];
+
+                $resultFormData = QUI::getDataBase()->fetch([
+                    'from'  => self::getFormsTable(),
+                    'where' => [
+                        'id' => $requestData['formId']
+                    ]
+                ]);
+
+                $formData = $resultFormData[0];
+
+                if (empty($formData['projectName']) ||
+                    empty($formData['projectLang']) ||
+                    empty($formData['siteId'])) {
+                    continue;
+                }
+
+                $Project = QUI::getProject($formData['projectName'], $formData['projectLang']);
+                $Site    = $Project->get($formData['siteId']);
+
+                QUI::getEvents()->fireEvent(
+                    'quiqqerContactDeleteFormRequest',
+                    [
+                        $requestId,
+                        \json_decode($requestData['submitData'], true),
+                        $Site
+                    ]
+                );
+            } catch (\Exception $Exception) {
+                QUI\System\Log::writeException($Exception);
+            }
+        }
+
         QUI::getDataBase()->delete(
             self::getRequestsTable(),
             [
