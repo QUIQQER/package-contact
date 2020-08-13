@@ -82,7 +82,7 @@ class EventHandler
 
             if (empty($successMessage)) {
                 $SiteEdit = $Site->getEdit();
-                
+
                 $SiteEdit->setAttribute(
                     'quiqqer.contact.success',
                     QUI::getLocale()->get('quiqqer/contact', 'contact.default.success_msg')
@@ -132,6 +132,11 @@ class EventHandler
 
         foreach ($formFields as $k => $field) {
             $Field = $FormBuilder->getField($field);
+
+            if (!$Field) {
+                continue;
+            }
+
             $Field->setNameId($k);
 
             $fieldName = $Field->getName();
@@ -150,8 +155,11 @@ class EventHandler
             QUI::getDataBase()->update(
                 RequestList::getFormsTable(),
                 [
-                    'title'      => $title,
-                    'dataFields' => $dataFields
+                    'title'       => $title,
+                    'dataFields'  => $dataFields,
+                    'projectName' => $Project->getName(),
+                    'projectLang' => $Project->getLang(),
+                    'siteId'      => $Site->getId()
                 ],
                 [
                     'identifier' => $formIdentifier
@@ -165,9 +173,12 @@ class EventHandler
         QUI::getDataBase()->insert(
             RequestList::getFormsTable(),
             [
-                'title'      => $title,
-                'dataFields' => $dataFields,
-                'identifier' => $formIdentifier
+                'title'       => $title,
+                'dataFields'  => $dataFields,
+                'identifier'  => $formIdentifier,
+                'projectName' => $Project->getName(),
+                'projectLang' => $Project->getLang(),
+                'siteId'      => $Site->getId()
             ]
         );
     }

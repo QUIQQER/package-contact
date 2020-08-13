@@ -7,6 +7,9 @@
             <field type="VARCHAR(255) NOT NULL">identifier</field>
             <field type="VARCHAR(255) NOT NULL">title</field>
             <field type="MEDIUMTEXT NOT NULL">dataFields</field>
+            <field type="VARCHAR(255) NULL DEFAULT NULL">projectName</field>
+            <field type="VARCHAR(255) NULL DEFAULT NULL">projectLang</field>
+            <field type="BIGINT(20) NULL DEFAULT NULL">siteId</field>
         </table>
 
         <table name="quiqqer_contact_requests">
