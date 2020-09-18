@@ -90,7 +90,7 @@ try {
                 }
             }
 
-            $Mail->setSubject($Site->getAttribute('title'));
+            $Mail->setSubject($Form->getMailSubject());
             $Mail->setBody($Form->getMailBody());
             $Mail->send();
         }
