@@ -40,6 +40,35 @@
             <en><![CDATA[Delete form requests]]></en>
         </locale>
 
+        <locale name="controls.ConfirmationEmail.tpl.labelLabel">
+            <de><![CDATA[Label]]></de>
+            <en><![CDATA[Label]]></en>
+        </locale>
+        <locale name="controls.ConfirmationEmail.tpl.labelValue">
+            <de><![CDATA[Wert]]></de>
+            <en><![CDATA[Wert]]></en>
+        </locale>
+        <locale name="controls.ConfirmationEmail.tpl.headerPlaceholders">
+            <de><![CDATA[Platzhalter]]></de>
+            <en><![CDATA[Placeholders]]></en>
+        </locale>
+        <locale name="controls.ConfirmationEmail.tpl.headerSettings">
+            <de><![CDATA[Kontaktformular Bestätigungs-E-Mail]]></de>
+            <en><![CDATA[Contact form confirmation e-mail]]></en>
+        </locale>
+        <locale name="controls.ConfirmationEmail.tpl.labelSendMail">
+            <de><![CDATA[E-Mail versenden]]></de>
+            <en><![CDATA[Send e-mail]]></en>
+        </locale>
+        <locale name="controls.ConfirmationEmail.tpl.labelSubject">
+            <de><![CDATA[E-Mail Betreff]]></de>
+            <en><![CDATA[E-mail subject]]></en>
+        </locale>
+        <locale name="controls.ConfirmationEmail.tpl.headerBody">
+            <de><![CDATA[E-Mail Inhalt]]></de>
+            <en><![CDATA[E-mail body]]></en>
+        </locale>
+
     </groups>
 
     <groups name="quiqqer/contact" datatype="php">
@@ -54,6 +83,10 @@
         <locale name="admin.types.contact.success">
             <de><![CDATA[Kontaktformular Erfolgsmeldung]]></de>
             <en><![CDATA[Contact form success message]]></en>
+        </locale>
+        <locale name="admin.types.contact.success_mail">
+            <de><![CDATA[Kontaktformular Bestätigungs-E-Mail]]></de>
+            <en><![CDATA[Contact form confirmation e-mail]]></en>
         </locale>
 
         <!-- Ajax -->
@@ -83,6 +116,18 @@
         <locale name="contact.default.success_msg" html="true">
             <de><![CDATA[<div class="content-message-success">Vielen Dank für Ihre Kontaktanfrage! Wir werden uns schnellstmöglich um Ihr Anliegen kümmern und Ihnen eine Antwort senden.</div>]]></de>
             <en><![CDATA[<div class="content-message-success">Many thanks for your contact request! We will deal with your request as soon as possible and send you an answer.</div>]]></en>
+        </locale>
+        <locale name="contact.default.success_mail_subject">
+            <de><![CDATA[Vielen Dank für Ihre Nachricht]]></de>
+            <en><![CDATA[Thank you for your message]]></en>
+        </locale>
+        <locale name="contact.default.success_mail_body" html="true">
+            <de><![CDATA[<p>Hallo!</p>
+<p>Ihre Nachricht ist bei uns eingegangen und wird schnellstmöglich bearbeitet.</p>
+<p>Beste Grüße!</p>]]></de>
+            <en><![CDATA[<p>Hello!</p>
+<p>We have received your message and will process it as soon as possible.</p>
+<p>Best regards!</p>]]></en>
         </locale>
         
     </groups>

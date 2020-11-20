@@ -1,0 +1,62 @@
+<div class="quiqqer-contact-confirmationemail">
+    <table class="data-table data-table-flexbox">
+        <thead>
+        <tr>
+            <th>
+                {{headerSettings}}
+            </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>
+                <label class="field-container">
+                <span class="field-container-item">
+                    {{labelSendMail}}
+                </span>
+                    <input type="checkbox" class="field-container-field" name="send_mail"/>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="field-container">
+                <span class="field-container-item">
+                    {{labelSubject}}
+                </span>
+                    <input type="text" class="field-container-field" name="mail_subject"/>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="field-container">
+                    <div class="field-container-item quiqqer-contact-confirmationemail-placeholders">
+                        <h1>{{headerBody}}</h1>
+                        <h2>{{headerPlaceholders}}</h2>
+                        <ul>
+                            {{#fields}}
+                            <li>
+                                <b>{{label}}{{#required}} *{{/required}}</b>
+                                <ul>
+                                    <li>{{labelLabel}} - <span type="text"
+                                                               class="quiqqer-contact-confirmationemail-placeholders-entry"
+                                                               data-value="&#123;&#123;label{{id}}&#125;&#125;">&#123;&#123;label{{id}}&#125;&#125;</span>
+                                    </li>
+                                    <li>{{labelValue}} - <span type="text"
+                                                               class="quiqqer-contact-confirmationemail-placeholders-entry"
+                                                               data-value="&#123;&#123;value{{id}}&#125;&#125;">&#123;&#123;value{{id}}&#125;&#125;</span>
+                                    </li>
+                                </ul>
+                            </li>
+                            {{/fields}}
+                        </ul>
+                    </div>
+                    <div class="quiqqer-contact-confirmationemail-content"></div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

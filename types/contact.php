@@ -65,7 +65,6 @@ try {
         }
 
         // send form request via mail
-        $Mail      = QUI::getMailManager()->getMailer();
         $addresses = $Form->getAddresses();
 
         if (!$saveForm && empty($addresses)) {
@@ -75,24 +74,18 @@ try {
             ]);
         }
 
-        if (!empty($addresses)) {
-            foreach ($addresses as $addressData) {
-                $Mail->addRecipient($addressData['email'], $addressData['name']);
-            }
+        // Admin mail(s)
+        try {
+            Handler::sendFormAdminMails($Form);
+        } catch (\Exception $Exception) {
+            QUI\System\Log::writeException($Exception);
+        }
 
-            /* @var $FormElement \QUI\FormBuilder\Field */
-            foreach ($Form->getElements() as $FormElement) {
-                if ($FormElement->getType() == 'QUI\FormBuilder\Fields\EMail') {
-                    $data = $FormElement->getAttribute('data');
-                    if (QUI\Utils\Security\Orthos::checkMailSyntax($data)) {
-                        $Mail->addReplyTo($FormElement->getAttribute('data'));
-                    }
-                }
-            }
-
-            $Mail->setSubject($Form->getMailSubject());
-            $Mail->setBody($Form->getMailBody());
-            $Mail->send();
+        // Submitter mail
+        try {
+            Handler::sendFormSuccessMail($Form, $Site);
+        } catch (\Exception $Exception) {
+            QUI\System\Log::writeException($Exception);
         }
 
         $Engine->assign([

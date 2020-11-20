@@ -75,22 +75,38 @@ class EventHandler
      */
     public static function onSiteSave(Site $Site)
     {
-        if ($Site->getAttribute('type') === 'quiqqer/contact:types/contact') {
-            self::parseContactSiteIntoFormTable($Site);
-
-            $successMessage = $Site->getAttribute('quiqqer.contact.success');
-
-            if (empty($successMessage)) {
-                $SiteEdit = $Site->getEdit();
-
-                $SiteEdit->setAttribute(
-                    'quiqqer.contact.success',
-                    QUI::getLocale()->get('quiqqer/contact', 'contact.default.success_msg')
-                );
-
-                $SiteEdit->save(QUI::getUsers()->getSystemUser());
-            }
+        if ($Site->getAttribute('type') !== 'quiqqer/contact:types/contact') {
+            return;
         }
+
+        self::parseContactSiteIntoFormTable($Site);
+
+        $SiteEdit = $Site->getEdit();
+
+        // Default success mesage
+        $successMessage = $Site->getAttribute('quiqqer.contact.success');
+
+        if (empty($successMessage)) {
+            $SiteEdit->setAttribute(
+                'quiqqer.contact.success',
+                QUI::getLocale()->get('quiqqer/contact', 'contact.default.success_msg')
+            );
+        }
+
+        // Default success mail subject and body
+        $successMail = $Site->getAttribute('quiqqer.contact.success_mail');
+
+        if (empty($successMail)) {
+            $successMail = [
+                'send'    => false,
+                'subject' => QUI::getLocale()->get('quiqqer/contact', 'contact.default.success_mail_subject'),
+                'body'    => QUI::getLocale()->get('quiqqer/contact', 'contact.default.success_mail_body')
+            ];
+
+            $Site->setAttribute('quiqqer.contact.success_mail', \json_encode($successMail));
+        }
+
+        $SiteEdit->save(QUI::getUsers()->getSystemUser());
     }
 
     /**

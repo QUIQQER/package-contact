@@ -14,6 +14,7 @@
                 <attribute>quiqqer.contact.settings.receiver</attribute>
                 <attribute>quiqqer.contact.settings.form</attribute>
                 <attribute>quiqqer.contact.success</attribute>
+                <attribute>quiqqer.contact.success_mail</attribute>
             </attributes>
 
             <tab name="quiqqer.contact">
@@ -29,6 +30,14 @@
                     <locale group="quiqqer/contact" var="admin.types.contact.success"/>
                 </text>
                 <image>fa fa-check</image>
+            </tab>
+
+            <tab name="quiqqer.contact.success_mail">
+                <text>
+                    <locale group="quiqqer/contact" var="admin.types.contact.success_mail"/>
+                </text>
+                <image>fa fa-envelope</image>
+                <onload require="package/quiqqer/contact/bin/controls/backend/ConfirmationEmail"/>
             </tab>
         </type>
 
