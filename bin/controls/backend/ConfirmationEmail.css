@@ -1,0 +1,60 @@
+.quiqqer-contact-confirmationemail {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.quiqqer-contact-confirmationemail > table {
+    margin: 0;
+}
+
+.quiqqer-contact-confirmationemail > table .field-container-item {
+    width: 184px !important;
+}
+
+.quiqqer-contact-confirmationemail-body {
+    display: flex;
+}
+
+.quiqqer-contact-confirmationemail-placeholders {
+    background-color: #f4f2f0;
+    padding: 0.5em 0.75em;
+    width: 200px;
+}
+
+.quiqqer-contact-confirmationemail-placeholders h1 {
+    font-size: 12px;
+}
+
+.quiqqer-contact-confirmationemail-placeholders h2 {
+    font-size: 14px;
+    text-decoration: underline;
+    margin: 0;
+}
+
+.quiqqer-contact-confirmationemail-placeholders ul {
+    list-style-type: none;
+    overflow: auto;
+    padding: 0 10px;
+}
+
+.quiqqer-contact-confirmationemail-placeholders > ul > li:not(:first-of-type) {
+    margin-top: 7px;
+}
+
+.quiqqer-contact-confirmationemail-placeholders-entry {
+    color: #000;
+    display: inline;
+    font-family: monospace;
+    width: 100px;
+}
+
+.quiqqer-contact-confirmationemail-placeholders-entry:hover {
+    color: #2f8fc6;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.quiqqer-contact-confirmationemail td > label > input[type="checkbox"] {
+    flex: 0;
+}

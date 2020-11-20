@@ -3,6 +3,7 @@
 namespace QUI\Contact;
 
 use QUI;
+use QUI\FormBuilder\Builder as Form;
 
 /**
  * Class Handler
@@ -47,5 +48,109 @@ class Handler
         }
 
         $Form->addCustomFields($customFields);
+    }
+
+    /**
+     * Sends administrator mails for a submitted form
+     *
+     * @param Form $Form
+     * @return void
+     *
+     * @throws QUI\Exception
+     */
+    public static function sendFormAdminMails(Form $Form)
+    {
+        $Mail      = QUI::getMailManager()->getMailer();
+        $addresses = $Form->getAddresses();
+
+        if (empty($addresses)) {
+            return;
+        }
+
+        foreach ($addresses as $addressData) {
+            $Mail->addRecipient($addressData['email'], $addressData['name']);
+        }
+
+        foreach ($Form->getElements() as $FormElement) {
+            if ($FormElement->getType() == 'QUI\FormBuilder\Fields\EMail') {
+                $recipient = $FormElement->getAttribute('data');
+
+                if (QUI\Utils\Security\Orthos::checkMailSyntax($recipient)) {
+                    $Mail->addReplyTo($recipient);
+                }
+            }
+        }
+
+        $Mail->setSubject($Form->getMailSubject());
+        $Mail->setBody($Form->getMailBody());
+        $Mail->send();
+    }
+
+    /**
+     * Sends mail to submitter for a submitted form
+     *
+     * @param Form $Form
+     * @param QUI\Projects\Site $Site
+     * @return void
+     *
+     * @throws QUI\Exception
+     */
+    public static function sendFormSuccessMail(Form $Form, QUI\Projects\Site $Site)
+    {
+        $mailData = $Site->getAttribute('quiqqer.contact.success_mail');
+
+        if (empty($mailData)) {
+            return;
+        }
+
+        $mailData = \json_decode($mailData, true);
+
+        if (empty($mailData['send']) || empty($mailData['body']) || empty($mailData['subject'])) {
+            return;
+        }
+
+        $Mail = QUI::getMailManager()->getMailer();
+
+        // Determine recipient
+        $recipient    = false;
+        $formElements = $Form->getElements();
+
+        foreach ($formElements as $FormElement) {
+            if ($FormElement->getType() == 'QUI\FormBuilder\Fields\EMail') {
+                $data = $FormElement->getAttribute('data');
+
+                if (QUI\Utils\Security\Orthos::checkMailSyntax($data)) {
+                    $recipient = $data;
+                    break;
+                }
+            }
+        }
+
+        if (!$recipient) {
+            return;
+        }
+
+        $Mail->addRecipient($recipient);
+
+        $mailBody = $mailData['body'];
+
+        // Replace placeholders with actual values
+        foreach ($formElements as $k => $Field) {
+            $mailBody = \str_replace(
+                [
+                    '{{label'.$k.'}}',
+                    '{{value'.$k.'}}'
+                ],
+                [
+                    $Field->getAttribute('label'),
+                    $Field->getValueText()
+                ],
+                $mailBody
+            );
+        }
+
+        $Mail->setSubject($mailData['subject']);
+        $Mail->setBody($mailBody);
+        $Mail->send();
     }
 }
