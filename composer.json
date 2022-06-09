@@ -2,6 +2,7 @@
     "name": "quiqqer\/contact",
     "type": "quiqqer-module",
     "description": "Integrate complex forms into your web page using the simple form editor. Complex development of contact, offer and other forms are a thing of the past.",
+    "version": "1.3.0",
     "license": [
         "PCSG QL-1.0",
         "CC BY-NC-SA 4.0"
