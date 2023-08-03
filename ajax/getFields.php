@@ -1,7 +1,5 @@
 <?php
 
-use QUI\FormBuilder\Builder;
-
 /**
  * Get form fields for a specific formbuilder site
  *
@@ -9,26 +7,29 @@ use QUI\FormBuilder\Builder;
  * @param int $siteId
  * @return bool - success
  */
+
+use QUI\FormBuilder\Builder;
+
 QUI::$Ajax->registerFunction(
     'package_quiqqer_contact_ajax_getFields',
     function ($project, $siteId) {
         $Project = QUI::getProjectManager()->decode($project);
-        $Site    = $Project->get((int)$siteId);
+        $Site = $Project->get((int)$siteId);
 
         $FormBuilder = new Builder();
-        $formData    = $Site->getAttribute('quiqqer.contact.settings.form');
+        $formData = $Site->getAttribute('quiqqer.contact.settings.form');
 
         if (!empty($formData)) {
             $FormBuilder->load(\json_decode($formData, true));
         }
 
         $formElements = $FormBuilder->getElements();
-        $fields       = [];
+        $fields = [];
 
         foreach ($formElements as $k => $Field) {
             $fields[] = [
-                'id'       => $k,
-                'label'    => $Field->getAttribute('label'),
+                'id' => $k,
+                'label' => $Field->getAttribute('label'),
                 'required' => \boolval($Field->getAttribute('required'))
             ];
         }

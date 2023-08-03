@@ -21,7 +21,8 @@ class EventHandler
      */
     public static function onSiteInit($Site)
     {
-        if ($Site->getAttribute('type') == 'quiqqer/contact:types/contact'
+        if (
+            $Site->getAttribute('type') == 'quiqqer/contact:types/contact'
             && !empty($_POST)
         ) {
             $Site->setAttribute('nocache', 1);
@@ -54,7 +55,7 @@ class EventHandler
                 $contactSites = $Project->getSites([
                     'where' => [
                         'active' => -1,
-                        'type'   => 'quiqqer/contact:types/contact'
+                        'type' => 'quiqqer/contact:types/contact'
                     ]
                 ]);
 
@@ -98,9 +99,9 @@ class EventHandler
 
         if (empty($successMail)) {
             $successMail = [
-                'send'    => false,
+                'send' => false,
                 'subject' => QUI::getLocale()->get('quiqqer/contact', 'contact.default.success_mail_subject'),
-                'body'    => QUI::getLocale()->get('quiqqer/contact', 'contact.default.success_mail_body')
+                'body' => QUI::getLocale()->get('quiqqer/contact', 'contact.default.success_mail_body')
             ];
 
             $Site->setAttribute('quiqqer.contact.success_mail', \json_encode($successMail));
@@ -129,21 +130,21 @@ class EventHandler
             return;
         }
 
-        $formFields     = $formFields['elements'];
+        $formFields = $formFields['elements'];
         $formIdentifier = RequestList::getFormIdentifier($Site);
-        $Project        = $Site->getProject();
-        $title          = $Project->getName().' ('.$Project->getLang().'): '.$Site->getAttribute('title');
+        $Project = $Site->getProject();
+        $title = $Project->getName() . ' (' . $Project->getLang() . '): ' . $Site->getAttribute('title');
 
         $result = QUI::getDataBase()->fetch([
             'count' => 1,
-            'from'  => RequestList::getFormsTable(),
+            'from' => RequestList::getFormsTable(),
             'where' => [
                 'identifier' => $formIdentifier
             ]
         ]);
 
-        $exists      = (int)current(current($result)) > 0;
-        $dataFields  = [];
+        $exists = (int)current(current($result)) > 0;
+        $dataFields = [];
         $FormBuilder = new QUI\FormBuilder\Builder();
 
         foreach ($formFields as $k => $field) {
@@ -158,8 +159,8 @@ class EventHandler
             $fieldName = $Field->getName();
 
             $dataFields[] = [
-                'name'     => $fieldName,
-                'label'    => $Field->getAttribute('label') ?: $fieldName,
+                'name' => $fieldName,
+                'label' => $Field->getAttribute('label') ?: $fieldName,
                 'required' => $Field->getAttribute('required') ? true : false
             ];
         }
@@ -171,11 +172,11 @@ class EventHandler
             QUI::getDataBase()->update(
                 RequestList::getFormsTable(),
                 [
-                    'title'       => $title,
-                    'dataFields'  => $dataFields,
+                    'title' => $title,
+                    'dataFields' => $dataFields,
                     'projectName' => $Project->getName(),
                     'projectLang' => $Project->getLang(),
-                    'siteId'      => $Site->getId()
+                    'siteId' => $Site->getId()
                 ],
                 [
                     'identifier' => $formIdentifier
@@ -189,12 +190,12 @@ class EventHandler
         QUI::getDataBase()->insert(
             RequestList::getFormsTable(),
             [
-                'title'       => $title,
-                'dataFields'  => $dataFields,
-                'identifier'  => $formIdentifier,
+                'title' => $title,
+                'dataFields' => $dataFields,
+                'identifier' => $formIdentifier,
                 'projectName' => $Project->getName(),
                 'projectLang' => $Project->getLang(),
-                'siteId'      => $Site->getId()
+                'siteId' => $Site->getId()
             ]
         );
     }
