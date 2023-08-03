@@ -29,16 +29,18 @@ class Handler
 
         $customFields = [];
 
-        if ($Conf->get('settings', 'globalPrivacyPolicyField')
-            && !$Form->getAttribute('hideGlobalPrivacyPolicy')) {
+        if (
+            $Conf->get('settings', 'globalPrivacyPolicyField')
+            && !$Form->getAttribute('hideGlobalPrivacyPolicy')
+        ) {
             $customFields[] = [
-                'type'       => 'package/quiqqer/formbuilder/bin/fields/PrivacyPolicyCheckbox',
+                'type' => 'package/quiqqer/formbuilder/bin/fields/PrivacyPolicyCheckbox',
                 'attributes' => [
-                    'label'    => QUI::getLocale()->get(
+                    'label' => QUI::getLocale()->get(
                         'quiqqer/contact',
                         'global.PrivacyPolicy.field_label'
                     ),
-                    'text'     => QUI::getLocale()->get(
+                    'text' => QUI::getLocale()->get(
                         'quiqqer/contact',
                         'global.PrivacyPolicy.checkbox_label'
                     ),
@@ -60,7 +62,7 @@ class Handler
      */
     public static function sendFormAdminMails(Form $Form)
     {
-        $Mail      = QUI::getMailManager()->getMailer();
+        $Mail = QUI::getMailManager()->getMailer();
         $addresses = $Form->getAddresses();
 
         if (empty($addresses)) {
@@ -112,7 +114,7 @@ class Handler
         $Mail = QUI::getMailManager()->getMailer();
 
         // Determine recipient
-        $recipient    = false;
+        $recipient = false;
         $formElements = $Form->getElements();
 
         foreach ($formElements as $FormElement) {
@@ -138,8 +140,8 @@ class Handler
         foreach ($formElements as $k => $Field) {
             $mailBody = \str_replace(
                 [
-                    '{{label'.$k.'}}',
-                    '{{value'.$k.'}}'
+                    '{{label' . $k . '}}',
+                    '{{value' . $k . '}}'
                 ],
                 [
                     $Field->getAttribute('label'),

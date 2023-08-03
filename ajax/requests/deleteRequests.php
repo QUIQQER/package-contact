@@ -1,13 +1,14 @@
 <?php
 
-use QUI\Contact\RequestList;
-
 /**
  * Delete contact requests
  *
  * @param array $requestIds
  * @return bool - success
  */
+
+use QUI\Contact\RequestList;
+
 QUI::$Ajax->registerFunction(
     'package_quiqqer_contact_ajax_requests_deleteRequests',
     function ($requestIds) {
