@@ -6,5 +6,4 @@ use QUI;
 
 class ContactException extends QUI\Exception
 {
-
 }

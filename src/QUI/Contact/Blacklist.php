@@ -4,8 +4,8 @@ namespace QUI\Contact;
 
 use QUI;
 use QUI\FormBuilder\Builder;
-use QUI\Utils\Security\Orthos;
 use QUI\FormBuilder\Fields\EMail as FormBuilderEmailType;
+use QUI\Utils\Security\Orthos;
 
 /**
  * Class Blacklist
@@ -40,8 +40,10 @@ class Blacklist
             }
         }
 
-        if (self::isIpBlacklistedByIpList($ip)
-            || self::isIpBlacklistedByDNSBL($ip)) {
+        if (
+            self::isIpBlacklistedByIpList($ip)
+            || self::isIpBlacklistedByDNSBL($ip)
+        ) {
             return true;
         }
 
@@ -56,7 +58,7 @@ class Blacklist
      */
     public static function isIpBlacklistedByIpList($ip)
     {
-        $conf   = self::getBlacklistConf();
+        $conf = self::getBlacklistConf();
         $ipList = json_decode($conf['ipAddresses'], true);
         $longIp = ip2long($ip);
 
@@ -76,7 +78,7 @@ class Blacklist
                 if (empty($longIpCheck)) {
                     QUI\System\Log::addError(
                         'Package quiqqer/contact -> An IP address that is used for blacklisting'
-                        .' has the wrong format: "'.$entry.'"'
+                        . ' has the wrong format: "' . $entry . '"'
                     );
 
                     continue;
@@ -92,12 +94,14 @@ class Blacklist
             // IP range
             $rangeIps = explode("-", $entry);
 
-            if (empty($rangeIps)
+            if (
+                empty($rangeIps)
                 || empty($rangeIps[0])
-                || empty($rangeIps[1])) {
+                || empty($rangeIps[1])
+            ) {
                 QUI\System\Log::addError(
                     'Package quiqqer/contact -> An IP address range that is used for blacklisting'
-                    .' has the wrong format: "'.$entry.'"'
+                    . ' has the wrong format: "' . $entry . '"'
                 );
 
                 continue;
@@ -106,18 +110,22 @@ class Blacklist
             $longIpCheck1 = ip2long($rangeIps[0]);
             $longIpCheck2 = ip2long($rangeIps[1]);
 
-            if (empty($longIpCheck1)
-                || empty($longIpCheck2)) {
+            if (
+                empty($longIpCheck1)
+                || empty($longIpCheck2)
+            ) {
                 QUI\System\Log::addError(
                     'Package quiqqer/contact -> An IP address range that is used for blacklisting'
-                    .' has the wrong format: "'.$entry.'"'
+                    . ' has the wrong format: "' . $entry . '"'
                 );
 
                 continue;
             }
 
-            if ($longIp >= $longIpCheck1
-                && $longIp <= $longIpCheck2) {
+            if (
+                $longIp >= $longIpCheck1
+                && $longIp <= $longIpCheck2
+            ) {
                 return true;
             }
         }
@@ -136,13 +144,13 @@ class Blacklist
         if (!Orthos::checkMailSyntax($email)) {
             QUI\System\Log::addDebug(
                 'Package quiqqer/contact -> The e-mail address that the user provided and that'
-                .' is checked for blacklisting has the wrong format: "'.$email.'"'
+                . ' is checked for blacklisting has the wrong format: "' . $email . '"'
             );
 
             return false;
         }
 
-        $conf                  = self::getBlacklistConf();
+        $conf = self::getBlacklistConf();
         $blockedEmailAddresses = json_decode($conf['emailAddresses'], true);
 
         if (empty($blockedEmailAddresses) || !is_array($blockedEmailAddresses)) {
@@ -160,24 +168,26 @@ class Blacklist
 
             $blockedParts = explode('@', $blockedEmail);
 
-            if (empty($blockedParts[0])
-                || empty($blockedParts[0])) {
+            if (
+                empty($blockedParts[0])
+                || empty($blockedParts[0])
+            ) {
                 QUI\System\Log::addError(
                     'Package quiqqer/contact -> An e-mail address that is used for blacklisting'
-                    .' has the wrong format: "'.$blockedEmail.'"'
+                    . ' has the wrong format: "' . $blockedEmail . '"'
                 );
 
                 continue;
             }
 
-            $emailParts  = explode('@', $email);
-            $emailName   = $emailParts[0];
-            $emailHost   = $emailParts[1];
+            $emailParts = explode('@', $email);
+            $emailName = $emailParts[0];
+            $emailHost = $emailParts[1];
             $blockedName = $blockedParts[0];
             $blockedHost = $blockedParts[1];
 
-            $blockedNameRegex = '#'.str_replace(['.', '*'], ['\\.', '.*'], $blockedName).'#i';
-            $blockedHostRegex = '#'.str_replace(['.', '*'], ['\\.', '.*'], $blockedHost).'#i';
+            $blockedNameRegex = '#' . str_replace(['.', '*'], ['\\.', '.*'], $blockedName) . '#i';
+            $blockedHostRegex = '#' . str_replace(['.', '*'], ['\\.', '.*'], $blockedHost) . '#i';
 
             preg_match($blockedNameRegex, $emailName, $nameMatches);
             preg_match($blockedHostRegex, $emailHost, $hostMatches);
@@ -206,7 +216,7 @@ class Blacklist
             return false;
         }
 
-        $providers  = json_decode($conf['DNSBLProviders'], true);
+        $providers = json_decode($conf['DNSBLProviders'], true);
         $reverse_ip = implode(".", array_reverse(explode(".", $ip)));
 
         if (empty($providers) || !is_array($providers)) {
@@ -216,7 +226,7 @@ class Blacklist
         // check if nslookup is available and executable
         // If not - use checkdnsrr (disadvantage: has no timeout parameter)
         $isNslookupExecutable = false;
-        $nslookupExecutable   = trim(`which nslookup`);
+        $nslookupExecutable = trim(`which nslookup`);
 
         if ($nslookupExecutable) {
             $openBaseDir = ini_get('open_basedir');
@@ -224,8 +234,8 @@ class Blacklist
             if (empty($openBaseDir)) {
                 $isNslookupExecutable = is_executable($nslookupExecutable);
             } else {
-                $nslookupPath     = pathinfo($nslookupExecutable);
-                $nslookupPath     = $nslookupPath['dirname'];
+                $nslookupPath = pathinfo($nslookupExecutable);
+                $nslookupPath = $nslookupPath['dirname'];
                 $openBaseDirPaths = explode(':', $openBaseDir);
 
                 foreach ($openBaseDirPaths as $path) {
@@ -238,10 +248,10 @@ class Blacklist
         }
 
         foreach ($providers as $host) {
-            $host = $reverse_ip.".".$host.".";
+            $host = $reverse_ip . "." . $host . ".";
 
             if (!$isNslookupExecutable) {
-                if (checkdnsrr($reverse_ip.".".$host.".", "A")) {
+                if (checkdnsrr($reverse_ip . "." . $host . ".", "A")) {
                     return $returnBlockingList ? $host : true;
                 }
 
@@ -249,7 +259,7 @@ class Blacklist
             }
 
             // Use nslookup if available
-            $cmd      = sprintf('nslookup -type=A -timeout=%d %s 2>&1', 3, escapeshellarg($host));
+            $cmd = sprintf('nslookup -type=A -timeout=%d %s 2>&1', 3, escapeshellarg($host));
             $response = [];
 
             @exec($cmd, $response);

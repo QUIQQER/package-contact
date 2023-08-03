@@ -6,6 +6,7 @@
  * @param array $requestIds
  * @return bool - success
  */
+
 QUI::$Ajax->registerFunction(
     'package_quiqqer_contact_ajax_getSettings',
     function () {

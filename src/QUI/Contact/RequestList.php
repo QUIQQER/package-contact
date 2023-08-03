@@ -2,11 +2,11 @@
 
 namespace QUI\Contact;
 
+use DateTime;
 use QUI;
 use QUI\Projects\Site;
-use QUI\Utils\Security\Orthos;
-use QUI\Utils\Grid;
 use QUI\Security\Encryption;
+use QUI\Utils\Grid;
 
 /**
  * Class RequestList
@@ -26,10 +26,10 @@ class RequestList
      */
     public static function saveFormRequest($formFields, $FormSite)
     {
-        $Now        = new \DateTime();
+        $Now = new DateTime();
         $submitData = [];
-        $Conf       = QUI::getPackage('quiqqer/contact')->getConfig();
-        $encrypt    = boolval($Conf->get('settings', 'encryptContactRequests'));
+        $Conf = QUI::getPackage('quiqqer/contact')->getConfig();
+        $encrypt = boolval($Conf->get('settings', 'encryptContactRequests'));
 
         foreach ($formFields as $FormField) {
             $submitData[$FormField->getName()] = $FormField->getValueText();
@@ -53,7 +53,7 @@ class RequestList
         QUI::getDataBase()->insert(
             self::getRequestsTable(),
             [
-                'formId'     => $formId,
+                'formId' => $formId,
                 'submitDate' => $Now->format('Y-m-d H:i:s'),
                 'submitData' => $submitData,
             ]
@@ -74,16 +74,16 @@ class RequestList
                 'title',
                 'dataFields'
             ],
-            'from'   => self::getFormsTable()
+            'from' => self::getFormsTable()
         ]);
 
-        $parsed       = [];
+        $parsed = [];
         $parsedTitles = [];
-        $forms        = [];
+        $forms = [];
 
         foreach ($result as $row) {
-            $title      = $row['title'];
-            $titleHash  = md5($title);
+            $title = $row['title'];
+            $titleHash = md5($title);
             $identifier = $row['identifier'];
 
             if (isset($parsed[$identifier])) {
@@ -97,11 +97,11 @@ class RequestList
             $parsedTitles[$titleHash]++;
 
             if ($parsedTitles[$titleHash] > 1) {
-                $title .= ' ['.($parsedTitles[$titleHash] - 1).']';
+                $title .= ' [' . ($parsedTitles[$titleHash] - 1) . ']';
             }
 
             $row['title'] = $title;
-            $forms[]      = $row;
+            $forms[] = $row;
         }
 
         return $forms;
@@ -117,10 +117,10 @@ class RequestList
      */
     public static function getList($searchParams, $countOnly = false)
     {
-        $Grid       = new Grid($searchParams);
+        $Grid = new Grid($searchParams);
         $gridParams = $Grid->parseDBParams($searchParams);
-        $Conf       = QUI::getPackage('quiqqer/contact')->getConfig();
-        $encrypt    = boolval($Conf->get('settings', 'encryptContactRequests'));
+        $Conf = QUI::getPackage('quiqqer/contact')->getConfig();
+        $encrypt = boolval($Conf->get('settings', 'encryptContactRequests'));
 
         $binds = [];
         $where = [];
@@ -131,10 +131,10 @@ class RequestList
             $sql = "SELECT *";
         }
 
-        $sql .= " FROM `".self::getRequestsTable()."`";
+        $sql .= " FROM `" . self::getRequestsTable() . "`";
 
         if (!empty($searchParams['id'])) {
-            $where[] = '`formId` = '.(int)$searchParams['id'];
+            $where[] = '`formId` = ' . (int)$searchParams['id'];
         }
 
         if (!empty($searchParams['search'])) {
@@ -145,35 +145,36 @@ class RequestList
             $whereOr = [];
 
             foreach ($searchColumns as $searchColumn) {
-                $whereOr[] = '`'.$searchColumn.'` LIKE :search';
+                $whereOr[] = '`' . $searchColumn . '` LIKE :search';
             }
 
             if (!empty($whereOr)) {
-                $where[] = '('.implode(' OR ', $whereOr).')';
+                $where[] = '(' . implode(' OR ', $whereOr) . ')';
 
                 $binds['search'] = [
-                    'value' => '%'.$searchParams['search'].'%',
-                    'type'  => \PDO::PARAM_STR
+                    'value' => '%' . $searchParams['search'] . '%',
+                    'type' => \PDO::PARAM_STR
                 ];
             }
         }
 
         // build WHERE query string
         if (!empty($where)) {
-            $sql .= " WHERE ".implode(" AND ", $where);
+            $sql .= " WHERE " . implode(" AND ", $where);
         }
 
         // ORDER BY
         $sql .= " ORDER BY id DESC";
 
         // LIMIT
-        if (!empty($gridParams['limit'])
+        if (
+            !empty($gridParams['limit'])
             && !$countOnly
         ) {
-            $sql .= " LIMIT ".$gridParams['limit'];
+            $sql .= " LIMIT " . $gridParams['limit'];
         } else {
             if (!$countOnly) {
-                $sql .= " LIMIT ".(int)20;
+                $sql .= " LIMIT " . (int)20;
             }
         }
 
@@ -181,7 +182,7 @@ class RequestList
 
         // bind search values
         foreach ($binds as $var => $bind) {
-            $Stmt->bindValue(':'.$var, $bind['value'], $bind['type']);
+            $Stmt->bindValue(':' . $var, $bind['value'], $bind['type']);
         }
 
         try {
@@ -189,7 +190,7 @@ class RequestList
             $result = $Stmt->fetchAll(\PDO::FETCH_ASSOC);
         } catch (\Exception $Exception) {
             QUI\System\Log::addError(
-                self::class.' :: search() -> '.$Exception->getMessage()
+                self::class . ' :: search() -> ' . $Exception->getMessage()
             );
 
             return [];
@@ -238,8 +239,8 @@ class RequestList
             try {
                 $resultFormIdentifier = QUI::getDataBase()->fetch([
                     'select' => ['formId', 'submitData'],
-                    'from'   => self::getRequestsTable(),
-                    'where'  => [
+                    'from' => self::getRequestsTable(),
+                    'where' => [
                         'id' => $requestId
                     ]
                 ]);
@@ -247,7 +248,7 @@ class RequestList
                 $requestData = $resultFormIdentifier[0];
 
                 $resultFormData = QUI::getDataBase()->fetch([
-                    'from'  => self::getFormsTable(),
+                    'from' => self::getFormsTable(),
                     'where' => [
                         'id' => $requestData['formId']
                     ]
@@ -255,14 +256,16 @@ class RequestList
 
                 $formData = $resultFormData[0];
 
-                if (empty($formData['projectName']) ||
+                if (
+                    empty($formData['projectName']) ||
                     empty($formData['projectLang']) ||
-                    empty($formData['siteId'])) {
+                    empty($formData['siteId'])
+                ) {
                     continue;
                 }
 
                 $Project = QUI::getProject($formData['projectName'], $formData['projectLang']);
-                $Site    = $Project->get($formData['siteId']);
+                $Site = $Project->get($formData['siteId']);
 
                 QUI::getEvents()->fireEvent(
                     'quiqqerContactDeleteFormRequest',
@@ -281,7 +284,7 @@ class RequestList
             self::getRequestsTable(),
             [
                 'id' => [
-                    'type'  => 'IN',
+                    'type' => 'IN',
                     'value' => $requestIds
                 ]
             ]
@@ -298,7 +301,7 @@ class RequestList
      */
     public static function getFormIdentifier(Site $Site)
     {
-        $Project  = $Site->getProject();
+        $Project = $Site->getProject();
         $formData = $Site->getAttribute('quiqqer.contact.settings.form');
 
         if (empty($formData)) {
@@ -334,8 +337,8 @@ class RequestList
     {
         $result = QUI::getDataBase()->fetch([
             'select' => 'id',
-            'from'   => self::getFormsTable(),
-            'where'  => [
+            'from' => self::getFormsTable(),
+            'where' => [
                 'identifier' => $identifier
             ]
         ]);

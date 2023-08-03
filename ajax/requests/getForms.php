@@ -1,13 +1,14 @@
 <?php
 
-use QUI\Contact\RequestList;
-
 /**
  * Get list of contact requests
  *
  * @param array $searchParams
  * @return int|false - New InviteCode ID or false on error
  */
+
+use QUI\Contact\RequestList;
+
 QUI::$Ajax->registerFunction(
     'package_quiqqer_contact_ajax_requests_getForms',
     function () {
