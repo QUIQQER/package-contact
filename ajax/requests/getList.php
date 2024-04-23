@@ -19,9 +19,9 @@ QUI::$Ajax->registerFunction(
         try {
             $Grid = new Grid($searchParams);
             $result = RequestList::getList($searchParams);
-            $gridRows = array();
+            $gridRows = [];
 
-            foreach ($result as $k => $row) {
+            foreach ($result as $row) {
                 $rowData = json_decode($row['submitData'], true);
 
                 $rowData['submitDate'] = $row['submitDate'];
@@ -35,7 +35,7 @@ QUI::$Ajax->registerFunction(
                 $gridRows,
                 RequestList::getList($searchParams, true)
             );
-        } catch (\Exception $Exception) {
+        } catch (Exception $Exception) {
             QUI\System\Log::writeException($Exception);
 
             QUI::getMessagesHandler()->addError(
@@ -48,6 +48,6 @@ QUI::$Ajax->registerFunction(
             return false;
         }
     },
-    array('searchParams'),
+    ['searchParams'],
     'Permission::checkAdminUser'
 );

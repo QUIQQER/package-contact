@@ -2,8 +2,12 @@
 
 namespace QUI\Contact;
 
+use Exception;
 use QUI;
 use QUI\FormBuilder\Builder as Form;
+
+use function json_decode;
+use function str_replace;
 
 /**
  * Class Handler
@@ -18,11 +22,11 @@ class Handler
      * @param QUI\FormBuilder\Builder $Form - The form that the custom fields are added to
      * @return void
      */
-    public static function addCustomFormFields(QUI\FormBuilder\Builder $Form)
+    public static function addCustomFormFields(QUI\FormBuilder\Builder $Form): void
     {
         try {
             $Conf = QUI::getPackage('quiqqer/contact')->getConfig();
-        } catch (\Exception $Exception) {
+        } catch (Exception $Exception) {
             QUI\System\Log::writeException($Exception);
             return;
         }
@@ -58,9 +62,9 @@ class Handler
      * @param Form $Form
      * @return void
      *
-     * @throws QUI\Exception
+     * @throws QUI\Exception|\PHPMailer\PHPMailer\Exception
      */
-    public static function sendFormAdminMails(Form $Form)
+    public static function sendFormAdminMails(Form $Form): void
     {
         $Mail = QUI::getMailManager()->getMailer();
         $addresses = $Form->getAddresses();
@@ -95,9 +99,9 @@ class Handler
      * @param QUI\Projects\Site $Site
      * @return void
      *
-     * @throws QUI\Exception
+     * @throws QUI\Exception|\PHPMailer\PHPMailer\Exception
      */
-    public static function sendFormSuccessMail(Form $Form, QUI\Projects\Site $Site)
+    public static function sendFormSuccessMail(Form $Form, QUI\Projects\Site $Site): void
     {
         $mailData = $Site->getAttribute('quiqqer.contact.success_mail');
 
@@ -105,7 +109,7 @@ class Handler
             return;
         }
 
-        $mailData = \json_decode($mailData, true);
+        $mailData = json_decode($mailData, true);
 
         if (empty($mailData['send']) || empty($mailData['body']) || empty($mailData['subject'])) {
             return;
@@ -138,7 +142,7 @@ class Handler
 
         // Replace placeholders with actual values
         foreach ($formElements as $k => $Field) {
-            $mailBody = \str_replace(
+            $mailBody = str_replace(
                 [
                     '{{label' . $k . '}}',
                     '{{value' . $k . '}}'

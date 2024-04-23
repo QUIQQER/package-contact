@@ -9,6 +9,8 @@ namespace QUI\Contact;
 use QUI;
 use QUI\Projects\Site;
 
+use function json_encode;
+
 /**
  * Class EventHandler
  *
@@ -17,9 +19,9 @@ use QUI\Projects\Site;
 class EventHandler
 {
     /**
-     * @param \QUI\Projects\Site $Site
+     * @param QUI\Interfaces\Projects\Site $Site
      */
-    public static function onSiteInit($Site)
+    public static function onSiteInit(QUI\Interfaces\Projects\Site $Site): void
     {
         if (
             $Site->getAttribute('type') == 'quiqqer/contact:types/contact'
@@ -37,7 +39,7 @@ class EventHandler
      *
      * @throws QUI\Exception
      */
-    public static function onPackageSetup(QUI\Package\Package $Package)
+    public static function onPackageSetup(QUI\Package\Package $Package): void
     {
         if ($Package->getName() !== 'quiqqer/contact') {
             return;
@@ -74,7 +76,7 @@ class EventHandler
      *
      * @throws QUI\Exception
      */
-    public static function onSiteSave(Site $Site)
+    public static function onSiteSave(Site $Site): void
     {
         if ($Site->getAttribute('type') !== 'quiqqer/contact:types/contact') {
             return;
@@ -84,7 +86,7 @@ class EventHandler
 
         $SiteEdit = $Site->getEdit();
 
-        // Default success mesage
+        // Default success message
         $successMessage = $Site->getAttribute('quiqqer.contact.success');
 
         if (empty($successMessage)) {
@@ -104,7 +106,7 @@ class EventHandler
                 'body' => QUI::getLocale()->get('quiqqer/contact', 'contact.default.success_mail_body')
             ];
 
-            $Site->setAttribute('quiqqer.contact.success_mail', \json_encode($successMail));
+            $Site->setAttribute('quiqqer.contact.success_mail', json_encode($successMail));
         }
 
         $SiteEdit->save(QUI::getUsers()->getSystemUser());
@@ -116,7 +118,7 @@ class EventHandler
      * @param Site $Site
      * @throws QUI\Exception
      */
-    protected static function parseContactSiteIntoFormTable(Site $Site)
+    protected static function parseContactSiteIntoFormTable(Site $Site): void
     {
         $formFields = $Site->getAttribute('quiqqer.contact.settings.form');
 
@@ -161,7 +163,7 @@ class EventHandler
             $dataFields[] = [
                 'name' => $fieldName,
                 'label' => $Field->getAttribute('label') ?: $fieldName,
-                'required' => $Field->getAttribute('required') ? true : false
+                'required' => (bool)$Field->getAttribute('required')
             ];
         }
 

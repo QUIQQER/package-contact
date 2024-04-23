@@ -3,10 +3,13 @@
 namespace QUI\Contact;
 
 use DateTime;
+use PDO;
 use QUI;
-use QUI\Projects\Site;
+use QUI\Exception;
 use QUI\Security\Encryption;
 use QUI\Utils\Grid;
+
+use function json_decode;
 
 /**
  * Class RequestList
@@ -19,12 +22,12 @@ class RequestList
      * Save a form request to the database
      *
      * @param QUI\FormBuilder\Field[] $formFields - The form fields with submit data
-     * @param Site $FormSite - The Site the form was submitted from
+     * @param QUI\Interfaces\Projects\Site $FormSite - The Site the form was submitted from
      * @return void
      *
      * @throws QUI\Exception
      */
-    public static function saveFormRequest($formFields, $FormSite)
+    public static function saveFormRequest(array $formFields, QUI\Interfaces\Projects\Site $FormSite): void
     {
         $Now = new DateTime();
         $submitData = [];
@@ -65,7 +68,7 @@ class RequestList
      *
      * @return array
      */
-    public static function getForms()
+    public static function getForms(): array
     {
         $result = QUI::getDataBase()->fetch([
             'select' => [
@@ -110,12 +113,13 @@ class RequestList
     /**
      * Get request list
      *
-     * @param $searchParams
+     * @param array $searchParams
      * @param bool $countOnly
      * @return array|int
-     * @throws QUI\Exception
+     * @throws Exception
+     * @throws \Doctrine\DBAL\Exception
      */
-    public static function getList($searchParams, $countOnly = false)
+    public static function getList(array $searchParams, bool $countOnly = false): array|int
     {
         $Grid = new Grid($searchParams);
         $gridParams = $Grid->parseDBParams($searchParams);
@@ -153,7 +157,7 @@ class RequestList
 
                 $binds['search'] = [
                     'value' => '%' . $searchParams['search'] . '%',
-                    'type' => \PDO::PARAM_STR
+                    'type' => PDO::PARAM_STR
                 ];
             }
         }
@@ -174,7 +178,7 @@ class RequestList
             $sql .= " LIMIT " . $gridParams['limit'];
         } else {
             if (!$countOnly) {
-                $sql .= " LIMIT " . (int)20;
+                $sql .= " LIMIT " . 20;
             }
         }
 
@@ -187,7 +191,7 @@ class RequestList
 
         try {
             $Stmt->execute();
-            $result = $Stmt->fetchAll(\PDO::FETCH_ASSOC);
+            $result = $Stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (\Exception $Exception) {
             QUI\System\Log::addError(
                 self::class . ' :: search() -> ' . $Exception->getMessage()
@@ -217,7 +221,7 @@ class RequestList
      * @param string $str
      * @return bool
      */
-    protected static function isJSON($str)
+    protected static function isJSON(string $str): bool
     {
         $str = json_decode($str, true);
         return json_last_error() === JSON_ERROR_NONE && is_array($str);
@@ -229,7 +233,7 @@ class RequestList
      * @param array $requestIds
      * @return void
      */
-    public static function deleteRequests($requestIds)
+    public static function deleteRequests(array $requestIds): void
     {
         array_walk($requestIds, function (&$v) {
             $v = (int)$v;
@@ -271,7 +275,7 @@ class RequestList
                     'quiqqerContactDeleteFormRequest',
                     [
                         $requestId,
-                        \json_decode($requestData['submitData'], true),
+                        json_decode($requestData['submitData'], true),
                         $Site
                     ]
                 );
@@ -294,12 +298,10 @@ class RequestList
     /**
      * Get unique form identifier of a quiqqer/contact Site
      *
-     * @param Site $Site
+     * @param QUI\Interfaces\Projects\Site $Site
      * @return string
-     *
-     * @throws QUI\Exception
      */
-    public static function getFormIdentifier(Site $Site)
+    public static function getFormIdentifier(QUI\Interfaces\Projects\Site $Site): string
     {
         $Project = $Site->getProject();
         $formData = $Site->getAttribute('quiqqer.contact.settings.form');
@@ -333,7 +335,7 @@ class RequestList
      * @param string $identifier
      * @return int|false - ID if found; false if not found
      */
-    public static function getFormIdByIdentifier($identifier)
+    public static function getFormIdByIdentifier(string $identifier): bool|int
     {
         $result = QUI::getDataBase()->fetch([
             'select' => 'id',
@@ -355,7 +357,7 @@ class RequestList
      *
      * @return string
      */
-    public static function getFormsTable()
+    public static function getFormsTable(): string
     {
         return QUI::getDBTableName('quiqqer_contact_forms');
     }
@@ -365,7 +367,7 @@ class RequestList
      *
      * @return string
      */
-    public static function getRequestsTable()
+    public static function getRequestsTable(): string
     {
         return QUI::getDBTableName('quiqqer_contact_requests');
     }
