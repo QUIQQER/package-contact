@@ -1,5 +1,5 @@
 {
-    "name": "quiqqer\/contact",
+    "name": "quiqqer/contact",
     "type": "quiqqer-module",
     "description": "Integrate complex forms into your web page using the simple form editor. Complex development of contact, offer and other forms are a thing of the past.",
     "license": [
@@ -10,21 +10,21 @@
         {
             "name": "Henning Leutz",
             "email": "support@pcsg.de",
-            "homepage": "http:\/\/www.pcsg.de",
+            "homepage": "https://www.pcsg.de",
             "role": "Developer"
         }
     ],
     "support": {
         "email": "support@pcsg.de",
-        "url": "http:\/\/www.pcsg.de"
+        "url": "https://www.pcsg.de"
     },
     "require": {
-        "quiqqer\/quiqqer": "^1.1|^2",
-        "quiqqer\/formbuilder": "^1.3"
+        "quiqqer/core": "^2",
+        "quiqqer/formbuilder": "^1.3"
     },
     "autoload": {
         "psr-0": {
-            "QUI": "src\/"
+            "QUI": "src/"
         }
     }
 }
