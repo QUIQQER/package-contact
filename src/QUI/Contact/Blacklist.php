@@ -90,11 +90,7 @@ class Blacklist
             // IP range
             $rangeIps = explode("-", $entry);
 
-            if (
-                empty($rangeIps)
-                || empty($rangeIps[0])
-                || empty($rangeIps[1])
-            ) {
+            if (empty($rangeIps[0]) || empty($rangeIps[1])) {
                 QUI\System\Log::addError(
                     'Package quiqqer/contact -> An IP address range that is used for blacklisting'
                     . ' has the wrong format: "' . $entry . '"'
@@ -106,10 +102,7 @@ class Blacklist
             $longIpCheck1 = ip2long($rangeIps[0]);
             $longIpCheck2 = ip2long($rangeIps[1]);
 
-            if (
-                empty($longIpCheck1)
-                || empty($longIpCheck2)
-            ) {
+            if (empty($longIpCheck1) || empty($longIpCheck2)) {
                 QUI\System\Log::addError(
                     'Package quiqqer/contact -> An IP address range that is used for blacklisting'
                     . ' has the wrong format: "' . $entry . '"'
