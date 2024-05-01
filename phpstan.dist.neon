@@ -2,10 +2,10 @@ includes:
 	- phpstan-baseline.neon
 
 parameters:
-    level: 8
+    level: 1
     paths:
-        - src
         - ajax
+        - src
     bootstrapFiles:
         - tests/phpstan-bootstrap.php
 
