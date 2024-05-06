@@ -20,7 +20,7 @@ QUI::$Ajax->registerFunction(
         $formData = $Site->getAttribute('quiqqer.contact.settings.form');
 
         if (!empty($formData)) {
-            $FormBuilder->load(\json_decode($formData, true));
+            $FormBuilder->load(json_decode($formData, true));
         }
 
         $formElements = $FormBuilder->getElements();
@@ -30,7 +30,7 @@ QUI::$Ajax->registerFunction(
             $fields[] = [
                 'id' => $k,
                 'label' => $Field->getAttribute('label'),
-                'required' => \boolval($Field->getAttribute('required'))
+                'required' => boolval($Field->getAttribute('required'))
             ];
         }
 

@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file contains the contact site type
+ *
+ * @var QUI\Projects\Project $Project
+ * @var QUI\Projects\Site $Site
+ * @var QUI\Interfaces\Template\EngineInterface $Engine
+ * @var QUI\Template $Template
+ **/
+
 use QUI\Contact\RequestList;
 use QUI\Contact\Handler;
 use QUI\Contact\Blacklist;
@@ -26,7 +35,6 @@ try {
     $ip = $_SERVER['REMOTE_ADDR'];
 
     if ($Form->isSuccess()) {
-        /** @var QUI\FormBuilder\Field $FormElement */
         foreach ($Form->getElements() as $FormElement) {
             if ($FormElement->getType() === FormBuilderEmailType::class) {
                 if (Blacklist::isEmailAddressBlacklisted($FormElement->getValueText())) {
@@ -34,7 +42,7 @@ try {
                         'quiqqer/contact',
                         'exception.types.contact.blacklisted'
                     ]);
-                };
+                }
             }
         }
 
@@ -68,7 +76,7 @@ try {
         $addresses = $Form->getAddresses();
 
         if (!$saveForm && empty($addresses)) {
-            throw new \QUI\Contact\ContactException([
+            throw new ContactException([
                 'quiqqer/contact',
                 'exception.types.contact.no_recipients'
             ]);
@@ -77,20 +85,20 @@ try {
         // Admin mail(s)
         try {
             Handler::sendFormAdminMails($Form);
-        } catch (\Exception $Exception) {
+        } catch (Exception $Exception) {
             QUI\System\Log::writeException($Exception);
         }
 
         // Submitter mail
         try {
             Handler::sendFormSuccessMail($Form, $Site);
-        } catch (\Exception $Exception) {
+        } catch (Exception $Exception) {
             QUI\System\Log::writeException($Exception);
         }
 
         $Engine->assign([
             'formMessage' => $Site->getAttribute('quiqqer.contact.success'),
-            'form'        => ''
+            'form' => ''
         ]);
     } else {
         $Engine->assign([
@@ -100,6 +108,6 @@ try {
 } catch (QUI\Exception $Exception) {
     $Engine->assign([
         'formError' => $Exception->getMessage(),
-        'form'      => $Form->create()
+        'form' => $Form->create()
     ]);
 }

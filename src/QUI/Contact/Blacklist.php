@@ -17,9 +17,9 @@ class Blacklist
     /**
      * Blacklist configuration
      *
-     * @var array
+     * @var array|null
      */
-    protected static $conf = null;
+    protected static ?array $conf = null;
 
     /**
      * Check if a submitted form is blacklisted by any measure
@@ -27,23 +27,19 @@ class Blacklist
      * @param Builder $Form
      * @return bool
      */
-    public static function isBlacklisted(Builder $Form)
+    public static function isBlacklisted(Builder $Form): bool
     {
         $ip = $_SERVER['REMOTE_ADDR'];
 
-        /** @var QUI\FormBuilder\Field $FormElement */
         foreach ($Form->getElements() as $FormElement) {
             if ($FormElement->getType() === FormBuilderEmailType::class) {
                 if (self::isEmailAddressBlacklisted($FormElement->getValueText())) {
                     return true;
-                };
+                }
             }
         }
 
-        if (
-            self::isIpBlacklistedByIpList($ip)
-            || self::isIpBlacklistedByDNSBL($ip)
-        ) {
+        if (self::isIpBlacklistedByIpList($ip) || self::isIpBlacklistedByDNSBL($ip)) {
             return true;
         }
 
@@ -56,7 +52,7 @@ class Blacklist
      * @param string $ip
      * @return bool
      */
-    public static function isIpBlacklistedByIpList($ip)
+    public static function isIpBlacklistedByIpList(string $ip): bool
     {
         $conf = self::getBlacklistConf();
         $ipList = json_decode($conf['ipAddresses'], true);
@@ -94,11 +90,7 @@ class Blacklist
             // IP range
             $rangeIps = explode("-", $entry);
 
-            if (
-                empty($rangeIps)
-                || empty($rangeIps[0])
-                || empty($rangeIps[1])
-            ) {
+            if (empty($rangeIps[0]) || empty($rangeIps[1])) {
                 QUI\System\Log::addError(
                     'Package quiqqer/contact -> An IP address range that is used for blacklisting'
                     . ' has the wrong format: "' . $entry . '"'
@@ -110,10 +102,7 @@ class Blacklist
             $longIpCheck1 = ip2long($rangeIps[0]);
             $longIpCheck2 = ip2long($rangeIps[1]);
 
-            if (
-                empty($longIpCheck1)
-                || empty($longIpCheck2)
-            ) {
+            if (empty($longIpCheck1) || empty($longIpCheck2)) {
                 QUI\System\Log::addError(
                     'Package quiqqer/contact -> An IP address range that is used for blacklisting'
                     . ' has the wrong format: "' . $entry . '"'
@@ -139,7 +128,7 @@ class Blacklist
      * @param string $email
      * @return bool
      */
-    public static function isEmailAddressBlacklisted($email)
+    public static function isEmailAddressBlacklisted(string $email): bool
     {
         if (!Orthos::checkMailSyntax($email)) {
             QUI\System\Log::addDebug(
@@ -168,10 +157,7 @@ class Blacklist
 
             $blockedParts = explode('@', $blockedEmail);
 
-            if (
-                empty($blockedParts[0])
-                || empty($blockedParts[0])
-            ) {
+            if (empty($blockedParts[0]) || empty($blockedParts[1])) {
                 QUI\System\Log::addError(
                     'Package quiqqer/contact -> An e-mail address that is used for blacklisting'
                     . ' has the wrong format: "' . $blockedEmail . '"'
@@ -206,9 +192,9 @@ class Blacklist
      * @param string $ip - IPv4 address
      * @param bool $returnBlockingList - Return the host of the blacklist provider the IP address
      * is on (if the IP is blocked!)
-     * @return bool
+     * @return bool|string
      */
-    public static function isIpBlacklistedByDNSBL($ip, $returnBlockingList = false)
+    public static function isIpBlacklistedByDNSBL(string $ip, bool $returnBlockingList = false): bool|string
     {
         $conf = self::getBlacklistConf();
 
@@ -277,9 +263,9 @@ class Blacklist
     /**
      * Get config array for blacklist configuration of quiqqer/contact
      *
-     * @return array
+     * @return array|null
      */
-    protected static function getBlacklistConf()
+    protected static function getBlacklistConf(): ?array
     {
         if (!is_null(self::$conf)) {
             return self::$conf;

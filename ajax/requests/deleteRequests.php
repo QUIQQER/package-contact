@@ -14,7 +14,7 @@ QUI::$Ajax->registerFunction(
     function ($requestIds) {
         try {
             RequestList::deleteRequests(json_decode($requestIds, true));
-        } catch (\Exception $Exception) {
+        } catch (Exception $Exception) {
             QUI\System\Log::writeException($Exception);
 
             QUI::getMessagesHandler()->addError(
@@ -36,6 +36,6 @@ QUI::$Ajax->registerFunction(
 
         return true;
     },
-    array('requestIds'),
+    ['requestIds'],
     'Permission::checkAdminUser'
 );

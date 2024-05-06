@@ -14,7 +14,7 @@ QUI::$Ajax->registerFunction(
     function () {
         try {
             return RequestList::getForms();
-        } catch (\Exception $Exception) {
+        } catch (Exception $Exception) {
             QUI\System\Log::writeException($Exception);
 
             QUI::getMessagesHandler()->addError(
@@ -27,6 +27,6 @@ QUI::$Ajax->registerFunction(
             return false;
         }
     },
-    array(),
+    [],
     'Permission::checkAdminUser'
 );
