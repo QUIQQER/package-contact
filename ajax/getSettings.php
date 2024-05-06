@@ -12,6 +12,6 @@ QUI::$Ajax->registerFunction(
     function () {
         return QUI::getPackage('quiqqer/contact')->getConfig()->toArray();
     },
-    array(),
+    [],
     'Permission::checkAdminUser'
 );
