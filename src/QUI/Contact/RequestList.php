@@ -152,14 +152,12 @@ class RequestList
                 $whereOr[] = '`' . $searchColumn . '` LIKE :search';
             }
 
-            if (!empty($whereOr)) {
-                $where[] = '(' . implode(' OR ', $whereOr) . ')';
+            $where[] = '(' . implode(' OR ', $whereOr) . ')';
 
-                $binds['search'] = [
-                    'value' => '%' . $searchParams['search'] . '%',
-                    'type' => PDO::PARAM_STR
-                ];
-            }
+            $binds['search'] = [
+                'value' => '%' . $searchParams['search'] . '%',
+                'type' => PDO::PARAM_STR
+            ];
         }
 
         // build WHERE query string
