@@ -87,7 +87,7 @@
                             <locale group="quiqqer/contact" var="settings.blacklist.title"/>
                         </title>
 
-                        <textarea conf="blacklist.emailAddresses" rows="15" data-qui="package/quiqqer/quiqqer/bin/QUI/controls/settings/Textarea">
+                        <textarea conf="blacklist.emailAddresses" rows="15" data-qui="package/quiqqer/core/bin/QUI/controls/settings/Textarea">
                             <text>
                                 <locale group="quiqqer/contact" var="settings.blacklist.emailAddresses.title"/>
                             </text>
@@ -96,7 +96,7 @@
                             </description>
                         </textarea>
 
-                        <textarea conf="blacklist.ipAddresses" rows="15" data-qui="package/quiqqer/quiqqer/bin/QUI/controls/settings/Textarea">
+                        <textarea conf="blacklist.ipAddresses" rows="15" data-qui="package/quiqqer/core/bin/QUI/controls/settings/Textarea">
                             <text>
                                 <locale group="quiqqer/contact" var="settings.blacklist.ipAddresses.title"/>
                             </text>
@@ -114,7 +114,7 @@
                             </description>
                         </input>
 
-                        <textarea conf="blacklist.DNSBLProviders" rows="15" data-qui="package/quiqqer/quiqqer/bin/QUI/controls/settings/Textarea">
+                        <textarea conf="blacklist.DNSBLProviders" rows="15" data-qui="package/quiqqer/core/bin/QUI/controls/settings/Textarea">
                             <text>
                                 <locale group="quiqqer/contact" var="settings.blacklist.DNSBLProviders.title"/>
                             </text>
