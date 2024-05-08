@@ -32,7 +32,7 @@ class EventHandler
     }
 
     /**
-     * quiqqer/quiqqer: onPackageSetup
+     * quiqqer/core: onPackageSetup
      *
      * @param QUI\Package\Package $Package
      * @return void
@@ -69,7 +69,7 @@ class EventHandler
     }
 
     /**
-     * quiqqer/quiqqer: onSiteSave
+     * quiqqer/core: onSiteSave
      *
      * @param Site $Site
      * @return void
