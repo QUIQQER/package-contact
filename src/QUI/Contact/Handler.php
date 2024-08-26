@@ -6,6 +6,7 @@ use Exception;
 use QUI;
 use QUI\FormBuilder\Builder as Form;
 
+use function is_array;
 use function json_decode;
 use function str_replace;
 
@@ -81,8 +82,16 @@ class Handler
             if ($FormElement->getType() == 'QUI\FormBuilder\Fields\EMail') {
                 $recipient = $FormElement->getAttribute('data');
 
-                if (QUI\Utils\Security\Orthos::checkMailSyntax($recipient)) {
-                    $Mail->addReplyTo($recipient);
+                if (is_array($recipient)) {
+                    foreach ($recipient as $r) {
+                        if (QUI\Utils\Security\Orthos::checkMailSyntax($r)) {
+                            $Mail->addReplyTo($r);
+                        }
+                    }
+                } else {
+                    if (QUI\Utils\Security\Orthos::checkMailSyntax($recipient)) {
+                        $Mail->addReplyTo($recipient);
+                    }
                 }
             }
         }
