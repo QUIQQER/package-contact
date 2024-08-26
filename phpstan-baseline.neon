@@ -1,0 +1,6 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Offset mixed on array\\{\\} in isset\\(\\) does not exist\\.$#"
+			count: 1
+			path: src/QUI/Contact/RequestList.php
