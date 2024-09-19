@@ -54,12 +54,16 @@ class EventHandler
             foreach ($Project->getLanguages() as $lang) {
                 $Project = $Projects->getProject($project, $lang);
 
-                $contactSites = $Project->getSites([
-                    'where' => [
-                        'active' => -1,
-                        'type' => 'quiqqer/contact:types/contact'
-                    ]
-                ]);
+                try {
+                    $contactSites = $Project->getSites([
+                        'where' => [
+                            'active' => -1,
+                            'type' => 'quiqqer/contact:types/contact'
+                        ]
+                    ]);
+                } catch (QUI\Exception) {
+                    continue;
+                }
 
                 foreach ($contactSites as $Site) {
                     self::parseContactSiteIntoFormTable($Site);
