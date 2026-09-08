@@ -118,6 +118,48 @@ class CtaActionControlTest extends TestCase
         self::assertSame('button', $this->invoke($Control, 'getButtonDisplayMode', ['unknown']));
     }
 
+    public function testCollectBrickParamsStripsThePrefixAndSkipsUnusableValues(): void
+    {
+        $Control = new Control([
+            'param-context' => 'Paket: Starter',
+            'param-kickoff' => 'always',
+            'param-empty' => '   ',
+            'startView' => 'ai',
+            'aiBrickId' => '233'
+        ]);
+
+        self::assertSame(
+            [
+                'context' => 'Paket: Starter',
+                'kickoff' => 'always'
+            ],
+            $this->invoke($Control, 'collectBrickParams', [])
+        );
+    }
+
+    public function testCollectBrickParamsIgnoresEverythingWithoutThePrefix(): void
+    {
+        // only the prefixed namespace belongs to the opener; a real setting
+        // must never be forwarded as a parameter
+        $Control = new Control([
+            'aiContext' => 'configured fallback',
+            'recipient' => 'sales@example.com'
+        ]);
+
+        self::assertSame([], $this->invoke($Control, 'collectBrickParams', []));
+    }
+
+    public function testResolveAiBrickIdRejectsAnUnusableSelection(): void
+    {
+        // without a selection there is nothing to render, so the ai view has
+        // to downgrade to the form rather than show an empty host
+        self::assertSame(0, $this->invoke(new Control(), 'resolveAiBrickId', []));
+        self::assertSame(0, $this->invoke(new Control(['aiBrickId' => '']), 'resolveAiBrickId', []));
+        self::assertSame(0, $this->invoke(new Control(['aiBrickId' => '0']), 'resolveAiBrickId', []));
+        self::assertSame(0, $this->invoke(new Control(['aiBrickId' => 'abc']), 'resolveAiBrickId', []));
+        self::assertSame(0, $this->invoke(new Control(['aiBrickId' => '-5']), 'resolveAiBrickId', []));
+    }
+
     /**
      * @param array<int, mixed> $arguments
      */

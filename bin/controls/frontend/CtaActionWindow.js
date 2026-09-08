@@ -45,9 +45,15 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindow', [
 
             // views
             startView: 'form', // form, select, ai
-            aiControl: '',
-            aiControlOptions: '',
+            aiBrickId: '',     // brick rendered in the ai view
+            aiContext: '',     // fallback context, overruled by brickParams
             aiSidebar: false,
+
+            // parameters handed to the CtaAction brick and, from there, to
+            // the ai agent brick, e.g. {context: 'Package: Starter'}. Only
+            // effective together with data-brickid, because they are applied
+            // by the brick render.
+            brickParams: false,
 
             // buttons
             btnStyle: 'button', // iconRounded, icon, button
@@ -93,16 +99,6 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindow', [
             ControlContainer.classList.add('qui-contact-controls-ctaActionWindow__controlContainer');
             ControlContainer.style.opacity = '0';
             this.getContent().appendChild(ControlContainer);
-
-            const aiControlPath = this.getAttribute('aiControl');
-
-            // Prefetch the ai control in parallel to the CtaAction control and
-            // its ajax render. On a slow line the (larger) ai module loads while
-            // the layout is still loading, so it can mount right away instead of
-            // adding another wait after the layout is ready.
-            if (aiControlPath) {
-                require([aiControlPath], function () {}, function () {});
-            }
 
             // Prevent flashing of the SkeletonLoader
             // If the CtaAction control is quickly loaded,
@@ -333,11 +329,11 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindow', [
 
         /**
          * @return {string} ai view loader (inner right content): a neutral,
-         *     centered spinner. The ai view is filled by a pluggable ai control
-         *     (see Control.php AI_AGENT_VIEW_JS_CONTROL) that ships its own
-         *     skeleton once mounted, so this deliberately does not mimic any
-         *     specific control's layout; it only bridges the load until the ai
-         *     control takes over (see the aiMounted handover in $onOpen).
+         *     centered spinner. The ai view is filled by the configured agent
+         *     brick, which ships its own skeleton once rendered, so this
+         *     deliberately does not mimic any specific brick's layout; it only
+         *     bridges the load until the brick takes over (see the aiMounted
+         *     handover in $onOpen).
          */
         $getAiSkeletonHtml: function () {
             return `

@@ -25,13 +25,9 @@
                 </setting>
 
                 <!--
-                    The "Auswahl" and "KI Agent" options are only usable when the
-                    AI agent view is available. The data-qui control removes them
-                    in the editor when it is not.
-
-                    @todo TEMPORARY SOLUTION: availability is currently tied to
-                          the hardcoded pcsg/sales-agent integration (see the PHP
-                          Control and CtaActionStartView.js).
+                    The "Auswahl" and "KI Agent" options are only usable when
+                    an ai agent brick is available at all. The data-qui control
+                    removes them in the editor when none is.
                 -->
                 <setting name="startView" type="select"
                          data-qui="package/quiqqer/contact/bin/controls/backend/CtaActionStartView">
@@ -45,6 +41,26 @@
                     <option value="ai">
                         <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.startView.ai"/>
                     </option>
+                </setting>
+                <setting name="aiBrickId" type="hidden"
+                         data-qui="package/quiqqer/bricks/bin/Controls/backend/BrickIdInput"
+                         data-qui-options-brickcategories="aiAgent"
+                         data-dependency="startView"
+                         data-dependency-options="select,ai"
+                >
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiBrickId"/>
+                    <description>
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiBrickId.description"/>
+                    </description>
+                </setting>
+                <setting name="aiContext" type="text"
+                         data-dependency="startView"
+                         data-dependency-options="select,ai"
+                >
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiContext"/>
+                    <description>
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiContext.description"/>
+                    </description>
                 </setting>
                 <setting name="aiSidebar" type="select">
                     <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiSidebar"/>

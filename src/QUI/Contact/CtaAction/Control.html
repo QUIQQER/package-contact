@@ -2,8 +2,8 @@
      class="quiqqer-contact-ctaAction__layout"
      data-active-view="{$startView}"
      data-ai-sidebar="{if $aiSidebar}1{else}0{/if}"
-     data-ai-control="{$aiControl}"
-     {if $aiControlOptions}data-ai-control-options='{$aiControlOptions|escape:'html'}'{/if}>
+     data-ai-brick-id="{$aiBrickId}"
+     {if $aiBrickParams}data-ai-brick-params='{$aiBrickParams|escape:'html'}'{/if}>
 
     <aside data-name="left" class="quiqqer-contact-ctaAction__leftContent">
         {if $logo}
@@ -49,7 +49,7 @@
                      class="quiqqer-contact-ctaAction__choices"
                      role="group"
                      aria-label="{$title}">
-                    {if $hasAiControl}
+                    {if $hasAiBrick}
                         <button type="button"
                                 data-name="viewChoice"
                                 data-view-target="ai"
@@ -61,7 +61,7 @@
                     <button type="button"
                             data-name="viewChoice"
                             data-view-target="form"
-                            class="btn {if $hasAiControl}btn-primary-outline{else}btn-primary{/if} btn-lg quiqqer-contact-ctaAction__choice">
+                            class="btn {if $hasAiBrick}btn-primary-outline{else}btn-primary{/if} btn-lg quiqqer-contact-ctaAction__choice">
                         <span class="btn__icon fa fa-pencil-square-o" aria-hidden="true"></span>
                         <span class="btn__text">{$formChoiceLabel|escape:'html'}</span>
                     </button>
@@ -169,7 +169,7 @@
                 </form>
             </div>
 
-            {* KI-Ansicht (wird per JS mit dem aiControl befüllt) *}
+            {* KI-Ansicht (wird per JS mit dem gewählten Baustein befüllt) *}
             <div data-view="ai"
                  data-name="aiHost"
                  class="quiqqer-contact-ctaAction__view quiqqer-contact-ctaAction__view--ai"></div>

@@ -38,9 +38,15 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
 
             // views
             startView: 'form', // form, select, ai
-            aiControl: '',
-            aiControlOptions: '',
+            aiBrickId: '',
+            aiBrickParams: '',
+            aiContext: '',
             aiSidebar: false,
+
+            // parameters handed in by whoever opened this control, e.g.
+            // {context: 'Package: Starter'}. They are applied server side
+            // under the "param-" prefix and passed on to the agent brick.
+            brickParams: false,
 
             // buttons
             btnStyle: 'button', // iconRounded, icon, button
@@ -99,7 +105,8 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
                 });
             }, {
                 'package': lg,
-                attributes: JSON.stringify(this.getControlAttributes())
+                attributes: JSON.stringify(this.getControlAttributes()),
+                brickParams: this.$getBrickParamsJson()
             });
 
             return container;
@@ -165,16 +172,16 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
 
             this.$Layout = layout;
 
-            const aiControl = layout.getAttribute('data-ai-control');
+            const aiBrickId = layout.getAttribute('data-ai-brick-id');
 
-            if (aiControl) {
-                this.setAttribute('aiControl', aiControl);
+            if (aiBrickId) {
+                this.setAttribute('aiBrickId', aiBrickId);
             }
 
-            const aiControlOptions = layout.getAttribute('data-ai-control-options');
+            const aiBrickParams = layout.getAttribute('data-ai-brick-params');
 
-            if (aiControlOptions) {
-                this.setAttribute('aiControlOptions', aiControlOptions);
+            if (aiBrickParams) {
+                this.setAttribute('aiBrickParams', aiBrickParams);
             }
 
             this.getElm().querySelectorAll('[data-name="viewChoice"]').forEach((choice) => {
@@ -187,7 +194,7 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
             const activeView = this.getActiveView();
 
             if (activeView === 'ai') {
-                this.$mountAiControl();
+                this.$mountAiBrick();
             }
         },
 
@@ -246,7 +253,7 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
                     layout.setAttribute('data-active-view', name);
 
                     if (name === 'ai') {
-                        this.$mountAiControl();
+                        this.$mountAiBrick();
                     }
 
                     if (reduceMotion) {
@@ -296,14 +303,21 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
         },
 
         /**
-         * Lazily inject the configured AI agent view control (e.g. an AI
-         * chat agent) into the ai view. The control module path and its
-         * options come from the aiControl / aiControlOptions options.
+         * Lazily render the configured AI agent brick into the ai view.
+         *
+         * The view shows a brick, not a fixed control: which agent answers,
+         * with which persona and knowledge, is configured in that brick. This
+         * package therefore knows no agent module path - it renders whatever
+         * brick was selected, through the generic bricks render ajax.
+         *
+         * Parameters the opener handed in (e.g. the clicked package) travel
+         * along as brickParams and reach the brick as prefixed settings, so
+         * they can never overwrite a real setting of the agent.
          *
          * The mount guard lives on the host element (DOM) so a doubly imported
-         * control cannot inject the ai control twice into the same host.
+         * control cannot render the brick twice into the same host.
          */
-        $mountAiControl: function () {
+        $mountAiBrick: function () {
             const host = this.getElm().querySelector('[data-name="aiHost"]');
 
             if (!host) {
@@ -316,9 +330,9 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
                 return;
             }
 
-            const path = this.getAttribute('aiControl');
+            const brickId = parseInt(this.getAttribute('aiBrickId'), 10);
 
-            if (!path) {
+            if (!brickId || brickId <= 0) {
                 return;
             }
 
@@ -326,27 +340,33 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
             host.setAttribute('data-ai-mounted', '1');
             this.Loader.show();
 
-            let options = {};
-            const optionsRaw = this.getAttribute('aiControlOptions');
-
-            if (optionsRaw) {
-                try {
-                    options = JSON.parse(optionsRaw);
-                } catch (e) {
-                    options = {};
+            const params = {
+                'package': 'quiqqer/bricks',
+                brickId: brickId,
+                onError: () => {
+                    host.removeAttribute('data-ai-mounted');
+                    this.$aiMounted = false;
+                    this.Loader.hide();
+                    this.$notifyAiMounted(host);
                 }
+            };
+
+            const brickParams = this.getAttribute('aiBrickParams');
+
+            if (brickParams) {
+                // already a JSON string, built server side - forwarded as is;
+                // the render validates it and drops what it cannot use
+                params.brickParams = brickParams;
             }
 
-            require([path], (Control) => {
-                new Control(options).inject(host);
-                this.Loader.hide();
-                this.$notifyAiMounted(host);
-            }, () => {
-                host.removeAttribute('data-ai-mounted');
-                this.$aiMounted = false;
-                this.Loader.hide();
-                this.$notifyAiMounted(host);
-            });
+            QUIAjax.get('package_quiqqer_bricks_ajax_brick_render', (html) => {
+                host.innerHTML = html;
+
+                QUI.parse(host).then(() => {
+                    this.Loader.hide();
+                    this.$notifyAiMounted(host);
+                });
+            }, params);
         },
 
         /**
@@ -770,6 +790,30 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
             return `${matches[1]}(${args});`;
         },
 
+        /**
+         * The opener's parameters as a JSON string for the ajax, or an empty
+         * string when there are none.
+         *
+         * They travel next to the attributes rather than inside them: the
+         * attributes are an allowlist of brick settings, while these are
+         * client supplied and must stay in the prefixed namespace.
+         *
+         * @return {string}
+         */
+        $getBrickParamsJson: function () {
+            const brickParams = this.getAttribute('brickParams');
+
+            if (!brickParams) {
+                return '';
+            }
+
+            if (typeof brickParams === 'string') {
+                return brickParams;
+            }
+
+            return typeof brickParams === 'object' ? JSON.stringify(brickParams) : '';
+        },
+
         getControlAttributes: function () {
             let brickId = false;
 
@@ -802,8 +846,8 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
 
                 // views
                 startView: this.getAttribute('startView'),
-                aiControl: this.getAttribute('aiControl'),
-                aiControlOptions: this.getAttribute('aiControlOptions'),
+                aiBrickId: this.getAttribute('aiBrickId'),
+                aiContext: this.getAttribute('aiContext'),
                 aiSidebar: this.getAttribute('aiSidebar'),
 
                 // buttons

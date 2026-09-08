@@ -481,6 +481,22 @@
             <de><![CDATA[KI Agent]]></de>
             <en><![CDATA[AI agent]]></en>
         </locale>
+        <locale name="brick.control.ctaAction.setting.aiBrickId">
+            <de><![CDATA[KI-Agent-Baustein <br><small>CTA Kontaktformular</small>]]></de>
+            <en><![CDATA[AI agent brick <br><small>CTA contact form</small>]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.aiBrickId.description">
+            <de><![CDATA[Der Baustein, der in der KI-Ansicht angezeigt wird. Er bestimmt, welcher Agent antwortet – Persona, Wissen und Begrüßung werden in diesem Baustein gepflegt, nicht hier. Ohne Auswahl wird auf das Formular zurückgefallen, auch wenn oben „Auswahl“ oder „KI Agent“ eingestellt ist. Kontext, den ein Button mitgibt, wird an diesen Baustein weitergereicht.]]></de>
+            <en><![CDATA[The brick shown in the AI view. It decides which agent answers - persona, knowledge and greeting are configured in that brick, not here. Without a selection the control falls back to the form, even when "Choice" or "AI agent" is set above. Context handed in by a button is passed on to this brick.]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.aiContext">
+            <de><![CDATA[Kontext für den KI-Agenten <br><small>CTA Kontaktformular</small>]]></de>
+            <en><![CDATA[Context for the AI agent <br><small>CTA contact form</small>]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.aiContext.description">
+            <de><![CDATA[Freitext, aus dem der Agent erfährt, worum es geht – z. B. „Paket: Starter · Variante: Kaufen“. Sinnvoll, wenn dieser Baustein fest auf einer Produktseite sitzt. Gibt ein Button beim Öffnen einen eigenen Kontext mit, gewinnt dieser; das Feld hier ist der Rückfall. Liegt Kontext vor, eröffnet der Agent das Gespräch standardmäßig selbst.]]></de>
+            <en><![CDATA[Free text telling the agent what this is about, e.g. "Package: Starter - Variant: Buy". Useful when this brick sits on a fixed product page. A context handed in by a button when opening wins; this field is the fallback. With a context present the agent opens the conversation itself by default.]]></en>
+        </locale>
         <locale name="brick.control.ctaAction.setting.aiSidebar">
             <de><![CDATA[KI-Agent-Ansicht: Sidebar anzeigen <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[AI agent view: show sidebar <br><small>CTA contact form</small>]]></en>
