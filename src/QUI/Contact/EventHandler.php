@@ -97,7 +97,7 @@ class EventHandler
         $successMessage = $Site->getAttribute('quiqqer.contact.success');
 
         if (empty($successMessage)) {
-            $SiteEdit?->setAttribute(
+            $SiteEdit->setAttribute(
                 'quiqqer.contact.success',
                 QUI::getLocale()->get('quiqqer/contact', 'contact.default.success_msg')
             );
@@ -113,10 +113,10 @@ class EventHandler
                 'body' => QUI::getLocale()->get('quiqqer/contact', 'contact.default.success_mail_body')
             ];
 
-            $SiteEdit?->setAttribute('quiqqer.contact.success_mail', json_encode($successMail));
+            $SiteEdit->setAttribute('quiqqer.contact.success_mail', json_encode($successMail));
         }
 
-        $SiteEdit?->save(QUI::getUsers()->getSystemUser());
+        $SiteEdit->save(QUI::getUsers()->getSystemUser());
     }
 
     /**
