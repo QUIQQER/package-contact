@@ -4,9 +4,11 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
     'qui/controls/Control',
     'qui/controls/loader/Loader',
     'Ajax',
-    'Locale'
+    'Locale',
+    'package/quiqqer/contact/bin/controls/frontend/CtaActionWindowSizing',
+    'package/quiqqer/bricks/bin/Controls/WindowContentReveal'
 
-], function (QUI, QUIControl, QUILoader, QUIAjax, QUILocale) {
+], function (QUI, QUIControl, QUILoader, QUIAjax, QUILocale, WindowSizing, WindowContentReveal) {
     "use strict";
 
     const lg = 'quiqqer/contact';
@@ -42,6 +44,10 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
             aiBrickParams: '',
             aiContext: '',
             aiSidebar: false,
+            formEnabled: true,
+            formSidebar: false,
+            formSidebarAi: false,
+            contactDisplay: 'icon-text',
 
             // parameters handed in by whoever opened this control, e.g.
             // {context: 'Package: Starter'}. They are applied server side
@@ -49,7 +55,7 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
             brickParams: false,
 
             // buttons
-            btnStyle: 'button', // iconRounded, icon, button
+            btnStyle: 'button', // button, rounded
             size: 'default',
             whatsapp: false,
             whatsappLabel: false,
@@ -58,6 +64,11 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
             email: false,
             emailLabel: false,
             customButtons: '',
+            secondaryActionsLabel: '',
+            aiButtonText: '',
+            aiButtonIcon: '',
+            formButtonText: '',
+            formButtonIcon: '',
 
             // design
             formDesign: 'default', // default, grid, labelLeft
@@ -81,7 +92,9 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
 
         $onImport: function () {
             this.getElm().style.width = '100%';
+            WindowContentReveal.registerBrick(this.getElm().getAttribute('data-brickid'));
             this.setAttribute('btnStyle', this.getElm().getAttribute('data-qui-options-btnstyle'));
+            this.setAttribute('contactDisplay', this.getElm().getAttribute('data-qui-options-contactdisplay'));
             this.setAttribute('size', this.getElm().getAttribute('data-qui-options-size'));
             this.Loader.inject(this.getElm());
             this.$initEvents();
@@ -102,9 +115,12 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
                 QUI.parse(container).then(() => {
                     this.$initViews();
                     this.fireEvent('load', [this]);
+                }).catch((error) => {
+                    this.fireEvent('loadError', [this, error]);
                 });
             }, {
                 'package': lg,
+                onError: (error) => { this.fireEvent('loadError', [this, error]); },
                 attributes: JSON.stringify(this.getControlAttributes()),
                 brickParams: this.$getBrickParamsJson()
             });
@@ -113,9 +129,17 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
         },
 
         $initEvents: function () {
-            const form = this.getElm().querySelector('form');
+            const form = this.getElm().querySelector('[data-name="form"]');
 
             if (form) {
+                // Cached brick HTML can appear inline and in a window at once.
+                form.querySelectorAll('[data-name="fieldLabel"]').forEach((label) => {
+                    const input = Array.from(form.elements).find((field) => field.id === label.htmlFor);
+                    if (input) {
+                        input.id = this.getId() + '-' + input.name;
+                        label.htmlFor = input.id;
+                    }
+                });
                 form.addEventListener('submit', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -164,13 +188,26 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
         $initViews: function () {
             const layout = this.getElm().querySelector('[data-name="layout"]');
 
+            this.$Layout = layout;
+
             if (!layout || layout.getAttribute('data-views-init') === '1') {
                 return;
             }
 
             layout.setAttribute('data-views-init', '1');
+            layout.addEventListener('click', (event) => {
+                let target = event.target;
+                while (target && target !== layout) {
+                    if (target.getAttribute?.('aria-disabled') === 'true') {
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                        return;
+                    }
+                    target = target.parentElement;
+                }
+            }, true);
 
-            this.$Layout = layout;
+            this.$windowSizing = WindowSizing.attach(this, layout);
 
             const aiBrickId = layout.getAttribute('data-ai-brick-id');
 
@@ -210,81 +247,43 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
         },
 
         /**
-         * Switch the visible view with a soft cross-fade.
-         *
-         * @param {string} name - select | form | ai
-         * @return {Promise}
+         * Switch synchronously so rapid clicks cannot complete out of order.
+         * Availability comes from the server-rendered layout.
          */
         switchView: function (name) {
-            const layout = this.$Layout || this.getElm().querySelector('[data-name="layout"]');
+            const layout = this.$Layout;
 
             if (!layout) {
                 return Promise.resolve();
             }
 
-            if (['select', 'form', 'ai'].indexOf(name) === -1) {
-                name = 'form';
+            if (!['select', 'form', 'ai'].includes(name)
+                || (name === 'form' && layout.dataset.formEnabled !== '1')
+                || (name === 'ai' && !(Number(layout.dataset.aiBrickId) > 0))) {
+                name = 'select';
             }
 
-            const currentName = layout.getAttribute('data-active-view') || 'form';
+            const target = layout.querySelector('[data-name="' + this.$viewElementName(name) + '"]');
 
-            if (currentName === name) {
+            if (!target || name === this.getActiveView()) {
                 return Promise.resolve();
             }
 
-            const current = this.getElm().querySelector('[data-view="' + currentName + '"]');
-            const target = this.getElm().querySelector('[data-view="' + name + '"]');
+            layout.dataset.activeView = name;
 
-            if (!target) {
-                return Promise.resolve();
+            if (name === 'ai') {
+                this.$mountAiBrick();
             }
 
-            const reduceMotion = window.matchMedia
-                && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            this.$focusView(target);
+            this.fireEvent('viewChange', [this, name]);
+            layout.dispatchEvent(new CustomEvent('quiqqer-contact-ctaAction-viewChange', {bubbles: true}));
 
-            return new Promise((resolve) => {
-                const finish = () => {
-                    this.$focusView(target);
-                    this.fireEvent('viewChange', [this, name]);
-                    resolve();
-                };
+            return Promise.resolve();
+        },
 
-                const activate = () => {
-                    layout.setAttribute('data-active-view', name);
-
-                    if (name === 'ai') {
-                        this.$mountAiBrick();
-                    }
-
-                    if (reduceMotion) {
-                        target.style.opacity = 1;
-                        finish();
-                        return;
-                    }
-
-                    target.style.opacity = 0;
-
-                    moofx(target).animate({
-                        opacity: 1
-                    }, {
-                        duration: 250,
-                        callback: finish
-                    });
-                };
-
-                if (current && !reduceMotion) {
-                    moofx(current).animate({
-                        opacity: 0
-                    }, {
-                        duration: 150,
-                        callback: activate
-                    });
-
-                    return;
-                }
-
-                activate();
-            });
+        $viewElementName: function (name) {
+            return {select: 'selectView', form: 'formView', ai: 'aiHost'}[name];
         },
 
         /**
@@ -294,12 +293,10 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
          */
         $focusView: function (view) {
             const focusable = view.querySelector(
-                'input, textarea, button, a[href], [tabindex]:not([tabindex="-1"])'
+                'input:not([disabled]), textarea:not([disabled]), button:not([disabled]), a[href]:not([aria-disabled="true"])'
             );
 
-            if (focusable) {
-                focusable.focus();
-            }
+            (focusable || view).focus({preventScroll: true});
         },
 
         /**
@@ -330,7 +327,7 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
                 return;
             }
 
-            const brickId = parseInt(this.getAttribute('aiBrickId'), 10);
+            const brickId = Number(this.$Layout?.dataset.aiBrickId);
 
             if (!brickId || brickId <= 0) {
                 return;
@@ -338,20 +335,18 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
 
             this.$aiMounted = true;
             host.setAttribute('data-ai-mounted', '1');
+            host.replaceChildren();
             this.Loader.show();
 
             const params = {
                 'package': 'quiqqer/bricks',
                 brickId: brickId,
                 onError: () => {
-                    host.removeAttribute('data-ai-mounted');
-                    this.$aiMounted = false;
-                    this.Loader.hide();
-                    this.$notifyAiMounted(host);
+                    this.$showAiError(host);
                 }
             };
 
-            const brickParams = this.getAttribute('aiBrickParams');
+            const brickParams = this.$Layout?.dataset.aiBrickParams || this.getAttribute('aiBrickParams');
 
             if (brickParams) {
                 // already a JSON string, built server side - forwarded as is;
@@ -360,13 +355,47 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
             }
 
             QUIAjax.get('package_quiqqer_bricks_ajax_brick_render', (html) => {
+                if (typeof html !== 'string' || !html.trim()) {
+                    this.$showAiError(host);
+                    return;
+                }
+
                 host.innerHTML = html;
+
+                if (!host.querySelector('[data-qui]')) {
+                    this.$showAiError(host);
+                    return;
+                }
 
                 QUI.parse(host).then(() => {
                     this.Loader.hide();
                     this.$notifyAiMounted(host);
-                });
+
+                    if (this.getActiveView() === 'ai' && document.activeElement === host) {
+                        this.$focusView(host);
+                    }
+                }).catch(() => this.$showAiError(host));
             }, params);
+        },
+
+        $showAiError: function (host) {
+            host.removeAttribute('data-ai-mounted');
+            this.$aiMounted = false;
+            this.Loader.hide();
+            const message = document.createElement('p');
+            message.setAttribute('role', 'alert');
+            message.textContent = QUILocale.get(lg, 'contact.ctaAction.aiError');
+            const back = document.createElement('button');
+            back.type = 'button';
+            back.className = 'btn btn-primary';
+            back.textContent = QUILocale.get(lg, 'contact.ctaAction.overview');
+            back.addEventListener('click', () => this.switchView('select'));
+            host.replaceChildren(message, back);
+            this.$notifyAiMounted(host);
+
+            if (this.getActiveView() === 'ai') {
+                back.focus({preventScroll: true});
+            }
         },
 
         /**
@@ -388,10 +417,15 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
         },
 
         send: function () {
+            const form = this.getElm().querySelector('[data-name="form"]');
+
+            if (!form) {
+                return Promise.reject(new Error(QUILocale.get(lg, 'contact.ctaAction.formDisabled')));
+            }
+
             this.fireEvent('sendBegin');
             this.Loader.show();
 
-            const form = this.getElm().querySelector('form') || document.createElement('form');
             const formData = new FormData(form);
 
             return new Promise((resolve, reject) => {
@@ -442,63 +476,38 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
 
         addButton: function (buttonData) {
             const button = this.$normalizeButtonConfig(buttonData);
-            const displayMode = this.$getDisplayMode();
+            const displayMode = this.$getDisplayMode(button);
 
-            if (
-                button.isDisabled ||
-                (
-                    (displayMode === 'icon-only' || displayMode === 'icon-only-rounded') &&
-                    !button.icon
-                )
-            ) {
+            if (button.isDisabled || (displayMode === 'icon-only' && (!button.icon || !button.ariaLabel))) {
                 return null;
             }
 
-            const container = this.$getButtonsContainer();
-
-            if (!container) {
-                return null;
-            }
-
-            const element = this.$createButtonElement(button);
-            container.appendChild(element);
-
-            if (element.getAttribute('data-qui')) {
-                QUI.parse(element);
-            }
-
-            return element;
-        },
-
-        $getButtonsContainer: function () {
-            const btnStyle = this.$getBtnStyle();
-            let buttons = this.getElm().querySelector('[data-name="buttons"]');
-
-            if (!buttons) {
-                const leftContent = this.getElm().querySelector('[data-name="left"]');
-
-                if (!leftContent) {
-                    return null;
-                }
-
-                buttons = document.createElement('div');
-                buttons.setAttribute('data-name', 'buttons');
-                buttons.classList.add('quiqqer-contact-ctaAction-buttons');
-                leftContent.appendChild(buttons);
-            }
-
-            buttons.classList.remove(
-                'quiqqer-contact-ctaAction-buttons--icon',
-                'quiqqer-contact-ctaAction-buttons--iconRounded',
-                'quiqqer-contact-ctaAction-buttons--button'
+            const containers = this.getElm().querySelectorAll(
+                '[data-name="' + (button.group === 'primary' ? 'primaryActions' : 'secondaryActions') + '"]'
             );
-            buttons.classList.add(`quiqqer-contact-ctaAction-buttons--${btnStyle}`);
+            let result = null;
 
-            return buttons;
+            containers.forEach((container) => {
+                const element = this.$createButtonElement(button);
+                container.appendChild(element);
+                if (button.group === 'secondary') {
+                    const label = container.parentElement.querySelector('[data-name="secondaryActionsLabel"]');
+                    if (label) {
+                        label.hidden = false;
+                    }
+                }
+                result = result || element;
+
+                if (element.getAttribute('data-qui')) {
+                    QUI.parse(element);
+                }
+            });
+
+            return result;
         },
 
         $createButtonElement: function (button) {
-            const displayMode = this.$getDisplayMode();
+            const displayMode = this.$getDisplayMode(button);
             const isIconOnly = displayMode === 'icon-only' || displayMode === 'icon-only-rounded';
             const hasOpenBrick = button.openBrickId > 0;
             const tagName = hasOpenBrick || !button.href ? 'button' : 'a';
@@ -560,7 +569,7 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
                 Button.setAttribute('onclick', button.onClick);
             }
 
-            if (button.icon && button.iconPosition === 'start') {
+            if ((button.group === 'primary' || button.display !== 'text') && button.icon && button.iconPosition === 'start') {
                 Button.appendChild(this.$createButtonIcon(button.icon));
             }
 
@@ -571,7 +580,7 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
                 Button.appendChild(TextNode);
             }
 
-            if (button.icon && button.iconPosition === 'end') {
+            if ((button.group === 'primary' || button.display !== 'text') && button.icon && button.iconPosition === 'end') {
                 Button.appendChild(this.$createButtonIcon(button.icon));
             }
 
@@ -609,7 +618,7 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
                 classNames.push('btn-icon');
             }
 
-            if (displayMode === 'icon-only-rounded') {
+            if (button.group === 'secondary' && this.$getBtnStyle() === 'rounded') {
                 classNames.push('btn-rounded');
             }
 
@@ -629,16 +638,18 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
 
             const text = (buttonData.text || '').toString().trim();
             const title = (buttonData.title || text).toString().trim();
-            const ariaLabel = (buttonData.ariaLabel || text).toString().trim();
+            const ariaLabel = (buttonData.ariaLabel || text || title).toString().trim();
 
             return {
-                text: text,
+                text: text || ariaLabel,
+                group: buttonData.group === 'secondary' ? 'secondary' : 'primary',
+                display: ['text', 'icon'].includes(buttonData.display) ? buttonData.display : 'icon-text',
                 identifier: (buttonData.identifier || '').toString().replace(/[^A-Za-z0-9_-]/g, ''),
                 icon: this.$sanitizeClassList(
                     (buttonData.icon || buttonData.iconClass || '').toString()
                 ),
                 iconPosition: buttonData.iconPosition === 'end' ? 'end' : 'start',
-                btnType: this.$normalizeButtonType(buttonData.btnType),
+                btnType: this.$normalizeButtonType(buttonData.btnType || (buttonData.group === 'secondary' ? '' : 'primary')),
                 size: this.$normalizeButtonSize(buttonData.size || this.getAttribute('size')),
                 openBrickId: this.$normalizeDimension(buttonData.openBrickId),
                 openBrickWinWidth: this.$normalizeDimension(buttonData.openBrickWinWidth),
@@ -658,27 +669,11 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
         },
 
         $getBtnStyle: function () {
-            const rawBtnStyle = this.getAttribute('btnStyle');
-
-            if (rawBtnStyle === 'icon' || rawBtnStyle === 'button') {
-                return rawBtnStyle;
-            }
-
-            return 'iconRounded';
+            return this.getAttribute('btnStyle') === 'rounded' ? 'rounded' : 'button';
         },
 
-        $getDisplayMode: function () {
-            const btnStyle = this.$getBtnStyle();
-
-            if (btnStyle === 'icon') {
-                return 'icon-only';
-            }
-
-            if (btnStyle === 'iconRounded') {
-                return 'icon-only-rounded';
-            }
-
-            return 'button';
+        $getDisplayMode: function (button) {
+            return button.group === 'secondary' && button.display === 'icon' ? 'icon-only' : 'button';
         },
 
         $sanitizeClassList: function (classList) {
@@ -849,6 +844,10 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
                 aiBrickId: this.getAttribute('aiBrickId'),
                 aiContext: this.getAttribute('aiContext'),
                 aiSidebar: this.getAttribute('aiSidebar'),
+                formEnabled: this.getAttribute('formEnabled'),
+                formSidebar: this.getAttribute('formSidebar'),
+                formSidebarAi: this.getAttribute('formSidebarAi'),
+                contactDisplay: this.getAttribute('contactDisplay'),
 
                 // buttons
                 btnStyle: this.getAttribute('btnStyle'),
@@ -860,6 +859,11 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaAction', [
                 email: this.getAttribute('email'),
                 emailLabel: this.getAttribute('emailLabel'),
                 customButtons: this.getAttribute('customButtons'),
+                secondaryActionsLabel: this.getAttribute('secondaryActionsLabel'),
+                aiButtonText: this.getAttribute('aiButtonText'),
+                aiButtonIcon: this.getAttribute('aiButtonIcon'),
+                formButtonText: this.getAttribute('formButtonText'),
+                formButtonIcon: this.getAttribute('formButtonIcon'),
 
                 // design
                 formDesign: this.getAttribute('formDesign'),

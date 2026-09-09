@@ -317,9 +317,97 @@
             <de><![CDATA[Ein paar Infos reichen – wir klären den Rest im Gespräch.]]></de>
             <en><![CDATA[Some information is enough – we clarify the rest in conversation.]]></en>
         </locale>
+        <locale name="brick.control.ctaAction.setting.formEnabled">
+            <de><![CDATA[Kontaktformular anbieten]]></de>
+            <en><![CDATA[Offer contact form]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formEnabled.desc">
+            <de><![CDATA[Gilt für den gesamten Baustein. Ausgeschaltet wird weder das eingebaute Formular noch sein Einstiegsbutton angezeigt. Eigene Links zu Kontaktseiten bleiben möglich.]]></de>
+            <en><![CDATA[Applies to the entire brick. When disabled, neither the built-in form nor its entry button is shown. Custom links to contact pages remain available.]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formSidebar">
+            <de><![CDATA[Sidebar im Formular anzeigen]]></de>
+            <en><![CDATA[Show sidebar in the form]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formSidebarAi">
+            <de><![CDATA[KI-Beratung in der Formular-Sidebar anzeigen]]></de>
+            <en><![CDATA[Show AI advice in the form sidebar]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formSidebarAi.desc">
+            <de><![CDATA[Wechselt im selben Baustein zum hinterlegten Agenten. Nur bei eingeschalteter Formular-Sidebar und verfügbarem Agenten.]]></de>
+            <en><![CDATA[Switches to the configured agent in the same brick. Requires an enabled form sidebar and an available agent.]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.contactDisplay">
+            <de><![CDATA[Darstellung: E-Mail, WhatsApp und Telefon]]></de>
+            <en><![CDATA[Display: email, WhatsApp and phone]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.contactDisplay.desc">
+            <de><![CDATA[Gemeinsame Icon-/Textdarstellung der festen Kontaktwege, unabhängig von der Button-Form.]]></de>
+            <en><![CDATA[Shared icon/text display for built-in contact methods, independent of button design.]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.btnStyle.rounded">
+            <de><![CDATA[Abgerundet]]></de>
+            <en><![CDATA[Rounded]]></en>
+        </locale>
+        <locale name="contact.ctaAction.display.icon-text">
+            <de><![CDATA[Icon + Text]]></de>
+            <en><![CDATA[Icon + text]]></en>
+        </locale>
+        <locale name="contact.ctaAction.display.text">
+            <de><![CDATA[Nur Text]]></de>
+            <en><![CDATA[Text only]]></en>
+        </locale>
+        <locale name="contact.ctaAction.display.icon">
+            <de><![CDATA[Nur Icon]]></de>
+            <en><![CDATA[Icon only]]></en>
+        </locale>
+        <locale name="contact.ctaAction.section.start">
+            <de><![CDATA[Startansicht]]></de>
+            <en><![CDATA[Start view]]></en>
+        </locale>
+        <locale name="contact.ctaAction.section.offers">
+            <de><![CDATA[Angebote]]></de>
+            <en><![CDATA[Offers]]></en>
+        </locale>
+        <locale name="contact.ctaAction.section.appearance">
+            <de><![CDATA[Darstellung]]></de>
+            <en><![CDATA[Appearance]]></en>
+        </locale>
+        <locale name="contact.ctaAction.group">
+            <de><![CDATA[Zuordnung]]></de>
+            <en><![CDATA[Group]]></en>
+        </locale>
+        <locale name="contact.ctaAction.group.primary">
+            <de><![CDATA[Hauptaktion]]></de>
+            <en><![CDATA[Primary action]]></en>
+        </locale>
+        <locale name="contact.ctaAction.group.secondary">
+            <de><![CDATA[Weiterer Kontaktweg]]></de>
+            <en><![CDATA[Additional contact method]]></en>
+        </locale>
+        <locale name="contact.ctaAction.display">
+            <de><![CDATA[Darstellung]]></de>
+            <en><![CDATA[Display]]></en>
+        </locale>
+        <locale name="contact.ctaAction.noActions">
+            <de><![CDATA[Keine nutzbaren Kontaktaktionen konfiguriert. Aktiviere das Formular, wähle einen verfügbaren KI-Agenten oder ergänze einen Kontaktweg.]]></de>
+            <en><![CDATA[No usable contact actions configured. Enable the form, select an available AI agent or add a contact method.]]></en>
+        </locale>
+        <locale name="contact.ctaAction.aiError">
+            <de><![CDATA[Die KI-Beratung konnte nicht geladen werden. Bitte wähle einen anderen Kontaktweg.]]></de>
+            <en><![CDATA[AI advice could not be loaded. Please choose another contact method.]]></en>
+        </locale>
+        <locale name="contact.ctaAction.overview">
+            <de><![CDATA[Zur Kontaktübersicht]]></de>
+            <en><![CDATA[Back to contact overview]]></en>
+        </locale>
+        <locale name="contact.ctaAction.formDisabled">
+            <de><![CDATA[Das Kontaktformular ist deaktiviert.]]></de>
+            <en><![CDATA[The contact form is disabled.]]></en>
+        </locale>
         <locale name="contact.ctaAction.choice.ai">
-            <de><![CDATA[Von unserer KI beraten lassen]]></de>
-            <en><![CDATA[Get advice from our AI]]></en>
+            <de><![CDATA[KI-Beratung]]></de>
+            <en><![CDATA[AI advice]]></en>
         </locale>
         <locale name="contact.ctaAction.choice.form">
             <de><![CDATA[Formular ausfüllen]]></de>
@@ -474,8 +562,8 @@
             <en><![CDATA[Form]]></en>
         </locale>
         <locale name="brick.control.ctaAction.setting.startView.select">
-            <de><![CDATA[Auswahl - KI Agent oder Formular]]></de>
-            <en><![CDATA[Choice - AI agent or form]]></en>
+            <de><![CDATA[Kontaktübersicht]]></de>
+            <en><![CDATA[Contact overview]]></en>
         </locale>
         <locale name="brick.control.ctaAction.setting.startView.ai">
             <de><![CDATA[KI Agent]]></de>
@@ -486,8 +574,8 @@
             <en><![CDATA[AI agent brick <br><small>CTA contact form</small>]]></en>
         </locale>
         <locale name="brick.control.ctaAction.setting.aiBrickId.description">
-            <de><![CDATA[Der Baustein, der in der KI-Ansicht angezeigt wird. Er bestimmt, welcher Agent antwortet – Persona, Wissen und Begrüßung werden in diesem Baustein gepflegt, nicht hier. Ohne Auswahl wird auf das Formular zurückgefallen, auch wenn oben „Auswahl“ oder „KI Agent“ eingestellt ist. Kontext, den ein Button mitgibt, wird an diesen Baustein weitergereicht.]]></de>
-            <en><![CDATA[The brick shown in the AI view. It decides which agent answers - persona, knowledge and greeting are configured in that brick, not here. Without a selection the control falls back to the form, even when "Choice" or "AI agent" is set above. Context handed in by a button is passed on to this brick.]]></en>
+            <de><![CDATA[Der Baustein, der in der KI-Ansicht angezeigt wird. Er bestimmt, welcher Agent antwortet – Persona, Wissen und Begrüßung werden in diesem Baustein gepflegt, nicht hier. Ohne gültigen, aktiven Agenten bleibt die Kontaktübersicht verfügbar. Eine nicht verfügbare Startansicht fällt auf die Kontaktübersicht zurück. Kontext, den ein Button mitgibt, wird an diesen Baustein weitergereicht.]]></de>
+            <en><![CDATA[The brick shown in the AI view. It decides which agent answers - persona, knowledge and greeting are configured in that brick, not here. Without a valid, active agent the contact overview remains available. An unavailable start view falls back to the contact overview. Context handed in by a button is passed on to this brick.]]></en>
         </locale>
         <locale name="brick.control.ctaAction.setting.aiContext">
             <de><![CDATA[Kontext für den KI-Agenten <br><small>CTA Kontaktformular</small>]]></de>
@@ -523,13 +611,57 @@
             <en><![CDATA[Give us a call]]></en>
         </locale>
 
+        <locale name="brick.control.ctaAction.setting.secondaryActionsLabel">
+            <de><![CDATA[Beschriftung der weiteren Kontaktwege]]></de>
+            <en><![CDATA[Additional contact methods label]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.secondaryActionsLabel.desc">
+            <de><![CDATA[Optionaler dezenter Text zwischen Hauptaktionen und weiteren Kontaktwegen, z. B. „Weitere Kontaktmöglichkeiten“. Leer oder ohne weitere Kontaktwege wird nichts angezeigt.]]></de>
+            <en><![CDATA[Optional muted text between primary actions and additional contact methods. Hidden when empty or no additional contact methods are available.]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.aiButtonText">
+            <de><![CDATA[KI-Button: Beschriftung]]></de>
+            <en><![CDATA[AI button: label]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.aiButtonText.desc">
+            <de><![CDATA[Leer verwendet „KI-Beratung“. Gilt auch für den KI-Button in der Formular-Sidebar.]]></de>
+            <en><![CDATA[Leave empty to use “AI advice”. Also applies to the AI button in the form sidebar.]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.aiButtonIcon">
+            <de><![CDATA[KI-Button: Icon]]></de>
+            <en><![CDATA[AI button: icon]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.aiButtonIcon.desc">
+            <de><![CDATA[Optionales Icon neben der Beschriftung. Leer zeigt nur Text.]]></de>
+            <en><![CDATA[Optional icon next to the label. Leave empty for text only.]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formButtonText">
+            <de><![CDATA[Formular-Button: Beschriftung]]></de>
+            <en><![CDATA[Form button: label]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formButtonText.desc">
+            <de><![CDATA[Leer verwendet „Formular ausfüllen“. Betrifft den Einstieg ins Formular, nicht den Absende-Button.]]></de>
+            <en><![CDATA[Leave empty to use “Fill in form”. Applies to the form entry button, not the submit button.]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formButtonIcon">
+            <de><![CDATA[Formular-Button: Icon]]></de>
+            <en><![CDATA[Form button: icon]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formButtonIcon.desc">
+            <de><![CDATA[Optionales Icon neben der Beschriftung. Leer zeigt nur Text.]]></de>
+            <en><![CDATA[Optional icon next to the label. Leave empty for text only.]]></en>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.btnStyle.desc">
+            <de><![CDATA[Gilt nur für weitere Kontaktwege: E-Mail, WhatsApp, Telefon und eigene Nebenaktionen. „Abgerundet“ macht reine Icon-Buttons rund und Buttons mit Text pillenförmig. Die konkrete Darstellung hängt vom Template ab. Hauptaktionen bleiben unverändert.]]></de>
+            <en><![CDATA[Applies only to additional contact methods: email, WhatsApp, phone and custom secondary actions. “Rounded” makes icon-only buttons circular and buttons with text pill-shaped. Appearance depends on the template. Primary actions are unaffected.]]></en>
+        </locale>
         <locale name="brick.control.ctaAction.setting.btnStyle">
-            <de><![CDATA[Button-Design <br><small>CTA Kontaktformular</small>]]></de>
-            <en><![CDATA[Button design <br><small>CTA contact form</small>]]></en>
+            <de><![CDATA[Button-Form der weiteren Kontaktwege]]></de>
+            <en><![CDATA[Button shape for additional contact methods]]></en>
         </locale>
         <locale name="brick.control.ctaAction.setting.btnStyle.button">
-            <de><![CDATA[Normaler Button (Text)]]></de>
-            <en><![CDATA[Default button (text)]]></en>
+            <de><![CDATA[Standard]]></de>
+            <en><![CDATA[Standard]]></en>
         </locale>
         <locale name="brick.control.ctaAction.setting.btnStyle.icon">
             <de><![CDATA[Nur Icon]]></de>
@@ -609,8 +741,8 @@
             <en><![CDATA[Additional buttons <br><small>CTA contact form</small>]]></en>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons.desc">
-            <de><![CDATA[Fügen Sie weitere Aktionsbuttons (Text, Icon, CSS-Klassen und Link) hinzu.]]></de>
-            <en><![CDATA[Add additional action buttons (text, icon, CSS classes and link).]]></en>
+            <de><![CDATA[Eigene Hauptaktionen erscheinen zwischen KI-Beratung und Formular. Weitere Kontaktwege erscheinen darunter in einer umbrechenden Reihe. Reihenfolge und Darstellung werden pro Button eingestellt. Reine Icon-Buttons benötigen ein Icon und eine verständliche Beschriftung (Text oder ARIA-Label).]]></de>
+            <en><![CDATA[Custom primary actions appear between AI advice and the form. Additional contact methods appear in a wrapping row below. Configure order and display per button. Icon-only buttons require an icon and an accessible label (text or ARIA label).]]></en>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons.empty">
             <de><![CDATA[Noch keine zusätzlichen Buttons hinterlegt.]]></de>

@@ -30,14 +30,37 @@ QUI::getAjax()->registerFunction(
             $control->setAttributes($attributes);
         }
 
+        // A selected brick owns its configuration. Window option defaults must
+        // not replace its saved offers or view/sidebar settings.
+        $brickId = (int)$control->getAttribute('data-brickid');
+
+        if ($brickId > 0) {
+            $Brick = QUI\Bricks\Manager::init()?->getBrickById($brickId);
+
+            if (!$Brick || !$Brick->isInstanceOf(Control::class)) {
+                throw new QUI\Exception('Invalid contact brick');
+            }
+
+            $params = Utils::brickParamsFromRequest($brickParams);
+
+            if ($params !== []) {
+                $Brick->setAttribute('cacheable', 0);
+
+                foreach ($params as $name => $value) {
+                    $Brick->setSetting($name, $value);
+                }
+            }
+
+            $body = $Brick->create();
+            return QUI\Control\Manager::getCSS() . $body;
+        }
+
         foreach (Utils::brickParamsFromRequest($brickParams) as $name => $value) {
             $control->setAttribute($name, $value);
         }
 
-        $html = QUI\Control\Manager::getCSS();
-        $html .= $control->create();
-
-        return $html;
+        $body = $control->create();
+        return QUI\Control\Manager::getCSS() . $body;
     },
     ['attributes', 'brickParams']
 );

@@ -59,9 +59,13 @@ class Control extends QUI\Control
             'aiBrickId' => '', // brick rendered in the ai view
             'aiContext' => '', // fallback context, overruled by the opener
             'aiSidebar' => false, // show the branding sidebar in the ai view
+            'formEnabled' => true,
+            'formSidebar' => false,
+            'formSidebarAi' => false,
 
             // buttons
-            'btnStyle' => 'iconRounded', // iconRounded, icon, button
+            'btnStyle' => 'button', // button, rounded
+            'contactDisplay' => 'icon-text', // icon-text, text, icon
             'size' => 'default',
             'whatsapp' => '',
             'whatsappLabel' => '',
@@ -70,6 +74,11 @@ class Control extends QUI\Control
             'email' => '',
             'emailLabel' => '',
             'customButtons' => '',
+            'secondaryActionsLabel' => '',
+            'aiButtonText' => '',
+            'aiButtonIcon' => '',
+            'formButtonText' => '',
+            'formButtonIcon' => '',
 
             // design
             'formDesign' => '', // default, grid, labelLeft
@@ -121,13 +130,8 @@ class Control extends QUI\Control
             default => 'default'
         };
 
-        // views: form (default), select, ai
-        //
-        // the ai view renders the brick the editor selected, so it is only
-        // available once such a brick is picked. A selection pointing at a
-        // deleted brick counts as none, otherwise the visitor would face an
-        // empty view with no way back to the form.
-        $aiBrickId = $this->resolveAiBrickId();
+        $views = $this->getViewConfiguration();
+        $aiBrickId = $views['aiBrickId'];
         $hasAiBrick = $aiBrickId > 0;
 
         // parameters the opener handed in (a button, a JS call). They arrive
@@ -148,13 +152,7 @@ class Control extends QUI\Control
             }
         }
 
-        // "select" (choice between AI agent and form) only makes sense when the
-        // AI agent view is available, otherwise fall back to the form.
-        $startView = match ($this->getAttribute('startView')) {
-            'select' => $hasAiBrick ? 'select' : 'form',
-            'ai' => $hasAiBrick ? 'ai' : 'form',
-            default => 'form'
-        };
+        $startView = $views['startView'];
 
         $aiBrickParamsJson = '';
 
@@ -162,10 +160,6 @@ class Control extends QUI\Control
             $encoded = json_encode($aiBrickParams, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
             $aiBrickParamsJson = $encoded === false ? '' : $encoded;
         }
-
-        $aiSidebar = $this->getAttribute('aiSidebar') === true
-            || $this->getAttribute('aiSidebar') === 1
-            || $this->getAttribute('aiSidebar') === '1';
 
         $Engine = QUI::getTemplateManager()->getEngine();
 
@@ -375,12 +369,10 @@ class Control extends QUI\Control
             }
         }
 
-        $btnStyle = match ($this->getAttribute('btnStyle')) {
-            'icon', 'button' => $this->getAttribute('btnStyle'),
-            default => 'iconRounded'
-        };
-
+        $btnStyle = $this->getAttribute('btnStyle') === 'rounded' ? 'rounded' : 'button';
         $this->setJavaScriptControlOption('btnStyle', $btnStyle);
+        $this->setJavaScriptControlOption('size', $this->getAttribute('size'));
+        $this->setJavaScriptControlOption('contactDisplay', $this->getAttribute('contactDisplay'));
         $buttons = $this->getButtons($btnStyle);
 
         $Engine->assign([
@@ -403,17 +395,27 @@ class Control extends QUI\Control
             'privacyText' => QUI::getLocale()->get('quiqqer/contact', 'contact.ctaAction.privacy', [
                 'privacyLink' => $this->getPrivacyLink()
             ]),
+            'formId' => 'cta-' . QUI\Utils\Uuid::get(),
             'formDesign' => $formDesign,
             'btnStyle' => $btnStyle,
-            'hasButtons' => !empty($buttons),
-            'buttons' => $buttons,
+            'primaryButtons' => $buttons['primary'],
+            'secondaryButtons' => $buttons['secondary'],
+            'sidebarButtons' => $this->getButtons($btnStyle),
+            'formEnabled' => $views['formEnabled'],
+            'formSidebar' => $views['formSidebar'],
+            'formSidebarAi' => $views['formSidebarAi'],
             'startView' => $startView,
             'aiBrickId' => $aiBrickId,
             'aiBrickParams' => $aiBrickParamsJson,
-            'aiSidebar' => $aiSidebar,
+            'aiSidebar' => $views['aiSidebar'],
             'hasAiBrick' => $hasAiBrick,
-            'aiChoiceLabel' => QUI::getLocale()->get('quiqqer/contact', 'contact.ctaAction.choice.ai'),
-            'formChoiceLabel' => QUI::getLocale()->get('quiqqer/contact', 'contact.ctaAction.choice.form'),
+            'aiChoiceLabel' => trim((string)$this->getAttribute('aiButtonText'))
+                ?: QUI::getLocale()->get('quiqqer/contact', 'contact.ctaAction.choice.ai'),
+            'formChoiceLabel' => trim((string)$this->getAttribute('formButtonText'))
+                ?: QUI::getLocale()->get('quiqqer/contact', 'contact.ctaAction.choice.form'),
+            'aiChoiceIcon' => $this->sanitizeCssClassList((string)$this->getAttribute('aiButtonIcon')),
+            'formChoiceIcon' => $this->sanitizeCssClassList((string)$this->getAttribute('formButtonIcon')),
+            'secondaryActionsLabel' => trim((string)$this->getAttribute('secondaryActionsLabel')),
             'selectTrust' => QUI::getLocale()->get('quiqqer/contact', 'contact.ctaAction.select.trust'),
             'selectPrivacyHint' => QUI::getLocale()->get('quiqqer/contact', 'contact.ctaAction.select.privacyHint')
         ]);
@@ -443,6 +445,17 @@ class Control extends QUI\Control
      */
     public function send(array $formData = []): void
     {
+        $formEnabled = $this->getAttribute('formEnabled');
+
+        if ($this->isInBrick()) {
+            $Brick = QUI\Bricks\Manager::init()?->getBrickById((int)$this->getAttribute('data-brickid'));
+            $formEnabled = $Brick?->getSetting('formEnabled') ?? $formEnabled;
+        }
+
+        if (!$this->normalizeBooleanFlag($formEnabled)) {
+            throw new QUI\Exception(QUI::getLocale()->get('quiqqer/contact', 'contact.ctaAction.formDisabled'));
+        }
+
         $name = trim((string)($formData['name'] ?? ''));
         $email = trim((string)($formData['email'] ?? ''));
         $phone = trim((string)($formData['phone'] ?? ''));
@@ -785,35 +798,38 @@ class Control extends QUI\Control
     }
 
     /**
-     * @return array<int, Button>
+     * The overview and sidebar share the same ordered, normalized actions.
+     *
+     * @return array{primary: array<int, Button>, secondary: array<int, Button>}
      */
     private function getButtons(string $btnStyle): array
     {
-        $buttons = [];
-        $displayMode = $this->getButtonDisplayMode($btnStyle);
+        $buttons = ['primary' => [], 'secondary' => []];
         $defaultSize = $this->sanitizeDefaultButtonSize((string)$this->getAttribute('size'));
 
-        foreach ($this->getDefaultButtons() as $button) {
-            if (empty($button['size'])) {
-                $button['size'] = $defaultSize;
+        foreach (array_merge($this->getDefaultButtons(), $this->getCustomButtons()) as $button) {
+            $group = ($button['group'] ?? '') === 'primary' ? 'primary' : 'secondary';
+            $display = $group === 'primary' ? 'icon-text' : ($button['display'] ?? $this->getAttribute('contactDisplay'));
+            $button['size'] = empty($button['size']) ? $defaultSize : $button['size'];
+
+            if ($group === 'primary' && empty($button['btnType'])) {
+                $button['btnType'] = 'primary';
             }
 
-            $Button = $this->createButtonControl($button, $displayMode);
+            if ($display === 'text') {
+                $button['icon'] = '';
+                $button['text'] = $button['text'] ?: ($button['ariaLabel'] ?? $button['title'] ?? '');
+            }
+
+            if ($group === 'secondary' && $btnStyle === 'rounded') {
+                $button['customClass'] = trim(($button['customClass'] ?? '') . ' btn-rounded');
+            }
+
+            $Button = $this->createButtonControl($button, $display === 'icon' ? 'icon-only' : 'button');
 
             if ($Button !== null) {
-                $buttons[] = $Button;
-            }
-        }
-
-        foreach ($this->getCustomButtons() as $button) {
-            if (empty($button['size'])) {
-                $button['size'] = $defaultSize;
-            }
-
-            $Button = $this->createButtonControl($button, $displayMode);
-
-            if ($Button !== null) {
-                $buttons[] = $Button;
+                $this->addCSSFiles($Button->getCSSFiles());
+                $buttons[$group][] = $Button;
             }
         }
 
@@ -926,12 +942,15 @@ class Control extends QUI\Control
             $title = $text;
         }
 
-        if ($ariaLabel === '' && $text !== '') {
-            $ariaLabel = $text;
+        if ($ariaLabel === '') {
+            $ariaLabel = $text !== '' ? $text : $title;
         }
 
         return [
             'text' => $text,
+            'group' => ($button['group'] ?? '') === 'secondary' ? 'secondary' : 'primary',
+            'display' => in_array($button['display'] ?? '', ['text', 'icon'], true)
+                ? $button['display'] : 'icon-text',
             'identifier' => $this->sanitizeIdentifier((string)($button['identifier'] ?? '')),
             'icon' => $this->sanitizeCssClassList($icon),
             'iconPosition' => ($button['iconPosition'] ?? '') === 'end' ? 'end' : 'start',
@@ -940,6 +959,9 @@ class Control extends QUI\Control
             'openBrickId' => max(0, (int)($button['openBrickId'] ?? 0)),
             'openBrickWinWidth' => $this->sanitizeDimension($button['openBrickWinWidth'] ?? 0),
             'openBrickWinHeight' => $this->sanitizeDimension($button['openBrickWinHeight'] ?? 0),
+            'openBrickSpacing' => !in_array($button['openBrickSpacing'] ?? true, [false, 0, '0'], true),
+            'brickParams' => $button['brickParams'] ?? [],
+            'dataAttributes' => $button['dataAttributes'] ?? [],
             'href' => $this->sanitizeButtonHref((string)($button['href'] ?? '#')),
             'targetBlank' => $this->normalizeBooleanFlag($button['targetBlank'] ?? false),
             'title' => strip_tags($title),
@@ -957,22 +979,17 @@ class Control extends QUI\Control
      */
     private function createButtonControl(array $button, string $displayMode): ?Button
     {
-        if (!empty($button['isDisabled'])) {
+        if (
+            !empty($button['isDisabled'])
+            || ($displayMode === 'icon-only' && (empty($button['icon']) || empty($button['ariaLabel'])))
+            || ($displayMode === 'button' && empty($button['text']))
+        ) {
             return null;
         }
 
         return new Button(array_merge($button, [
             'displayMode' => $displayMode,
         ]));
-    }
-
-    private function getButtonDisplayMode(string $btnStyle): string
-    {
-        return match ($btnStyle) {
-            'icon' => 'icon-only',
-            'iconRounded' => 'icon-only-rounded',
-            default => 'button',
-        };
     }
 
     private function sanitizeCssClassList(string $classList): string
@@ -1233,7 +1250,7 @@ class Control extends QUI\Control
      *
      * This says "the system can do it", not "this project already has such a
      * brick": the editor still has to create one and select it, and without a
-     * selection the control falls back to the form view.
+     * selection the control falls back to the contact overview.
      */
     public static function isAiAgentViewAvailable(): bool
     {
@@ -1246,9 +1263,9 @@ class Control extends QUI\Control
      * Id of the brick to render in the ai view, or 0 when none is usable.
      *
      * A configured brick that no longer exists yields 0, so a deleted brick
-     * downgrades the view to the form instead of leaving an empty ai view.
+     * falls back to the overview instead of leaving an empty ai view.
      */
-    private function resolveAiBrickId(): int
+    protected function resolveAiBrickId(): int
     {
         $aiBrickId = (int)$this->getAttribute('aiBrickId');
 
@@ -1262,7 +1279,42 @@ class Control extends QUI\Control
             return 0;
         }
 
-        return $Brick === null ? 0 : $aiBrickId;
+        if ($Brick === null || !$Brick->getAttribute('active')) {
+            return 0;
+        }
+
+        foreach (QUI\Bricks\Utils::getBrickDefinitionsByCategory(self::AI_AGENT_BRICK_CATEGORY) as $definition) {
+            if (ltrim((string)$definition['control'], '\\') === ltrim((string)$Brick->getAttribute('type'), '\\')) {
+                return $aiBrickId;
+            }
+        }
+
+        return 0;
+    }
+
+    /**
+     * @return array{startView: string, aiBrickId: int, formEnabled: bool,
+     *     formSidebar: bool, formSidebarAi: bool, aiSidebar: bool}
+     */
+    public function getViewConfiguration(): array
+    {
+        $aiBrickId = $this->resolveAiBrickId();
+        $formEnabled = $this->normalizeBooleanFlag($this->getAttribute('formEnabled'));
+        $formSidebar = $formEnabled && $this->normalizeBooleanFlag($this->getAttribute('formSidebar'));
+
+        return [
+            'startView' => match ($this->getAttribute('startView')) {
+                'form' => $formEnabled ? 'form' : 'select',
+                'ai' => $aiBrickId > 0 ? 'ai' : 'select',
+                default => 'select'
+            },
+            'aiBrickId' => $aiBrickId,
+            'formEnabled' => $formEnabled,
+            'formSidebar' => $formSidebar,
+            'formSidebarAi' => $formSidebar && $aiBrickId > 0
+                && $this->normalizeBooleanFlag($this->getAttribute('formSidebarAi')),
+            'aiSidebar' => $this->normalizeBooleanFlag($this->getAttribute('aiSidebar'))
+        ];
     }
 
     /**
@@ -1334,6 +1386,10 @@ class Control extends QUI\Control
             'aiBrickId',
             'aiContext',
             'aiSidebar',
+            'formEnabled',
+            'formSidebar',
+            'formSidebarAi',
+            'contactDisplay',
             'whatsapp',
             'whatsappLabel',
             'phone',
@@ -1341,6 +1397,11 @@ class Control extends QUI\Control
             'email',
             'emailLabel',
             'customButtons',
+            'secondaryActionsLabel',
+            'aiButtonText',
+            'aiButtonIcon',
+            'formButtonText',
+            'formButtonIcon',
             'formDesign',
             'btnStyle',
             'size',

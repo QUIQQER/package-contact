@@ -1,36 +1,15 @@
-/**
- * Start view select ("Ansicht beim Öffnen") for the CTA action brick.
- *
- * Extends the native select of the brick setting: the "Auswahl" and "KI Agent"
- * options are only kept when the AI agent view is available. When it is not
- * available, only the "Formular" option remains and a previously selected
- * AI-agent-dependent option falls back to the form.
- *
- * Availability means "some installed package offers an ai agent brick", not
- * "this project already contains one" - the latter is the job of the brick
- * picker in the accompanying "KI-Agent-Baustein" setting.
- *
- * It also toggles the fields that only matter for an ai view, declared with:
- *
- *   data-dependency="startView"
- *   data-dependency-options="select,ai"
- *
- * The evaluation mirrors package/quiqqer/core/bin/QUI/controls/settings/Dependency,
- * because QUI.parse allows only one data-qui control per element and this
- * control already owns the select.
- *
- * @module package/quiqqer/contact/bin/controls/backend/CtaActionStartView
- */
+/** Start view availability and a non-blocking configuration hint. */
 define('package/quiqqer/contact/bin/controls/backend/CtaActionStartView', [
 
     'qui/controls/Control',
-    'Ajax'
+    'Ajax',
+    'Locale'
 
-], function (QUIControl, QUIAjax) {
+], function (QUIControl, QUIAjax, Locale) {
     "use strict";
 
     // view options that require the AI agent view to be available
-    const AI_AGENT_VIEWS = ['select', 'ai'];
+    const AI_AGENT_VIEWS = ['ai'];
 
     return new Class({
 
@@ -65,6 +44,8 @@ define('package/quiqqer/contact/bin/controls/backend/CtaActionStartView', [
             const Scope = this.$Select.closest('form') || this.$Select.closest('table');
 
             if (Scope) {
+                this.$groupSettings(Scope);
+                this.$initActionHint(Scope);
                 this.$Fields = Array.from(
                     Scope.querySelectorAll('[data-dependency="' + this.$Select.name + '"]')
                 );
@@ -82,6 +63,81 @@ define('package/quiqqer/contact/bin/controls/backend/CtaActionStartView', [
             }, {
                 'package': 'quiqqer/contact'
             });
+        },
+
+        $groupSettings: function (scope) {
+            [['startView', 'start'], ['formEnabled', 'offers'], ['btnStyle', 'appearance']].forEach(([name, section]) => {
+                const row = scope.querySelector('[name="' + name + '"]')?.closest('tr');
+                if (!row) {
+                    return;
+                }
+                const heading = document.createElement('tr');
+                const cell = document.createElement('th');
+                cell.colSpan = 2;
+                cell.textContent = Locale.get('quiqqer/contact', 'contact.ctaAction.section.' + section);
+                heading.appendChild(cell);
+                row.before(heading);
+            });
+        },
+
+        $initActionHint: function (scope) {
+            const hint = document.createElement('p');
+            hint.setAttribute('role', 'status');
+            hint.textContent = Locale.get('quiqqer/contact', 'contact.ctaAction.noActions');
+            hint.hidden = true;
+            this.$Select.parentElement.appendChild(hint);
+            let request = 0;
+
+            const update = () => {
+                const field = (name) => scope.querySelector('[name="' + name + '"]');
+                const form = field('formEnabled');
+                const formEnabled = !form || (form.type === 'checkbox' ? form.checked : form.value === '1');
+                const formOption = this.$Select.querySelector('option[value="form"]');
+
+                if (formOption) {
+                    formOption.disabled = !formEnabled;
+                }
+
+                if (!formEnabled && this.$Select.value === 'form') {
+                    this.$Select.value = 'select';
+                    this.$Select.dispatchEvent(new Event('change'));
+                }
+
+                let buttons = [];
+                try { buttons = JSON.parse(field('customButtons')?.value || '[]'); } catch (e) { /* Empty configuration. */ }
+                const custom = Array.isArray(buttons) && buttons.some((button) => {
+                    if (!button || [true, 1, '1'].includes(button.isDisabled) || [true, 1, '1'].includes(button.disabled)) {
+                        return false;
+                    }
+                    const named = String(button.text || button.ariaLabel || button.title || '').trim();
+                    return named && (button.group !== 'secondary' || button.display !== 'icon' || button.iconClass || button.icon);
+                });
+                const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field('email')?.value || '');
+                const phone = ['phone', 'whatsapp'].some((name) => /\d/.test(field(name)?.value || ''));
+                const current = ++request;
+                hint.hidden = true;
+
+                if (formEnabled || custom || email || phone) {
+                    return;
+                }
+
+                QUIAjax.get('package_quiqqer_contact_ajax_ctaAction_isAiAgentViewAvailable', (available) => {
+                    if (current === request && hint.isConnected) {
+                        hint.hidden = Boolean(available);
+                    }
+                }, {
+                    'package': 'quiqqer/contact',
+                    aiBrickId: field('aiBrickId')?.value || '0'
+                });
+            };
+
+            scope.addEventListener('change', update);
+            scope.addEventListener('input', update);
+            this.addEvent('destroy', () => {
+                scope.removeEventListener('change', update);
+                scope.removeEventListener('input', update);
+            });
+            update();
         },
 
         /**
@@ -129,7 +185,7 @@ define('package/quiqqer/contact/bin/controls/backend/CtaActionStartView', [
             });
 
             if (wasSelected) {
-                this.$Select.value = 'form';
+                this.$Select.value = 'select';
                 this.$Select.dispatchEvent(new Event('change'));
             }
 
