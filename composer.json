@@ -25,7 +25,7 @@
     "quiqqer/core": "^2.30",
     "quiqqer/formbuilder": "^2",
     "quiqqer/components": "^1",
-    "quiqqer/bricks": "^2"
+    "quiqqer/bricks": "^2.35"
   },
   "autoload": {
     "psr-4": {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <quiqqer>
     <bricks>
-        <brick control="\QUI\Contact\CtaAction\Control">
+        <brick control="\QUI\Contact\CtaAction\Control" supportsWindowAutoHeight="1">
             <title>
                 <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.title"/>
             </title>
@@ -10,29 +10,7 @@
             </description>
 
             <settings>
-                <setting name="formDesign" type="select">
-                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formDesign"/>
-                    <option></option>
-                    <option value="default">
-                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formDesign.default"/>
-                    </option>
-                    <option value="grid">
-                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formDesign.grid"/>
-                    </option>
-                    <option value="labelLeft">
-                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formDesign.labelLeft"/>
-                    </option>
-                </setting>
-
-                <!--
-                    The "Auswahl" and "KI Agent" options are only usable when the
-                    AI agent view is available. The data-qui control removes them
-                    in the editor when it is not.
-
-                    @todo TEMPORARY SOLUTION: availability is currently tied to
-                          the hardcoded pcsg/sales-agent integration (see the PHP
-                          Control and CtaActionStartView.js).
-                -->
+                <!-- Startansicht -->
                 <setting name="startView" type="select"
                          data-qui="package/quiqqer/contact/bin/controls/backend/CtaActionStartView">
                     <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.startView"/>
@@ -46,53 +24,46 @@
                         <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.startView.ai"/>
                     </option>
                 </setting>
-                <setting name="aiSidebar" type="select">
-                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiSidebar"/>
-                    <option value="0">
-                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiSidebar.hide"/>
-                    </option>
-                    <option value="1">
-                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiSidebar.show"/>
-                    </option>
-                </setting>
-
-                <setting name="recipient" type="text">
-                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.recipient"/>
-                </setting>
                 <setting name="ctaDescription" type="text">
                     <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.ctaDescription"/>
                 </setting>
-                <setting name="logo" type="text" data-qui="controls/projects/project/media/Input">
-                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.logo"/>
+
+                <!-- Angebote -->
+                <setting name="formEnabled" type="checkbox">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formEnabled"/>
+                    <description><locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formEnabled.desc"/></description>
+                    <defaultValue>1</defaultValue>
                 </setting>
-
-                <!-- buttons -->
-                <setting name="btnStyle" type="select">
-                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.btnStyle"/>
-
-                    <option></option>
-                    <option value="button">
-                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.btnStyle.button"/>
-                    </option>
-                    <option value="icon">
-                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.btnStyle.icon"/>
-                    </option>
-                    <option value="iconRounded">
-                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.btnStyle.iconRounded"/>
-                    </option>
+                <setting name="aiBrickId" type="hidden"
+                         data-qui="package/quiqqer/bricks/bin/Controls/backend/BrickIdInput"
+                         data-qui-options-brickcategories="aiAgent"
+                >
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiBrickId"/>
+                    <description>
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiBrickId.description"/>
+                    </description>
                 </setting>
-                <setting name="size" type="select">
-                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.size"/>
-
-                    <option value="default">
-                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.size.default"/>
-                    </option>
-                    <option value="sm">
-                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.size.small"/>
-                    </option>
-                    <option value="lg">
-                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.size.large"/>
-                    </option>
+                <setting name="aiContext" type="text"
+                >
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiContext"/>
+                    <description>
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiContext.description"/>
+                    </description>
+                </setting>
+                <setting name="recipient" type="text">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.recipient"/>
+                </setting>
+                <setting name="email" type="text">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.email"/>
+                    <description>
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.email.description"/>
+                    </description>
+                </setting>
+                <setting name="emailLabel" type="text">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.emailLabel"/>
+                    <description>
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.emailLabel.desc"/>
+                    </description>
                 </setting>
                 <setting name="whatsapp" type="text">
                     <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.whatsapp"/>
@@ -118,18 +89,6 @@
                         <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.phoneLabel.desc"/>
                     </description>
                 </setting>
-                <setting name="email" type="text">
-                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.email"/>
-                    <description>
-                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.email.description"/>
-                    </description>
-                </setting>
-                <setting name="emailLabel" type="text">
-                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.emailLabel"/>
-                    <description>
-                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.emailLabel.desc"/>
-                    </description>
-                </setting>
                 <setting name="customButtons" type="hidden"
                          data-qui="package/quiqqer/contact/bin/controls/backend/CtaActionButtons">
                     <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.customButtons"/>
@@ -138,6 +97,97 @@
                     </description>
                 </setting>
 
+                <setting name="secondaryActionsLabel" type="text">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.secondaryActionsLabel"/>
+                    <description><locale group="quiqqer/contact" var="brick.control.ctaAction.setting.secondaryActionsLabel.desc"/></description>
+                </setting>
+                <setting name="aiButtonText" type="text">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiButtonText"/>
+                    <description><locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiButtonText.desc"/></description>
+                </setting>
+                <setting name="aiButtonIcon" type="text" data-qui="controls/projects/project/media/Input" data-qui-options-cssclasses="1" data-qui-options-mediabutton="0">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiButtonIcon"/>
+                    <description><locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiButtonIcon.desc"/></description>
+                </setting>
+                <setting name="formButtonText" type="text">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formButtonText"/>
+                    <description><locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formButtonText.desc"/></description>
+                </setting>
+                <setting name="formButtonIcon" type="text" data-qui="controls/projects/project/media/Input" data-qui-options-cssclasses="1" data-qui-options-mediabutton="0">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formButtonIcon"/>
+                    <description><locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formButtonIcon.desc"/></description>
+                </setting>
+
+                <!-- Darstellung -->
+                <setting name="btnStyle" type="select">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.btnStyle"/>
+                    <description><locale group="quiqqer/contact" var="brick.control.ctaAction.setting.btnStyle.desc"/></description>
+
+                    <option value="button">
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.btnStyle.button"/>
+                    </option>
+                    <option value="rounded">
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.btnStyle.rounded"/>
+                    </option>
+                    <defaultValue>button</defaultValue>
+                </setting>
+                <setting name="contactDisplay" type="select">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.contactDisplay"/>
+                    <description><locale group="quiqqer/contact" var="brick.control.ctaAction.setting.contactDisplay.desc"/></description>
+                    <option value="icon-text"><locale group="quiqqer/contact" var="contact.ctaAction.display.icon-text"/></option>
+                    <option value="text"><locale group="quiqqer/contact" var="contact.ctaAction.display.text"/></option>
+                    <option value="icon"><locale group="quiqqer/contact" var="contact.ctaAction.display.icon"/></option>
+                    <defaultValue>icon-text</defaultValue>
+                </setting>
+                <setting name="size" type="select">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.size"/>
+
+                    <option value="default">
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.size.default"/>
+                    </option>
+                    <option value="sm">
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.size.small"/>
+                    </option>
+                    <option value="lg">
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.size.large"/>
+                    </option>
+                </setting>
+                <setting name="formDesign" type="select">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formDesign"/>
+                    <option></option>
+                    <option value="default">
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formDesign.default"/>
+                    </option>
+                    <option value="grid">
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formDesign.grid"/>
+                    </option>
+                    <option value="labelLeft">
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formDesign.labelLeft"/>
+                    </option>
+                </setting>
+                <setting name="formSidebar" type="checkbox"
+                         data-qui="package/quiqqer/core/bin/QUI/controls/settings/Dependency">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formSidebar"/>
+                    <defaultValue>0</defaultValue>
+                </setting>
+                <setting name="formSidebarAi" type="checkbox"
+                         data-dependency="formSidebar" data-dependency-options="1">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formSidebarAi"/>
+                    <description><locale group="quiqqer/contact" var="brick.control.ctaAction.setting.formSidebarAi.desc"/></description>
+                    <defaultValue>0</defaultValue>
+                </setting>
+                <setting name="aiSidebar" type="select">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiSidebar"/>
+                    <option value="0">
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiSidebar.hide"/>
+                    </option>
+                    <option value="1">
+                        <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.aiSidebar.show"/>
+                    </option>
+                </setting>
+                <setting name="logo" type="text" data-qui="controls/projects/project/media/Input">
+                    <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.logo"/>
+                </setting>
                 <setting name="bgColor" type="color">
                     <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.bgColor"/>
                     <description>
@@ -162,6 +212,7 @@
                         <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.leftColor.description"/>
                     </description>
                 </setting>
+
             </settings>
         </brick>
     </bricks>
