@@ -22,6 +22,7 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindow', [
 
         options: {
             maxHeight: 800,
+            contentAutoHeight: true,
             maxWidth: 1200,
             backgroundClosable: false,
             resizable: false,
@@ -86,6 +87,13 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindow', [
 
         initialize: function (options) {
             this.parent(options);
+
+            // An explicitly supplied height remains a ceiling unless the caller
+            // explicitly opts into natural content height as well.
+            if (Number(options?.maxHeight) > 0 && options?.contentAutoHeight === undefined) {
+                this.setAttribute('contentAutoHeight', false);
+            }
+
             this.$ctaAction = null;
             this.$contentPromise = null;
 

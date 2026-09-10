@@ -344,9 +344,20 @@
 }
 
 .quiqqer-contact-ctaAction--inWindow {
+    align-self: flex-start;
     outline: none;
     border: 0;
     border-radius: 0;
+}
+
+/* Embedded views may turn the window content into a non-scrolling flex host.
+   The contact views still need their own natural height and window scrollbar. */
+.qui-window-simpleWindow-content:has(.quiqqer-contact-ctaAction--inWindow [data-name="layout"]:not([data-active-view="ai"])) {
+    overflow: auto;
+}
+
+.qui-window-simpleWindow-content:has(.quiqqer-contact-ctaAction--inWindow.quiqqer-contact-ctaAction--windowGrowing [data-name="layout"]:not([data-active-view="ai"])) {
+    overflow: hidden;
 }
 
 .quiqqer-contact-ctaAction--inWindow .quiqqer-contact-ctaAction__leftContent {
