@@ -6,71 +6,151 @@
         <locale name="controls.RequestList.title">
             <de><![CDATA[Kontakt-Anfragen]]></de>
             <en><![CDATA[Contact requests]]></en>
+            <es><![CDATA[Consultas de contacto]]></es>
+            <pt><![CDATA[Pedidos de contacto]]></pt>
+            <fr><![CDATA[Demandes de contact]]></fr>
+            <it><![CDATA[Richieste di contatto]]></it>
+            <pl><![CDATA[Zapytania kontaktowe]]></pl>
         </locale>
         <locale name="controls.RequestList.formselect_placeholder">
             <de><![CDATA[-- Kontakt-Formular wählen --]]></de>
             <en><![CDATA[-- Choose contact form --]]></en>
+            <es><![CDATA[-- Seleccione un formulario de contacto --]]></es>
+            <pt><![CDATA[-- Selecione um formulário de contacto --]]></pt>
+            <fr><![CDATA[-- Sélectionnez un formulaire de contact --]]></fr>
+            <it><![CDATA[-- Seleziona un modulo di contatto --]]></it>
+            <pl><![CDATA[-- Wybierz formularz kontaktowy --]]></pl>
         </locale>
         <locale name="controls.RequestList.tbl.header.submitDate">
             <de><![CDATA[Datum]]></de>
             <en><![CDATA[Date]]></en>
+            <es><![CDATA[Fecha]]></es>
+            <pt><![CDATA[Data]]></pt>
+            <fr><![CDATA[Date]]></fr>
+            <it><![CDATA[Data]]></it>
+            <pl><![CDATA[Data]]></pl>
         </locale>
         <locale name="controls.RequestList.select_info">
             <de><![CDATA[Bitte wählen Sie ein Kontakt-Formular aus, dessen Daten angezeigt werden sollen.]]></de>
             <en><![CDATA[Please select a contact form whose data you want to display.]]></en>
+            <es><![CDATA[Seleccione el formulario de contacto cuyos datos desea consultar.]]></es>
+            <pt><![CDATA[Selecione o formulário de contacto cujos dados pretende consultar.]]></pt>
+            <fr><![CDATA[Sélectionnez le formulaire de contact dont vous souhaitez consulter les données.]]></fr>
+            <it><![CDATA[Seleziona il modulo di contatto di cui vuoi visualizzare i dati.]]></it>
+            <pl><![CDATA[Wybierz formularz kontaktowy, którego dane chcesz wyświetlić.]]></pl>
         </locale>
         <locale name="controls.RequestList.no_forms_info" html="true">
             <de>
                 <![CDATA[Es existieren z.Z. noch keine Kontakt-Anfragen. Sobald Kontakt-Anfragen verfügbar sind, können Sie das entsprechende Kontakt-Formular oben auswählen. Sie können Kontakt-Formulare über eine Seite mit dem Typ <b>"QUIQQER - Kontakt"</b> erstellen.]]></de>
             <en>
                 <![CDATA[Currently no contact requests exist yet. Once contact requests are available, you can select the appropriate contact form above. You can create contact forms with a Site of type <b>"QUIQQER - Contact"</b>.]]></en>
+            <es><![CDATA[Todavía no hay consultas de contacto. Cuando se reciban, podrá seleccionar el formulario correspondiente arriba. Para crear un formulario de contacto, cree una página de tipo <b>"QUIQQER - Contacto"</b>.]]></es>
+            <pt><![CDATA[Ainda não existem pedidos de contacto. Assim que forem recebidos, poderá selecionar o formulário correspondente acima. Para criar um formulário de contacto, crie uma página do tipo <b>"QUIQQER - Contacto"</b>.]]></pt>
+            <fr><![CDATA[Aucune demande de contact n’a encore été reçue. Dès que des demandes seront disponibles, vous pourrez sélectionner le formulaire correspondant ci-dessus. Pour créer un formulaire de contact, créez une page de type <b>"QUIQQER - Contact"</b>.]]></fr>
+            <it><![CDATA[Non sono ancora state ricevute richieste di contatto. Quando saranno disponibili, potrai selezionare il modulo corrispondente qui sopra. Per creare un modulo di contatto, crea una pagina di tipo <b>"QUIQQER - Contatti"</b>.]]></it>
+            <pl><![CDATA[Nie otrzymano jeszcze żadnych zapytań kontaktowych. Gdy się pojawią, możesz wybrać odpowiedni formularz powyżej. Aby utworzyć formularz kontaktowy, utwórz stronę typu <b>"QUIQQER - Kontakt"</b>.]]></pl>
         </locale>
         <locale name="controls.RequestList.btn.view_request">
             <de><![CDATA[Details anzeigen]]></de>
             <en><![CDATA[Show details]]></en>
+            <es><![CDATA[Ver detalles]]></es>
+            <pt><![CDATA[Ver detalhes]]></pt>
+            <fr><![CDATA[Voir les détails]]></fr>
+            <it><![CDATA[Mostra dettagli]]></it>
+            <pl><![CDATA[Pokaż szczegóły]]></pl>
         </locale>
         <locale name="controls.RequestList.btn.delete_requests">
             <de><![CDATA[Anfrage(n) löschen]]></de>
             <en><![CDATA[Delete request(s)]]></en>
+            <es><![CDATA[Eliminar consultas]]></es>
+            <pt><![CDATA[Eliminar pedidos]]></pt>
+            <fr><![CDATA[Supprimer les demandes]]></fr>
+            <it><![CDATA[Elimina richieste]]></it>
+            <pl><![CDATA[Usuń zapytania]]></pl>
         </locale>
         <locale name="controls.RequestList.delete.info" html="true">
             <de>
                 <![CDATA[Sind Sie sicher, dass Sie folgende Anfragen des Kontakt-Formulars <b>"[form]"</b> unwiderruflich löschen wollen?<br/><br/>[requestIds]]]></de>
             <en>
                 <![CDATA[Are you sure you want to irrevocably delete the following requests for contact form <b>"[form]"</b>?<br/><br/>[requestIds]]]></en>
+            <es><![CDATA[¿Desea eliminar definitivamente las siguientes consultas del formulario de contacto <b>"[form]"</b>?<br/><br/>[requestIds]]]></es>
+            <pt><![CDATA[Pretende eliminar definitivamente os seguintes pedidos do formulário de contacto <b>"[form]"</b>?<br/><br/>[requestIds]]]></pt>
+            <fr><![CDATA[Voulez-vous supprimer définitivement les demandes suivantes du formulaire de contact <b>"[form]"</b> ?<br/><br/>[requestIds]]]></fr>
+            <it><![CDATA[Vuoi eliminare definitivamente le seguenti richieste del modulo di contatto <b>"[form]"</b>?<br/><br/>[requestIds]]]></it>
+            <pl><![CDATA[Czy na pewno chcesz trwale usunąć poniższe zapytania z formularza kontaktowego <b>"[form]"</b>?<br/><br/>[requestIds]]]></pl>
         </locale>
         <locale name="controls.RequestList.delete.title">
             <de><![CDATA[Formular-Anfragen löschen]]></de>
             <en><![CDATA[Delete form requests]]></en>
+            <es><![CDATA[Eliminar consultas del formulario]]></es>
+            <pt><![CDATA[Eliminar pedidos do formulário]]></pt>
+            <fr><![CDATA[Supprimer les demandes du formulaire]]></fr>
+            <it><![CDATA[Elimina richieste del modulo]]></it>
+            <pl><![CDATA[Usuń zapytania z formularza]]></pl>
         </locale>
 
         <locale name="controls.ConfirmationEmail.tpl.labelLabel">
             <de><![CDATA[Label]]></de>
             <en><![CDATA[Label]]></en>
+            <es><![CDATA[Etiqueta]]></es>
+            <pt><![CDATA[Etiqueta]]></pt>
+            <fr><![CDATA[Libellé]]></fr>
+            <it><![CDATA[Etichetta]]></it>
+            <pl><![CDATA[Etykieta]]></pl>
         </locale>
         <locale name="controls.ConfirmationEmail.tpl.labelValue">
             <de><![CDATA[Wert]]></de>
-            <en><![CDATA[Wert]]></en>
+            <en><![CDATA[Value]]></en>
+            <es><![CDATA[Valor]]></es>
+            <pt><![CDATA[Valor]]></pt>
+            <fr><![CDATA[Valeur]]></fr>
+            <it><![CDATA[Valore]]></it>
+            <pl><![CDATA[Wartość]]></pl>
         </locale>
         <locale name="controls.ConfirmationEmail.tpl.headerPlaceholders">
             <de><![CDATA[Platzhalter]]></de>
             <en><![CDATA[Placeholders]]></en>
+            <es><![CDATA[Marcadores de posición]]></es>
+            <pt><![CDATA[Marcadores de posição]]></pt>
+            <fr><![CDATA[Variables de substitution]]></fr>
+            <it><![CDATA[Segnaposto]]></it>
+            <pl><![CDATA[Symbole zastępcze]]></pl>
         </locale>
         <locale name="controls.ConfirmationEmail.tpl.headerSettings">
             <de><![CDATA[Kontaktformular Bestätigungs-E-Mail]]></de>
             <en><![CDATA[Contact form confirmation e-mail]]></en>
+            <es><![CDATA[Correo de confirmación del formulario de contacto]]></es>
+            <pt><![CDATA[E-mail de confirmação do formulário de contacto]]></pt>
+            <fr><![CDATA[E-mail de confirmation du formulaire de contact]]></fr>
+            <it><![CDATA[Email di conferma del modulo di contatto]]></it>
+            <pl><![CDATA[E-mail z potwierdzeniem wysłania formularza kontaktowego]]></pl>
         </locale>
         <locale name="controls.ConfirmationEmail.tpl.labelSendMail">
             <de><![CDATA[E-Mail versenden]]></de>
             <en><![CDATA[Send e-mail]]></en>
+            <es><![CDATA[Enviar correo electrónico]]></es>
+            <pt><![CDATA[Enviar e-mail]]></pt>
+            <fr><![CDATA[Envoyer un e-mail]]></fr>
+            <it><![CDATA[Invia email]]></it>
+            <pl><![CDATA[Wyślij e-mail]]></pl>
         </locale>
         <locale name="controls.ConfirmationEmail.tpl.labelSubject">
             <de><![CDATA[E-Mail Betreff]]></de>
             <en><![CDATA[E-mail subject]]></en>
+            <es><![CDATA[Asunto del correo]]></es>
+            <pt><![CDATA[Assunto do e-mail]]></pt>
+            <fr><![CDATA[Objet de l’e-mail]]></fr>
+            <it><![CDATA[Oggetto dell’email]]></it>
+            <pl><![CDATA[Temat wiadomości e-mail]]></pl>
         </locale>
         <locale name="controls.ConfirmationEmail.tpl.headerBody">
             <de><![CDATA[E-Mail Inhalt]]></de>
             <en><![CDATA[E-mail body]]></en>
+            <es><![CDATA[Contenido del correo]]></es>
+            <pt><![CDATA[Conteúdo do e-mail]]></pt>
+            <fr><![CDATA[Contenu de l’e-mail]]></fr>
+            <it><![CDATA[Contenuto dell’email]]></it>
+            <pl><![CDATA[Treść wiadomości e-mail]]></pl>
         </locale>
 
     </groups>
@@ -79,18 +159,38 @@
         <locale name="admin.types.contact">
             <de><![CDATA[Kontakt]]></de>
             <en><![CDATA[Contact]]></en>
+            <es><![CDATA[Contacto]]></es>
+            <pt><![CDATA[Contacto]]></pt>
+            <fr><![CDATA[Contact]]></fr>
+            <it><![CDATA[Contatto]]></it>
+            <pl><![CDATA[Kontakt]]></pl>
         </locale>
         <locale name="admin.types.contact.form">
             <de><![CDATA[Kontaktformular]]></de>
             <en><![CDATA[Contact form]]></en>
+            <es><![CDATA[Formulario de contacto]]></es>
+            <pt><![CDATA[Formulário de contacto]]></pt>
+            <fr><![CDATA[Formulaire de contact]]></fr>
+            <it><![CDATA[Modulo di contatto]]></it>
+            <pl><![CDATA[Formularz kontaktowy]]></pl>
         </locale>
         <locale name="admin.types.contact.success">
             <de><![CDATA[Kontaktformular Erfolgsmeldung]]></de>
             <en><![CDATA[Contact form success message]]></en>
+            <es><![CDATA[Mensaje de envío correcto del formulario de contacto]]></es>
+            <pt><![CDATA[Mensagem de envio bem-sucedido do formulário de contacto]]></pt>
+            <fr><![CDATA[Message de confirmation d’envoi du formulaire de contact]]></fr>
+            <it><![CDATA[Messaggio di invio riuscito del modulo di contatto]]></it>
+            <pl><![CDATA[Komunikat o pomyślnym wysłaniu formularza kontaktowego]]></pl>
         </locale>
         <locale name="admin.types.contact.success_mail">
             <de><![CDATA[Kontaktformular Bestätigungs-E-Mail]]></de>
             <en><![CDATA[Contact form confirmation e-mail]]></en>
+            <es><![CDATA[Correo de confirmación del formulario de contacto]]></es>
+            <pt><![CDATA[E-mail de confirmação do formulário de contacto]]></pt>
+            <fr><![CDATA[E-mail de confirmation du formulaire de contact]]></fr>
+            <it><![CDATA[Email di conferma del modulo di contatto]]></it>
+            <pl><![CDATA[E-mail z potwierdzeniem wysłania formularza kontaktowego]]></pl>
         </locale>
 
         <!-- Ajax -->
@@ -99,10 +199,20 @@
                 <![CDATA[Beim Verarbeiten der Anfrage ist ein unerwarteter Fehler aufgetreten. Bitte prüfen Sie die Fehler-Logs oder kontaktieren Sie einen Administrator.]]></de>
             <en>
                 <![CDATA[An unexpected error occurred while processing the request. Please check the error logs or contact an administrator.]]></en>
+            <es><![CDATA[Se ha producido un error inesperado al procesar la solicitud. Revise los registros de errores o póngase en contacto con un administrador.]]></es>
+            <pt><![CDATA[Ocorreu um erro inesperado ao processar o pedido. Consulte os registos de erros ou contacte um administrador.]]></pt>
+            <fr><![CDATA[Une erreur inattendue s’est produite lors du traitement de la demande. Consultez les journaux d’erreurs ou contactez un administrateur.]]></fr>
+            <it><![CDATA[Si è verificato un errore imprevisto durante l’elaborazione della richiesta. Controlla i log degli errori o contatta un amministratore.]]></it>
+            <pl><![CDATA[Wystąpił nieoczekiwany błąd podczas przetwarzania żądania. Sprawdź dzienniki błędów lub skontaktuj się z administratorem.]]></pl>
         </locale>
         <locale name="message.ajax.requests.deleteRequests.success">
             <de><![CDATA[Die gewählten Kontakt-Anfragen wurden erfolgreich gelöscht.]]></de>
             <en><![CDATA[The selected contact requests have been deleted successfully.]]></en>
+            <es><![CDATA[Las consultas de contacto seleccionadas se han eliminado correctamente.]]></es>
+            <pt><![CDATA[Os pedidos de contacto selecionados foram eliminados com sucesso.]]></pt>
+            <fr><![CDATA[Les demandes de contact sélectionnées ont bien été supprimées.]]></fr>
+            <it><![CDATA[Le richieste di contatto selezionate sono state eliminate.]]></it>
+            <pl><![CDATA[Wybrane zapytania kontaktowe zostały usunięte.]]></pl>
         </locale>
 
         <!-- Site type: contact -->
@@ -111,18 +221,33 @@
                 <![CDATA[Das Formular kann leider nicht versendet werden, da keine Empfänger konfiguriert sind. Bitte wenden Sie sich an einen Administrator.]]></de>
             <en>
                 <![CDATA[The form can not be sent because no recipients are configured. Please contact an administrator.]]></en>
+            <es><![CDATA[No se puede enviar el formulario porque no se han configurado destinatarios. Póngase en contacto con un administrador.]]></es>
+            <pt><![CDATA[Não é possível enviar o formulário porque não foram configurados destinatários. Contacte um administrador.]]></pt>
+            <fr><![CDATA[Le formulaire ne peut pas être envoyé, car aucun destinataire n’est configuré. Contactez un administrateur.]]></fr>
+            <it><![CDATA[Non è possibile inviare il modulo perché non sono stati configurati destinatari. Contatta un amministratore.]]></it>
+            <pl><![CDATA[Nie można wysłać formularza, ponieważ nie skonfigurowano odbiorców. Skontaktuj się z administratorem.]]></pl>
         </locale>
         <locale name="exception.types.contact.blacklisted">
             <de>
-                <![CDATA[Ihre Kontakt-Anfrage konnte leider nicht gesendet werden, da ihre E-Mail-Adresse oder ihre IP-Adresse vom System geblockt ist.]]></de>
+                <![CDATA[Ihre Kontakt-Anfrage konnte leider nicht gesendet werden, da Ihre E-Mail-Adresse oder Ihre IP-Adresse vom System geblockt ist.]]></de>
             <en>
                 <![CDATA[Your contact request could not be processed because your e-mail address or your IP address are blocked by the system.]]></en>
+            <es><![CDATA[No se ha podido enviar su consulta porque el sistema ha bloqueado su dirección de correo electrónico o su dirección IP.]]></es>
+            <pt><![CDATA[Não foi possível enviar o seu pedido de contacto porque o sistema bloqueou o seu endereço de e-mail ou o seu endereço IP.]]></pt>
+            <fr><![CDATA[Votre demande de contact n’a pas pu être envoyée, car votre adresse e-mail ou votre adresse IP est bloquée par le système.]]></fr>
+            <it><![CDATA[Non è stato possibile inviare la tua richiesta perché il tuo indirizzo email o il tuo indirizzo IP è bloccato dal sistema.]]></it>
+            <pl><![CDATA[Nie udało się wysłać zapytania, ponieważ Twój adres e-mail lub adres IP jest zablokowany przez system.]]></pl>
         </locale>
         <locale name="exception.types.contact.blacklisted_host" html="true">
             <de>
-                <![CDATA[Ihre Kontakt-Anfrage konnte leider nicht gesendet werden, da ihre IP-Adresse sich auf der Sperrliste von <b>[blacklistHost]</b> befindet.]]></de>
+                <![CDATA[Ihre Kontakt-Anfrage konnte leider nicht gesendet werden, da Ihre IP-Adresse sich auf der Sperrliste von <b>[blacklistHost]</b> befindet.]]></de>
             <en>
                 <![CDATA[Your contact request could not be processed because your IP address is on the blacklist of <b>[blacklistHost]</b>.]]></en>
+            <es><![CDATA[No se ha podido enviar su consulta porque su dirección IP figura en la lista de bloqueo de <b>[blacklistHost]</b>.]]></es>
+            <pt><![CDATA[Não foi possível enviar o seu pedido de contacto porque o seu endereço IP consta da lista de bloqueio de <b>[blacklistHost]</b>.]]></pt>
+            <fr><![CDATA[Votre demande de contact n’a pas pu être envoyée, car votre adresse IP figure sur la liste de blocage de <b>[blacklistHost]</b>.]]></fr>
+            <it><![CDATA[Non è stato possibile inviare la tua richiesta perché il tuo indirizzo IP è presente nella lista di blocco di <b>[blacklistHost]</b>.]]></it>
+            <pl><![CDATA[Nie udało się wysłać zapytania, ponieważ Twój adres IP znajduje się na liście blokowania <b>[blacklistHost]</b>.]]></pl>
         </locale>
 
         <locale name="contact.default.success_msg" html="true">
@@ -130,10 +255,20 @@
                 <![CDATA[<div class="content-message-success">Vielen Dank für Ihre Kontaktanfrage! Wir werden uns schnellstmöglich um Ihr Anliegen kümmern und Ihnen eine Antwort senden.</div>]]></de>
             <en>
                 <![CDATA[<div class="content-message-success">Many thanks for your contact request! We will deal with your request as soon as possible and send you an answer.</div>]]></en>
+            <es><![CDATA[<div class="content-message-success">¡Gracias por ponerse en contacto con nosotros! Atenderemos su consulta y le responderemos lo antes posible.</div>]]></es>
+            <pt><![CDATA[<div class="content-message-success">Obrigado pelo seu contacto! Vamos analisar o seu pedido e responder o mais rapidamente possível.</div>]]></pt>
+            <fr><![CDATA[<div class="content-message-success">Merci de nous avoir contactés ! Nous examinerons votre demande et vous répondrons dans les meilleurs délais.</div>]]></fr>
+            <it><![CDATA[<div class="content-message-success">Grazie per averci contattato! Esamineremo la tua richiesta e ti risponderemo il prima possibile.</div>]]></it>
+            <pl><![CDATA[<div class="content-message-success">Dziękujemy za kontakt! Zajmiemy się Twoim zapytaniem i odpowiemy tak szybko, jak to możliwe.</div>]]></pl>
         </locale>
         <locale name="contact.default.success_mail_subject">
             <de><![CDATA[Vielen Dank für Ihre Nachricht]]></de>
             <en><![CDATA[Thank you for your message]]></en>
+            <es><![CDATA[Gracias por su mensaje]]></es>
+            <pt><![CDATA[Obrigado pela sua mensagem]]></pt>
+            <fr><![CDATA[Merci pour votre message]]></fr>
+            <it><![CDATA[Grazie per il tuo messaggio]]></it>
+            <pl><![CDATA[Dziękujemy za wiadomość]]></pl>
         </locale>
         <locale name="contact.default.success_mail_body" html="true">
             <de><![CDATA[<p>Hallo!</p>
@@ -142,6 +277,21 @@
             <en><![CDATA[<p>Hello!</p>
 <p>We have received your message and will process it as soon as possible.</p>
 <p>Best regards!</p>]]></en>
+            <es><![CDATA[<p>Hola:</p>
+<p>Hemos recibido su mensaje y lo atenderemos lo antes posible.</p>
+<p>Un cordial saludo.</p>]]></es>
+            <pt><![CDATA[<p>Olá!</p>
+<p>Recebemos a sua mensagem e vamos dar-lhe resposta o mais rapidamente possível.</p>
+<p>Com os melhores cumprimentos.</p>]]></pt>
+            <fr><![CDATA[<p>Bonjour,</p>
+<p>Nous avons bien reçu votre message et le traiterons dans les meilleurs délais.</p>
+<p>Cordialement.</p>]]></fr>
+            <it><![CDATA[<p>Buongiorno,</p>
+<p>Abbiamo ricevuto il tuo messaggio e lo esamineremo il prima possibile.</p>
+<p>Un cordiale saluto.</p>]]></it>
+            <pl><![CDATA[<p>Dzień dobry!</p>
+<p>Otrzymaliśmy Twoją wiadomość i zajmiemy się nią tak szybko, jak to możliwe.</p>
+<p>Pozdrawiamy!</p>]]></pl>
         </locale>
 
     </groups>
@@ -151,64 +301,153 @@
         <locale name="global.PrivacyPolicy.checkbox_label">
             <de><![CDATA[Die [Datenschutzbestimmungen] habe ich zur Kenntnis genommen.]]></de>
             <en><![CDATA[I am aware of the [Privacy Policy].]]></en>
+            <es><![CDATA[He leído la [Política de privacidad].]]></es>
+            <pt><![CDATA[Tomei conhecimento da [Política de privacidade].]]></pt>
+            <fr><![CDATA[J’ai pris connaissance de la [Politique de confidentialité].]]></fr>
+            <it><![CDATA[Ho preso visione dell’[Informativa sulla privacy].]]></it>
+            <pl><![CDATA[Potwierdzam zapoznanie się z [Polityką prywatności].]]></pl>
         </locale>
         <locale name="global.PrivacyPolicy.field_label">
             <de><![CDATA[Datenschutzbestimmungen]]></de>
             <en><![CDATA[Privacy Policy]]></en>
+            <es><![CDATA[Política de privacidad]]></es>
+            <pt><![CDATA[Política de privacidade]]></pt>
+            <fr><![CDATA[Politique de confidentialité]]></fr>
+            <it><![CDATA[Informativa sulla privacy]]></it>
+            <pl><![CDATA[Polityka prywatności]]></pl>
         </locale>
 
         <!-- Settings -->
         <locale name="settings.menu.title">
             <de><![CDATA[Kontakt-Anfragen]]></de>
             <en><![CDATA[Contact requests]]></en>
+            <es><![CDATA[Consultas de contacto]]></es>
+            <pt><![CDATA[Pedidos de contacto]]></pt>
+            <fr><![CDATA[Demandes de contact]]></fr>
+            <it><![CDATA[Richieste di contatto]]></it>
+            <pl><![CDATA[Zapytania kontaktowe]]></pl>
         </locale>
         <locale name="settings.category.title">
             <de><![CDATA[Einstellungen]]></de>
             <en><![CDATA[Settings]]></en>
+            <es><![CDATA[Configuración]]></es>
+            <pt><![CDATA[Definições]]></pt>
+            <fr><![CDATA[Paramètres]]></fr>
+            <it><![CDATA[Impostazioni]]></it>
+            <pl><![CDATA[Ustawienia]]></pl>
         </locale>
         <locale name="settings.title">
             <de><![CDATA[Einstellungen]]></de>
             <en><![CDATA[Settings]]></en>
+            <es><![CDATA[Configuración]]></es>
+            <pt><![CDATA[Definições]]></pt>
+            <fr><![CDATA[Paramètres]]></fr>
+            <it><![CDATA[Impostazioni]]></it>
+            <pl><![CDATA[Ustawienia]]></pl>
         </locale>
         <locale name="settings.encryptContactRequests.title">
             <de><![CDATA[Kontakt-Anfragen verschlüsselt speichern]]></de>
             <en><![CDATA[Encrypt saved contact requests]]></en>
+            <es><![CDATA[Cifrar las consultas de contacto guardadas]]></es>
+            <pt><![CDATA[Encriptar os pedidos de contacto guardados]]></pt>
+            <fr><![CDATA[Chiffrer les demandes de contact enregistrées]]></fr>
+            <it><![CDATA[Cifra le richieste di contatto salvate]]></it>
+            <pl><![CDATA[Szyfruj zapisane zapytania kontaktowe]]></pl>
         </locale>
         <locale name="settings.encryptContactRequests.description">
             <de>
                 <![CDATA[Alle Kontakt-Anfragen, die in der Datenbank gespeichert werden, sollen verschlüsselt werden]]></de>
             <en><![CDATA[Every contact request that is saved in the database shall be encrypted]]></en>
+            <es><![CDATA[Cifra todas las consultas de contacto que se guardan en la base de datos]]></es>
+            <pt><![CDATA[Encripta todos os pedidos de contacto guardados na base de dados]]></pt>
+            <fr><![CDATA[Chiffre toutes les demandes de contact enregistrées dans la base de données]]></fr>
+            <it><![CDATA[Cifra tutte le richieste di contatto salvate nel database]]></it>
+            <pl><![CDATA[Szyfruje wszystkie zapytania kontaktowe zapisywane w bazie danych]]></pl>
         </locale>
         <locale name="settings.globalPrivacyPolicyField.title">
             <de><![CDATA[Datenschutzbestimmungen-Checkbox für jedes Kontaktformular]]></de>
-            <en><![CDATA[PrivacyPolicy checkbox for every contact form]]></en>
+            <en><![CDATA[Privacy policy checkbox for every contact form]]></en>
+            <es><![CDATA[Casilla de política de privacidad en todos los formularios de contacto]]></es>
+            <pt><![CDATA[Caixa de verificação da política de privacidade em todos os formulários de contacto]]></pt>
+            <fr><![CDATA[Case à cocher relative à la politique de confidentialité dans chaque formulaire de contact]]></fr>
+            <it><![CDATA[Casella per l’informativa sulla privacy in ogni modulo di contatto]]></it>
+            <pl><![CDATA[Pole wyboru polityki prywatności w każdym formularzu kontaktowym]]></pl>
         </locale>
         <locale name="settings.globalPrivacyPolicyField.description" html="true">
             <de><![CDATA[In jedem Kontaktformular soll standardmäßig eine Checkbox zum Akzeptieren der Datenschutzbestimmungen eingefügt werden
 <ul>
 <li>Das Feld ist ein <b>Pflichtfeld</b></li>
 <li>Das Feld kann optional im Formular-Editor der jeweiligen Kontaktformular-Seite <b>deaktiviert</b> werden</li>
-<li>Der Text kann über die Sprachvariable <b>[quqiqer/contact] global.PrivacyPolicy.label</b> unter <b>Verwaltung -> Sprachvariablen</b> festgelegt werden</li>
+<li>Der Text kann über die Sprachvariable <b>[quiqqer/contact] global.PrivacyPolicy.checkbox_label</b> unter <b>Verwaltung -> Sprachvariablen</b> festgelegt werden</li>
 <li>Es ist empfehlenswert, für diese Option eine Seite vom Seitentyp <b>"Datenschutz-Bestimmungen"</b> anzulegen, die Ihre jeweiligen Datenschutzbestimmungen als Inhalt hat</li>
 <li><b>WICHTIG:</b> Gilt nur für Kontaktformulare, die mit dem QUIQQER Form-Editor erstellt wurden!</li>
 </ul>]]></de>
-            <en><![CDATA[<p>In each contact form, a checkbox for accepting the privacy policy should be inserted by default</p>
+            <en><![CDATA[Adds a checkbox for accepting the privacy policy to every contact form by default.
 <ul>
-<li>The field is a <b>required field</b></li>
-<li>The field can optionally be <b>deactivated</b> in the form editor of the respective contact form page</li>
-<li>The field will not be <b>added</b> if you have already created a field of type <b>"Privacy Policy checkbox"</b> for a contact form</li>
-<li>The text can be set using the language variable <b>[quqiqer / contact] global.PrivacyPolicy.label</b> under <b>Administration -> Translations</b></li>
-<li>It is recommended to create a page of type <b>"Privacy Policy</b> for this option, which has your privacy policy as the content</li>
-<li><b>IMPORTANT:</b> Only applies to contact forms created with the QUIQQER Form Editor!</li>
+<li>The field is <b>required</b></li>
+<li>It can be <b>disabled</b> in the form editor of the respective contact page</li>
+<li>The text can be set using the language variable <b>[quiqqer/contact] global.PrivacyPolicy.checkbox_label</b> under <b>Administration -> Translations</b></li>
+<li>We recommend creating a page of type <b>"Privacy Policy"</b> containing your privacy policy</li>
+<li><b>IMPORTANT:</b> Only applies to forms created with the QUIQQER Form Editor</li>
 </ul>]]></en>
+            <es><![CDATA[Añade por defecto una casilla para aceptar la política de privacidad en cada formulario de contacto.
+<ul>
+<li>El campo es <b>obligatorio</b></li>
+<li>Puede <b>desactivarse</b> en el editor de formularios de la página de contacto correspondiente</li>
+<li>El texto se configura con la variable de idioma <b>[quiqqer/contact] global.PrivacyPolicy.checkbox_label</b>, en <b>Administración -> Traducciones</b></li>
+<li>Se recomienda crear una página de tipo <b>"Política de privacidad"</b> que contenga su política de privacidad</li>
+<li><b>IMPORTANTE:</b> Solo se aplica a los formularios creados con el editor de formularios de QUIQQER</li>
+</ul>]]></es>
+            <pt><![CDATA[Adiciona por predefinição uma caixa de verificação para aceitar a política de privacidade em cada formulário de contacto.
+<ul>
+<li>O campo é <b>obrigatório</b></li>
+<li>Pode ser <b>desativado</b> no editor de formulários da respetiva página de contacto</li>
+<li>O texto é definido através da variável de idioma <b>[quiqqer/contact] global.PrivacyPolicy.checkbox_label</b>, em <b>Administração -> Traduções</b></li>
+<li>Recomenda-se criar uma página do tipo <b>"Política de privacidade"</b> com o conteúdo da sua política de privacidade</li>
+<li><b>IMPORTANTE:</b> Aplica-se apenas a formulários criados com o editor de formulários do QUIQQER</li>
+</ul>]]></pt>
+            <fr><![CDATA[Ajoute par défaut une case à cocher pour accepter la politique de confidentialité dans chaque formulaire de contact.
+<ul>
+<li>Le champ est <b>obligatoire</b></li>
+<li>Il peut être <b>désactivé</b> dans l’éditeur de formulaires de la page de contact concernée</li>
+<li>Le texte se définit avec la variable de langue <b>[quiqqer/contact] global.PrivacyPolicy.checkbox_label</b>, sous <b>Administration -> Traductions</b></li>
+<li>Il est recommandé de créer une page de type <b>"Politique de confidentialité"</b> contenant votre politique de confidentialité</li>
+<li><b>IMPORTANT :</b> S’applique uniquement aux formulaires créés avec l’éditeur de formulaires QUIQQER</li>
+</ul>]]></fr>
+            <it><![CDATA[Aggiunge per impostazione predefinita una casella per accettare l’informativa sulla privacy in ogni modulo di contatto.
+<ul>
+<li>Il campo è <b>obbligatorio</b></li>
+<li>Può essere <b>disattivato</b> nell’editor dei moduli della relativa pagina di contatto</li>
+<li>Il testo si imposta tramite la variabile di lingua <b>[quiqqer/contact] global.PrivacyPolicy.checkbox_label</b>, in <b>Amministrazione -> Traduzioni</b></li>
+<li>Si consiglia di creare una pagina di tipo <b>"Informativa sulla privacy"</b> con il contenuto della propria informativa</li>
+<li><b>IMPORTANTE:</b> Si applica solo ai moduli creati con l’editor dei moduli QUIQQER</li>
+</ul>]]></it>
+            <pl><![CDATA[Domyślnie dodaje do każdego formularza kontaktowego pole wyboru akceptacji polityki prywatności.
+<ul>
+<li>Pole jest <b>wymagane</b></li>
+<li>Można je <b>wyłączyć</b> w edytorze formularza na odpowiedniej stronie kontaktowej</li>
+<li>Tekst można ustawić za pomocą zmiennej językowej <b>[quiqqer/contact] global.PrivacyPolicy.checkbox_label</b> w sekcji <b>Administracja -> Tłumaczenia</b></li>
+<li>Zaleca się utworzenie strony typu <b>"Polityka prywatności"</b> zawierającej treść polityki prywatności</li>
+<li><b>WAŻNE:</b> Dotyczy tylko formularzy utworzonych w edytorze formularzy QUIQQER</li>
+</ul>]]></pl>
         </locale>
         <locale name="settings.blacklist.title">
             <de><![CDATA[Blacklist]]></de>
             <en><![CDATA[Blacklist]]></en>
+            <es><![CDATA[Lista de bloqueo]]></es>
+            <pt><![CDATA[Lista de bloqueio]]></pt>
+            <fr><![CDATA[Liste de blocage]]></fr>
+            <it><![CDATA[Lista di blocco]]></it>
+            <pl><![CDATA[Lista blokowania]]></pl>
         </locale>
         <locale name="settings.blacklist.ipAddresses.title">
             <de><![CDATA[IP-Adressen]]></de>
             <en><![CDATA[IP addresses]]></en>
+            <es><![CDATA[Direcciones IP]]></es>
+            <pt><![CDATA[Endereços IP]]></pt>
+            <fr><![CDATA[Adresses IP]]></fr>
+            <it><![CDATA[Indirizzi IP]]></it>
+            <pl><![CDATA[Adresy IP]]></pl>
         </locale>
         <locale name="settings.blacklist.ipAddresses.description" html="true">
             <de><![CDATA[<p>Hier lassen sich Kontakt-Anfragen von einzelnen IP-Adressen oder IP-Adress-Bereichen sperren. Folgende Angaben sind möglich:</p>
@@ -223,155 +462,564 @@
 <li>IP address range: <b>XXX.XXX.XXX.XXX-XXX.XXX.XXX.XXX</b></li>
 </ul>
 <p>IP addresses and IP address ranges have to be written <b>line by line</b>.</p>]]></en>
+            <es><![CDATA[<p>Bloquea las consultas procedentes de direcciones IP individuales o de rangos de direcciones IP. Se admiten los siguientes formatos:</p>
+<ul>
+<li>Dirección IP individual: <b>XXX.XXX.XXX.XXX</b></li>
+<li>Rango de direcciones IP: <b>XXX.XXX.XXX.XXX-XXX.XXX.XXX.XXX</b></li>
+</ul>
+<p>Introduzca las direcciones IP o los rangos <b>uno por línea</b>.</p>]]></es>
+            <pt><![CDATA[<p>Bloqueia pedidos de contacto de endereços IP individuais ou de intervalos de endereços IP. São aceites os seguintes formatos:</p>
+<ul>
+<li>Endereço IP individual: <b>XXX.XXX.XXX.XXX</b></li>
+<li>Intervalo de endereços IP: <b>XXX.XXX.XXX.XXX-XXX.XXX.XXX.XXX</b></li>
+</ul>
+<p>Introduza os endereços IP ou intervalos <b>um por linha</b>.</p>]]></pt>
+            <fr><![CDATA[<p>Bloquez les demandes provenant d’adresses IP individuelles ou de plages d’adresses IP. Les formats suivants sont acceptés :</p>
+<ul>
+<li>Adresse IP individuelle : <b>XXX.XXX.XXX.XXX</b></li>
+<li>Plage d’adresses IP : <b>XXX.XXX.XXX.XXX-XXX.XXX.XXX.XXX</b></li>
+</ul>
+<p>Saisissez les adresses IP ou les plages <b>à raison d’une par ligne</b>.</p>]]></fr>
+            <it><![CDATA[<p>Blocca le richieste provenienti da singoli indirizzi IP o da intervalli di indirizzi IP. Sono ammessi i seguenti formati:</p>
+<ul>
+<li>Singolo indirizzo IP: <b>XXX.XXX.XXX.XXX</b></li>
+<li>Intervallo di indirizzi IP: <b>XXX.XXX.XXX.XXX-XXX.XXX.XXX.XXX</b></li>
+</ul>
+<p>Inserisci gli indirizzi IP o gli intervalli <b>uno per riga</b>.</p>]]></it>
+            <pl><![CDATA[<p>Blokuj zapytania z pojedynczych adresów IP lub zakresów adresów IP. Dostępne są następujące formaty:</p>
+<ul>
+<li>Pojedynczy adres IP: <b>XXX.XXX.XXX.XXX</b></li>
+<li>Zakres adresów IP: <b>XXX.XXX.XXX.XXX-XXX.XXX.XXX.XXX</b></li>
+</ul>
+<p>Wpisuj adresy IP lub zakresy <b>po jednym w każdym wierszu</b>.</p>]]></pl>
         </locale>
         <locale name="settings.blacklist.emailAddresses.title">
             <de><![CDATA[E-Mail-Adressen]]></de>
             <en><![CDATA[E-Mail addresses]]></en>
+            <es><![CDATA[Direcciones de correo electrónico]]></es>
+            <pt><![CDATA[Endereços de e-mail]]></pt>
+            <fr><![CDATA[Adresses e-mail]]></fr>
+            <it><![CDATA[Indirizzi email]]></it>
+            <pl><![CDATA[Adresy e-mail]]></pl>
         </locale>
         <locale name="settings.blacklist.emailAddresses.description" html="true">
-            <de><![CDATA[<p>Hier lassen sich Kontakt-Anfragen von einzelnen Absender-Email-Adressen sperren. Folgende Angaben sind möglich:</p>
+            <de><![CDATA[<p>Hier lassen sich Kontakt-Anfragen von einzelnen Absender-E-Mail-Adressen sperren. Folgende Angaben sind möglich:</p>
 <ul>
-<li>Einfach E-Mail-Adresse: <b>mail@xyz.de</b></li>
+<li>Einfache E-Mail-Adresse: <b>mail@xyz.de</b></li>
 <li>E-Mail-Adresse(n) mit Wildcard: <b>*@mail.ru</b> (blockt alle E-Mail-Adressen des Providers mail.ru)</li>
 <li>E-Mail-Adresse(n) mit Wildcard: <b>*@*.ru</b> (blockt alle E-Mail-Adressen mit .ru am Ende)</li>
 </ul>
-<p>E-Mail-Adressen <b>untereinander</b> geschrieben werden.</p><p>Gilt nur für Formulare, die <b>mindesten 1</b> Feld vom Typ <b>"E-Mail-Adresse"</b> haben! Bei einem Formularen mit mehreren Feldern vom Typ "E-Mail-Adresse" wird der Filter auf alle E-Mail-Adressen angewandt und bei Übereinstimmung das Kontakt-Formular nicht abgesendet!</p>]]></de>
-            <en><![CDATA[<p>Here you can filter contact requests by e-mail address. The following specifications can be made:</p>
+<p>E-Mail-Adressen müssen <b>untereinander</b> geschrieben werden.</p><p>Gilt nur für Formulare, die <b>mindestens 1</b> Feld vom Typ <b>"E-Mail-Adresse"</b> haben! Bei Formularen mit mehreren Feldern vom Typ "E-Mail-Adresse" wird der Filter auf alle E-Mail-Adressen angewandt und bei Übereinstimmung das Kontakt-Formular nicht abgesendet!</p>]]></de>
+            <en><![CDATA[<p>Block contact requests based on the sender’s email address. The following formats are supported:</p>
 <ul>
-<li>Simple e-mail address: <b>mail@xyz.de</b></li>
-<li>E-Mail address with wildcard: <b>*@mail.ru</b> (blocks all e-mail addresses of provider mail.ru)</li>
-<li>E-Mail address with wildcard: <b>*@*.ru</b> (blocks all e-mail addresses with .ru at the end)</li>
+<li>Single email address: <b>mail@xyz.de</b></li>
+<li>Address with wildcard: <b>*@mail.ru</b> (blocks all addresses from the provider mail.ru)</li>
+<li>Address with wildcard: <b>*@*.ru</b> (blocks all addresses ending in .ru)</li>
 </ul>
-<p>E-Mail addresses have to be written <b>line by line</b>.</p><p>Only valid for forms that include <b>at least one</b> field of type "E-Mail address". In forms with multiple "E-Mail address" fields, every e-mail address is checked.</p>]]></en>
+<p>Enter addresses <b>one per line</b>.</p><p>Only applies to forms with <b>at least one</b> field of type <b>"Email address"</b>. If a form contains multiple email fields, every address is checked. If any address matches the filter, the form cannot be submitted.</p>]]></en>
+            <es><![CDATA[<p>Bloquea las consultas según la dirección de correo del remitente. Se admiten los siguientes formatos:</p>
+<ul>
+<li>Dirección de correo individual: <b>mail@xyz.de</b></li>
+<li>Dirección con comodín: <b>*@mail.ru</b> (bloquea todas las direcciones del proveedor mail.ru)</li>
+<li>Dirección con comodín: <b>*@*.ru</b> (bloquea todas las direcciones que terminan en .ru)</li>
+</ul>
+<p>Introduzca las direcciones <b>una por línea</b>.</p><p>Solo se aplica a formularios con <b>al menos un</b> campo de tipo <b>"Dirección de correo electrónico"</b>. Si hay varios campos de este tipo, se comprueban todas las direcciones. Si alguna coincide, se bloquea el envío del formulario.</p>]]></es>
+            <pt><![CDATA[<p>Bloqueia pedidos de contacto com base no endereço de e-mail do remetente. São aceites os seguintes formatos:</p>
+<ul>
+<li>Endereço de e-mail individual: <b>mail@xyz.de</b></li>
+<li>Endereço com carácter universal: <b>*@mail.ru</b> (bloqueia todos os endereços do fornecedor mail.ru)</li>
+<li>Endereço com carácter universal: <b>*@*.ru</b> (bloqueia todos os endereços terminados em .ru)</li>
+</ul>
+<p>Introduza os endereços <b>um por linha</b>.</p><p>Aplica-se apenas a formulários com <b>pelo menos um</b> campo do tipo <b>"Endereço de e-mail"</b>. Se existirem vários campos deste tipo, todos os endereços são verificados. Se algum corresponder ao filtro, o envio do formulário é bloqueado.</p>]]></pt>
+            <fr><![CDATA[<p>Bloquez les demandes selon l’adresse e-mail de l’expéditeur. Les formats suivants sont acceptés :</p>
+<ul>
+<li>Adresse e-mail individuelle : <b>mail@xyz.de</b></li>
+<li>Adresse avec caractère générique : <b>*@mail.ru</b> (bloque toutes les adresses du fournisseur mail.ru)</li>
+<li>Adresse avec caractère générique : <b>*@*.ru</b> (bloque toutes les adresses se terminant par .ru)</li>
+</ul>
+<p>Saisissez les adresses <b>à raison d’une par ligne</b>.</p><p>S’applique uniquement aux formulaires contenant <b>au moins un</b> champ de type <b>"Adresse e-mail"</b>. Si plusieurs champs de ce type sont présents, toutes les adresses sont vérifiées. Si l’une correspond au filtre, l’envoi du formulaire est bloqué.</p>]]></fr>
+            <it><![CDATA[<p>Blocca le richieste in base all’indirizzo email del mittente. Sono ammessi i seguenti formati:</p>
+<ul>
+<li>Singolo indirizzo email: <b>mail@xyz.de</b></li>
+<li>Indirizzo con carattere jolly: <b>*@mail.ru</b> (blocca tutti gli indirizzi del provider mail.ru)</li>
+<li>Indirizzo con carattere jolly: <b>*@*.ru</b> (blocca tutti gli indirizzi che terminano in .ru)</li>
+</ul>
+<p>Inserisci gli indirizzi <b>uno per riga</b>.</p><p>Si applica solo ai moduli con <b>almeno un</b> campo di tipo <b>"Indirizzo email"</b>. Se sono presenti più campi di questo tipo, vengono controllati tutti gli indirizzi. Se uno corrisponde al filtro, l’invio del modulo viene bloccato.</p>]]></it>
+            <pl><![CDATA[<p>Blokuj zapytania na podstawie adresu e-mail nadawcy. Dostępne są następujące formaty:</p>
+<ul>
+<li>Pojedynczy adres e-mail: <b>mail@xyz.de</b></li>
+<li>Adres ze znakiem wieloznacznym: <b>*@mail.ru</b> (blokuje wszystkie adresy dostawcy mail.ru)</li>
+<li>Adres ze znakiem wieloznacznym: <b>*@*.ru</b> (blokuje wszystkie adresy kończące się na .ru)</li>
+</ul>
+<p>Wpisuj adresy <b>po jednym w każdym wierszu</b>.</p><p>Dotyczy tylko formularzy z <b>co najmniej jednym</b> polem typu <b>"Adres e-mail"</b>. Jeśli formularz zawiera kilka takich pól, sprawdzane są wszystkie adresy. W razie dopasowania do filtra wysłanie formularza zostaje zablokowane.</p>]]></pl>
         </locale>
         <locale name="settings.blacklist.useDNSBL.title">
             <de><![CDATA[Kontakt-Anfragen mittels Blacklists filtern]]></de>
             <en><![CDATA[Filter contact requests via blacklists]]></en>
+            <es><![CDATA[Filtrar consultas mediante listas de bloqueo]]></es>
+            <pt><![CDATA[Filtrar pedidos de contacto através de listas de bloqueio]]></pt>
+            <fr><![CDATA[Filtrer les demandes à l’aide de listes de blocage]]></fr>
+            <it><![CDATA[Filtra le richieste tramite liste di blocco]]></it>
+            <pl><![CDATA[Filtruj zapytania za pomocą list blokowania]]></pl>
         </locale>
         <locale name="settings.blacklist.useDNSBL.description">
             <de>
                 <![CDATA[Bei den unter "Blacklist-Provider" festgelegten Blacklists wird die IP des Formular-Absenders abgefragt. Befindet sich die IP auf einer der angegebenen Blacklists, wird die Kontakt-Anfrage gefiltert.]]></de>
             <en>
-                <![CDATA[The IP of the contact request sender is queries with the providers configured in "Blacklist providers". If the IP is on one of the specified blacklists, the contact request is filtered.]]></en>
+                <![CDATA[The sender’s IP address is checked against the lists configured under "Blacklist providers". If it appears on any of these lists, the contact request is blocked.]]></en>
+            <es><![CDATA[La dirección IP del remitente se comprueba en las listas indicadas en "Proveedores de listas de bloqueo". Si aparece en alguna de ellas, se bloquea la consulta.]]></es>
+            <pt><![CDATA[O endereço IP do remetente é verificado nas listas indicadas em "Fornecedores de listas de bloqueio". Se constar de alguma delas, o pedido de contacto é bloqueado.]]></pt>
+            <fr><![CDATA[L’adresse IP de l’expéditeur est vérifiée auprès des services définis dans "Fournisseurs de listes de blocage". Si elle figure sur l’une de ces listes, la demande est bloquée.]]></fr>
+            <it><![CDATA[L’indirizzo IP del mittente viene verificato nelle liste indicate in "Fornitori di liste di blocco". Se compare in una di esse, la richiesta viene bloccata.]]></it>
+            <pl><![CDATA[Adres IP nadawcy jest sprawdzany na listach wskazanych w polu "Dostawcy list blokowania". Jeśli znajduje się na którejś z nich, zapytanie zostaje zablokowane.]]></pl>
         </locale>
         <locale name="settings.blacklist.DNSBLProviders.title">
             <de><![CDATA[Blacklist-Provider]]></de>
             <en><![CDATA[Blacklist providers]]></en>
+            <es><![CDATA[Proveedores de listas de bloqueo]]></es>
+            <pt><![CDATA[Fornecedores de listas de bloqueio]]></pt>
+            <fr><![CDATA[Fournisseurs de listes de blocage]]></fr>
+            <it><![CDATA[Fornitori di liste di blocco]]></it>
+            <pl><![CDATA[Dostawcy list blokowania]]></pl>
         </locale>
         <locale name="settings.blacklist.DNSBLProviders.description">
             <de>
                 <![CDATA[Angabe der URLs einzelner Blacklist Provider. Müssen <b>untereinander</b> geschrieben werden.]]></de>
             <en><![CDATA[List of blacklist providers. <b>One provider URL per line</b>.]]></en>
+            <es><![CDATA[Introduzca las URL de los proveedores de listas de bloqueo, <b>una por línea</b>.]]></es>
+            <pt><![CDATA[Introduza os URL dos fornecedores de listas de bloqueio, <b>um por linha</b>.]]></pt>
+            <fr><![CDATA[Saisissez les URL des fournisseurs de listes de blocage, <b>à raison d’une par ligne</b>.]]></fr>
+            <it><![CDATA[Inserisci gli URL dei fornitori di liste di blocco, <b>uno per riga</b>.]]></it>
+            <pl><![CDATA[Wpisz adresy URL dostawców list blokowania, <b>po jednym w każdym wierszu</b>.]]></pl>
         </locale>
 
         <!-- Menu -->
         <locale name="menu.extras.contactrequests.title">
             <de><![CDATA[Kontakt-Anfragen]]></de>
             <en><![CDATA[Contact requests]]></en>
+            <es><![CDATA[Consultas de contacto]]></es>
+            <pt><![CDATA[Pedidos de contacto]]></pt>
+            <fr><![CDATA[Demandes de contact]]></fr>
+            <it><![CDATA[Richieste di contatto]]></it>
+            <pl><![CDATA[Zapytania kontaktowe]]></pl>
         </locale>
 
         <locale name="package.title">
             <de><![CDATA[QUIQQER - Kontakt]]></de>
             <en><![CDATA[QUIQQER - Contact]]></en>
+            <es><![CDATA[QUIQQER - Contacto]]></es>
+            <pt><![CDATA[QUIQQER - Contacto]]></pt>
+            <fr><![CDATA[QUIQQER - Contact]]></fr>
+            <it><![CDATA[QUIQQER - Contatti]]></it>
+            <pl><![CDATA[QUIQQER - Kontakt]]></pl>
         </locale>
         <locale name="package.description">
-            <de><![CDATA[
-            Integrieren Sie aufwändige Formulare in Ihre Webseite mit dem einfachen Formular Editor. Aufwendiges entwickeln von Kontakt-, Angebots- und Anmeldeformulare gehören der Vergangenheit an.
-            ]]></de>
-            <en><![CDATA[
-            Integrate complex forms into your web page using the simple form editor. Complex development of contact, offer and registration forms are a thing of the past.
-            ]]></en>
+            <de><![CDATA[Integrieren Sie auch komplexe Formulare mit dem einfach bedienbaren Formulareditor in Ihre Webseite. Die aufwendige Entwicklung von Kontakt-, Angebots- und Anmeldeformularen gehört damit der Vergangenheit an.]]></de>
+            <en><![CDATA[Create contact, quote request and registration forms for your website with an easy-to-use form editor, without having to develop them from scratch.]]></en>
+            <es><![CDATA[Cree formularios de contacto, solicitudes de presupuesto e inscripciones para su sitio web con un editor fácil de usar, sin tener que desarrollarlos desde cero.]]></es>
+            <pt><![CDATA[Crie formulários de contacto, pedidos de orçamento e inscrições para o seu site com um editor simples de utilizar, sem ter de os desenvolver de raiz.]]></pt>
+            <fr><![CDATA[Créez des formulaires de contact, de demande de devis et d’inscription pour votre site avec un éditeur simple à utiliser, sans devoir les développer de zéro.]]></fr>
+            <it><![CDATA[Crea moduli di contatto, richieste di preventivo e iscrizioni per il tuo sito con un editor semplice da usare, senza doverli sviluppare da zero.]]></it>
+            <pl><![CDATA[Twórz formularze kontaktowe, zapytania ofertowe i formularze rejestracji na swojej stronie za pomocą prostego edytora, bez konieczności programowania ich od podstaw.]]></pl>
         </locale>
         <locale name="quiqqer/contact:types/contact.title">
             <de><![CDATA[QUIQQER - Kontakt]]></de>
             <en><![CDATA[QUIQQER - Contact]]></en>
+            <es><![CDATA[QUIQQER - Contacto]]></es>
+            <pt><![CDATA[QUIQQER - Contacto]]></pt>
+            <fr><![CDATA[QUIQQER - Contact]]></fr>
+            <it><![CDATA[QUIQQER - Contatti]]></it>
+            <pl><![CDATA[QUIQQER - Kontakt]]></pl>
         </locale>
         <locale name="admin.types.contact">
             <de><![CDATA[QUIQQER - Kontakt]]></de>
             <en><![CDATA[QUIQQER - Contact]]></en>
+            <es><![CDATA[QUIQQER - Contacto]]></es>
+            <pt><![CDATA[QUIQQER - Contacto]]></pt>
+            <fr><![CDATA[QUIQQER - Contact]]></fr>
+            <it><![CDATA[QUIQQER - Contatti]]></it>
+            <pl><![CDATA[QUIQQER - Kontakt]]></pl>
         </locale>
         <locale name="quiqqer/contact:types/contact.description">
             <de>
                 <![CDATA[Erstellen Sie Formulare ganz nach Ihren Vorstellungen. Ein Formulareditor hilft Ihnen dabei.]]></de>
-            <en><![CDATA[Create forms to your needs. A form editor will help you.]]></en>
+            <en><![CDATA[Create forms tailored to your needs with the form editor.]]></en>
+            <es><![CDATA[Cree formularios a su medida con la ayuda del editor de formularios.]]></es>
+            <pt><![CDATA[Crie formulários à sua medida com a ajuda do editor de formulários.]]></pt>
+            <fr><![CDATA[Créez des formulaires adaptés à vos besoins grâce à l’éditeur de formulaires.]]></fr>
+            <it><![CDATA[Crea moduli su misura per le tue esigenze con l’editor dei moduli.]]></it>
+            <pl><![CDATA[Twórz formularze dopasowane do swoich potrzeb za pomocą edytora formularzy.]]></pl>
         </locale>
         <locale name="admin.types.contact.desc">
             <de>
                 <![CDATA[Erstellen Sie Formulare ganz nach Ihren Vorstellungen. Ein Formulareditor hilft Ihnen dabei.]]></de>
-            <en><![CDATA[Create forms to your needs. A form editor will help you.]]></en>
+            <en><![CDATA[Create forms tailored to your needs with the form editor.]]></en>
+            <es><![CDATA[Cree formularios a su medida con la ayuda del editor de formularios.]]></es>
+            <pt><![CDATA[Crie formulários à sua medida com a ajuda do editor de formulários.]]></pt>
+            <fr><![CDATA[Créez des formulaires adaptés à vos besoins grâce à l’éditeur de formulaires.]]></fr>
+            <it><![CDATA[Crea moduli su misura per le tue esigenze con l’editor dei moduli.]]></it>
+            <pl><![CDATA[Twórz formularze dopasowane do swoich potrzeb za pomocą edytora formularzy.]]></pl>
         </locale>
 
         <locale name="contact.ctaAction.send.success" html="true">
             <de><![CDATA[<strong>Vielen Dank für Ihre Nachricht</strong> <p>Wir werden uns so schnell wie möglich bei Ihnen melden.</p>]]></de>
-            <en><![CDATA[Thank you for your message. We will contact you as soon as possible.]]></en>
+            <en><![CDATA[<strong>Thank you for your message</strong> <p>We will get back to you as soon as possible.</p>]]></en>
+            <es><![CDATA[<strong>Gracias por su mensaje</strong> <p>Nos pondremos en contacto con usted lo antes posible.</p>]]></es>
+            <pt><![CDATA[<strong>Obrigado pela sua mensagem</strong> <p>Entraremos em contacto consigo o mais rapidamente possível.</p>]]></pt>
+            <fr><![CDATA[<strong>Merci pour votre message</strong> <p>Nous vous recontacterons dans les meilleurs délais.</p>]]></fr>
+            <it><![CDATA[<strong>Grazie per il tuo messaggio</strong> <p>Ti ricontatteremo il prima possibile.</p>]]></it>
+            <pl><![CDATA[<strong>Dziękujemy za wiadomość</strong> <p>Skontaktujemy się z Tobą tak szybko, jak to możliwe.</p>]]></pl>
         </locale>
         <locale name="contact.ctaAction.default_title">
             <de><![CDATA[Kontakt aufnehmen]]></de>
             <en><![CDATA[Contact us]]></en>
+            <es><![CDATA[Contacte con nosotros]]></es>
+            <pt><![CDATA[Contacte-nos]]></pt>
+            <fr><![CDATA[Contactez-nous]]></fr>
+            <it><![CDATA[Contattaci]]></it>
+            <pl><![CDATA[Skontaktuj się z nami]]></pl>
         </locale>
         <locale name="contact.ctaAction.default_header">
             <de><![CDATA[]]></de>
             <en><![CDATA[]]></en>
+            <es><![CDATA[]]></es>
+            <pt><![CDATA[]]></pt>
+            <fr><![CDATA[]]></fr>
+            <it><![CDATA[]]></it>
+            <pl><![CDATA[]]></pl>
         </locale>
         <locale name="contact.ctaAction.default_description">
             <de><![CDATA[Ein paar Infos reichen – wir klären den Rest im Gespräch.]]></de>
-            <en><![CDATA[Some information is enough – we clarify the rest in conversation.]]></en>
+            <en><![CDATA[A few details are all we need — we can discuss the rest together.]]></en>
+            <es><![CDATA[Cuéntenos brevemente qué necesita; hablaremos del resto.]]></es>
+            <pt><![CDATA[Diga-nos brevemente o que precisa; tratamos do resto em conversa.]]></pt>
+            <fr><![CDATA[Quelques informations suffisent ; nous préciserons le reste ensemble.]]></fr>
+            <it><![CDATA[Bastano poche informazioni: chiariremo il resto insieme.]]></it>
+            <pl><![CDATA[Podaj kilka informacji — resztę ustalimy w rozmowie.]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formEnabled">
+            <de><![CDATA[Kontaktformular anbieten]]></de>
+            <en><![CDATA[Offer contact form]]></en>
+            <es><![CDATA[Ofrecer formulario de contacto]]></es>
+            <pt><![CDATA[Disponibilizar formulário de contacto]]></pt>
+            <fr><![CDATA[Proposer un formulaire de contact]]></fr>
+            <it><![CDATA[Offri un modulo di contatto]]></it>
+            <pl><![CDATA[Udostępnij formularz kontaktowy]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formEnabled.desc">
+            <de><![CDATA[Gilt für den gesamten Baustein. Ausgeschaltet wird weder das eingebaute Formular noch sein Einstiegsbutton angezeigt. Eigene Links zu Kontaktseiten bleiben möglich.]]></de>
+            <en><![CDATA[Applies to the entire brick. When disabled, neither the built-in form nor its entry button is shown. Custom links to contact pages remain available.]]></en>
+            <es><![CDATA[Se aplica a todo el bloque. Si se desactiva, se ocultan tanto el formulario integrado como el botón que lo abre. Se pueden seguir usando enlaces personalizados a páginas de contacto.]]></es>
+            <pt><![CDATA[Aplica-se a todo o bloco. Se estiver desativado, o formulário integrado e o botão que o abre ficam ocultos. Continuam a ser possíveis ligações personalizadas para páginas de contacto.]]></pt>
+            <fr><![CDATA[S’applique à l’ensemble du bloc. Lorsque cette option est désactivée, le formulaire intégré et son bouton d’ouverture sont masqués. Les liens personnalisés vers des pages de contact restent possibles.]]></fr>
+            <it><![CDATA[Si applica all’intero blocco. Se disattivato, nasconde sia il modulo integrato sia il pulsante che lo apre. Restano disponibili i link personalizzati alle pagine di contatto.]]></it>
+            <pl><![CDATA[Dotyczy całego bloku. Po wyłączeniu wbudowany formularz i przycisk otwierający go są ukryte. Nadal można używać własnych linków do stron kontaktowych.]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formSidebar">
+            <de><![CDATA[Sidebar im Formular anzeigen]]></de>
+            <en><![CDATA[Show sidebar in the form]]></en>
+            <es><![CDATA[Mostrar barra lateral en el formulario]]></es>
+            <pt><![CDATA[Mostrar barra lateral no formulário]]></pt>
+            <fr><![CDATA[Afficher la barre latérale du formulaire]]></fr>
+            <it><![CDATA[Mostra la barra laterale nel modulo]]></it>
+            <pl><![CDATA[Pokaż panel boczny w formularzu]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formSidebarAi">
+            <de><![CDATA[KI-Beratung in der Formular-Sidebar anzeigen]]></de>
+            <en><![CDATA[Show AI advice in the form sidebar]]></en>
+            <es><![CDATA[Mostrar asesoramiento con IA en la barra lateral del formulario]]></es>
+            <pt><![CDATA[Mostrar aconselhamento com IA na barra lateral do formulário]]></pt>
+            <fr><![CDATA[Afficher le conseil par IA dans la barre latérale du formulaire]]></fr>
+            <it><![CDATA[Mostra la consulenza IA nella barra laterale del modulo]]></it>
+            <pl><![CDATA[Pokaż doradztwo AI w panelu bocznym formularza]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formSidebarAi.desc">
+            <de><![CDATA[Wechselt im selben Baustein zum hinterlegten Agenten. Nur bei eingeschalteter Formular-Sidebar und verfügbarem Agenten.]]></de>
+            <en><![CDATA[Switches to the configured agent in the same brick. Requires an enabled form sidebar and an available agent.]]></en>
+            <es><![CDATA[Abre el agente configurado dentro del mismo bloque. Requiere que la barra lateral del formulario esté activada y que el agente esté disponible.]]></es>
+            <pt><![CDATA[Abre o agente configurado no mesmo bloco. Requer que a barra lateral do formulário esteja ativada e que o agente esteja disponível.]]></pt>
+            <fr><![CDATA[Ouvre l’agent configuré dans le même bloc. La barre latérale du formulaire doit être activée et l’agent disponible.]]></fr>
+            <it><![CDATA[Apre l’agente configurato nello stesso blocco. Richiede che la barra laterale del modulo sia attiva e che l’agente sia disponibile.]]></it>
+            <pl><![CDATA[Otwiera skonfigurowanego agenta w tym samym bloku. Wymaga włączonego panelu bocznego formularza i dostępnego agenta.]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.contactDisplay">
+            <de><![CDATA[Darstellung: E-Mail, WhatsApp und Telefon]]></de>
+            <en><![CDATA[Display: email, WhatsApp and phone]]></en>
+            <es><![CDATA[Visualización: correo electrónico, WhatsApp y teléfono]]></es>
+            <pt><![CDATA[Apresentação: e-mail, WhatsApp e telefone]]></pt>
+            <fr><![CDATA[Affichage : e-mail, WhatsApp et téléphone]]></fr>
+            <it><![CDATA[Visualizzazione: email, WhatsApp e telefono]]></it>
+            <pl><![CDATA[Wyświetlanie: e-mail, WhatsApp i telefon]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.contactDisplay.desc">
+            <de><![CDATA[Gemeinsame Icon-/Textdarstellung der festen Kontaktwege, unabhängig von der Button-Form.]]></de>
+            <en><![CDATA[Shared icon/text display for built-in contact methods, independent of button design.]]></en>
+            <es><![CDATA[Define cómo se muestran los iconos y el texto de los medios de contacto integrados, independientemente de la forma de los botones.]]></es>
+            <pt><![CDATA[Define a apresentação de ícones e texto dos meios de contacto integrados, independentemente da forma dos botões.]]></pt>
+            <fr><![CDATA[Définit l’affichage des icônes et du texte pour les moyens de contact intégrés, indépendamment de la forme des boutons.]]></fr>
+            <it><![CDATA[Definisce la visualizzazione di icone e testo per i canali di contatto integrati, indipendentemente dalla forma dei pulsanti.]]></it>
+            <pl><![CDATA[Określa sposób wyświetlania ikon i tekstu dla wbudowanych metod kontaktu, niezależnie od kształtu przycisków.]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.btnStyle.rounded">
+            <de><![CDATA[Abgerundet]]></de>
+            <en><![CDATA[Rounded]]></en>
+            <es><![CDATA[Redondeado]]></es>
+            <pt><![CDATA[Arredondado]]></pt>
+            <fr><![CDATA[Arrondi]]></fr>
+            <it><![CDATA[Arrotondato]]></it>
+            <pl><![CDATA[Zaokrąglony]]></pl>
+        </locale>
+        <locale name="contact.ctaAction.display.icon-text">
+            <de><![CDATA[Icon + Text]]></de>
+            <en><![CDATA[Icon + text]]></en>
+            <es><![CDATA[Icono + texto]]></es>
+            <pt><![CDATA[Ícone + texto]]></pt>
+            <fr><![CDATA[Icône + texte]]></fr>
+            <it><![CDATA[Icona + testo]]></it>
+            <pl><![CDATA[Ikona + tekst]]></pl>
+        </locale>
+        <locale name="contact.ctaAction.display.text">
+            <de><![CDATA[Nur Text]]></de>
+            <en><![CDATA[Text only]]></en>
+            <es><![CDATA[Solo texto]]></es>
+            <pt><![CDATA[Apenas texto]]></pt>
+            <fr><![CDATA[Texte seul]]></fr>
+            <it><![CDATA[Solo testo]]></it>
+            <pl><![CDATA[Tylko tekst]]></pl>
+        </locale>
+        <locale name="contact.ctaAction.display.icon">
+            <de><![CDATA[Nur Icon]]></de>
+            <en><![CDATA[Icon only]]></en>
+            <es><![CDATA[Solo icono]]></es>
+            <pt><![CDATA[Apenas ícone]]></pt>
+            <fr><![CDATA[Icône seule]]></fr>
+            <it><![CDATA[Solo icona]]></it>
+            <pl><![CDATA[Tylko ikona]]></pl>
+        </locale>
+        <locale name="contact.ctaAction.section.start">
+            <de><![CDATA[Startansicht]]></de>
+            <en><![CDATA[Start view]]></en>
+            <es><![CDATA[Vista inicial]]></es>
+            <pt><![CDATA[Vista inicial]]></pt>
+            <fr><![CDATA[Vue initiale]]></fr>
+            <it><![CDATA[Vista iniziale]]></it>
+            <pl><![CDATA[Widok początkowy]]></pl>
+        </locale>
+        <locale name="contact.ctaAction.section.offers">
+            <de><![CDATA[Angebote]]></de>
+            <en><![CDATA[Offers]]></en>
+            <es><![CDATA[Opciones disponibles]]></es>
+            <pt><![CDATA[Opções disponíveis]]></pt>
+            <fr><![CDATA[Options proposées]]></fr>
+            <it><![CDATA[Opzioni disponibili]]></it>
+            <pl><![CDATA[Dostępne opcje]]></pl>
+        </locale>
+        <locale name="contact.ctaAction.section.appearance">
+            <de><![CDATA[Darstellung]]></de>
+            <en><![CDATA[Appearance]]></en>
+            <es><![CDATA[Apariencia]]></es>
+            <pt><![CDATA[Aspeto]]></pt>
+            <fr><![CDATA[Apparence]]></fr>
+            <it><![CDATA[Aspetto]]></it>
+            <pl><![CDATA[Wygląd]]></pl>
+        </locale>
+        <locale name="contact.ctaAction.group">
+            <de><![CDATA[Zuordnung]]></de>
+            <en><![CDATA[Group]]></en>
+            <es><![CDATA[Grupo]]></es>
+            <pt><![CDATA[Grupo]]></pt>
+            <fr><![CDATA[Groupe]]></fr>
+            <it><![CDATA[Gruppo]]></it>
+            <pl><![CDATA[Grupa]]></pl>
+        </locale>
+        <locale name="contact.ctaAction.group.primary">
+            <de><![CDATA[Hauptaktion]]></de>
+            <en><![CDATA[Primary action]]></en>
+            <es><![CDATA[Acción principal]]></es>
+            <pt><![CDATA[Ação principal]]></pt>
+            <fr><![CDATA[Action principale]]></fr>
+            <it><![CDATA[Azione principale]]></it>
+            <pl><![CDATA[Działanie główne]]></pl>
+        </locale>
+        <locale name="contact.ctaAction.group.secondary">
+            <de><![CDATA[Weiterer Kontaktweg]]></de>
+            <en><![CDATA[Additional contact method]]></en>
+            <es><![CDATA[Medio de contacto adicional]]></es>
+            <pt><![CDATA[Meio de contacto adicional]]></pt>
+            <fr><![CDATA[Autre moyen de contact]]></fr>
+            <it><![CDATA[Canale di contatto aggiuntivo]]></it>
+            <pl><![CDATA[Dodatkowa metoda kontaktu]]></pl>
+        </locale>
+        <locale name="contact.ctaAction.display">
+            <de><![CDATA[Darstellung]]></de>
+            <en><![CDATA[Display]]></en>
+            <es><![CDATA[Visualización]]></es>
+            <pt><![CDATA[Apresentação]]></pt>
+            <fr><![CDATA[Affichage]]></fr>
+            <it><![CDATA[Visualizzazione]]></it>
+            <pl><![CDATA[Wyświetlanie]]></pl>
+        </locale>
+        <locale name="contact.ctaAction.noActions">
+            <de><![CDATA[Keine nutzbaren Kontaktaktionen konfiguriert. Aktiviere das Formular, wähle einen verfügbaren KI-Agenten oder ergänze einen Kontaktweg.]]></de>
+            <en><![CDATA[No usable contact actions configured. Enable the form, select an available AI agent or add a contact method.]]></en>
+            <es><![CDATA[No hay opciones de contacto disponibles configuradas. Active el formulario, seleccione un agente de IA disponible o añada un medio de contacto.]]></es>
+            <pt><![CDATA[Não existem opções de contacto utilizáveis configuradas. Ative o formulário, selecione um agente de IA disponível ou adicione um meio de contacto.]]></pt>
+            <fr><![CDATA[Aucune option de contact utilisable n’est configurée. Activez le formulaire, sélectionnez un agent IA disponible ou ajoutez un moyen de contact.]]></fr>
+            <it><![CDATA[Non sono configurate opzioni di contatto utilizzabili. Attiva il modulo, seleziona un agente IA disponibile o aggiungi un canale di contatto.]]></it>
+            <pl><![CDATA[Nie skonfigurowano żadnej dostępnej opcji kontaktu. Włącz formularz, wybierz dostępnego agenta AI lub dodaj metodę kontaktu.]]></pl>
+        </locale>
+        <locale name="contact.ctaAction.aiError">
+            <de><![CDATA[Die KI-Beratung konnte nicht geladen werden. Bitte wähle einen anderen Kontaktweg.]]></de>
+            <en><![CDATA[AI advice could not be loaded. Please choose another contact method.]]></en>
+            <es><![CDATA[No se ha podido cargar el asesoramiento con IA. Elija otro medio de contacto.]]></es>
+            <pt><![CDATA[Não foi possível carregar o aconselhamento com IA. Escolha outro meio de contacto.]]></pt>
+            <fr><![CDATA[Le conseil par IA n’a pas pu être chargé. Choisissez un autre moyen de contact.]]></fr>
+            <it><![CDATA[Non è stato possibile caricare la consulenza IA. Scegli un altro canale di contatto.]]></it>
+            <pl><![CDATA[Nie udało się załadować doradztwa AI. Wybierz inną metodę kontaktu.]]></pl>
+        </locale>
+        <locale name="contact.ctaAction.overview">
+            <de><![CDATA[Zur Kontaktübersicht]]></de>
+            <en><![CDATA[Back to contact overview]]></en>
+            <es><![CDATA[Volver a las opciones de contacto]]></es>
+            <pt><![CDATA[Voltar às opções de contacto]]></pt>
+            <fr><![CDATA[Revenir aux options de contact]]></fr>
+            <it><![CDATA[Torna alle opzioni di contatto]]></it>
+            <pl><![CDATA[Wróć do opcji kontaktu]]></pl>
+        </locale>
+        <locale name="contact.ctaAction.formDisabled">
+            <de><![CDATA[Das Kontaktformular ist deaktiviert.]]></de>
+            <en><![CDATA[The contact form is disabled.]]></en>
+            <es><![CDATA[El formulario de contacto está desactivado.]]></es>
+            <pt><![CDATA[O formulário de contacto está desativado.]]></pt>
+            <fr><![CDATA[Le formulaire de contact est désactivé.]]></fr>
+            <it><![CDATA[Il modulo di contatto è disattivato.]]></it>
+            <pl><![CDATA[Formularz kontaktowy jest wyłączony.]]></pl>
         </locale>
         <locale name="contact.ctaAction.choice.ai">
-            <de><![CDATA[Von unserer KI beraten lassen]]></de>
-            <en><![CDATA[Get advice from our AI]]></en>
+            <de><![CDATA[KI-Beratung]]></de>
+            <en><![CDATA[AI advice]]></en>
+            <es><![CDATA[Asesoramiento con IA]]></es>
+            <pt><![CDATA[Aconselhamento com IA]]></pt>
+            <fr><![CDATA[Conseil par IA]]></fr>
+            <it><![CDATA[Consulenza IA]]></it>
+            <pl><![CDATA[Doradztwo AI]]></pl>
         </locale>
         <locale name="contact.ctaAction.choice.form">
             <de><![CDATA[Formular ausfüllen]]></de>
             <en><![CDATA[Fill out the form]]></en>
+            <es><![CDATA[Rellenar el formulario]]></es>
+            <pt><![CDATA[Preencher o formulário]]></pt>
+            <fr><![CDATA[Remplir le formulaire]]></fr>
+            <it><![CDATA[Compila il modulo]]></it>
+            <pl><![CDATA[Wypełnij formularz]]></pl>
         </locale>
         <locale name="contact.ctaAction.select.trust">
             <de><![CDATA[Antwort meist am selben Tag]]></de>
             <en><![CDATA[Usually answered the same day]]></en>
+            <es><![CDATA[Solemos responder el mismo día]]></es>
+            <pt><![CDATA[Normalmente respondemos no próprio dia]]></pt>
+            <fr><![CDATA[Réponse généralement le jour même]]></fr>
+            <it><![CDATA[Di solito rispondiamo in giornata]]></it>
+            <pl><![CDATA[Zwykle odpowiadamy tego samego dnia]]></pl>
         </locale>
         <locale name="contact.ctaAction.select.privacyHint">
             <de><![CDATA[Deine Angaben werden vertraulich behandelt.]]></de>
             <en><![CDATA[Your details are treated confidentially.]]></en>
+            <es><![CDATA[Sus datos se tratarán de forma confidencial.]]></es>
+            <pt><![CDATA[Os seus dados serão tratados de forma confidencial.]]></pt>
+            <fr><![CDATA[Vos informations seront traitées de manière confidentielle.]]></fr>
+            <it><![CDATA[I tuoi dati saranno trattati in modo riservato.]]></it>
+            <pl><![CDATA[Twoje dane będą traktowane poufnie.]]></pl>
         </locale>
         <locale name="contact.ctaAction.default_name_label">
             <de><![CDATA[Name]]></de>
             <en><![CDATA[Name]]></en>
+            <es><![CDATA[Nombre]]></es>
+            <pt><![CDATA[Nome]]></pt>
+            <fr><![CDATA[Nom]]></fr>
+            <it><![CDATA[Nome]]></it>
+            <pl><![CDATA[Imię i nazwisko]]></pl>
         </locale>
         <locale name="contact.ctaAction.default_name_placeholder">
             <de><![CDATA[Vor- und Nachname]]></de>
             <en><![CDATA[First and Last name]]></en>
+            <es><![CDATA[Nombre y apellidos]]></es>
+            <pt><![CDATA[Nome e apelido]]></pt>
+            <fr><![CDATA[Prénom et nom]]></fr>
+            <it><![CDATA[Nome e cognome]]></it>
+            <pl><![CDATA[Imię i nazwisko]]></pl>
         </locale>
         <locale name="contact.ctaAction.default_company_label">
             <de><![CDATA[Unternehmen (optional)]]></de>
             <en><![CDATA[Company (optional)]]></en>
+            <es><![CDATA[Empresa (opcional)]]></es>
+            <pt><![CDATA[Empresa (opcional)]]></pt>
+            <fr><![CDATA[Entreprise (facultatif)]]></fr>
+            <it><![CDATA[Azienda (facoltativo)]]></it>
+            <pl><![CDATA[Firma (opcjonalnie)]]></pl>
         </locale>
         <locale name="contact.ctaAction.default_company_placeholder">
             <de><![CDATA[Firma / Organisation]]></de>
             <en><![CDATA[Company / Organization]]></en>
+            <es><![CDATA[Empresa / Organización]]></es>
+            <pt><![CDATA[Empresa / Organização]]></pt>
+            <fr><![CDATA[Entreprise / Organisation]]></fr>
+            <it><![CDATA[Azienda / Organizzazione]]></it>
+            <pl><![CDATA[Firma / Organizacja]]></pl>
         </locale>
         <locale name="contact.ctaAction.default_email_label">
             <de><![CDATA[E-Mail]]></de>
             <en><![CDATA[Email]]></en>
+            <es><![CDATA[Correo electrónico]]></es>
+            <pt><![CDATA[E-mail]]></pt>
+            <fr><![CDATA[E-mail]]></fr>
+            <it><![CDATA[Email]]></it>
+            <pl><![CDATA[E-mail]]></pl>
         </locale>
         <locale name="contact.ctaAction.default_email_placeholder">
             <de><![CDATA[name@firma.de]]></de>
             <en><![CDATA[name@organization.com]]></en>
+            <es><![CDATA[nombre@empresa.es]]></es>
+            <pt><![CDATA[nome@empresa.pt]]></pt>
+            <fr><![CDATA[nom@entreprise.fr]]></fr>
+            <it><![CDATA[nome@azienda.it]]></it>
+            <pl><![CDATA[imie@firma.pl]]></pl>
         </locale>
         <locale name="contact.ctaAction.default_phone_label">
             <de><![CDATA[Telefon]]></de>
             <en><![CDATA[Phone]]></en>
+            <es><![CDATA[Teléfono]]></es>
+            <pt><![CDATA[Telefone]]></pt>
+            <fr><![CDATA[Téléphone]]></fr>
+            <it><![CDATA[Telefono]]></it>
+            <pl><![CDATA[Telefon]]></pl>
         </locale>
         <locale name="contact.ctaAction.default_phone_placeholder">
             <de><![CDATA[+49 123 456789]]></de>
             <en><![CDATA[+1 123 456789]]></en>
+            <es><![CDATA[+34 612 345 678]]></es>
+            <pt><![CDATA[+351 912 345 678]]></pt>
+            <fr><![CDATA[+33 6 12 34 56 78]]></fr>
+            <it><![CDATA[+39 312 345 6789]]></it>
+            <pl><![CDATA[+48 123 456 789]]></pl>
         </locale>
         <locale name="contact.ctaAction.default_message_label">
             <de><![CDATA[Nachricht]]></de>
             <en><![CDATA[Message]]></en>
+            <es><![CDATA[Mensaje]]></es>
+            <pt><![CDATA[Mensagem]]></pt>
+            <fr><![CDATA[Message]]></fr>
+            <it><![CDATA[Messaggio]]></it>
+            <pl><![CDATA[Wiadomość]]></pl>
         </locale>
         <locale name="contact.ctaAction.default_message_placeholder">
             <de><![CDATA[Kurzbeschreibung, Ziele, ggf. Links...]]></de>
             <en><![CDATA[Short description, goals, maybe links...]]></en>
+            <es><![CDATA[Breve descripción, objetivos y enlaces si procede…]]></es>
+            <pt><![CDATA[Breve descrição, objetivos e ligações relevantes…]]></pt>
+            <fr><![CDATA[Brève description, objectifs, liens utiles…]]></fr>
+            <it><![CDATA[Breve descrizione, obiettivi ed eventuali link…]]></it>
+            <pl><![CDATA[Krótki opis, cele, ewentualne linki…]]></pl>
         </locale>
         <locale name="contact.ctaAction.default_content" html="true">
             <de><![CDATA[
@@ -418,6 +1066,41 @@
                 </li>
             </ul>
             ]]></en>
+            <es><![CDATA[<h2>Consúltenos sin compromiso</h2>
+<p class="lead">Cuéntenos brevemente qué tiene en mente. Le responderemos pronto con una valoración clara del presupuesto, el trabajo necesario y los próximos pasos.</p>
+<ul>
+<li><strong>Respuesta en 24–48 h</strong><br><span>Normalmente antes, según la carga de proyectos.</span></li>
+<li><strong>Vamos al grano</strong><br><span>Opciones concretas, sin discursos comerciales.</span></li>
+<li><strong>Todo con un único equipo</strong><br><span>Sitios web, tiendas y aplicaciones web, con mantenimiento y mejoras continuas.</span></li>
+</ul>]]></es>
+            <pt><![CDATA[<h2>Contacte-nos sem compromisso</h2>
+<p class="lead">Diga-nos brevemente o que tem em mente. Responderemos em breve com uma avaliação clara do orçamento, do trabalho necessário e dos próximos passos.</p>
+<ul>
+<li><strong>Resposta em 24–48 h</strong><br><span>Geralmente mais cedo, consoante os projetos em curso.</span></li>
+<li><strong>Direto ao assunto</strong><br><span>Opções concretas, sem discursos comerciais.</span></li>
+<li><strong>Tudo com a mesma equipa</strong><br><span>Sites, lojas e aplicações web, incluindo manutenção e evolução contínua.</span></li>
+</ul>]]></pt>
+            <fr><![CDATA[<h2>Parlons de votre projet, sans engagement</h2>
+<p class="lead">Décrivez-nous brièvement votre projet. Nous vous répondrons rapidement avec une estimation claire du budget, du travail à prévoir et des prochaines étapes.</p>
+<ul>
+<li><strong>Réponse sous 24–48 h</strong><br><span>Généralement plus tôt, selon les projets en cours.</span></li>
+<li><strong>Droit au but</strong><br><span>Des options concrètes, sans discours commercial.</span></li>
+<li><strong>Un seul interlocuteur</strong><br><span>Site, boutique ou application web, avec maintenance et évolutions.</span></li>
+</ul>]]></fr>
+            <it><![CDATA[<h2>Chiedi informazioni senza impegno</h2>
+<p class="lead">Raccontaci brevemente cosa hai in mente. Ti risponderemo presto con una valutazione chiara di budget, impegno richiesto e prossimi passi.</p>
+<ul>
+<li><strong>Risposta entro 24–48 ore</strong><br><span>Di solito anche prima, in base ai progetti in corso.</span></li>
+<li><strong>Dritti al punto</strong><br><span>Opzioni concrete, senza discorsi commerciali.</span></li>
+<li><strong>Un unico team per tutto</strong><br><span>Siti, negozi e applicazioni web, con manutenzione e sviluppi futuri.</span></li>
+</ul>]]></it>
+            <pl><![CDATA[<h2>Zapytaj bez zobowiązań</h2>
+<p class="lead">Opisz krótko swój pomysł. Wkrótce wrócimy z konkretną oceną budżetu, nakładu pracy i kolejnych kroków.</p>
+<ul>
+<li><strong>Odpowiedź w ciągu 24–48 godzin</strong><br><span>Zwykle szybciej, zależnie od bieżących projektów.</span></li>
+<li><strong>Od razu do rzeczy</strong><br><span>Konkretne opcje zamiast reklamowych haseł.</span></li>
+<li><strong>Wszystko w jednym miejscu</strong><br><span>Strona, sklep, aplikacja internetowa — wraz z utrzymaniem i dalszym rozwojem.</span></li>
+</ul>]]></pl>
         </locale>
         <locale name="contact.ctaAction.privacy">
             <de><![CDATA[
@@ -426,319 +1109,834 @@
             <en><![CDATA[
             I have read the [privacyLink]. By submitting, you agree to the processing of your data for the processing of the request.
             ]]></en>
+            <es><![CDATA[He leído la [privacyLink]. Al enviar el formulario, acepta que sus datos se procesen para atender su consulta.]]></es>
+            <pt><![CDATA[Li a [privacyLink]. Ao enviar o formulário, concorda com o tratamento dos seus dados para dar resposta ao seu pedido.]]></pt>
+            <fr><![CDATA[J’ai lu la [privacyLink]. En envoyant le formulaire, vous acceptez que vos données soient traitées pour répondre à votre demande.]]></fr>
+            <it><![CDATA[Ho letto l’[privacyLink]. Inviando il modulo, acconsenti al trattamento dei tuoi dati per gestire la richiesta.]]></it>
+            <pl><![CDATA[Potwierdzam zapoznanie się z dokumentem [privacyLink]. Wysyłając formularz, wyrażasz zgodę na przetwarzanie swoich danych w celu obsługi zapytania.]]></pl>
         </locale>
         <locale name="contact.ctaAction.default_submit_label">
             <de><![CDATA[Anfrage senden]]></de>
             <en><![CDATA[Submit request]]></en>
+            <es><![CDATA[Enviar consulta]]></es>
+            <pt><![CDATA[Enviar pedido]]></pt>
+            <fr><![CDATA[Envoyer la demande]]></fr>
+            <it><![CDATA[Invia richiesta]]></it>
+            <pl><![CDATA[Wyślij zapytanie]]></pl>
         </locale>
 
         <locale name="brick.control.ctaAction.setting.title">
             <de><![CDATA[CTA Kontaktformular]]></de>
             <en><![CDATA[CTA contact form]]></en>
+            <es><![CDATA[Formulario de contacto CTA]]></es>
+            <pt><![CDATA[Formulário de contacto CTA]]></pt>
+            <fr><![CDATA[Formulaire de contact CTA]]></fr>
+            <it><![CDATA[Modulo di contatto CTA]]></it>
+            <pl><![CDATA[Formularz kontaktowy CTA]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.ctaDescription">
             <de><![CDATA[Kontakt Einleitungstext <br><small>CTA Kontaktformular</small>]]></de>
-            <en><![CDATA[Recipient Description <br><small>CTA contact form</small>]]></en>
+            <en><![CDATA[Contact introduction text <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Texto de introducción <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Texto de introdução <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Texte d’introduction <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Testo introduttivo <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Tekst wprowadzający <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.recipient">
             <de><![CDATA[Empfänger <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[Recipient <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Destinatario <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Destinatário <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Destinataire <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Destinatario <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Odbiorca <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.logo">
             <de><![CDATA[Logo <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[Logo <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Logotipo <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Logótipo <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Logo <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Logo <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Logo <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.formDesign">
             <de><![CDATA[Formular-Layout <br><small>CTA Kontaktformular</small>]]></de>
-            <en><![CDATA[Form layout]]></en>
+            <en><![CDATA[Form layout <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Diseño del formulario <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Disposição do formulário <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Mise en page du formulaire <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Layout del modulo <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Układ formularza <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.formDesign.default">
             <de><![CDATA[Standard (Inputs untereinander)]]></de>
             <en><![CDATA[Default (stacked inputs)]]></en>
+            <es><![CDATA[Predeterminado (campos uno debajo de otro)]]></es>
+            <pt><![CDATA[Predefinido (campos uns por baixo dos outros)]]></pt>
+            <fr><![CDATA[Par défaut (champs empilés)]]></fr>
+            <it><![CDATA[Predefinito (campi uno sotto l’altro)]]></it>
+            <pl><![CDATA[Domyślny (pola jedno pod drugim)]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.formDesign.grid">
             <de><![CDATA[Raster (grid)]]></de>
             <en><![CDATA[Grid]]></en>
+            <es><![CDATA[Cuadrícula]]></es>
+            <pt><![CDATA[Grelha]]></pt>
+            <fr><![CDATA[Grille]]></fr>
+            <it><![CDATA[Griglia]]></it>
+            <pl><![CDATA[Siatka]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.formDesign.labelLeft">
             <de><![CDATA[Labels links]]></de>
             <en><![CDATA[Labels left]]></en>
+            <es><![CDATA[Etiquetas a la izquierda]]></es>
+            <pt><![CDATA[Etiquetas à esquerda]]></pt>
+            <fr><![CDATA[Libellés à gauche]]></fr>
+            <it><![CDATA[Etichette a sinistra]]></it>
+            <pl><![CDATA[Etykiety po lewej]]></pl>
         </locale>
 
         <locale name="brick.control.ctaAction.setting.startView">
             <de><![CDATA[Ansicht beim Öffnen <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[View on open <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Vista al abrir <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Vista ao abrir <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Vue à l’ouverture <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Vista all’apertura <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Widok po otwarciu <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.startView.form">
             <de><![CDATA[Formular]]></de>
             <en><![CDATA[Form]]></en>
+            <es><![CDATA[Formulario]]></es>
+            <pt><![CDATA[Formulário]]></pt>
+            <fr><![CDATA[Formulaire]]></fr>
+            <it><![CDATA[Modulo]]></it>
+            <pl><![CDATA[Formularz]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.startView.select">
-            <de><![CDATA[Auswahl - KI Agent oder Formular]]></de>
-            <en><![CDATA[Choice - AI agent or form]]></en>
+            <de><![CDATA[Kontaktübersicht]]></de>
+            <en><![CDATA[Contact overview]]></en>
+            <es><![CDATA[Opciones de contacto]]></es>
+            <pt><![CDATA[Opções de contacto]]></pt>
+            <fr><![CDATA[Options de contact]]></fr>
+            <it><![CDATA[Opzioni di contatto]]></it>
+            <pl><![CDATA[Opcje kontaktu]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.startView.ai">
             <de><![CDATA[KI Agent]]></de>
             <en><![CDATA[AI agent]]></en>
+            <es><![CDATA[Agente de IA]]></es>
+            <pt><![CDATA[Agente de IA]]></pt>
+            <fr><![CDATA[Agent IA]]></fr>
+            <it><![CDATA[Agente IA]]></it>
+            <pl><![CDATA[Agent AI]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.aiBrickId">
+            <de><![CDATA[KI-Agent-Baustein <br><small>CTA Kontaktformular</small>]]></de>
+            <en><![CDATA[AI agent brick <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Bloque del agente de IA <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Bloco do agente de IA <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Bloc de l’agent IA <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Blocco dell’agente IA <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Blok agenta AI <br><small>Formularz kontaktowy CTA</small>]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.aiBrickId.description">
+            <de><![CDATA[Der Baustein, der in der KI-Ansicht angezeigt wird. Er bestimmt, welcher Agent antwortet – Persona, Wissen und Begrüßung werden in diesem Baustein gepflegt, nicht hier. Ohne gültigen, aktiven Agenten bleibt die Kontaktübersicht verfügbar. Eine nicht verfügbare Startansicht fällt auf die Kontaktübersicht zurück. Kontext, den ein Button mitgibt, wird an diesen Baustein weitergereicht.]]></de>
+            <en><![CDATA[The brick shown in the AI view. It decides which agent answers - persona, knowledge and greeting are configured in that brick, not here. Without a valid, active agent the contact overview remains available. An unavailable start view falls back to the contact overview. Context handed in by a button is passed on to this brick.]]></en>
+            <es><![CDATA[Bloque que se muestra en la vista de IA. Determina qué agente responde; su personalidad, conocimientos y saludo se configuran en ese bloque. Si no hay un agente válido y activo, las opciones de contacto siguen disponibles. Si la vista inicial no está disponible, se muestran las opciones de contacto. El contexto que envíe un botón se transmite a este bloque.]]></es>
+            <pt><![CDATA[Bloco apresentado na vista de IA. Determina qual o agente que responde; a personalidade, os conhecimentos e a saudação são configurados nesse bloco. Sem um agente válido e ativo, as opções de contacto continuam disponíveis. Se a vista inicial não estiver disponível, são apresentadas as opções de contacto. O contexto enviado por um botão é transmitido a este bloco.]]></pt>
+            <fr><![CDATA[Bloc affiché dans la vue IA. Il détermine l’agent qui répond ; sa personnalité, ses connaissances et son message d’accueil se configurent dans ce bloc. Sans agent valide et actif, les options de contact restent disponibles. Si la vue initiale est indisponible, les options de contact s’affichent à sa place. Le contexte fourni par un bouton est transmis à ce bloc.]]></fr>
+            <it><![CDATA[Blocco mostrato nella vista IA. Determina quale agente risponde; personalità, conoscenze e messaggio di benvenuto si configurano in quel blocco. Senza un agente valido e attivo, le opzioni di contatto restano disponibili. Se la vista iniziale non è disponibile, vengono mostrate le opzioni di contatto. Il contesto fornito da un pulsante viene trasmesso a questo blocco.]]></it>
+            <pl><![CDATA[Blok wyświetlany w widoku AI. Określa, który agent odpowiada; jego osobowość, wiedzę i powitanie konfiguruje się w tym bloku. Bez prawidłowego, aktywnego agenta opcje kontaktu pozostają dostępne. Jeśli widok początkowy jest niedostępny, zamiast niego pojawiają się opcje kontaktu. Kontekst przekazany przez przycisk trafia do tego bloku.]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.aiContext">
+            <de><![CDATA[Kontext für den KI-Agenten <br><small>CTA Kontaktformular</small>]]></de>
+            <en><![CDATA[Context for the AI agent <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Contexto para el agente de IA <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Contexto para o agente de IA <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Contexte pour l’agent IA <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Contesto per l’agente IA <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Kontekst dla agenta AI <br><small>Formularz kontaktowy CTA</small>]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.aiContext.description">
+            <de><![CDATA[Freitext, aus dem der Agent erfährt, worum es geht – z. B. „Paket: Starter · Variante: Kaufen“. Sinnvoll, wenn dieser Baustein fest auf einer Produktseite sitzt. Gibt ein Button beim Öffnen einen eigenen Kontext mit, gewinnt dieser; das Feld hier ist der Rückfall. Liegt Kontext vor, eröffnet der Agent das Gespräch standardmäßig selbst.]]></de>
+            <en><![CDATA[Free text telling the agent what this is about, e.g. "Package: Starter - Variant: Buy". Useful when this brick sits on a fixed product page. A context handed in by a button when opening wins; this field is the fallback. With a context present the agent opens the conversation itself by default.]]></en>
+            <es><![CDATA[Texto libre que explica al agente de qué se trata, por ejemplo: "Paquete: Starter · Opción: Comprar". Resulta útil si el bloque está integrado en una página de producto concreta. Si un botón envía su propio contexto al abrir, ese contexto tiene prioridad; este campo se usa como alternativa. Cuando hay contexto, el agente inicia la conversación por defecto.]]></es>
+            <pt><![CDATA[Texto livre que indica ao agente o assunto, por exemplo: "Pacote: Starter · Opção: Comprar". É útil quando o bloco está integrado numa página de produto específica. Se um botão enviar o seu próprio contexto ao abrir, esse contexto tem prioridade; este campo é usado como alternativa. Quando existe contexto, o agente inicia a conversa por predefinição.]]></pt>
+            <fr><![CDATA[Texte libre qui précise le sujet à l’agent, par exemple : "Offre : Starter · Option : Acheter". Utile lorsque ce bloc est intégré à une page produit précise. Si un bouton fournit son propre contexte à l’ouverture, celui-ci est prioritaire ; ce champ sert de solution de repli. Lorsqu’un contexte est présent, l’agent engage la conversation par défaut.]]></fr>
+            <it><![CDATA[Testo libero che spiega all’agente l’argomento, ad esempio: "Pacchetto: Starter · Opzione: Acquista". Utile quando il blocco è integrato in una pagina prodotto specifica. Se un pulsante fornisce un proprio contesto all’apertura, quel contesto ha la precedenza; questo campo viene usato come alternativa. In presenza di un contesto, l’agente avvia la conversazione per impostazione predefinita.]]></it>
+            <pl><![CDATA[Dowolny tekst wyjaśniający agentowi temat, na przykład: "Pakiet: Starter · Wariant: Zakup". Przydatny, gdy blok jest umieszczony na konkretnej stronie produktu. Jeśli przycisk przekazuje własny kontekst przy otwieraniu, ma on pierwszeństwo; to pole jest używane w pozostałych przypadkach. Gdy kontekst jest dostępny, agent domyślnie sam rozpoczyna rozmowę.]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.aiSidebar">
             <de><![CDATA[KI-Agent-Ansicht: Sidebar anzeigen <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[AI agent view: show sidebar <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Vista del agente de IA: mostrar barra lateral <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Vista do agente de IA: mostrar barra lateral <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Vue de l’agent IA : afficher la barre latérale <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Vista dell’agente IA: mostra barra laterale <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Widok agenta AI: pokaż panel boczny <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.aiSidebar.hide">
             <de><![CDATA[Nein (empfohlen)]]></de>
             <en><![CDATA[No (recommended)]]></en>
+            <es><![CDATA[No (recomendado)]]></es>
+            <pt><![CDATA[Não (recomendado)]]></pt>
+            <fr><![CDATA[Non (recommandé)]]></fr>
+            <it><![CDATA[No (consigliato)]]></it>
+            <pl><![CDATA[Nie (zalecane)]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.aiSidebar.show">
             <de><![CDATA[Ja]]></de>
             <en><![CDATA[Yes]]></en>
+            <es><![CDATA[Sí]]></es>
+            <pt><![CDATA[Sim]]></pt>
+            <fr><![CDATA[Oui]]></fr>
+            <it><![CDATA[Sì]]></it>
+            <pl><![CDATA[Tak]]></pl>
         </locale>
 
         <locale name="brick.control.ctaAction.frontend.btn.email.title">
             <de><![CDATA[Kontaktieren Sie uns per Mail]]></de>
             <en><![CDATA[Contact us by email]]></en>
+            <es><![CDATA[Escríbanos por correo electrónico]]></es>
+            <pt><![CDATA[Contacte-nos por e-mail]]></pt>
+            <fr><![CDATA[Contactez-nous par e-mail]]></fr>
+            <it><![CDATA[Contattaci via email]]></it>
+            <pl><![CDATA[Napisz do nas e-mail]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.frontend.btn.whatsapp.title">
             <de><![CDATA[Schreiben Sie uns per WhatsApp]]></de>
             <en><![CDATA[Message us on WhatsApp]]></en>
+            <es><![CDATA[Escríbanos por WhatsApp]]></es>
+            <pt><![CDATA[Envie-nos uma mensagem pelo WhatsApp]]></pt>
+            <fr><![CDATA[Écrivez-nous sur WhatsApp]]></fr>
+            <it><![CDATA[Scrivici su WhatsApp]]></it>
+            <pl><![CDATA[Napisz do nas na WhatsApp]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.frontend.btn.phone.title">
             <de><![CDATA[Rufen Sie uns an]]></de>
             <en><![CDATA[Give us a call]]></en>
+            <es><![CDATA[Llámenos]]></es>
+            <pt><![CDATA[Ligue-nos]]></pt>
+            <fr><![CDATA[Appelez-nous]]></fr>
+            <it><![CDATA[Chiamaci]]></it>
+            <pl><![CDATA[Zadzwoń do nas]]></pl>
         </locale>
 
+        <locale name="brick.control.ctaAction.setting.secondaryActionsLabel">
+            <de><![CDATA[Beschriftung der weiteren Kontaktwege]]></de>
+            <en><![CDATA[Additional contact methods label]]></en>
+            <es><![CDATA[Etiqueta de los medios de contacto adicionales]]></es>
+            <pt><![CDATA[Etiqueta dos meios de contacto adicionais]]></pt>
+            <fr><![CDATA[Libellé des autres moyens de contact]]></fr>
+            <it><![CDATA[Etichetta dei canali di contatto aggiuntivi]]></it>
+            <pl><![CDATA[Etykieta dodatkowych metod kontaktu]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.secondaryActionsLabel.desc">
+            <de><![CDATA[Optionaler dezenter Text zwischen Hauptaktionen und weiteren Kontaktwegen, z. B. „Weitere Kontaktmöglichkeiten“. Leer oder ohne weitere Kontaktwege wird nichts angezeigt.]]></de>
+            <en><![CDATA[Optional muted text between primary actions and additional contact methods. Hidden when empty or no additional contact methods are available.]]></en>
+            <es><![CDATA[Texto discreto opcional entre las acciones principales y los medios de contacto adicionales, por ejemplo: "Otras formas de contacto". No se muestra si está vacío o no hay medios de contacto adicionales.]]></es>
+            <pt><![CDATA[Texto discreto opcional entre as ações principais e os meios de contacto adicionais, por exemplo: "Outras formas de contacto". Não é apresentado se estiver vazio ou se não existirem meios de contacto adicionais.]]></pt>
+            <fr><![CDATA[Texte discret facultatif entre les actions principales et les autres moyens de contact, par exemple : "Autres moyens de nous contacter". Masqué si le champ est vide ou si aucun autre moyen de contact n’est disponible.]]></fr>
+            <it><![CDATA[Testo discreto facoltativo tra le azioni principali e i canali di contatto aggiuntivi, ad esempio: "Altri modi per contattarci". Non viene mostrato se il campo è vuoto o non sono disponibili altri canali di contatto.]]></it>
+            <pl><![CDATA[Opcjonalny, dyskretny tekst między działaniami głównymi a dodatkowymi metodami kontaktu, na przykład: "Inne sposoby kontaktu". Jest ukryty, gdy pole jest puste lub nie ma dodatkowych metod kontaktu.]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.aiButtonText">
+            <de><![CDATA[KI-Button: Beschriftung]]></de>
+            <en><![CDATA[AI button: label]]></en>
+            <es><![CDATA[Botón de IA: etiqueta]]></es>
+            <pt><![CDATA[Botão de IA: etiqueta]]></pt>
+            <fr><![CDATA[Bouton IA : libellé]]></fr>
+            <it><![CDATA[Pulsante IA: etichetta]]></it>
+            <pl><![CDATA[Przycisk AI: etykieta]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.aiButtonText.desc">
+            <de><![CDATA[Leer verwendet „KI-Beratung“. Gilt auch für den KI-Button in der Formular-Sidebar.]]></de>
+            <en><![CDATA[Leave empty to use “AI advice”. Also applies to the AI button in the form sidebar.]]></en>
+            <es><![CDATA[Déjelo vacío para usar "Asesoramiento con IA". También se aplica al botón de IA de la barra lateral del formulario.]]></es>
+            <pt><![CDATA[Deixe vazio para usar "Aconselhamento com IA". Também se aplica ao botão de IA na barra lateral do formulário.]]></pt>
+            <fr><![CDATA[Laissez vide pour utiliser "Conseil par IA". S’applique aussi au bouton IA de la barre latérale du formulaire.]]></fr>
+            <it><![CDATA[Lascia vuoto per usare "Consulenza IA". Si applica anche al pulsante IA nella barra laterale del modulo.]]></it>
+            <pl><![CDATA[Pozostaw puste, aby użyć tekstu "Doradztwo AI". Dotyczy również przycisku AI w panelu bocznym formularza.]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.aiButtonIcon">
+            <de><![CDATA[KI-Button: Icon]]></de>
+            <en><![CDATA[AI button: icon]]></en>
+            <es><![CDATA[Botón de IA: icono]]></es>
+            <pt><![CDATA[Botão de IA: ícone]]></pt>
+            <fr><![CDATA[Bouton IA : icône]]></fr>
+            <it><![CDATA[Pulsante IA: icona]]></it>
+            <pl><![CDATA[Przycisk AI: ikona]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.aiButtonIcon.desc">
+            <de><![CDATA[Optionales Icon neben der Beschriftung. Leer zeigt nur Text.]]></de>
+            <en><![CDATA[Optional icon next to the label. Leave empty for text only.]]></en>
+            <es><![CDATA[Icono opcional junto a la etiqueta. Déjelo vacío para mostrar solo texto.]]></es>
+            <pt><![CDATA[Ícone opcional junto à etiqueta. Deixe vazio para mostrar apenas texto.]]></pt>
+            <fr><![CDATA[Icône facultative à côté du libellé. Laissez vide pour afficher uniquement le texte.]]></fr>
+            <it><![CDATA[Icona facoltativa accanto all’etichetta. Lascia vuoto per mostrare solo il testo.]]></it>
+            <pl><![CDATA[Opcjonalna ikona obok etykiety. Pozostaw puste, aby wyświetlać tylko tekst.]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formButtonText">
+            <de><![CDATA[Formular-Button: Beschriftung]]></de>
+            <en><![CDATA[Form button: label]]></en>
+            <es><![CDATA[Botón del formulario: etiqueta]]></es>
+            <pt><![CDATA[Botão do formulário: etiqueta]]></pt>
+            <fr><![CDATA[Bouton du formulaire : libellé]]></fr>
+            <it><![CDATA[Pulsante del modulo: etichetta]]></it>
+            <pl><![CDATA[Przycisk formularza: etykieta]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formButtonText.desc">
+            <de><![CDATA[Leer verwendet „Formular ausfüllen“. Betrifft den Einstieg ins Formular, nicht den Absende-Button.]]></de>
+            <en><![CDATA[Leave empty to use “Fill out the form”. Applies to the form entry button, not the submit button.]]></en>
+            <es><![CDATA[Déjelo vacío para usar "Rellenar el formulario". Se aplica al botón que abre el formulario, no al botón de envío.]]></es>
+            <pt><![CDATA[Deixe vazio para usar "Preencher o formulário". Aplica-se ao botão que abre o formulário, não ao botão de envio.]]></pt>
+            <fr><![CDATA[Laissez vide pour utiliser "Remplir le formulaire". Concerne le bouton d’ouverture du formulaire, pas le bouton d’envoi.]]></fr>
+            <it><![CDATA[Lascia vuoto per usare "Compila il modulo". Si applica al pulsante che apre il modulo, non al pulsante di invio.]]></it>
+            <pl><![CDATA[Pozostaw puste, aby użyć tekstu "Wypełnij formularz". Dotyczy przycisku otwierającego formularz, a nie przycisku wysyłania.]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formButtonIcon">
+            <de><![CDATA[Formular-Button: Icon]]></de>
+            <en><![CDATA[Form button: icon]]></en>
+            <es><![CDATA[Botón del formulario: icono]]></es>
+            <pt><![CDATA[Botão do formulário: ícone]]></pt>
+            <fr><![CDATA[Bouton du formulaire : icône]]></fr>
+            <it><![CDATA[Pulsante del modulo: icona]]></it>
+            <pl><![CDATA[Przycisk formularza: ikona]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.formButtonIcon.desc">
+            <de><![CDATA[Optionales Icon neben der Beschriftung. Leer zeigt nur Text.]]></de>
+            <en><![CDATA[Optional icon next to the label. Leave empty for text only.]]></en>
+            <es><![CDATA[Icono opcional junto a la etiqueta. Déjelo vacío para mostrar solo texto.]]></es>
+            <pt><![CDATA[Ícone opcional junto à etiqueta. Deixe vazio para mostrar apenas texto.]]></pt>
+            <fr><![CDATA[Icône facultative à côté du libellé. Laissez vide pour afficher uniquement le texte.]]></fr>
+            <it><![CDATA[Icona facoltativa accanto all’etichetta. Lascia vuoto per mostrare solo il testo.]]></it>
+            <pl><![CDATA[Opcjonalna ikona obok etykiety. Pozostaw puste, aby wyświetlać tylko tekst.]]></pl>
+        </locale>
+        <locale name="brick.control.ctaAction.setting.btnStyle.desc">
+            <de><![CDATA[Gilt nur für weitere Kontaktwege: E-Mail, WhatsApp, Telefon und eigene Nebenaktionen. „Abgerundet“ macht reine Icon-Buttons rund und Buttons mit Text pillenförmig. Die konkrete Darstellung hängt vom Template ab. Hauptaktionen bleiben unverändert.]]></de>
+            <en><![CDATA[Applies only to additional contact methods: email, WhatsApp, phone and custom secondary actions. “Rounded” makes icon-only buttons circular and buttons with text pill-shaped. Appearance depends on the template. Primary actions are unaffected.]]></en>
+            <es><![CDATA[Solo se aplica a los medios de contacto adicionales: correo electrónico, WhatsApp, teléfono y acciones secundarias personalizadas. "Redondeado" hace circulares los botones que solo tienen icono y da extremos redondeados a los botones con texto. El aspecto concreto depende de la plantilla. Las acciones principales no cambian.]]></es>
+            <pt><![CDATA[Aplica-se apenas aos meios de contacto adicionais: e-mail, WhatsApp, telefone e ações secundárias personalizadas. "Arredondado" torna circulares os botões que só têm ícone e dá extremidades arredondadas aos botões com texto. O aspeto concreto depende do modelo. As ações principais não são alteradas.]]></pt>
+            <fr><![CDATA[S’applique uniquement aux autres moyens de contact : e-mail, WhatsApp, téléphone et actions secondaires personnalisées. "Arrondi" rend circulaires les boutons composés d’une icône seule et donne une forme de pilule aux boutons avec texte. Le rendu dépend du modèle. Les actions principales restent inchangées.]]></fr>
+            <it><![CDATA[Si applica solo ai canali di contatto aggiuntivi: email, WhatsApp, telefono e azioni secondarie personalizzate. "Arrotondato" rende circolari i pulsanti con la sola icona e a forma di pillola quelli con testo. L’aspetto effettivo dipende dal template. Le azioni principali restano invariate.]]></it>
+            <pl><![CDATA[Dotyczy tylko dodatkowych metod kontaktu: e-maila, WhatsAppa, telefonu i własnych działań dodatkowych. Opcja "Zaokrąglony" nadaje przyciskom z samą ikoną kształt koła, a przyciskom z tekstem kształt kapsułki. Wygląd zależy od szablonu. Działania główne pozostają bez zmian.]]></pl>
+        </locale>
         <locale name="brick.control.ctaAction.setting.btnStyle">
-            <de><![CDATA[Button-Design <br><small>CTA Kontaktformular</small>]]></de>
-            <en><![CDATA[Button design <br><small>CTA contact form</small>]]></en>
+            <de><![CDATA[Button-Form der weiteren Kontaktwege]]></de>
+            <en><![CDATA[Button shape for additional contact methods]]></en>
+            <es><![CDATA[Forma de los botones de contacto adicionales]]></es>
+            <pt><![CDATA[Forma dos botões de contacto adicionais]]></pt>
+            <fr><![CDATA[Forme des boutons des autres moyens de contact]]></fr>
+            <it><![CDATA[Forma dei pulsanti dei canali di contatto aggiuntivi]]></it>
+            <pl><![CDATA[Kształt przycisków dodatkowych metod kontaktu]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.btnStyle.button">
-            <de><![CDATA[Normaler Button (Text)]]></de>
-            <en><![CDATA[Default button (text)]]></en>
+            <de><![CDATA[Standard]]></de>
+            <en><![CDATA[Standard]]></en>
+            <es><![CDATA[Estándar]]></es>
+            <pt><![CDATA[Padrão]]></pt>
+            <fr><![CDATA[Standard]]></fr>
+            <it><![CDATA[Standard]]></it>
+            <pl><![CDATA[Standardowy]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.btnStyle.icon">
             <de><![CDATA[Nur Icon]]></de>
             <en><![CDATA[Only icon]]></en>
+            <es><![CDATA[Solo icono]]></es>
+            <pt><![CDATA[Apenas ícone]]></pt>
+            <fr><![CDATA[Icône seule]]></fr>
+            <it><![CDATA[Solo icona]]></it>
+            <pl><![CDATA[Tylko ikona]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.btnStyle.iconRounded">
             <de><![CDATA[Nur Icon (rund)]]></de>
             <en><![CDATA[Only icon (round)]]></en>
+            <es><![CDATA[Solo icono (circular)]]></es>
+            <pt><![CDATA[Apenas ícone (circular)]]></pt>
+            <fr><![CDATA[Icône seule (rond)]]></fr>
+            <it><![CDATA[Solo icona (rotondo)]]></it>
+            <pl><![CDATA[Tylko ikona (okrągły)]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.size">
             <de><![CDATA[Button-Größe <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[Button size <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Tamaño de los botones <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Tamanho dos botões <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Taille des boutons <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Dimensione dei pulsanti <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Rozmiar przycisków <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.size.default">
             <de><![CDATA[Standard]]></de>
             <en><![CDATA[Default]]></en>
+            <es><![CDATA[Predeterminado]]></es>
+            <pt><![CDATA[Predefinido]]></pt>
+            <fr><![CDATA[Par défaut]]></fr>
+            <it><![CDATA[Predefinito]]></it>
+            <pl><![CDATA[Domyślny]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.size.small">
             <de><![CDATA[Klein]]></de>
             <en><![CDATA[Small]]></en>
+            <es><![CDATA[Pequeño]]></es>
+            <pt><![CDATA[Pequeno]]></pt>
+            <fr><![CDATA[Petit]]></fr>
+            <it><![CDATA[Piccolo]]></it>
+            <pl><![CDATA[Mały]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.size.large">
             <de><![CDATA[Groß]]></de>
             <en><![CDATA[Large]]></en>
+            <es><![CDATA[Grande]]></es>
+            <pt><![CDATA[Grande]]></pt>
+            <fr><![CDATA[Grand]]></fr>
+            <it><![CDATA[Grande]]></it>
+            <pl><![CDATA[Duży]]></pl>
         </locale>
 
         <locale name="brick.control.ctaAction.setting.whatsapp">
             <de><![CDATA[Kontakt Button WhatsApp <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[Contact button WhatsApp <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Botón de contacto por WhatsApp <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Botão de contacto por WhatsApp <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Bouton de contact WhatsApp <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Pulsante di contatto WhatsApp <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Przycisk kontaktu przez WhatsApp <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.whatsapp.description">
             <de><![CDATA[Zeigt einen WhatsApp-Kontaktbutton an, sobald eine Nummer hinterlegt ist.]]></de>
             <en><![CDATA[Shows a WhatsApp contact button as soon as a number is entered.]]></en>
+            <es><![CDATA[Muestra un botón de contacto por WhatsApp al introducir un número.]]></es>
+            <pt><![CDATA[Mostra um botão de contacto por WhatsApp quando é introduzido um número.]]></pt>
+            <fr><![CDATA[Affiche un bouton de contact WhatsApp dès qu’un numéro est renseigné.]]></fr>
+            <it><![CDATA[Mostra un pulsante di contatto WhatsApp quando viene inserito un numero.]]></it>
+            <pl><![CDATA[Wyświetla przycisk kontaktu przez WhatsApp po podaniu numeru.]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.whatsappLabel">
             <de><![CDATA[Angezeigter Text für WhatsApp <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[Displayed text for WhatsApp <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Texto mostrado para WhatsApp <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Texto apresentado para WhatsApp <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Texte affiché pour WhatsApp <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Testo visualizzato per WhatsApp <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Tekst wyświetlany dla WhatsApp <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.whatsappLabel.desc">
             <de><![CDATA[Dieser Text wird für den normalen Button verwendet. Wenn nicht gesetzt, wird die hinterlegte Nummer als Text verwendet.]]></de>
             <en><![CDATA[This text is used for the default button. If not set, the entered number is used as text.]]></en>
+            <es><![CDATA[Texto del botón estándar. Si se deja vacío, se muestra el número introducido.]]></es>
+            <pt><![CDATA[Texto do botão padrão. Se ficar vazio, é apresentado o número introduzido.]]></pt>
+            <fr><![CDATA[Texte du bouton standard. Si ce champ est vide, le numéro renseigné est affiché.]]></fr>
+            <it><![CDATA[Testo del pulsante standard. Se il campo è vuoto, viene mostrato il numero inserito.]]></it>
+            <pl><![CDATA[Tekst standardowego przycisku. Jeśli pole jest puste, wyświetlany jest podany numer.]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.phone">
             <de><![CDATA[Kontakt Button Telefon <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[Contact button Phone <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Botón de contacto por teléfono <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Botão de contacto por telefone <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Bouton de contact téléphonique <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Pulsante di contatto telefonico <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Przycisk kontaktu telefonicznego <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.phone.description">
             <de><![CDATA[Zeigt einen Telefon-Kontaktbutton an, sobald eine Nummer hinterlegt ist.]]></de>
             <en><![CDATA[Shows a phone contact button as soon as a number is entered.]]></en>
+            <es><![CDATA[Muestra un botón de contacto por teléfono al introducir un número.]]></es>
+            <pt><![CDATA[Mostra um botão de contacto por telefone quando é introduzido um número.]]></pt>
+            <fr><![CDATA[Affiche un bouton de contact téléphonique dès qu’un numéro est renseigné.]]></fr>
+            <it><![CDATA[Mostra un pulsante di contatto telefonico quando viene inserito un numero.]]></it>
+            <pl><![CDATA[Wyświetla przycisk kontaktu telefonicznego po podaniu numeru.]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.phoneLabel">
             <de><![CDATA[Angezeigter Text für Telefon <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[Displayed text for phone <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Texto mostrado para el teléfono <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Texto apresentado para o telefone <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Texte affiché pour le téléphone <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Testo visualizzato per il telefono <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Tekst wyświetlany dla telefonu <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.phoneLabel.desc">
-            <de><![CDATA[Dieser Text wird für den normalen Button verwendet. Wenn nicht gesetzt, die eingegebene Nummer wird als Text verwendet.]]></de>
-            <en><![CDATA[This text is used for the default button. If not set, the entered number address is used as text.]]></en>
+            <de><![CDATA[Dieser Text wird für den normalen Button verwendet. Wenn nicht gesetzt, wird die eingegebene Nummer als Text verwendet.]]></de>
+            <en><![CDATA[This text is used for the default button. If not set, the entered number is used as text.]]></en>
+            <es><![CDATA[Texto del botón estándar. Si se deja vacío, se muestra el número introducido.]]></es>
+            <pt><![CDATA[Texto do botão padrão. Se ficar vazio, é apresentado o número introduzido.]]></pt>
+            <fr><![CDATA[Texte du bouton standard. Si ce champ est vide, le numéro renseigné est affiché.]]></fr>
+            <it><![CDATA[Testo del pulsante standard. Se il campo è vuoto, viene mostrato il numero inserito.]]></it>
+            <pl><![CDATA[Tekst standardowego przycisku. Jeśli pole jest puste, wyświetlany jest podany numer.]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.email">
             <de><![CDATA[Kontakt Button E-Mail <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[Contact button E-mail <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Botón de contacto por correo electrónico <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Botão de contacto por e-mail <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Bouton de contact par e-mail <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Pulsante di contatto via email <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Przycisk kontaktu przez e-mail <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.email.description">
             <de><![CDATA[Zeigt einen E-Mail-Kontaktbutton an, sobald eine E-Mail hinterlegt ist.]]></de>
             <en><![CDATA[Shows an email contact button as soon as an email is entered.]]></en>
+            <es><![CDATA[Muestra un botón de contacto por correo electrónico al introducir una dirección.]]></es>
+            <pt><![CDATA[Mostra um botão de contacto por e-mail quando é introduzido um endereço.]]></pt>
+            <fr><![CDATA[Affiche un bouton de contact par e-mail dès qu’une adresse est renseignée.]]></fr>
+            <it><![CDATA[Mostra un pulsante di contatto via email quando viene inserito un indirizzo.]]></it>
+            <pl><![CDATA[Wyświetla przycisk kontaktu przez e-mail po podaniu adresu.]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.emailLabel">
             <de><![CDATA[Angezeigter Text für E-Mail <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[Displayed text for email <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Texto mostrado para el correo electrónico <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Texto apresentado para o e-mail <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Texte affiché pour l’e-mail <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Testo visualizzato per l’email <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Tekst wyświetlany dla e-maila <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.emailLabel.desc">
-            <de><![CDATA[Dieser Text wird für den normalen Button verwendet. Wenn nicht gesetzt, die eingegebene E-Mail-Adresse wird als Text verwendet.]]></de>
+            <de><![CDATA[Dieser Text wird für den normalen Button verwendet. Wenn nicht gesetzt, wird die eingegebene E-Mail-Adresse als Text verwendet.]]></de>
             <en><![CDATA[This text is used for the default button. If not set, the entered email address is used as text.]]></en>
+            <es><![CDATA[Texto del botón estándar. Si se deja vacío, se muestra la dirección de correo electrónico introducida.]]></es>
+            <pt><![CDATA[Texto do botão padrão. Se ficar vazio, é apresentado o endereço de e-mail introduzido.]]></pt>
+            <fr><![CDATA[Texte du bouton standard. Si ce champ est vide, l’adresse e-mail renseignée est affichée.]]></fr>
+            <it><![CDATA[Testo del pulsante standard. Se il campo è vuoto, viene mostrato l’indirizzo email inserito.]]></it>
+            <pl><![CDATA[Tekst standardowego przycisku. Jeśli pole jest puste, wyświetlany jest podany adres e-mail.]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons">
             <de><![CDATA[Zusätzliche Buttons <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[Additional buttons <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Botones adicionales <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Botões adicionais <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Boutons supplémentaires <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Pulsanti aggiuntivi <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Dodatkowe przyciski <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons.desc">
-            <de><![CDATA[Fügen Sie weitere Aktionsbuttons (Text, Icon, CSS-Klassen und Link) hinzu.]]></de>
-            <en><![CDATA[Add additional action buttons (text, icon, CSS classes and link).]]></en>
+            <de><![CDATA[Eigene Hauptaktionen erscheinen zwischen KI-Beratung und Formular. Weitere Kontaktwege erscheinen darunter in einer umbrechenden Reihe. Reihenfolge und Darstellung werden pro Button eingestellt. Reine Icon-Buttons benötigen ein Icon und eine verständliche Beschriftung (Text oder ARIA-Label).]]></de>
+            <en><![CDATA[Custom primary actions appear between AI advice and the form. Additional contact methods appear in a wrapping row below. Configure order and display per button. Icon-only buttons require an icon and an accessible label (text or ARIA label).]]></en>
+            <es><![CDATA[Las acciones principales personalizadas aparecen entre el asesoramiento con IA y el formulario. Los medios de contacto adicionales se muestran debajo, en una fila que se adapta al espacio disponible. El orden y la presentación se configuran para cada botón. Los botones que solo muestran un icono necesitan un icono y una etiqueta accesible (texto o etiqueta ARIA).]]></es>
+            <pt><![CDATA[As ações principais personalizadas aparecem entre o aconselhamento com IA e o formulário. Os meios de contacto adicionais aparecem abaixo, numa fila que passa para a linha seguinte quando necessário. A ordem e a apresentação são configuradas por botão. Os botões que só mostram um ícone precisam de um ícone e de uma etiqueta acessível (texto ou etiqueta ARIA).]]></pt>
+            <fr><![CDATA[Les actions principales personnalisées apparaissent entre le conseil par IA et le formulaire. Les autres moyens de contact s’affichent en dessous, sur une rangée qui passe à la ligne si nécessaire. L’ordre et l’affichage se règlent pour chaque bouton. Les boutons composés d’une icône seule doivent avoir une icône et un libellé accessible (texte ou libellé ARIA).]]></fr>
+            <it><![CDATA[Le azioni principali personalizzate appaiono tra la consulenza IA e il modulo. I canali di contatto aggiuntivi sono mostrati sotto, in una riga che va a capo se necessario. Ordine e visualizzazione si impostano per ogni pulsante. I pulsanti con la sola icona richiedono un’icona e un’etichetta accessibile (testo o etichetta ARIA).]]></it>
+            <pl><![CDATA[Własne działania główne pojawiają się między doradztwem AI a formularzem. Dodatkowe metody kontaktu są wyświetlane poniżej, w wierszu zawijanym w razie potrzeby. Kolejność i sposób wyświetlania ustawia się osobno dla każdego przycisku. Przyciski z samą ikoną wymagają ikony i dostępnej etykiety (tekstu lub etykiety ARIA).]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons.empty">
             <de><![CDATA[Noch keine zusätzlichen Buttons hinterlegt.]]></de>
             <en><![CDATA[No additional buttons configured yet.]]></en>
+            <es><![CDATA[Todavía no hay botones adicionales configurados.]]></es>
+            <pt><![CDATA[Ainda não existem botões adicionais configurados.]]></pt>
+            <fr><![CDATA[Aucun bouton supplémentaire n’est encore configuré.]]></fr>
+            <it><![CDATA[Non sono ancora configurati pulsanti aggiuntivi.]]></it>
+            <pl><![CDATA[Nie skonfigurowano jeszcze dodatkowych przycisków.]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons.btn.add">
             <de><![CDATA[Button hinzufügen]]></de>
             <en><![CDATA[Add button]]></en>
+            <es><![CDATA[Añadir botón]]></es>
+            <pt><![CDATA[Adicionar botão]]></pt>
+            <fr><![CDATA[Ajouter un bouton]]></fr>
+            <it><![CDATA[Aggiungi pulsante]]></it>
+            <pl><![CDATA[Dodaj przycisk]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons.btn.edit.title">
             <de><![CDATA[Button bearbeiten]]></de>
             <en><![CDATA[Edit button]]></en>
+            <es><![CDATA[Editar botón]]></es>
+            <pt><![CDATA[Editar botão]]></pt>
+            <fr><![CDATA[Modifier le bouton]]></fr>
+            <it><![CDATA[Modifica pulsante]]></it>
+            <pl><![CDATA[Edytuj przycisk]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons.btn.delete.title">
             <de><![CDATA[Button löschen]]></de>
             <en><![CDATA[Delete button]]></en>
+            <es><![CDATA[Eliminar botón]]></es>
+            <pt><![CDATA[Eliminar botão]]></pt>
+            <fr><![CDATA[Supprimer le bouton]]></fr>
+            <it><![CDATA[Elimina pulsante]]></it>
+            <pl><![CDATA[Usuń przycisk]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons.window.add.title">
             <de><![CDATA[Neuen Button hinzufügen]]></de>
             <en><![CDATA[Add new button]]></en>
+            <es><![CDATA[Añadir nuevo botón]]></es>
+            <pt><![CDATA[Adicionar novo botão]]></pt>
+            <fr><![CDATA[Ajouter un nouveau bouton]]></fr>
+            <it><![CDATA[Aggiungi nuovo pulsante]]></it>
+            <pl><![CDATA[Dodaj nowy przycisk]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons.window.edit.title">
             <de><![CDATA[Button bearbeiten]]></de>
             <en><![CDATA[Edit button]]></en>
+            <es><![CDATA[Editar botón]]></es>
+            <pt><![CDATA[Editar botão]]></pt>
+            <fr><![CDATA[Modifier le bouton]]></fr>
+            <it><![CDATA[Modifica pulsante]]></it>
+            <pl><![CDATA[Edytuj przycisk]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons.window.delete.title">
             <de><![CDATA[Button entfernen]]></de>
             <en><![CDATA[Remove button]]></en>
+            <es><![CDATA[Quitar botón]]></es>
+            <pt><![CDATA[Remover botão]]></pt>
+            <fr><![CDATA[Retirer le bouton]]></fr>
+            <it><![CDATA[Rimuovi pulsante]]></it>
+            <pl><![CDATA[Usuń przycisk]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons.window.delete.text">
             <de><![CDATA[Möchten Sie diesen Zusatzbutton wirklich löschen?]]></de>
             <en><![CDATA[Do you really want to delete this additional button?]]></en>
+            <es><![CDATA[¿Desea eliminar este botón adicional?]]></es>
+            <pt><![CDATA[Pretende eliminar este botão adicional?]]></pt>
+            <fr><![CDATA[Voulez-vous supprimer ce bouton supplémentaire ?]]></fr>
+            <it><![CDATA[Vuoi eliminare questo pulsante aggiuntivo?]]></it>
+            <pl><![CDATA[Czy na pewno chcesz usunąć ten dodatkowy przycisk?]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons.form.text">
             <de><![CDATA[Text]]></de>
             <en><![CDATA[Text]]></en>
+            <es><![CDATA[Texto]]></es>
+            <pt><![CDATA[Texto]]></pt>
+            <fr><![CDATA[Texte]]></fr>
+            <it><![CDATA[Testo]]></it>
+            <pl><![CDATA[Tekst]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons.form.icon">
             <de><![CDATA[Icon-Klassen]]></de>
             <en><![CDATA[Icon classes]]></en>
+            <es><![CDATA[Clases del icono]]></es>
+            <pt><![CDATA[Classes do ícone]]></pt>
+            <fr><![CDATA[Classes de l’icône]]></fr>
+            <it><![CDATA[Classi dell’icona]]></it>
+            <pl><![CDATA[Klasy ikony]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons.form.cssClass">
             <de><![CDATA[Button-CSS-Klassen]]></de>
             <en><![CDATA[Button CSS classes]]></en>
+            <es><![CDATA[Clases CSS del botón]]></es>
+            <pt><![CDATA[Classes CSS do botão]]></pt>
+            <fr><![CDATA[Classes CSS du bouton]]></fr>
+            <it><![CDATA[Classi CSS del pulsante]]></it>
+            <pl><![CDATA[Klasy CSS przycisku]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.customButtons.form.href">
             <de><![CDATA[Link]]></de>
             <en><![CDATA[Link]]></en>
+            <es><![CDATA[Enlace]]></es>
+            <pt><![CDATA[Ligação]]></pt>
+            <fr><![CDATA[Lien]]></fr>
+            <it><![CDATA[Link]]></it>
+            <pl><![CDATA[Link]]></pl>
         </locale>
 
         <locale name="brick.control.ctaAction.setting.bgColor">
             <de><![CDATA[Hintergrundfarbe <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[Background color <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Color de fondo <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Cor de fundo <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Couleur d’arrière-plan <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Colore di sfondo <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Kolor tła <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.bgColor.description">
             <de><![CDATA[Setzt die Hintergrundfarbe des gesamten CTA-Blocks (CSS Variable: --qui-contact-ctaAction-bgColor).]]></de>
             <en><![CDATA[Sets the background color of the whole CTA block (CSS variable: --qui-contact-ctaAction-bgColor).]]></en>
+            <es><![CDATA[Define el color de fondo de todo el bloque CTA (variable CSS: --qui-contact-ctaAction-bgColor).]]></es>
+            <pt><![CDATA[Define a cor de fundo de todo o bloco CTA (variável CSS: --qui-contact-ctaAction-bgColor).]]></pt>
+            <fr><![CDATA[Définit la couleur d’arrière-plan de l’ensemble du bloc CTA (variable CSS : --qui-contact-ctaAction-bgColor).]]></fr>
+            <it><![CDATA[Imposta il colore di sfondo dell’intero blocco CTA (variabile CSS: --qui-contact-ctaAction-bgColor).]]></it>
+            <pl><![CDATA[Ustawia kolor tła całego bloku CTA (zmienna CSS: --qui-contact-ctaAction-bgColor).]]></pl>
         </locale>
 
         <locale name="brick.control.ctaAction.setting.color">
             <de><![CDATA[Textfarbe <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[Text color <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Color del texto <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Cor do texto <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Couleur du texte <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Colore del testo <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Kolor tekstu <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.color.description">
             <de><![CDATA[Setzt die Textfarbe des gesamten CTA-Blocks (CSS Variable: --qui-contact-ctaAction-color).]]></de>
             <en><![CDATA[Sets the text color of the whole CTA block (CSS variable: --qui-contact-ctaAction-color).]]></en>
+            <es><![CDATA[Define el color del texto de todo el bloque CTA (variable CSS: --qui-contact-ctaAction-color).]]></es>
+            <pt><![CDATA[Define a cor do texto de todo o bloco CTA (variável CSS: --qui-contact-ctaAction-color).]]></pt>
+            <fr><![CDATA[Définit la couleur du texte de l’ensemble du bloc CTA (variable CSS : --qui-contact-ctaAction-color).]]></fr>
+            <it><![CDATA[Imposta il colore del testo dell’intero blocco CTA (variabile CSS: --qui-contact-ctaAction-color).]]></it>
+            <pl><![CDATA[Ustawia kolor tekstu całego bloku CTA (zmienna CSS: --qui-contact-ctaAction-color).]]></pl>
         </locale>
 
         <locale name="brick.control.ctaAction.setting.leftBgColor">
             <de><![CDATA[Hintergrundfarbe (linke Spalte) <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[Background color (left column) <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Color de fondo (columna izquierda) <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Cor de fundo (coluna esquerda) <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Couleur d’arrière-plan (colonne de gauche) <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Colore di sfondo (colonna sinistra) <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Kolor tła (lewa kolumna) <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.leftBgColor.description">
             <de><![CDATA[Setzt die Hintergrundfarbe der linken Spalte (CSS Variable: --qui-contact-ctaAction-left-bgColor).]]></de>
             <en><![CDATA[Sets the background color of the left column (CSS variable: --qui-contact-ctaAction-left-bgColor).]]></en>
+            <es><![CDATA[Define el color de fondo de la columna izquierda (variable CSS: --qui-contact-ctaAction-left-bgColor).]]></es>
+            <pt><![CDATA[Define a cor de fundo da coluna esquerda (variável CSS: --qui-contact-ctaAction-left-bgColor).]]></pt>
+            <fr><![CDATA[Définit la couleur d’arrière-plan de la colonne de gauche (variable CSS : --qui-contact-ctaAction-left-bgColor).]]></fr>
+            <it><![CDATA[Imposta il colore di sfondo della colonna sinistra (variabile CSS: --qui-contact-ctaAction-left-bgColor).]]></it>
+            <pl><![CDATA[Ustawia kolor tła lewej kolumny (zmienna CSS: --qui-contact-ctaAction-left-bgColor).]]></pl>
         </locale>
 
         <locale name="brick.control.ctaAction.setting.leftColor">
             <de><![CDATA[Textfarbe (linke Spalte) <br><small>CTA Kontaktformular</small>]]></de>
             <en><![CDATA[Text color (left column) <br><small>CTA contact form</small>]]></en>
+            <es><![CDATA[Color del texto (columna izquierda) <br><small>Formulario de contacto CTA</small>]]></es>
+            <pt><![CDATA[Cor do texto (coluna esquerda) <br><small>Formulário de contacto CTA</small>]]></pt>
+            <fr><![CDATA[Couleur du texte (colonne de gauche) <br><small>Formulaire de contact CTA</small>]]></fr>
+            <it><![CDATA[Colore del testo (colonna sinistra) <br><small>Modulo di contatto CTA</small>]]></it>
+            <pl><![CDATA[Kolor tekstu (lewa kolumna) <br><small>Formularz kontaktowy CTA</small>]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.leftColor.description">
             <de><![CDATA[Setzt die Textfarbe der linken Spalte (CSS Variable: --qui-contact-ctaAction-left-color).]]></de>
             <en><![CDATA[Sets the text color of the left column (CSS variable: --qui-contact-ctaAction-left-color).]]></en>
+            <es><![CDATA[Define el color del texto de la columna izquierda (variable CSS: --qui-contact-ctaAction-left-color).]]></es>
+            <pt><![CDATA[Define a cor do texto da coluna esquerda (variável CSS: --qui-contact-ctaAction-left-color).]]></pt>
+            <fr><![CDATA[Définit la couleur du texte de la colonne de gauche (variable CSS : --qui-contact-ctaAction-left-color).]]></fr>
+            <it><![CDATA[Imposta il colore del testo della colonna sinistra (variabile CSS: --qui-contact-ctaAction-left-color).]]></it>
+            <pl><![CDATA[Ustawia kolor tekstu lewej kolumny (zmienna CSS: --qui-contact-ctaAction-left-color).]]></pl>
         </locale>
 
         <locale name="brick.control.ctaAction.mail.title">
             <de><![CDATA[Neue Kontaktanfrage:]]></de>
             <en><![CDATA[New contact request:]]></en>
+            <es><![CDATA[Nueva consulta de contacto:]]></es>
+            <pt><![CDATA[Novo pedido de contacto:]]></pt>
+            <fr><![CDATA[Nouvelle demande de contact :]]></fr>
+            <it><![CDATA[Nuova richiesta di contatto:]]></it>
+            <pl><![CDATA[Nowe zapytanie kontaktowe:]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.mail.brick.title">
             <de><![CDATA[Baustein CTA Daten]]></de>
             <en><![CDATA[Brick CTA data]]></en>
+            <es><![CDATA[Datos del bloque CTA]]></es>
+            <pt><![CDATA[Dados do bloco CTA]]></pt>
+            <fr><![CDATA[Données du bloc CTA]]></fr>
+            <it><![CDATA[Dati del blocco CTA]]></it>
+            <pl><![CDATA[Dane bloku CTA]]></pl>
         </locale>
 
 
         <locale name="brick.control.ctaAction.mail.brick.brickId">
             <de><![CDATA[ID]]></de>
             <en><![CDATA[ID]]></en>
+            <es><![CDATA[ID]]></es>
+            <pt><![CDATA[ID]]></pt>
+            <fr><![CDATA[ID]]></fr>
+            <it><![CDATA[ID]]></it>
+            <pl><![CDATA[ID]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.mail.brick.brickTitle">
             <de><![CDATA[Titel]]></de>
             <en><![CDATA[Title]]></en>
+            <es><![CDATA[Título]]></es>
+            <pt><![CDATA[Título]]></pt>
+            <fr><![CDATA[Titre]]></fr>
+            <it><![CDATA[Titolo]]></it>
+            <pl><![CDATA[Tytuł]]></pl>
         </locale>
 
         <locale name="brick.control.ctaAction.mail.contact">
             <de><![CDATA[Kontakt]]></de>
             <en><![CDATA[Contact]]></en>
+            <es><![CDATA[Contacto]]></es>
+            <pt><![CDATA[Contacto]]></pt>
+            <fr><![CDATA[Contact]]></fr>
+            <it><![CDATA[Contatto]]></it>
+            <pl><![CDATA[Kontakt]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.mail.contact.name">
             <de><![CDATA[Name]]></de>
             <en><![CDATA[Name]]></en>
+            <es><![CDATA[Nombre]]></es>
+            <pt><![CDATA[Nome]]></pt>
+            <fr><![CDATA[Nom]]></fr>
+            <it><![CDATA[Nome]]></it>
+            <pl><![CDATA[Imię i nazwisko]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.mail.contact.email">
             <de><![CDATA[E-Mail]]></de>
             <en><![CDATA[E-mail]]></en>
+            <es><![CDATA[Correo electrónico]]></es>
+            <pt><![CDATA[E-mail]]></pt>
+            <fr><![CDATA[E-mail]]></fr>
+            <it><![CDATA[Email]]></it>
+            <pl><![CDATA[E-mail]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.mail.contact.phone">
             <de><![CDATA[Telefon]]></de>
             <en><![CDATA[Phone]]></en>
+            <es><![CDATA[Teléfono]]></es>
+            <pt><![CDATA[Telefone]]></pt>
+            <fr><![CDATA[Téléphone]]></fr>
+            <it><![CDATA[Telefono]]></it>
+            <pl><![CDATA[Telefon]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.mail.contact.company">
             <de><![CDATA[Unternehmen]]></de>
             <en><![CDATA[Company]]></en>
+            <es><![CDATA[Empresa]]></es>
+            <pt><![CDATA[Empresa]]></pt>
+            <fr><![CDATA[Entreprise]]></fr>
+            <it><![CDATA[Azienda]]></it>
+            <pl><![CDATA[Firma]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.mail.contact.message">
             <de><![CDATA[Nachricht]]></de>
             <en><![CDATA[Message]]></en>
+            <es><![CDATA[Mensaje]]></es>
+            <pt><![CDATA[Mensagem]]></pt>
+            <fr><![CDATA[Message]]></fr>
+            <it><![CDATA[Messaggio]]></it>
+            <pl><![CDATA[Wiadomość]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.exception.nameNeeded">
-            <de><![CDATA[Bitte ein Name angeben]]></de>
+            <de><![CDATA[Bitte einen Namen angeben]]></de>
             <en><![CDATA[Please provide a name]]></en>
+            <es><![CDATA[Introduzca su nombre.]]></es>
+            <pt><![CDATA[Introduza o seu nome.]]></pt>
+            <fr><![CDATA[Indiquez votre nom.]]></fr>
+            <it><![CDATA[Inserisci il tuo nome.]]></it>
+            <pl><![CDATA[Podaj imię i nazwisko.]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.exception.emailNeeded">
-            <de><![CDATA[Bitte eine E-Mail oder Telefon angeben]]></de>
+            <de><![CDATA[Bitte eine E-Mail-Adresse oder Telefonnummer angeben]]></de>
             <en><![CDATA[Please provide either email or phone]]></en>
+            <es><![CDATA[Introduzca una dirección de correo electrónico o un número de teléfono.]]></es>
+            <pt><![CDATA[Introduza um endereço de e-mail ou um número de telefone.]]></pt>
+            <fr><![CDATA[Indiquez une adresse e-mail ou un numéro de téléphone.]]></fr>
+            <it><![CDATA[Inserisci un indirizzo email o un numero di telefono.]]></it>
+            <pl><![CDATA[Podaj adres e-mail lub numer telefonu.]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.exception.emailInvalid">
             <de><![CDATA[Bitte eine gültige E-Mail angeben]]></de>
             <en><![CDATA[Please provide a valid email]]></en>
+            <es><![CDATA[Introduzca una dirección de correo electrónico válida.]]></es>
+            <pt><![CDATA[Introduza um endereço de e-mail válido.]]></pt>
+            <fr><![CDATA[Indiquez une adresse e-mail valide.]]></fr>
+            <it><![CDATA[Inserisci un indirizzo email valido.]]></it>
+            <pl><![CDATA[Podaj prawidłowy adres e-mail.]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.exception.mailSendFailed">
             <de><![CDATA[Die E-Mail konnte nicht versendet werden]]></de>
             <en><![CDATA[The email could not be sent]]></en>
+            <es><![CDATA[No se ha podido enviar el correo electrónico.]]></es>
+            <pt><![CDATA[Não foi possível enviar o e-mail.]]></pt>
+            <fr><![CDATA[L’e-mail n’a pas pu être envoyé.]]></fr>
+            <it><![CDATA[Non è stato possibile inviare l’email.]]></it>
+            <pl><![CDATA[Nie udało się wysłać wiadomości e-mail.]]></pl>
         </locale>
 
     </groups>

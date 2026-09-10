@@ -8,6 +8,8 @@
     --left-bgColor: var(--qui-contact-ctaAction-left-bgColor, var(--_q-controlSetting-left-bgColor, hsl(from var(--qui-colors-body-bgColor, #fff) h s calc(l - 5))));
     --left-color: var(--qui-contact-ctaAction-left-color, var(--_q-controlSetting-left-color, var(--qui-colors-body, currentColor)));
     --inner-padding: var(--qui-contact-ctaAction-inner-padding, clamp(1.5rem, 4%, 2.5rem));
+    --_actions-gap: var(--qui-contact-ctaAction-actions-gap, var(--qui-spacing, 1rem));
+    --_actions-maxWidth: var(--qui-contact-ctaAction-actions-maxWidth, 28rem);
     --logo-height: var(--qui-contact-ctaAction-logo-height, 50px);
 
     outline: var(--wrapper-borderWidth) var(--wrapper-borderStyle) var(--wrapper-borderColor);
@@ -73,9 +75,9 @@
     height: 100%;
 }
 
-/* Sidebar nur im Formular-Modus; in der Auswahl nie, in der KI-Ansicht nur
-   wenn ausdrücklich aktiviert (aiSidebar). */
+/* Each view independently controls sidebar availability. */
 .quiqqer-contact-ctaAction__layout[data-active-view="select"] > [data-name="left"],
+.quiqqer-contact-ctaAction__layout[data-active-view="form"]:not([data-form-sidebar="1"]) > [data-name="left"],
 .quiqqer-contact-ctaAction__layout[data-active-view="ai"]:not([data-ai-sidebar="1"]) > [data-name="left"] {
     display: none;
 }
@@ -118,7 +120,7 @@
 
 /* Auswahl-Screen: fokussiert und zentriert, ohne Sidebar */
 .quiqqer-contact-ctaAction__view--select {
-    max-width: 30rem;
+    min-width: 0;
     width: 100%;
     margin-inline: auto;
     text-align: center;
@@ -283,4 +285,76 @@
 .quiqqer-contact-ctaAction .form--labelLeft .form-actions > .btn {
     flex-basis: var(--input-minWidth);
     flex-grow: 1;
+}
+
+.quiqqer-contact-ctaAction__primaryActions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--_actions-gap);
+}
+
+.quiqqer-contact-ctaAction__secondaryActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--_actions-gap);
+}
+
+.quiqqer-contact-ctaAction__view--select .quiqqer-contact-ctaAction__primaryActions,
+.quiqqer-contact-ctaAction__view--select .quiqqer-contact-ctaAction__secondaryActions,
+.quiqqer-contact-ctaAction__secondaryLabel,
+.quiqqer-contact-ctaAction__privacyHint {
+    width: 100%;
+    max-width: var(--_actions-maxWidth);
+    margin-inline: auto;
+}
+
+.quiqqer-contact-ctaAction__secondaryLabel {
+    color: var(--qui-colors-muted);
+    font-size: 0.875rem;
+    margin-block: var(--_actions-gap);
+}
+
+.quiqqer-contact-ctaAction__view--select .quiqqer-contact-ctaAction__secondaryActions {
+    justify-content: center;
+}
+
+.quiqqer-contact-ctaAction__primaryActions:empty,
+.quiqqer-contact-ctaAction__secondaryActions:empty,
+.quiqqer-contact-ctaAction__layout:not([data-active-view="form"]) .quiqqer-contact-ctaAction__sidebarAi {
+    display: none;
+}
+
+.quiqqer-contact-ctaAction__primaryActions > .btn,
+.quiqqer-contact-ctaAction__secondaryActions > .btn {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.quiqqer-contact-ctaAction__layout[data-active-view="select"],
+.quiqqer-contact-ctaAction__layout[data-active-view="form"],
+.quiqqer-contact-ctaAction__layout:not([data-active-view="ai"]) .quiqqer-contact-ctaAction__views {
+    height: auto;
+}
+
+.quiqqer-contact-ctaAction--inWindow {
+    outline: none;
+    border: 0;
+    border-radius: 0;
+}
+
+.quiqqer-contact-ctaAction--inWindow .quiqqer-contact-ctaAction__leftContent {
+    border-radius: 0;
+}
+
+.quiqqer-contact-ctaAction--inWindow:has([data-active-view="ai"]) {
+    height: 100%;
+    min-height: 0;
+}
+
+.quiqqer-contact-ctaAction__view:focus-visible,
+.quiqqer-contact-ctaAction [data-name="viewChoice"]:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
 }

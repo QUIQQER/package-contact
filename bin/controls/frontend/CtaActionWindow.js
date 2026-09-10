@@ -3,10 +3,11 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindow', [
     'qui/QUI',
     'qui/controls/windows/SimpleWindow',
     'Ajax',
+    'package/quiqqer/bricks/bin/Controls/WindowContentReveal',
 
     'css!package/quiqqer/contact/bin/controls/frontend/CtaActionWindow.css'
 
-], function (QUI, SimpleWindow, QUIAjax) {
+], function (QUI, SimpleWindow, QUIAjax, WindowContentReveal) {
     "use strict";
 
     return new Class({
@@ -45,12 +46,22 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindow', [
 
             // views
             startView: 'form', // form, select, ai
-            aiControl: '',
-            aiControlOptions: '',
+            aiBrickId: '',     // brick rendered in the ai view
+            aiContext: '',     // fallback context, overruled by brickParams
             aiSidebar: false,
+            formEnabled: true,
+            formSidebar: false,
+            formSidebarAi: false,
+            contactDisplay: 'icon-text',
+
+            // parameters handed to the CtaAction brick and, from there, to
+            // the ai agent brick, e.g. {context: 'Package: Starter'}. Only
+            // effective together with data-brickid, because they are applied
+            // by the brick render.
+            brickParams: false,
 
             // buttons
-            btnStyle: 'button', // iconRounded, icon, button
+            btnStyle: 'button', // button, rounded
             size: 'default',
             whatsapp: '',
             whatsappLabel: '',
@@ -59,6 +70,11 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindow', [
             email: '',
             emailLabel: '',
             customButtons: '',
+            secondaryActionsLabel: '',
+            aiButtonText: '',
+            aiButtonIcon: '',
+            formButtonText: '',
+            formButtonIcon: '',
 
             // design
             formDesign: 'default', // default, grid, labelLeft
@@ -70,12 +86,22 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindow', [
 
         initialize: function (options) {
             this.parent(options);
-
             this.$ctaAction = null;
+            this.$contentPromise = null;
 
             this.addEvents({
                 onOpen: this.$onOpen,
                 onCreate: this.$onCreate
+            });
+        },
+
+        open: function (callback) {
+            return WindowContentReveal.prepare(this, () => this.$loadContent()).then(() => {
+                return SimpleWindow.prototype.open.call(this, callback);
+            }).catch((error) => {
+                console.error(error);
+                this.destroy();
+                throw error;
             });
         },
 
@@ -84,87 +110,97 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindow', [
         },
 
         $onOpen: function () {
-            this.getContent().classList.add('qui-contact-controls-ctaActionWindow');
-            this.getContent().innerHTML = '';
-            this.getContent().innerHTML = this.$getSkeletonHtml();
-
-            let SkeletonLoader = this.getContent().querySelector('[data-name="skeletonLoader"]');
-            let ControlContainer =  document.createElement('div');
-            ControlContainer.classList.add('qui-contact-controls-ctaActionWindow__controlContainer');
-            ControlContainer.style.opacity = '0';
-            this.getContent().appendChild(ControlContainer);
-
-            const aiControlPath = this.getAttribute('aiControl');
-
-            // Prefetch the ai control in parallel to the CtaAction control and
-            // its ajax render. On a slow line the (larger) ai module loads while
-            // the layout is still loading, so it can mount right away instead of
-            // adding another wait after the layout is ready.
-            if (aiControlPath) {
-                require([aiControlPath], function () {}, function () {});
+            if (this.$contentPromise) {
+                return;
             }
 
-            // Prevent flashing of the SkeletonLoader
-            // If the CtaAction control is quickly loaded,
-            // it is not necessary to show the SkeletonLoader for a short period of time.
-            // Show the SkeletonLoader after 250ms, because the Control may take longer to load.
-            setTimeout(() => {
-                if (SkeletonLoader && SkeletonLoader.isConnected) {
-                    SkeletonLoader.style.opacity = '1';
-                }
-            }, 250);
-
-            const revealControl = () => {
-                ControlContainer.style.opacity = '1';
-
-                if (SkeletonLoader && SkeletonLoader.isConnected) {
-                    SkeletonLoader.remove();
-                }
-            };
-
-            // The ai view fills its host asynchronously and, because the ajax
-            // render carries data-qui, the ai control is mounted by whichever
-            // (possibly re-parsed) CtaAction instance wins the DOM guard - not
-            // necessarily this.$ctaAction. So the mount is signalled by a
-            // bubbling DOM event instead of an instance event; the skeleton then
-            // hands over to the ai control's own skeleton without a gap.
-            this.getContent().addEventListener(
-                'quiqqer-contact-ctaAction-aiMounted',
-                revealControl
-            );
-
-            require(['package/quiqqer/contact/bin/controls/frontend/CtaAction'], (CtaAction) => {
-                this.$ctaAction = new CtaAction(this.getAttributes());
-
-                this.getCtaAction().addEvents({
-                    onLoad: () => {
-                        this.fireEvent('load', [this, this.getCtaAction()]);
-
-                        // Reveal now unless we still wait for an ai control to
-                        // mount into an (as yet empty) ai host. Read the actually
-                        // rendered view so a server-side downgrade (ai -> form)
-                        // cannot leave the skeleton hanging.
-                        const layout = ControlContainer.querySelector('[data-name="layout"]');
-                        const aiHost = ControlContainer.querySelector('[data-name="aiHost"]');
-                        const aiPending = layout
-                            && layout.getAttribute('data-active-view') === 'ai'
-                            && aiHost
-                            && aiHost.children.length === 0;
-
-                        if (!aiPending) {
-                            revealControl();
-                        }
-                    },
-                    onSendBegin: () => {
-                        this.Loader.show();
-                    },
-                    onSendEnd: () => {
-                        this.Loader.hide();
-                    }
-                });
-
-                this.getCtaAction().inject(ControlContainer);
+            this.$loadContent().catch((error) => {
+                console.error(error);
+                this.close();
             });
+        },
+
+        $loadContent: function () {
+            if (this.$contentPromise) {
+                return this.$contentPromise;
+            }
+
+            this.$contentPromise = new Promise((resolve, reject) => {
+                this.getContent().classList.add('qui-contact-controls-ctaActionWindow');
+                this.getContent().innerHTML = '';
+                this.getContent().innerHTML = this.$getSkeletonHtml();
+
+                let SkeletonLoader = this.getContent().querySelector('[data-name="skeletonLoader"]');
+                let ControlContainer = document.createElement('div');
+                ControlContainer.classList.add('qui-contact-controls-ctaActionWindow__controlContainer');
+                ControlContainer.style.opacity = '0';
+                this.getContent().appendChild(ControlContainer);
+
+                // Prevent flashing of the SkeletonLoader
+                // If the CtaAction control is quickly loaded,
+                // it is not necessary to show the SkeletonLoader for a short period of time.
+                // Show the SkeletonLoader after 250ms, because the Control may take longer to load.
+                setTimeout(() => {
+                    if (SkeletonLoader && SkeletonLoader.isConnected) {
+                        SkeletonLoader.style.opacity = '1';
+                    }
+                }, 250);
+
+                const revealControl = () => {
+                    ControlContainer.style.opacity = '1';
+
+                    if (SkeletonLoader && SkeletonLoader.isConnected) {
+                        SkeletonLoader.remove();
+                    }
+                    resolve();
+                };
+
+                // The ai view fills its host asynchronously and, because the ajax
+                // render carries data-qui, the ai control is mounted by whichever
+                // (possibly re-parsed) CtaAction instance wins the DOM guard - not
+                // necessarily this.$ctaAction. So the mount is signalled by a
+                // bubbling DOM event instead of an instance event; the skeleton then
+                // hands over to the ai control's own skeleton without a gap.
+                this.getContent().addEventListener(
+                    'quiqqer-contact-ctaAction-aiMounted', revealControl, {once: true}
+                );
+
+                require(['package/quiqqer/contact/bin/controls/frontend/CtaAction'], (CtaAction) => {
+                    this.$ctaAction = new CtaAction(this.getAttributes());
+
+                    this.getCtaAction().addEvents({
+                        onLoadError: reject,
+                        onLoad: () => {
+                            this.fireEvent('load', [this, this.getCtaAction()]);
+
+                            // Reveal now unless we still wait for an ai control to
+                            // mount into an (as yet empty) ai host. Read the actually
+                            // rendered view so a server-side downgrade (ai -> form)
+                            // cannot leave the skeleton hanging.
+                            const layout = ControlContainer.querySelector('[data-name="layout"]');
+                            const aiHost = ControlContainer.querySelector('[data-name="aiHost"]');
+                            const aiPending = layout
+                                && layout.getAttribute('data-active-view') === 'ai'
+                                && aiHost
+                                && aiHost.children.length === 0;
+
+                            if (!aiPending) {
+                                revealControl();
+                            }
+                        },
+                        onSendBegin: () => {
+                            this.Loader.show();
+                        },
+                        onSendEnd: () => {
+                            this.Loader.hide();
+                        }
+                    });
+
+                    this.getCtaAction().inject(ControlContainer);
+                }, reject);
+            });
+
+            return this.$contentPromise;
         },
 
         getCtaAction: function () {
@@ -191,14 +227,29 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindow', [
          * The skeleton mirrors the layout the real control will show, so a slow
          * load does not flash a different structure than the final view. The
          * sidebar only appears when the target view actually shows it: form
-         * always, ai only with aiSidebar, select never. This matches the
+         * with formSidebar, ai with aiSidebar, select never. This matches the
          * [data-active-view] rules in the control's Control.css.
          *
          * @return {string} The skeleton HTML.
          */
         $getSkeletonHtml: function () {
-            const startView = this.getAttribute('startView');
-            const showSidebar = startView === 'form'
+            // Saved brick settings are resolved by the server. Until then a
+            // neutral loader avoids promising the wrong view or sidebar.
+            if (Number(this.getAttribute('data-brickid')) > 0) {
+                return '<div class="qui-contact-controls-ctaActionWindow__skeletonLoader"'
+                    + ' data-name="skeletonLoader" aria-hidden="true">' + this.$getAiSkeletonHtml() + '</div>';
+            }
+
+            const enabled = (name) => [true, 1, '1'].includes(this.getAttribute(name));
+            let startView = this.getAttribute('startView');
+
+            if (!['form', 'select', 'ai'].includes(startView)
+                || (startView === 'form' && !enabled('formEnabled'))
+                || (startView === 'ai' && !(Number(this.getAttribute('aiBrickId')) > 0))) {
+                startView = 'select';
+            }
+
+            const showSidebar = (startView === 'form' && enabled('formSidebar'))
                 || (startView === 'ai' && this.$isAiSidebar());
 
             let rightContent;
@@ -208,7 +259,8 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindow', [
             } else if (startView === 'ai') {
                 rightContent = this.$getAiSkeletonHtml();
             } else {
-                rightContent = this.$getFormSkeletonHtml(this.getAttribute('formDesign'));
+                rightContent = this.$getFormSkeletonHtml(['grid', 'labelLeft'].includes(this.getAttribute('formDesign'))
+                    ? this.getAttribute('formDesign') : 'default');
             }
 
             return `
@@ -333,11 +385,11 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindow', [
 
         /**
          * @return {string} ai view loader (inner right content): a neutral,
-         *     centered spinner. The ai view is filled by a pluggable ai control
-         *     (see Control.php AI_AGENT_VIEW_JS_CONTROL) that ships its own
-         *     skeleton once mounted, so this deliberately does not mimic any
-         *     specific control's layout; it only bridges the load until the ai
-         *     control takes over (see the aiMounted handover in $onOpen).
+         *     centered spinner. The ai view is filled by the configured agent
+         *     brick, which ships its own skeleton once rendered, so this
+         *     deliberately does not mimic any specific brick's layout; it only
+         *     bridges the load until the brick takes over (see the aiMounted
+         *     handover in $onOpen).
          */
         $getAiSkeletonHtml: function () {
             return `
