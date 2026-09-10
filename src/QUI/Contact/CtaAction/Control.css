@@ -70,6 +70,9 @@
  */
 .quiqqer-contact-ctaAction__layout {
     display: flex;
+    /* Main content comes first in the DOM and when stacked; the sidebar
+       remains on the left when both columns fit next to each other. */
+    flex-direction: row-reverse;
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
@@ -365,6 +368,14 @@
 }
 
 .quiqqer-contact-ctaAction--inWindow:has([data-active-view="ai"]) {
+    height: 100%;
+    min-height: 0;
+    overflow: auto;
+}
+
+/* Pass the bounded window height through to the embedded chat. The outer
+   CTA scrolls to a stacked sidebar; the chat keeps its own scroll area. */
+.quiqqer-contact-ctaAction--inWindow .quiqqer-contact-ctaAction__layout[data-active-view="ai"] > .quiqqer-contact-ctaAction__rightContent {
     height: 100%;
     min-height: 0;
 }
