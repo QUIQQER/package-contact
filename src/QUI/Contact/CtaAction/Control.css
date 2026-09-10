@@ -82,6 +82,11 @@
     display: none;
 }
 
+/* The embedded AI control provides its own content padding. */
+.quiqqer-contact-ctaAction__layout[data-active-view="ai"] > .quiqqer-contact-ctaAction__rightContent {
+    padding: 0;
+}
+
 .quiqqer-contact-ctaAction__view {
     display: none;
 }
