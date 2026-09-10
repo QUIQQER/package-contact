@@ -97,7 +97,8 @@
                     </description>
                 </setting>
 
-                <setting name="secondaryActionsLabel" type="text">
+                <setting name="secondaryActionsLabel" type="text"
+                         data-dependency="startView" data-dependency-options="select">
                     <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.secondaryActionsLabel"/>
                     <description><locale group="quiqqer/contact" var="brick.control.ctaAction.setting.secondaryActionsLabel.desc"/></description>
                 </setting>
