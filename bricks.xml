@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <quiqqer>
     <bricks>
-        <brick control="\QUI\Contact\CtaAction\Control" supportsWindowAutoHeight="1">
+        <brick control="\QUI\Contact\CtaAction\Control" category="cta" supportsWindowAutoHeight="1">
             <title>
                 <locale group="quiqqer/contact" var="brick.control.ctaAction.setting.title"/>
             </title>
