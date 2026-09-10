@@ -10,6 +10,7 @@
     --inner-padding: var(--qui-contact-ctaAction-inner-padding, clamp(1.5rem, 4%, 2.5rem));
     --_actions-gap: var(--qui-contact-ctaAction-actions-gap, var(--qui-spacing, 1rem));
     --_actions-maxWidth: var(--qui-contact-ctaAction-actions-maxWidth, 28rem);
+    --_select-paddingBlock: var(--qui-contact-ctaAction-select-paddingBlock, calc(var(--qui-spacing-xl, 2rem) * 2));
     --logo-height: var(--qui-contact-ctaAction-logo-height, 50px);
 
     outline: var(--wrapper-borderWidth) var(--wrapper-borderStyle) var(--wrapper-borderColor);
@@ -63,6 +64,12 @@
  */
 .quiqqer-contact-ctaAction__rightContent {
     padding: var(--inner-padding);
+}
+
+@media screen and (min-width: 768px) {
+    .quiqqer-contact-ctaAction__layout[data-active-view="select"] > .quiqqer-contact-ctaAction__rightContent {
+        padding-block: var(--_select-paddingBlock);
+    }
 }
 
 /**
@@ -156,6 +163,7 @@
     display: grid;
     gap: 1rem;
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .quiqqer-contact-ctaAction__choice {
@@ -299,6 +307,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--_actions-gap);
+    margin-block: 1rem;
 }
 
 .quiqqer-contact-ctaAction__secondaryActions {
@@ -384,4 +393,9 @@
 .quiqqer-contact-ctaAction [data-name="viewChoice"]:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 2px;
+}
+
+/* The form fields indicate focus; the surrounding view is only a fallback target. */
+.quiqqer-contact-ctaAction__view--form:focus-visible {
+    outline: none;
 }
