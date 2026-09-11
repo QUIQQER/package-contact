@@ -30,6 +30,7 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindowSizing', [
             const content = win.getContent();
             const originalMaxHeight = win.getAttribute('maxHeight');
             const workHeight = Number(originalMaxHeight) || 800;
+            const contentAutoHeight = win.getAttribute('contentAutoHeight') === true;
             let frame = 0;
             let resizing = false;
             let pending = false;
@@ -91,10 +92,11 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindowSizing', [
                     }
                     parent = parent.parentElement;
                 }
-                return Math.min(Math.ceil(height), workHeight);
+                height = Math.ceil(height);
+                return contentAutoHeight ? height : Math.min(height, workHeight);
             };
 
-            const update = () => {
+            const update = async () => {
                 frame = 0;
                 if (disposed || !root.isConnected || win.getAttribute('contentPending')) {
                     return;
@@ -111,13 +113,20 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindowSizing', [
                 }
                 win.setAttribute('maxHeight', height);
                 resizing = true;
-                Promise.resolve(win.resize()).finally(() => {
+                // Suppress temporary overflow while growing, not when the
+                // viewport already limits the window and scrolling is needed.
+                root.classList.toggle('quiqqer-contact-ctaAction--windowGrowing',
+                    win.getOpeningHeight() > Math.ceil(node.getBoundingClientRect().height));
+                try {
+                    await win.resize();
+                } finally {
+                    root.classList.remove('quiqqer-contact-ctaAction--windowGrowing');
                     resizing = false;
                     if (pending) {
                         pending = false;
                         schedule();
                     }
-                });
+                }
             };
             const schedule = () => {
                 if (!disposed && !frame) {
@@ -141,6 +150,7 @@ define('package/quiqqer/contact/bin/controls/frontend/CtaActionWindowSizing', [
 
             const dispose = () => {
                 disposed = true;
+                root.classList.remove('quiqqer-contact-ctaAction--windowGrowing');
                 observer.disconnect();
                 node.removeEventListener('keydown', keepFocusInWindow);
                 if (node.contains(document.activeElement) && opener?.isConnected) {

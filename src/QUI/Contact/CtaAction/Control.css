@@ -10,6 +10,7 @@
     --inner-padding: var(--qui-contact-ctaAction-inner-padding, clamp(1.5rem, 4%, 2.5rem));
     --_actions-gap: var(--qui-contact-ctaAction-actions-gap, var(--qui-spacing, 1rem));
     --_actions-maxWidth: var(--qui-contact-ctaAction-actions-maxWidth, 28rem);
+    --_select-paddingBlock: var(--qui-contact-ctaAction-select-paddingBlock, calc(var(--qui-spacing-xl, 2rem) * 2));
     --logo-height: var(--qui-contact-ctaAction-logo-height, 50px);
 
     outline: var(--wrapper-borderWidth) var(--wrapper-borderStyle) var(--wrapper-borderColor);
@@ -65,11 +66,20 @@
     padding: var(--inner-padding);
 }
 
+@media screen and (min-width: 768px) {
+    .quiqqer-contact-ctaAction__layout[data-active-view="select"] > .quiqqer-contact-ctaAction__rightContent {
+        padding-block: var(--_select-paddingBlock);
+    }
+}
+
 /**
  * Layout / Views (select / form / ai)
  */
 .quiqqer-contact-ctaAction__layout {
     display: flex;
+    /* Main content comes first in the DOM and when stacked; the sidebar
+       remains on the left when both columns fit next to each other. */
+    flex-direction: row-reverse;
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
@@ -80,6 +90,11 @@
 .quiqqer-contact-ctaAction__layout[data-active-view="form"]:not([data-form-sidebar="1"]) > [data-name="left"],
 .quiqqer-contact-ctaAction__layout[data-active-view="ai"]:not([data-ai-sidebar="1"]) > [data-name="left"] {
     display: none;
+}
+
+/* The embedded AI control provides its own content padding. */
+.quiqqer-contact-ctaAction__layout[data-active-view="ai"] > .quiqqer-contact-ctaAction__rightContent {
+    padding: 0;
 }
 
 .quiqqer-contact-ctaAction__view {
@@ -148,6 +163,7 @@
     display: grid;
     gap: 1rem;
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .quiqqer-contact-ctaAction__choice {
@@ -291,6 +307,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--_actions-gap);
+    margin-block: 1rem;
 }
 
 .quiqqer-contact-ctaAction__secondaryActions {
@@ -339,9 +356,20 @@
 }
 
 .quiqqer-contact-ctaAction--inWindow {
+    align-self: flex-start;
     outline: none;
     border: 0;
     border-radius: 0;
+}
+
+/* Embedded views may turn the window content into a non-scrolling flex host.
+   The contact views still need their own natural height and window scrollbar. */
+.qui-window-simpleWindow-content:has(.quiqqer-contact-ctaAction--inWindow [data-name="layout"]:not([data-active-view="ai"])) {
+    overflow: auto;
+}
+
+.qui-window-simpleWindow-content:has(.quiqqer-contact-ctaAction--inWindow.quiqqer-contact-ctaAction--windowGrowing [data-name="layout"]:not([data-active-view="ai"])) {
+    overflow: hidden;
 }
 
 .quiqqer-contact-ctaAction--inWindow .quiqqer-contact-ctaAction__leftContent {
@@ -351,10 +379,23 @@
 .quiqqer-contact-ctaAction--inWindow:has([data-active-view="ai"]) {
     height: 100%;
     min-height: 0;
+    overflow: auto;
+}
+
+/* Pass the bounded window height through to the embedded chat. The outer
+   CTA scrolls to a stacked sidebar; the chat keeps its own scroll area. */
+.quiqqer-contact-ctaAction--inWindow .quiqqer-contact-ctaAction__layout[data-active-view="ai"] > .quiqqer-contact-ctaAction__rightContent {
+    height: 100%;
+    min-height: 0;
 }
 
 .quiqqer-contact-ctaAction__view:focus-visible,
 .quiqqer-contact-ctaAction [data-name="viewChoice"]:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 2px;
+}
+
+/* The form fields indicate focus; the surrounding view is only a fallback target. */
+.quiqqer-contact-ctaAction__view--form:focus-visible {
+    outline: none;
 }
