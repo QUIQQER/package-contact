@@ -7,36 +7,6 @@
      data-ai-brick-id="{$aiBrickId}"
      {if $aiBrickParams}data-ai-brick-params='{$aiBrickParams|escape:'html'}'{/if}>
 
-    <aside data-name="left" class="quiqqer-contact-ctaAction__leftContent">
-        {if $logo}
-        <div class="logo" aria-hidden="true">
-            {image image=$logo height=50 class="logo-img"}
-        </div>
-        {/if}
-
-        <div class="default-content">
-            {$content}
-        </div>
-
-        <div class="quiqqer-contact-ctaAction__primaryActions" data-name="primaryActions">
-            {if $formSidebarAi}
-                <button type="button" data-name="viewChoice" data-view-target="ai"
-                        class="btn btn-primary quiqqer-contact-ctaAction__sidebarAi">
-                    {if $aiChoiceIcon}<span class="btn__icon {$aiChoiceIcon|escape:'html'}" aria-hidden="true"></span>{/if}
-                    <span class="btn__text">{$aiChoiceLabel|escape:'html'}</span>
-                </button>
-            {/if}
-            {foreach from=$sidebarButtons.primary item=button}
-                {$button->create()}
-            {/foreach}
-        </div>
-        <div data-name="secondaryActions" class="quiqqer-contact-ctaAction-buttons quiqqer-contact-ctaAction__secondaryActions">
-            {foreach from=$sidebarButtons.secondary item=button}
-                {$button->create()}
-            {/foreach}
-        </div>
-    </aside>
-
     <section data-name="right" class="quiqqer-contact-ctaAction__rightContent">
         <div data-name="views" class="quiqqer-contact-ctaAction__views">
 
@@ -205,4 +175,34 @@
                  class="quiqqer-contact-ctaAction__view quiqqer-contact-ctaAction__view--ai"></div>
         </div>
     </section>
+
+    <aside data-name="left" class="quiqqer-contact-ctaAction__leftContent">
+        {if $logo}
+        <div class="logo" aria-hidden="true">
+            {image image=$logo height=50 class="logo-img"}
+        </div>
+        {/if}
+
+        <div class="default-content">
+            {$content}
+        </div>
+
+        <div class="quiqqer-contact-ctaAction__primaryActions" data-name="primaryActions">
+            {if $formSidebarAi}
+                <button type="button" data-name="viewChoice" data-view-target="ai"
+                        class="btn btn-primary quiqqer-contact-ctaAction__sidebarAi">
+                    {if $aiChoiceIcon}<span class="btn__icon {$aiChoiceIcon|escape:'html'}" aria-hidden="true"></span>{/if}
+                    <span class="btn__text">{$aiChoiceLabel|escape:'html'}</span>
+                </button>
+            {/if}
+            {foreach from=$sidebarButtons.primary item=button}
+                {$button->create()}
+            {/foreach}
+        </div>
+        <div data-name="secondaryActions" class="quiqqer-contact-ctaAction-buttons quiqqer-contact-ctaAction__secondaryActions">
+            {foreach from=$sidebarButtons.secondary item=button}
+                {$button->create()}
+            {/foreach}
+        </div>
+    </aside>
 </div>

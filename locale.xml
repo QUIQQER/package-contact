@@ -1336,13 +1336,13 @@
             <pl><![CDATA[Etykieta dodatkowych metod kontaktu]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.secondaryActionsLabel.desc">
-            <de><![CDATA[Optionaler dezenter Text zwischen Hauptaktionen und weiteren Kontaktwegen, z. B. „Weitere Kontaktmöglichkeiten“. Leer oder ohne weitere Kontaktwege wird nichts angezeigt.]]></de>
-            <en><![CDATA[Optional muted text between primary actions and additional contact methods. Hidden when empty or no additional contact methods are available.]]></en>
-            <es><![CDATA[Texto discreto opcional entre las acciones principales y los medios de contacto adicionales, por ejemplo: "Otras formas de contacto". No se muestra si está vacío o no hay medios de contacto adicionales.]]></es>
-            <pt><![CDATA[Texto discreto opcional entre as ações principais e os meios de contacto adicionais, por exemplo: "Outras formas de contacto". Não é apresentado se estiver vazio ou se não existirem meios de contacto adicionais.]]></pt>
-            <fr><![CDATA[Texte discret facultatif entre les actions principales et les autres moyens de contact, par exemple : "Autres moyens de nous contacter". Masqué si le champ est vide ou si aucun autre moyen de contact n’est disponible.]]></fr>
-            <it><![CDATA[Testo discreto facoltativo tra le azioni principali e i canali di contatto aggiuntivi, ad esempio: "Altri modi per contattarci". Non viene mostrato se il campo è vuoto o non sono disponibili altri canali di contatto.]]></it>
-            <pl><![CDATA[Opcjonalny, dyskretny tekst między działaniami głównymi a dodatkowymi metodami kontaktu, na przykład: "Inne sposoby kontaktu". Jest ukryty, gdy pole jest puste lub nie ma dodatkowych metod kontaktu.]]></pl>
+            <de><![CDATA[Nur in der Ansicht „Kontaktübersicht“ sichtbar. Optionaler dezenter Text zwischen Hauptaktionen und weiteren Kontaktwegen, z. B. „Weitere Kontaktmöglichkeiten“. Leer oder ohne weitere Kontaktwege wird nichts angezeigt.]]></de>
+            <en><![CDATA[Only visible in the "Contact overview" view. Optional muted text between primary actions and additional contact methods. Hidden when empty or no additional contact methods are available.]]></en>
+            <es><![CDATA[Solo se muestra en la vista "Opciones de contacto". Texto discreto opcional entre las acciones principales y los medios de contacto adicionales, por ejemplo: "Otras formas de contacto". No se muestra si está vacío o no hay medios de contacto adicionales.]]></es>
+            <pt><![CDATA[Visível apenas na vista "Opções de contacto". Texto discreto opcional entre as ações principais e os meios de contacto adicionais, por exemplo: "Outras formas de contacto". Não é apresentado se estiver vazio ou se não existirem meios de contacto adicionais.]]></pt>
+            <fr><![CDATA[Visible uniquement dans la vue "Options de contact". Texte discret facultatif entre les actions principales et les autres moyens de contact, par exemple : "Autres moyens de nous contacter". Masqué si le champ est vide ou si aucun autre moyen de contact n’est disponible.]]></fr>
+            <it><![CDATA[Visibile solo nella vista "Opzioni di contatto". Testo discreto facoltativo tra le azioni principali e i canali di contatto aggiuntivi, ad esempio: "Altri modi per contattarci". Non viene mostrato se il campo è vuoto o non sono disponibili altri canali di contatto.]]></it>
+            <pl><![CDATA[Widoczny tylko w widoku "Opcje kontaktu". Opcjonalny, dyskretny tekst między działaniami głównymi a dodatkowymi metodami kontaktu, na przykład: "Inne sposoby kontaktu". Jest ukryty, gdy pole jest puste lub nie ma dodatkowych metod kontaktu.]]></pl>
         </locale>
         <locale name="brick.control.ctaAction.setting.aiButtonText">
             <de><![CDATA[KI-Button: Beschriftung]]></de>

@@ -184,7 +184,7 @@ define('package/quiqqer/contact/bin/controls/backend/RequestList', [
             this.$DeleteBtn.disable();
 
             const columns = [{
-                header: QUILocale.get('quiqqer/system', 'id'),
+                header: QUILocale.get('quiqqer/core', 'id'),
                 dataIndex: 'id',
                 dataType: 'number',
                 width: 75,
